@@ -1,0 +1,980 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass beamer
+\begin_preamble
+\usetheme{Madrid}
+\usefonttheme{serif}
+% \usecolortheme{crane} %GIALLA
+% more colors & themes http://www.hartwork.org/beamer-theme-matrix/
+
+\setbeamercovered{transparent}
+% transizioni: gli elementi nascosti vengono visualizzati in trasparenza
+
+%\beamerdefaultoverlayspecification{<+->}
+% transizioni: di default i paragrafi e gli elenchi (puntati e numerati) vengono scoperti passo per passo.
+% usate con cautela
+
+\usenavigationsymbolstemplate{}
+% hide navigation symbols (bottom-right corner in every slide)
+
+%\titlegraphic{\includegraphics[height=2cm]{poul-logo.pdf}}
+% Aggiunge il logo del POuL in prima pagina
+% Ricordate che dovete sempre avere il logo in pdf nella cartella dove avete il documento (poul-logo.pdf)
+
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+% sets nice fonts (if available)
+
+% inserisce AUTOMATICAMENTE una slide di titolo sezione all'inizio di OGNI sezione: in questa slide viene visualizzato l'indice delle sezioni, evidenziata quella corrente.
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Sezione \thesection}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% ridefinisce il footer per evitare di includere \institute tra () accanto al nome
+% LyX 2.1 pare abbia risolto questo bug. Lascio questo codice commentato, rimane utile per nascondere forzatamente \institute dal pedice nel caso si desiderasse aggiungerlo in seguito
+% fonte: http://tex.stackexchange.com/questions/35166/how-can-i-remove-the-institute-from-the-author-footline-on-beamer
+%\setbeamertemplate{footline}
+%{
+%  \leavevmode%
+%  \hbox{%
+%  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+%    \usebeamerfont{author in head/foot}\insertshortauthor%~~\beamer@ifempty{\insertshortinstitute}{}{(\insertshortinstitute)}
+ % \end{beamercolorbox}%
+ % \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+%    \usebeamerfont{title in head/foot}\insertshorttitle
+%  \end{beamercolorbox}%
+%  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+%    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+%    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+%  \end{beamercolorbox}}%
+%  \vskip0pt%
+%}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercitazione di Informatica A
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Welcome slides
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+il titolo breve è opzionale (solo se diverso dal titolo esteso) e viene
+ visualizzato a pedice.
+ Se desideri mantenere il titolo esteso anche a pedice, cancella il campo
+ titolo breve (e non solo il suo contenuto).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subtitle
+Welcome slides
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+href{mailto:nevertrust.pdflinks@mailinator.com}{
+\backslash
+nolinkurl{<nome>.<cognome>@polimi.it}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Stefano Cherubin
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+dai...interpola le annotazioni e dimmi cosa ti aspetti di dover fare qui.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+Esercitazione 1
+\begin_inset Newline newline
+\end_inset
+
+xx Ottobre 2015
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+xx Ottobre 2015
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+il nome evento pedice è opzionale (solo se diverso dal nome evento esteso)
+ e viene visualizzato a pedice.
+\end_layout
+
+\begin_layout Plain Layout
+Se desideri mantenere il nome evento esteso anche a pedice, cancella il
+ campo nome evento breve (e non solo il suo contenuto).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Informazioni di servizio
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+About me
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+Ciao :)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Stefano Cherubin
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+PhD student 
+\end_layout
+
+\begin_layout Itemize
+c/o DEIB (Dipartimento Elettronica, Informazione e Bioningegneria)
+\end_layout
+
+\begin_layout Itemize
+sede Milano Leonardo, edificio 21, interno 9623
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se vi servo, scrivete una email
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+FAQ
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+NO 
+\series default
+non preparo e non correggo io gli esami
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+NO 
+\series default
+non curo io la parte di laboratorio
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+About you
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Quanti di voi sanno già programmare?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Quanti di voi hanno intenzione di programmare nel tempo libero?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Quanti di voi hanno intenzione di superare l'esame?
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Section
+Le esercitazioni
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quando cosa come perché
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Giovedì mattina
+\series default
+ in LM1
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+dalle 8.30 alle 11:15 
+\end_layout
+
+\begin_layout Itemize
+per un totale di 40 ore
+\end_layout
+
+\begin_layout Itemize
+salvo variazioni impreviste
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Risoluzione guidata
+\series default
+ di alcuni esercizi
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+come poi dovrete allenarvi a casa
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Vi saranno 
+\series bold
+proposti esercizi
+\series default
+ tratti anche da Temi D'Esame
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+si accettano anche proposte di esercizi da parte vostra
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Lo scopo è istruirvi sul 
+\series bold
+metodo
+\series default
+ di elaborazione della soluzione
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+non di elencarvi i problemi e le possibili soluzioni che possono presentarvisi
+ all'esame
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Cosa ci aspettiamo da voi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout ExampleBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Obiettivi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Lo scopo del corso è di fornire le conoscenze e formare le competenze necessarie
+ ad affacciarsi a problemi e sfide attinenti al settore dell'informatica.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Tale scopo lo si intende raggiungere insegnandovi le basi della programmazione
+ secondo il linguaggio stanrdard C99.
+\end_layout
+
+\begin_layout Standard
+Gli obiettivi fondamentali che dovrete raggiungere sono
+\end_layout
+
+\begin_layout Itemize
+capacità di programmare
+\end_layout
+
+\begin_layout Itemize
+capacità di rispettare lo standard in uso
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Strumenti
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Munitevi di
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pazienza
+\end_layout
+
+\begin_layout Itemize
+Manuale C
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+standard C99
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Carta e penna
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+perché l'esame sarà con carta e penna
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Personal Computer
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+perché dovete PROVARE IL CODICE che scrivete
+\end_layout
+
+\begin_layout Itemize
+perché se non provate a eseguire codice non imparerete mai
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+fatelo per davvero
+\end_layout
+
+\begin_layout Itemize
+questo gattino vi convincerà
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename img/cute-oreange-kitten.jpg
+	lyxscale 20
+	width 20col%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Strumenti Software
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Editor di testo
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Compilatore
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+tutto il resto non è indispensabile
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Strumenti Software (consigliati)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Sistema Operativo consigliato: Ubuntu (o derivate)
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Editor di testo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+gedit
+\end_layout
+
+\begin_layout Itemize
+vim
+\end_layout
+
+\begin_layout Itemize
+nano
+\end_layout
+
+\begin_layout Itemize
+atom
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Compilatori
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+gcc
+\end_layout
+
+\begin_layout Itemize
+clang
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Strumenti Software (meno consigliati)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+per il Sistema Operativo: Windows
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Editor di testo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+atom
+\end_layout
+
+\begin_layout Itemize
+notepad++
+\end_layout
+
+\begin_layout Itemize
+blocco note
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+IDE e Compilatori
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+DevC++
+\end_layout
+
+\begin_layout Itemize
+Microsoft Visual Studio
+\end_layout
+
+\begin_layout Itemize
+mingw
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Section
+In caso di problemi
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Help me!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+\size giant
+RTFM
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Help me! (2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Google
+\end_layout
+
+\begin_layout Enumerate
+StackOverflow
+\end_layout
+
+\begin_layout Enumerate
+Traduci il tuo problema in inglese tecnico e riparti dal punto 1
+\end_layout
+
+\begin_layout Standard
+Quando hai esaurito tutte le risorse sopra elencate, allora puoi mandarmi
+ una email
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Domande
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\series bold
+\size giant
+?
+\end_layout
+
+\end_deeper
+\begin_layout Section*
+Licenza
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\size largest
+Grazie per l'attenzione!
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename by-sa.svg
+	height 0.9cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size footnotesize
+Queste slides sono licenziate Creative Commons Attribution-ShareAlike 4.0
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
