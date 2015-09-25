@@ -446,7 +446,7 @@ Vi saranno
 \series bold
 proposti esercizi
 \series default
- tratti anche da Temi D'Esame
+ tratti da Temi D'Esame
 \end_layout
 
 \begin_deeper
@@ -515,7 +515,7 @@ Lo scopo del corso è di fornire le conoscenze e formare le competenze necessari
 \end_deeper
 \begin_layout Standard
 Tale scopo lo si intende raggiungere insegnandovi le basi della programmazione
- secondo il linguaggio stanrdard C99.
+ secondo il linguaggio standard C99.
 \end_layout
 
 \begin_layout Standard
@@ -817,6 +817,10 @@ IDE e Compilatori
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+CodeBlocks
+\end_layout
+
 \begin_layout Itemize
 DevC++
 \end_layout
