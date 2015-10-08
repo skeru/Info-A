@@ -1717,7 +1717,7 @@ Se introduciamo i numeri negativi occorre rappresentare in qualche modo
  Quindi il dominio sarà 
 \begin_inset Formula 
 \[
-\left[-2^{N-1}-1;2^{N-1}-1\right]
+\left[-\left(2^{N-1}-1\right);2^{N-1}-1\right]
 \]
 
 \end_inset
@@ -3859,9 +3859,9 @@ Servono quindi 7 bit per rappresentare il modulo di
 Infatti con 8 bit possiamo rappresentare numeri da 
 \begin_inset Formula 
 \begin{eqnarray*}
-[-2^{N-1} & ; & 2^{N-1}-1]\\{}
-[-2^{8-1} & ; & 2^{8-1}-1]\\{}
-[-128 & ; & 127]
+[-2^{N-1} & ; & 2^{N-1}-1]\\
+{}[-2^{8-1} & ; & 2^{8-1}-1]\\
+{}[-128 & ; & 127]
 \end{eqnarray*}
 
 \end_inset
@@ -3948,8 +3948,8 @@ Servono quindi 5 bit per rappresentare il modulo di
 Infatti con 6 bit possiamo rappresentare numeri da 
 \begin_inset Formula 
 \begin{eqnarray*}
-[-2^{6-1} & ; & 2^{6-1}-1]\\{}
-[-32 & ; & 31]
+[-2^{6-1} & ; & 2^{6-1}-1]\\
+{}[-32 & ; & 31]
 \end{eqnarray*}
 
 \end_inset
@@ -4035,8 +4035,8 @@ Servono quindi 9 bit per rappresentare il modulo di
 Infatti con 10 bit possiamo rappresentare numeri da 
 \begin_inset Formula 
 \begin{eqnarray*}
-[-2^{10-1} & ; & 2^{10-1}-1]\\{}
-[-512 & ; & 511]
+[-2^{10-1} & ; & 2^{10-1}-1]\\
+{}[-512 & ; & 511]
 \end{eqnarray*}
 
 \end_inset
@@ -4129,8 +4129,8 @@ Servono quindi 9 bit per rappresentare il modulo di
  
 \begin_inset Formula 
 \begin{eqnarray*}
-[-2^{9-1} & ; & 2^{9-1}-1]\\{}
-[-256 & ; & 255]
+[-2^{9-1} & ; & 2^{9-1}-1]\\
+{}[-256 & ; & 255]
 \end{eqnarray*}
 
 \end_inset
@@ -5584,6 +5584,8 @@ Fine
 
 \begin_deeper
 \begin_layout Standard
+
+\size footnotesize
 Queste slides contengono elementi tratti da materiale di Gerardo Pelosi
  redatto per il corso di Fondamenti di Informatica per Ingegneria dell'Automazio
 ne a.a.
@@ -5607,9 +5609,15 @@ Grazie per l'attenzione!
 
 \begin_layout Standard
 \align center
-\begin_inset Graphics
-	filename by-sa.svg
-	height 0.9cm
+Licenza Beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\size normal
+http://people.freebsd.org/~phk/
+\end_layout
 
 \end_inset
 
@@ -5620,7 +5628,10 @@ Grazie per l'attenzione!
 \align center
 
 \size footnotesize
-Queste slides sono licenziate Creative Commons Attribution-ShareAlike 4.0
+Queste slides sono opera di Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
 \end_layout
 
 \end_deeper
