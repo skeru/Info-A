@@ -158,6 +158,10 @@ il titolo breve è opzionale (solo se diverso dal titolo esteso) e viene
 \end_layout
 
 \begin_layout Subtitle
+Codifiche numeriche:
+\begin_inset Newline newline
+\end_inset
+
 Rappresentazioni binarie
 \end_layout
 
@@ -598,7 +602,7 @@ modulo
 \end_layout
 
 \begin_layout Subsection
-Rappresentazioni
+Rappresentare i numeri relativi
 \end_layout
 
 \begin_layout Frame
@@ -1664,6 +1668,10 @@ modulo
 \end_deeper
 \begin_layout Separator
 
+\end_layout
+
+\begin_layout Subsection
+Intervallo di rappresentazione
 \end_layout
 
 \begin_layout Frame
@@ -5505,63 +5513,6 @@ SÌ underflow
 
 \end_deeper
 \begin_layout Separator
-\begin_inset Note Note
-status open
-
-\begin_layout Separator
-
-\end_layout
-
-\begin_layout Subsection
-Conversioni con basi diverse da 2
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Altre basi
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Plain Layout
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO:
-\end_layout
-
-\begin_layout Plain Layout
-- conversioni da e per basi generiche
-\end_layout
-
-\begin_layout Plain Layout
-- conversioni veloci per oct - hex
-\end_layout
-
-\begin_layout Plain Layout
-- operazioni in hex
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Separator
-
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
