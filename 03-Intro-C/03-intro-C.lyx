@@ -1,0 +1,815 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Introduzione alla programmazione in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+22/10/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #
+\series bold
+3
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Esercizio: numeri non decrescenti
+\end_layout
+
+\begin_layout Quotation
+Buongiorno ragazzi, benvenuti all'esame di Informatica A.
+ Scrivete un programma in linguaggio C che risolva il seguente problema.
+ Letti tre numeri interi 
+\emph on
+a
+\emph default
+, 
+\emph on
+b
+\emph default
+, 
+\emph on
+c
+\emph default
+ dallo standard input, stampare a terminale la sequenza dei tre numeri in
+ ordine non decrescente.
+ 
+\end_layout
+
+\begin_layout Standard
+Esempio: a = 10, b = 7, c = 9 deve dare in uscita 7 9 10.
+\end_layout
+
+\begin_layout Subsection
+Approccio al problema
+\end_layout
+
+\begin_layout Standard
+Quando si parla di programmazione, la formulazione di un problema contiene
+ quasi sempre
+\end_layout
+
+\begin_layout Itemize
+vincoli
+\end_layout
+
+\begin_layout Itemize
+descrizione della logica
+\end_layout
+
+\begin_layout Itemize
+consigli su come trovare più facilmente una soluzione al problema
+\end_layout
+
+\begin_layout Itemize
+elementi inutili o fuorvianti
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+in sede di esame questi elementi tenderanno ad essere minimizzati.
+ Al di fuori, costituiscono una parte decisamente non trascurabile.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+casi di test o esempi di output atteso
+\end_layout
+
+\begin_layout Standard
+Sta al programmatore riconoscere questi elementi e gestirli al meglio delle
+ sue possibilità.
+\end_layout
+
+\begin_layout Subsubsection
+Analisi del testo dell'esercizio
+\end_layout
+
+\begin_layout Description
+Buongiorno
+\begin_inset space ~
+\end_inset
+
+ragazzi elemento totalmente fuorviante.
+ Oggi dovrete concentrarvi e produrre cose sensate, non ci sarà spazio per
+ il divertimento.
+\end_layout
+
+\begin_layout Description
+benvenuti
+\begin_inset space ~
+\end_inset
+
+all'esame elemento inutile.
+ Si tratta solo di convenevoli.
+\end_layout
+
+\begin_layout Description
+di
+\begin_inset space ~
+\end_inset
+
+informatica
+\begin_inset space ~
+\end_inset
+
+A consiglio.
+ Se una volta ricevuto in mano il foglio dell'esame vi siete scordati di
+ cosa si sta parlando, probabilmente dovrete ricordarvi delle lezioni di
+ Informatica A.
+\end_layout
+
+\begin_layout Description
+Scrivete
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+programma vincolo.
+ L'esercizio è un test di produzione e verrete valutati sulla capacità di
+ 
+\bar under
+scrivere
+\bar default
+ un programma.
+\end_layout
+
+\begin_layout Description
+in
+\begin_inset space ~
+\end_inset
+
+linguaggio
+\begin_inset space ~
+\end_inset
+
+C vincolo.
+ In questo esercizio dovrete rispettare lo standard previsto dal linguaggio
+ C.
+ La capacità di attenersi a questo stanrdard sarà oggetto di valutazione.
+\end_layout
+
+\begin_layout Description
+che
+\begin_inset space ~
+\end_inset
+
+risolva
+\begin_inset space ~
+\end_inset
+
+il
+\begin_inset space ~
+\end_inset
+
+seguente
+\begin_inset space ~
+\end_inset
+
+problema elemento inutile.
+ Dovrebbe essere sottinteso.
+\end_layout
+
+\begin_layout Description
+Letti
+\begin_inset space ~
+\end_inset
+
+tre
+\begin_inset space ~
+\end_inset
+
+numeri descrizione della logica.
+ Dovete fare questo.
+\end_layout
+
+\begin_layout Description
+interi vincolo.
+ Dovrete lavorare con numeri interi.
+\end_layout
+
+\begin_layout Description
+a,
+\begin_inset space ~
+\end_inset
+
+b,
+\begin_inset space ~
+\end_inset
+
+c consiglio.
+ Nello specifico caso, questo non è un brutto modo di chiamare i dati su
+ cui lavorate.
+\end_layout
+
+\begin_layout Description
+dallo
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+input vincolo.
+ I dati dovranno essere acquisiti dallo standard input.
+\end_layout
+
+\begin_layout Description
+stampare
+\begin_inset space ~
+\end_inset
+
+[...]
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+sequenza
+\begin_inset space ~
+\end_inset
+
+dei
+\begin_inset space ~
+\end_inset
+
+tre
+\begin_inset space ~
+\end_inset
+
+numeri descrizione della logica.
+\end_layout
+
+\begin_layout Description
+a
+\begin_inset space ~
+\end_inset
+
+terminale vincolo.
+ L'output deve essere emesso sul terminale, quindi standard output.
+\end_layout
+
+\begin_layout Description
+in
+\begin_inset space ~
+\end_inset
+
+ordine
+\begin_inset space ~
+\end_inset
+
+non
+\begin_inset space ~
+\end_inset
+
+decrescente vincolo.
+ La parte di logica che non è descritta nel testo dovrà essere studiata
+ per soddisfare questo vincolo.
+ L'impostazione di tale logica è lasciata alla libera interpretazione del
+ programmatore.
+\end_layout
+
+\begin_layout Description
+Esempio
+\begin_inset space ~
+\end_inset
+
+[...] Si tratta di un esempio.
+ Al termine della produzione del programma, si consiglia di usare questi
+ dati per eseguire una simulazione di esecuzione del programma e verifcare
+ che l'output fornito in simulazione coincida con l'output atteso.
+\end_layout
+
+\begin_layout Subsection
+Iniziare la stesura
+\end_layout
+
+\begin_layout Standard
+Partendo dai vincoli e dalla logica, si possono identificare alcuni elementi
+ ricorrenti che possono essere tradotti immediatamente in codice.
+\end_layout
+
+\begin_layout Subsubsection
+Scrivere un programma in linguaggio C
+\end_layout
+
+\begin_layout LyX-Code
+int main() {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+return 0;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsubsection
+tre numeri interi
+\end_layout
+
+\begin_layout LyX-Code
+int main() {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int a, b, c;
+\end_layout
+
+\begin_layout LyX-Code
+return 0;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsubsection
+Letti tre numeri interi dallo standard input
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h>  /* necessaria se voglio utilizzare 
+\end_layout
+
+\begin_layout LyX-Code
+                      standard input o standard output */
+\end_layout
+
+\begin_layout LyX-Code
+int main() {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int a, b, c;
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero a: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&a);
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero b: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&b);
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero c: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&c);
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+return 0;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsubsection
+Stampare a terminale la sequenza dei numeri
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+int main() {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int a, b, c;
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero a: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&a);
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero b: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&b);
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero c: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&c);
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",a,b,c);
+\end_layout
+
+\begin_layout LyX-Code
+return 0;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+Soluzione 1 - analisi per casi
+\end_layout
+
+\begin_layout Standard
+Un possibile approccio al problema è quello di valutare tutti i possibili
+ ordinamenti dei numeri interi in input e, in base ad opportuni controlli,
+ eseguire l'unica tra le istruzioni di output che utilizza l'ordinamento
+ corretto.
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* inclusione della libreria standard */
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) {
+\end_layout
+
+\begin_layout LyX-Code
+  
+\end_layout
+
+\begin_layout LyX-Code
+  int a,b,c;       /* dichiarazione delle variabili      */
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+  /* legge tre interi a,b,c dallo standard input */
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+n Inserisci il numero a: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&a);
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+n Inserisci il numero b: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&b);
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+n Inserisci il numero c: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&c);
+\end_layout
+
+\begin_layout LyX-Code
+          
+\end_layout
+
+\begin_layout LyX-Code
+  if (a < b) {
+\end_layout
+
+\begin_layout LyX-Code
+    if (b < c) {
+\end_layout
+
+\begin_layout LyX-Code
+      printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",a,b,c);
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+    else {
+\end_layout
+
+\begin_layout LyX-Code
+       if (a < c) {
+\end_layout
+
+\begin_layout LyX-Code
+         printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",a,c,b);
+\end_layout
+
+\begin_layout LyX-Code
+      }
+\end_layout
+
+\begin_layout LyX-Code
+      else {
+\end_layout
+
+\begin_layout LyX-Code
+         printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",c,a,b);
+\end_layout
+
+\begin_layout LyX-Code
+      }
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+  }
+\end_layout
+
+\begin_layout LyX-Code
+   else {
+\end_layout
+
+\begin_layout LyX-Code
+    if (c < b) {
+\end_layout
+
+\begin_layout LyX-Code
+       printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",c,b,a);
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+    else {
+\end_layout
+
+\begin_layout LyX-Code
+       if (a < c) {
+\end_layout
+
+\begin_layout LyX-Code
+         printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",b,a,c);
+\end_layout
+
+\begin_layout LyX-Code
+      }
+\end_layout
+
+\begin_layout LyX-Code
+      else {
+\end_layout
+
+\begin_layout LyX-Code
+         printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",b,c,a);
+\end_layout
+
+\begin_layout LyX-Code
+      }
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+   }
+\end_layout
+
+\begin_layout LyX-Code
+  return 0;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsection
+Soluzione 2 - ordinamento dell'input
+\end_layout
+
+\end_body
+\end_document
