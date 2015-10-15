@@ -610,6 +610,10 @@ return 0;
 }
 \end_layout
 
+\begin_layout LyX-Code
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione 1 - analisi per casi
 \end_layout
@@ -807,8 +811,251 @@ n L'ordine voluto e': %d, %d, %d",b,c,a);
 }
 \end_layout
 
+\begin_layout LyX-Code
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione 2 - ordinamento dell'input
+\end_layout
+
+\begin_layout Standard
+Un secondo approccio alla risoluzione del problema prevede di fissare un
+ solo dove eseguire l'output ed eseguire delle istruzioni utili a rendere
+ i dati acquisiti coerenti nel loro ordinamento con quanto richiesto in
+ output.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* inclusione della libreria standard     */
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) {            
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int a,b,c,t; /* dichiarazione delle variabili              */
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+/* legge tre interi a,b,c dallo standard input             */
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero a: ");   
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&a);            
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero b: ");   
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&b);            
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci il numero c: ");   
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&c);
+\end_layout
+
+\begin_layout LyX-Code
+              
+\end_layout
+
+\begin_layout LyX-Code
+/* ordinamento dei valori delle variabili a,b    */   
+\end_layout
+
+\begin_layout LyX-Code
+if (a > b) {     
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/* Scambio dei valori delle due variabili a,b  */     
+\end_layout
+
+\begin_layout LyX-Code
+t = a;     
+\end_layout
+
+\begin_layout LyX-Code
+a = b;     
+\end_layout
+
+\begin_layout LyX-Code
+b = t;     
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+     
+\end_layout
+
+\begin_layout LyX-Code
+/* ordinamento dei valori delle variabili a,c    */
+\end_layout
+
+\begin_layout LyX-Code
+if (a > c) {     
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/* Scambio dei valori delle due variabili a,c  */     
+\end_layout
+
+\begin_layout LyX-Code
+t = a;     
+\end_layout
+
+\begin_layout LyX-Code
+a = c;     
+\end_layout
+
+\begin_layout LyX-Code
+c = t;     
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}       
+\end_layout
+
+\begin_layout LyX-Code
+/* la variabile a contiene ora sicuramente il    */
+\end_layout
+
+\begin_layout LyX-Code
+/* valore più piccolo tra quelli inseriti.
+       */
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+/* ordinamento dei valori delle variabili b,c    */    
+\end_layout
+
+\begin_layout LyX-Code
+if (b > c) {     
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/* Scambio dei valori delle due variabili b,c  */     
+\end_layout
+
+\begin_layout LyX-Code
+t = b;     
+\end_layout
+
+\begin_layout LyX-Code
+b = c;     
+\end_layout
+
+\begin_layout LyX-Code
+c = t;     
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",a,b,c);  
+\end_layout
+
+\begin_layout LyX-Code
+return 0; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2013/14.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest’opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest’opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \end_body
