@@ -990,10 +990,6 @@ c = t;
 \end_layout
 
 \begin_layout LyX-Code
- 
-\end_layout
-
-\begin_layout LyX-Code
 printf("
 \backslash
 n L'ordine voluto e': %d, %d, %d",a,b,c);  
@@ -1006,6 +1002,403 @@ return 0;
 \end_deeper
 \begin_layout LyX-Code
 }
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Esercizio 2
+\end_layout
+
+\begin_layout Quotation
+Si scriva un programma in linguaggio C che letto un numero intero positivo
+ dallo standard input, visualizzi a terminale il quadrato del numero stesso
+ facendo uso soltanto di operazioni di somma.
+ 
+\end_layout
+
+\begin_layout Quotation
+Si osservi che il quadrato di ogni numero intero positivo N può essere costruito
+ sommando tra loro i primi N numeri dispari.
+ 
+\end_layout
+
+\begin_layout Quotation
+Esempio: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+N & = & 5\\
+N^{2} & = & 1+3+5+7+9=25
+\end{eqnarray*}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Premessa
+\end_layout
+
+\begin_layout Standard
+L'idea di soluzione è quella di scandire i primi 
+\begin_inset Formula $N$
+\end_inset
+
+ numeri dispari esprimendoli nella forma 
+\begin_inset Formula $\left(i+i+1\right)$
+\end_inset
+
+ al variare dell'intero 
+\begin_inset Formula $i\in\left[0;N-1\right]$
+\end_inset
+
+ e accumulare la loro somma man mano che si procede nella loro scansione
+ in un'altra variabile.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+N^{2} & = & \sum_{i=0}^{N-1}2\cdot i+1\\
+ & = & \sum_{i=0}^{N-1}i+i+1\\
+ & = & \left(2\text{·}0+1\right)+\ldots+\left(2\text{·}i+1\right)+\ldots+\left(2\text{·}\left(N-1\right)+1\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+quindi si utilizzeranno almeno 3 variabili: 
+\end_layout
+
+\begin_layout Description
+N numero in input
+\end_layout
+
+\begin_layout Description
+i contatore di iterazioni
+\end_layout
+
+\begin_layout Description
+S accumulatore
+\end_layout
+
+\begin_layout Subsubsection
+Pseudocodice (stesura informale dell'algoritmo)
+\end_layout
+
+\begin_layout Enumerate
+Inizio dell'algoritmo 
+\end_layout
+
+\begin_layout Enumerate
+Leggi un numero intero positivo dallo standard input.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Inizializza un contatore i a 0 
+\end_layout
+
+\begin_layout Enumerate
+Inizializza un accumulatore S a 0 
+\end_layout
+
+\begin_layout Enumerate
+Finché il valore del contatore è minore del numero letto 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Somma all'accumulatore il doppio del valore del contatore incrementato di
+ 1 
+\end_layout
+
+\begin_layout Enumerate
+Incrementa il contatore 
+\end_layout
+
+\begin_layout Enumerate
+Torna al punto 5.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Stampa a terminale il valore dell' accumulatore 
+\end_layout
+
+\begin_layout Enumerate
+Fine dell' algoritmo 
+\end_layout
+
+\begin_layout Subsubsection
+Blindare l'input
+\end_layout
+
+\begin_layout Standard
+Quando viene richiesto che un numero in input rispetti determinate caratteristic
+he (in questo caso che sia positivo) è possibile scrivere il programma in
+ modo che non accetti dati non conformi alle caratteristiche richieste e
+ continui a chiedere all'utente di fornire dei dati fino a quando l'utente
+ non inserisce dati corretti.
+\end_layout
+
+\begin_layout Standard
+Questo è possibile farlo grazie a un ciclo do-while con controllo sul dato
+ immesso.
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci un numero positivo N: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (N <=0);
+\end_layout
+
+\begin_layout Paragraph
+Variante con messaggio di errore
+\end_layout
+
+\begin_layout Standard
+A volte può capitare che debbano essere inseriti più dati dello stesso tipo
+ e il messaggio che invita l'utente a inserire i dati può non variare.
+ In queste situazioni può essere utile segnalare quando si verifica un errore
+ e non è stato accettato il dato.
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo N: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N);
+\end_layout
+
+\begin_layout LyX-Code
+if (N <=0) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf ("
+\backslash
+nErrore: il numero inserito non e' positivo.");
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (N <=0);
+\end_layout
+
+\begin_layout Paragraph
+Variante con ciclo while
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo N: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N);
+\end_layout
+
+\begin_layout LyX-Code
+while (N <= 0) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf ("
+\backslash
+nErrore: il numero inserito non e' positivo.");
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo N: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* inclusione della libreria standard */
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/* dichiarazione delle variabili */ 
+\end_layout
+
+\begin_layout LyX-Code
+int i; /* contatore */ 
+\end_layout
+
+\begin_layout LyX-Code
+int N; /* variabile di cui si vuole calcolare il quadrato */ 
+\end_layout
+
+\begin_layout LyX-Code
+int S; /* accumulatore per il risultato del calcolo */
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+/* ciclo di controllo che garantisce N > 0 */ 
+\end_layout
+
+\begin_layout LyX-Code
+do { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci un numero positivo N: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N); /* legge N dallo standard input */
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+/* Finché il numero inserito non è positivo ripetere */ 
+\end_layout
+
+\begin_layout LyX-Code
+/* l'immissione dati.
+ */ 
+\end_layout
+
+\begin_layout LyX-Code
+} while (N < =0 ); 
+\end_layout
+
+\begin_layout LyX-Code
+/* Il numero inserito è positivo */
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+S = 0; /* inizializzazione della variabile di accumulo */ 
+\end_layout
+
+\begin_layout LyX-Code
+/* ciclo di scansione dei primi N numeri dispari */ 
+\end_layout
+
+\begin_layout LyX-Code
+i = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+while(i < N) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/* Finché il contatore è minore del numero letto */ 
+\end_layout
+
+\begin_layout LyX-Code
+/* aggiorna il contenuto della variabile accumulatore */
+\end_layout
+
+\begin_layout LyX-Code
+S = S + (i+i+1); 
+\end_layout
+
+\begin_layout LyX-Code
+i = i + 1; /* incrementa il contatore */ 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Il quadrato del numero inserito e': %d 
+\backslash
+n",S); 
+\end_layout
+
+\begin_layout LyX-Code
+return 0; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1046,8 +1439,8 @@ http://people.freebsd.org/~phk/
 
 \begin_layout Standard
 Quest'opera è stata redatta da Stefano Cherubin.
- Mantenendo questa nota, puoi fare quello che vuoi con quest’opera.
- Se ci dovessimo incontrare e tu ritenessi che quest’opera lo valga, in
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
  cambio puoi offrirmi una birra.
 \end_layout
 
