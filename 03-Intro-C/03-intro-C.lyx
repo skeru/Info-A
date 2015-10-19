@@ -118,7 +118,7 @@ Informatica A
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 3theight%
+\begin_inset VSpace 5theight%
 \end_inset
 
 
@@ -132,6 +132,13 @@ corso per Ing.
 
 \begin_layout Standard
 \begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -642,7 +649,7 @@ Un possibile approccio al problema è quello di valutare tutti i possibili
 \end_layout
 
 \begin_layout LyX-Code
-#include <stdio.h> /* inclusione della libreria standard */
+#include <stdio.h> /* inclusione della libreria standard I/O */
 \end_layout
 
 \begin_layout LyX-Code
@@ -844,7 +851,7 @@ Un secondo approccio alla risoluzione del problema prevede di fissare un
 \end_layout
 
 \begin_layout LyX-Code
-#include <stdio.h> /* inclusione della libreria standard  */
+#include <stdio.h> /* inclusione della libreria standard I/O */
 \end_layout
 
 \begin_layout LyX-Code
@@ -867,7 +874,7 @@ int a,b,c,t; /*   dichiarazione delle variabili       */
 \begin_layout LyX-Code
 printf("
 \backslash
-n Inserisci il numero a: ");   
+nInserisci il numero a: ");   
 \end_layout
 
 \begin_layout LyX-Code
@@ -877,7 +884,7 @@ scanf("%d",&a);
 \begin_layout LyX-Code
 printf("
 \backslash
-n Inserisci il numero b: ");   
+nInserisci il numero b: ");   
 \end_layout
 
 \begin_layout LyX-Code
@@ -887,7 +894,7 @@ scanf("%d",&b);
 \begin_layout LyX-Code
 printf("
 \backslash
-n Inserisci il numero c: ");   
+nInserisci il numero c: ");   
 \end_layout
 
 \begin_layout LyX-Code
@@ -1008,7 +1015,7 @@ c = t;
 \begin_layout LyX-Code
 printf("
 \backslash
-n L'ordine voluto e': %d, %d, %d",a,b,c);  
+nL'ordine voluto e': %d, %d, %d",a,b,c);  
 \end_layout
 
 \begin_layout LyX-Code
@@ -1204,7 +1211,7 @@ do {
 \begin_layout LyX-Code
 printf("
 \backslash
-n Inserisci un numero positivo N: "); 
+nInserisci un numero positivo N: "); 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1308,7 +1315,7 @@ Soluzione C
 \end_layout
 
 \begin_layout LyX-Code
-#include <stdio.h> /* inclusione della libreria standard      */
+#include <stdio.h> /* inclusione della libreria standard  I/O */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1348,7 +1355,7 @@ do {
 \begin_layout LyX-Code
 printf("
 \backslash
-n Inserisci un numero positivo N: "); 
+nInserisci un numero positivo N: "); 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1735,6 +1742,258 @@ n", Q);
 \end_deeper
 \begin_layout LyX-Code
 } 
+\end_layout
+
+\begin_layout LyX-Code
+return 0; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Section
+Conversione in binario
+\end_layout
+
+\begin_layout Quotation
+Dato un numero intero positivo 
+\begin_inset Formula $Q$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+Scrivere la sua rappresentazione in binario naturale, applicando il tradizionale
+ algoritmo per divisioni successive 
+\end_layout
+
+\begin_layout Quotation
+(per convenzione, in questo esercizio l'output si intende corretto se letto
+ da destra a sinistra); 
+\end_layout
+
+\begin_layout Itemize
+Indicare anche il minimo numero di bit utilizzato.
+\end_layout
+
+\begin_layout Standard
+Esempio: 
+\end_layout
+
+\begin_layout Description
+Input 
+\begin_inset Formula $19_{10}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Description
+Output 
+\begin_inset Formula $\underleftarrow{11001_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+LSB e MSB
+\end_layout
+
+\begin_layout Description
+LSB 
+\series bold
+L
+\series default
+ess 
+\series bold
+S
+\series default
+ignificant 
+\series bold
+B
+\series default
+it.
+ Nelle rappresentazioni binarie è il bit con il peso minore.
+ Nel sistema di numerazione posizionali è solitamente il la cifra più a
+ destra di tutte (perché solitamente i numeri vengono letti da sinistra
+ a destra).
+ In questo esercizio ci viene chiesto di considerare corretto il risultato
+ se letto da destra a sinistra.
+ Il LSB sarà quindi il bit più a sinistra.
+\end_layout
+
+\begin_layout Description
+MSB 
+\series bold
+M
+\series default
+ost 
+\series bold
+S
+\series default
+ignificant 
+\series bold
+B
+\series default
+it.
+ Cifra di valore maggiore nella rappresentazione di un numero binario.
+ In questo esercizio sarà la cifra più a destra.
+\end_layout
+
+\begin_layout Subsubsection
+Indicazioni per gestire un ciclo
+\end_layout
+
+\begin_layout Standard
+Per non sbagliare a impostare un ciclo, ecco alcune domande a cui è necessario
+ dare risposta prima di scrivere codice
+\end_layout
+
+\begin_layout Enumerate
+Da quali valori si deve partire?
+\end_layout
+
+\begin_layout Enumerate
+Qual è la logica di ogni passo?
+\end_layout
+
+\begin_layout Enumerate
+Come si aggiornano le variabili?
+\end_layout
+
+\begin_layout Enumerate
+Quando si deve uscire dal ciclo?
+\end_layout
+
+\begin_layout Standard
+Nello specifico caso di questo esercizio, ecco le risposte
+\end_layout
+
+\begin_layout Enumerate
+Inizializzazioni:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+contatore = 0
+\end_layout
+
+\begin_layout Enumerate
+variabile da dividere = numero in input
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Logica: divido il numero per la base (2) e scrivo il resto
+\end_layout
+
+\begin_layout Enumerate
+aggiornamento variabili:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+il contatore aumenta di 1
+\end_layout
+
+\begin_layout Enumerate
+il numero viene diviso per due (approssimato all'intero inferiore)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Uscita dal ciclo: quando il numero raggiunge il valore 0
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* inclusione della libreria standard I/O */ 
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int n; /* contatore */ 
+\end_layout
+
+\begin_layout LyX-Code
+int Q; /* variabile per il numero letto da tastiera */ 
+\end_layout
+
+\begin_layout LyX-Code
+/*ciclo di controllo per l'immissione dati che garantisce Q >= 0 */ 
+\end_layout
+
+\begin_layout LyX-Code
+do { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo o nullo Q: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d", &Q); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (Q < 0); 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+nIn binario: "); 
+\end_layout
+
+\begin_layout LyX-Code
+n = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+do { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("%d", (Q % 2)); 
+\end_layout
+
+\begin_layout LyX-Code
+Q = Q / 2; 
+\end_layout
+
+\begin_layout LyX-Code
+n = n + 1; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (Q != 0); 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+nNumero di bit n = %d", n); 
 \end_layout
 
 \begin_layout LyX-Code
