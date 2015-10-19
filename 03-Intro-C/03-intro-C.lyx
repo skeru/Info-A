@@ -118,7 +118,7 @@ Informatica A
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace 5theight%
+\begin_inset VSpace 3theight%
 \end_inset
 
 
@@ -154,23 +154,27 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Esercizio: numeri non decrescenti
+Numeri non decrescenti
 \end_layout
 
 \begin_layout Quotation
 Buongiorno ragazzi, benvenuti all'esame di Informatica A.
  Scrivete un programma in linguaggio C che risolva il seguente problema.
  Letti tre numeri interi 
-\emph on
-a
-\emph default
+\begin_inset Formula $a$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
 , 
 \emph on
-b
-\emph default
-, 
-\emph on
-c
+
+\begin_inset Formula $c$
+\end_inset
+
+
 \emph default
  dallo standard input, stampare a terminale la sequenza dei tre numeri in
  ordine non decrescente.
@@ -178,7 +182,19 @@ c
 \end_layout
 
 \begin_layout Standard
-Esempio: a = 10, b = 7, c = 9 deve dare in uscita 7 9 10.
+Esempio: 
+\begin_inset Formula $a=10$
+\end_inset
+
+, 
+\begin_inset Formula $b=7$
+\end_inset
+
+, 
+\begin_inset Formula $c=9$
+\end_inset
+
+ deve dare in uscita 7 9 10.
 \end_layout
 
 \begin_layout Subsection
@@ -650,7 +666,7 @@ int main( ) {
 \end_layout
 
 \begin_layout LyX-Code
-  /* legge tre interi a,b,c dallo standard input */
+  /* legge tre interi a,b,c dallo standard input         */
 \end_layout
 
 \begin_layout LyX-Code
@@ -828,7 +844,7 @@ Un secondo approccio alla risoluzione del problema prevede di fissare un
 \end_layout
 
 \begin_layout LyX-Code
-#include <stdio.h> /* inclusione della libreria standard     */
+#include <stdio.h> /* inclusione della libreria standard  */
 \end_layout
 
 \begin_layout LyX-Code
@@ -837,7 +853,7 @@ int main( ) {
 
 \begin_deeper
 \begin_layout LyX-Code
-int a,b,c,t; /* dichiarazione delle variabili              */
+int a,b,c,t; /*   dichiarazione delle variabili       */
 \end_layout
 
 \begin_layout LyX-Code
@@ -845,7 +861,7 @@ int a,b,c,t; /* dichiarazione delle variabili              */
 \end_layout
 
 \begin_layout LyX-Code
-/* legge tre interi a,b,c dallo standard input             */
+/* legge tre interi a,b,c dallo standard input        */
 \end_layout
 
 \begin_layout LyX-Code
@@ -883,7 +899,7 @@ scanf("%d",&c);
 \end_layout
 
 \begin_layout LyX-Code
-/* ordinamento dei valori delle variabili a,b    */   
+/* ordinamento dei valori delle variabili a,b     */   
 \end_layout
 
 \begin_layout LyX-Code
@@ -917,7 +933,7 @@ b = t;
 \end_layout
 
 \begin_layout LyX-Code
-/* ordinamento dei valori delle variabili a,c    */
+/* ordinamento dei valori delle variabili a,c     */
 \end_layout
 
 \begin_layout LyX-Code
@@ -947,12 +963,12 @@ c = t;
 \end_layout
 
 \begin_layout LyX-Code
-/* la variabile a contiene ora sicuramente il    */
+/* la variabile a contiene ora sicuramente il     */
 \end_layout
 
 \begin_layout LyX-Code
 /* valore più piccolo tra quelli inseriti.
-       */
+        */
 \end_layout
 
 \begin_layout LyX-Code
@@ -960,7 +976,7 @@ c = t;
 \end_layout
 
 \begin_layout LyX-Code
-/* ordinamento dei valori delle variabili b,c    */    
+/* ordinamento dei valori delle variabili b,c     */    
 \end_layout
 
 \begin_layout LyX-Code
@@ -1012,7 +1028,7 @@ return 0;
 \end_layout
 
 \begin_layout Section
-Esercizio 2
+Implementare il quadrato tramite somme successive
 \end_layout
 
 \begin_layout Quotation
@@ -1023,8 +1039,15 @@ Si scriva un programma in linguaggio C che letto un numero intero positivo
 \end_layout
 
 \begin_layout Quotation
-Si osservi che il quadrato di ogni numero intero positivo N può essere costruito
- sommando tra loro i primi N numeri dispari.
+Si osservi che il quadrato di ogni numero intero positivo 
+\begin_inset Formula $N$
+\end_inset
+
+ può essere costruito sommando tra loro i primi 
+\begin_inset Formula $N$
+\end_inset
+
+ numeri dispari.
  
 \end_layout
 
@@ -1113,11 +1136,19 @@ Leggi un numero intero positivo dallo standard input.
 \end_layout
 
 \begin_layout Enumerate
-Inizializza un contatore i a 0 
+Inizializza un contatore 
+\begin_inset Formula $i$
+\end_inset
+
+ a 0 
 \end_layout
 
 \begin_layout Enumerate
-Inizializza un accumulatore S a 0 
+Inizializza un accumulatore 
+\begin_inset Formula $S$
+\end_inset
+
+ a 0 
 \end_layout
 
 \begin_layout Enumerate
@@ -1277,7 +1308,7 @@ Soluzione C
 \end_layout
 
 \begin_layout LyX-Code
-#include <stdio.h> /* inclusione della libreria standard */
+#include <stdio.h> /* inclusione della libreria standard      */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1286,11 +1317,11 @@ int main( ) {
 
 \begin_deeper
 \begin_layout LyX-Code
-/* dichiarazione delle variabili */ 
+/*        dichiarazione delle variabili                   */ 
 \end_layout
 
 \begin_layout LyX-Code
-int i; /* contatore */ 
+int i; /* contatore                                       */ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1298,7 +1329,7 @@ int N; /* variabile di cui si vuole calcolare il quadrato */
 \end_layout
 
 \begin_layout LyX-Code
-int S; /* accumulatore per il risultato del calcolo */
+int S; /* accumulatore per il risultato del calcolo       */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1306,7 +1337,7 @@ int S; /* accumulatore per il risultato del calcolo */
 \end_layout
 
 \begin_layout LyX-Code
-/* ciclo di controllo che garantisce N > 0 */ 
+       /* ciclo di controllo che garantisce N > 0         */ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1321,17 +1352,17 @@ n Inserisci un numero positivo N: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&N); /* legge N dallo standard input */
+scanf("%d",&N); /* legge N dallo standard input       */
 \end_layout
 
 \end_deeper
 \begin_layout LyX-Code
-/* Finché il numero inserito non è positivo ripetere */ 
+/* Finché il numero inserito non è positivo ripetere 
 \end_layout
 
 \begin_layout LyX-Code
-/* l'immissione dati.
- */ 
+   l'immissione dati.
+                                     */ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1339,7 +1370,7 @@ scanf("%d",&N); /* legge N dallo standard input */
 \end_layout
 
 \begin_layout LyX-Code
-/* Il numero inserito è positivo */
+/* Il numero inserito è positivo                          */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1347,11 +1378,11 @@ scanf("%d",&N); /* legge N dallo standard input */
 \end_layout
 
 \begin_layout LyX-Code
-S = 0; /* inizializzazione della variabile di accumulo */ 
+S = 0; /* inizializzazione della variabile di accumulo    */ 
 \end_layout
 
 \begin_layout LyX-Code
-/* ciclo di scansione dei primi N numeri dispari */ 
+/* ciclo di scansione dei primi N numeri dispari          */ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1364,11 +1395,11 @@ while(i < N) {
 
 \begin_deeper
 \begin_layout LyX-Code
-/* Finché il contatore è minore del numero letto */ 
+/* Finché il contatore è minore del numero letto 
 \end_layout
 
 \begin_layout LyX-Code
-/* aggiorna il contenuto della variabile accumulatore */
+   aggiorna il contenuto della variabile accumulatore  */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1376,7 +1407,7 @@ S = S + (i+i+1);
 \end_layout
 
 \begin_layout LyX-Code
-i = i + 1; /* incrementa il contatore */ 
+i = i + 1; /* incrementa il contatore                  */ 
 \end_layout
 
 \end_deeper
@@ -1401,7 +1432,321 @@ return 0;
 } 
 \end_layout
 
+\begin_layout Section
+Numeri triangolari
+\end_layout
+
+\begin_layout Quotation
+Si definisce Triangolare un numero costituito dalla somma dei primi 
+\begin_inset Formula $N$
+\end_inset
+
+ numeri interi positivi per un certo 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Quotation
+Esempio: per 
+\begin_inset Formula $Q=10$
+\end_inset
+
+ si ha 
+\begin_inset Formula $Q=1+2+3+4$
+\end_inset
+
+, da cui 
+\begin_inset Formula $N=4$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Quotation
+Scrivere un programma C che stabilisca se un numero intero positivo 
+\begin_inset Formula $Q$
+\end_inset
+
+, letto dallo standard input, è un numero triangolare o meno, utilizzando
+ soltanto operazioni tra numeri interi.
+ In caso affermativo stampare a video il numero inserito e il massimo tra
+ gli addendi che lo compongono.
+ 
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Pseudocodice (stesura informale dell'algoritmo)
+\end_layout
+
+\begin_layout Standard
+Idea di soluzione: se 
+\begin_inset Formula $Q–1–2–3–\ldots–i–\ldots–N=0$
+\end_inset
+
+ per un certo 
+\begin_inset Formula $N$
+\end_inset
+
+ allora 
+\begin_inset Formula $Q$
+\end_inset
+
+ è Triangolare.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Leggi il numero positivo 
+\begin_inset Formula $Q$
+\end_inset
+
+ dallo standard input 
+\end_layout
+
+\begin_layout Enumerate
+Inizializza un contatore 
+\begin_inset Formula $i$
+\end_inset
+
+ a zero; 
+\end_layout
+
+\begin_layout Enumerate
+Memorizza in una variabile 
+\begin_inset Formula $S$
+\end_inset
+
+ il valore della variabile in ingresso.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Finché il numero 
+\begin_inset Formula $S$
+\end_inset
+
+ è maggiore di zero 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Incrementa di 1 il valore del contatore 
+\end_layout
+
+\begin_layout Enumerate
+Sottrai a 
+\begin_inset Formula $S$
+\end_inset
+
+ il valore del contatore 
+\begin_inset Formula $i$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Torna a 4.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Se il valore residuo di 
+\begin_inset Formula $S$
+\end_inset
+
+ è zero allora 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Il numero è triangolare 
+\end_layout
+
+\begin_layout Enumerate
+Il valore del massimo degli addendi è uguale al contatore 
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+La variabile 
+\begin_inset Formula $Q$
+\end_inset
+
+ contiene il valore della variabile in ingresso 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Altrimenti il numero NON è triangolare.
+\end_layout
+
+\begin_layout Subsubsection
+Distruggere l'input
+\end_layout
+
+\begin_layout Standard
+È buona norma, in generale, non modificare le variabili contenenti i dati
+ in ingresso perché può accadere che sia necessario accedere a tali valori
+ in diversi punti del programma.
+\end_layout
+
+\begin_layout Standard
+Nel caso appena mostrato senza l'ausilio di un'altra variabile (
+\begin_inset Formula $S$
+\end_inset
+
+) non sarebbe possibile, al termine della computazione, stampare a video
+ il valore del numero inserito, così come richiesto dalla traccia del problema.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
 \begin_layout LyX-Code
+#include <stdio.h>/* inclusione della libreria standard input        */
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) 
+\end_layout
+
+\begin_layout LyX-Code
+{                 /* dichiarazione delle variabili                   */
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int i;        /* variabile contatore                             */
+\end_layout
+
+\begin_layout LyX-Code
+int Q;        /* variabile per il numero letto da tastiera       */
+\end_layout
+
+\begin_layout LyX-Code
+int S;        /* variabile accumulatore                          */ 
+\end_layout
+
+\begin_layout LyX-Code
+/* ciclo di controllo per l'immissione dati che garantisce Q > 0 */ 
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci un numero positivo Q: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&Q); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (Q <= 0); 
+\end_layout
+
+\begin_layout LyX-Code
+S = Q;        /* copia del valore del dato in ingresso           */
+\end_layout
+
+\begin_layout LyX-Code
+i = 0;        /* inizializzazione del contatore                  */
+\end_layout
+
+\begin_layout LyX-Code
+while (S > 0) { 
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+i = i + 1; 
+\end_layout
+
+\begin_layout LyX-Code
+S = S - i; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+/* all’uscita dal ciclo il valore assunto dalla variabile S 
+\end_layout
+
+\begin_layout LyX-Code
+   permette di procedere in base a due alternative               */
+\end_layout
+
+\begin_layout LyX-Code
+if (S == 0) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/* il valore del contatore i contiene qui il valore del massimo 
+\end_layout
+
+\begin_layout LyX-Code
+   degli addendi che compongono il numero triangolare inserito*/ 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n %d = alla somma dei primi %d numeri positivi!", Q, i);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} else {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Il numero %d non e' un numero triangolare! 
+\backslash
+n", Q);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+return 0; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
