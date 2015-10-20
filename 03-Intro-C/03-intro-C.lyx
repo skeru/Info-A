@@ -844,9 +844,8 @@ Soluzione 2 - ordinamento dell'input
 
 \begin_layout Standard
 Un secondo approccio alla risoluzione del problema prevede di fissare un
- solo dove eseguire l'output ed eseguire delle istruzioni utili a rendere
- i dati acquisiti coerenti nel loro ordinamento con quanto richiesto in
- output.
+ solo output ed eseguire delle istruzioni utili a rendere i dati acquisiti
+ coerenti nel loro ordinamento con quanto richiesto in output.
  
 \end_layout
 
@@ -1103,8 +1102,8 @@ L'idea di soluzione è quella di scandire i primi
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-N^{2} & = & \sum_{i=0}^{N-1}2\cdot i+1\\
- & = & \sum_{i=0}^{N-1}i+i+1\\
+N^{2} & = & \sum_{i=0}^{N-1}\left(2\cdot i+1\right)\\
+ & = & \sum_{i=0}^{N-1}\left(i+i+1\right)\\
  & = & \left(2\text{·}0+1\right)+\ldots+\left(2\text{·}i+1\right)+\ldots+\left(2\text{·}\left(N-1\right)+1\right)
 \end{eqnarray*}
 
