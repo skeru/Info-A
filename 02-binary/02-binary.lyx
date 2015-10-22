@@ -1764,6 +1764,96 @@ Con la rappresentazione in complemento a due, il valore che in modulo e
 
 \end_layout
 
+\begin_layout Subsection
+Carry & overflow
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Carry, overflow, underflow
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Carry bit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Il bit di carry si porta a 1 quando la somma tra due numeri (positivi o
+ negativi) supera il numero di bit del risultato.
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Overflow bit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Il bit di overflow si porta a 1 quando:
+\end_layout
+
+\begin_layout Itemize
+la somma di due numeri negativi fornisce in output un numero positivo (
+\emph on
+underflow
+\emph default
+)
+\end_layout
+
+\begin_layout Itemize
+la somma di due numeri positivi fornisce in output un numero negativo (
+\emph on
+overflow
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+Sono bit indipendenti ma entrambi sintomo di risultato inesatto.
+\end_layout
+
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
 \begin_layout Section
 Esercizi
 \end_layout
@@ -5204,6 +5294,24 @@ Si esegua la seguente operazione in binario su 6 bit e si dica se si presenta
 
 \end_layout
 
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+control bits
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Carry 0
+\end_layout
+
+\begin_layout Itemize
+Overflow 0
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 NO overflow
 \end_layout
@@ -5479,7 +5587,7 @@ Si esegua la seguente operazione in binario su 6 bit e si dica se si presenta
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+1
 \end_layout
 
 \end_inset
@@ -5501,6 +5609,24 @@ Si esegua la seguente operazione in binario su 6 bit e si dica se si presenta
 
 \end_layout
 
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+control bits
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Carry 1
+\end_layout
+
+\begin_layout Itemize
+Overflow 1
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 NO overflow
 \end_layout
