@@ -1,0 +1,1542 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Programmazione in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+30/10/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #
+\series bold
+5
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conversione da decimale a binario
+\end_layout
+
+\begin_layout Quotation
+Dato un numero positivo 
+\begin_inset Formula $Q$
+\end_inset
+
+, scrivere la sua rappresentazione in binario naturale, indicando anche
+ il minimo numero di bit utilizzato.
+ 
+\end_layout
+
+\begin_layout Quotation
+Esempio: 
+\end_layout
+
+\begin_layout Description
+Input 
+\begin_inset Formula $19_{10}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Output 5 bit, 
+\begin_inset Formula $10011_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Standard
+È richiesto che l'output sia dato dalla codifica binaria naturale del numero
+ in base 
+\begin_inset Formula $10$
+\end_inset
+
+ fornito in ingresso.
+ È noto che per ottenere il numero in binario esiste un algoritmo per divisioni
+ successive per 
+\begin_inset Formula $2$
+\end_inset
+
+ che fornisce il risultato in ordine inverso.
+ Questo algoritmo può essere alla base di una soluzione oppure può essere
+ modificato per fornire l'output in modo più conveniente.
+\end_layout
+
+\begin_layout Standard
+Esistono diversi approcci a questo problema: di seguito ne sono riportati
+ 3.
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione 1 - Countdown to destruction!
+\end_layout
+
+\begin_layout Standard
+Questa soluzione conta quante divisioni per 
+\begin_inset Formula $2$
+\end_inset
+
+ sono necessarie per azzerare 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ Questo numero coincide con il numero di bit che saranno necessari per rappresen
+tare il numero in binario.
+\end_layout
+
+\begin_layout Standard
+Per ogni nuovo bit si procede poi alla distruzione per divisioni successive
+ di una copia del numero in input 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "language=C,numbers=left,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Soluzione-1"
+
+\end_inset
+
+Conversione da decimale a binairo: Soluzione 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+
+int main () { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int Q, Qaux, current, i, n; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nNumero intero : Q = "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &Q); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (Q < 0);
+\end_layout
+
+\begin_layout LyX-Code
+
+	Qaux = Q; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	n = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		Qaux = Qaux / 2; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		n += 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (Qaux != 0); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nCodifica di Q = %d con %d bit = ", Q, n); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (current = n - 1; current >= 0; current--) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		Qaux = Q; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (i = 0; i < current; i++) 
+\end_layout
+
+\begin_layout LyX-Code
+
+			Qaux = Qaux / 2; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%d", Qaux % 2); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione 2 - raddrizzamento dell'output con algoritmo più semplice
+\end_layout
+
+\begin_layout Standard
+Questa soluzione utilizza l'algoritmo per divisioni successive che fornisce
+ l'output ordinato in ordine inverso e, tramite un accumulatore, raddrizza
+ il risultato.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "language=C,numbers=left,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Soluzione-2"
+
+\end_inset
+
+Conversione da decimale a binairo: Soluzione 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+
+int main () { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int dec, Q, n, base; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nNumero intero Q non negativo : Q = ");
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &Q);
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (Q < 0);
+\end_layout
+
+\begin_layout LyX-Code
+
+	dec = 0;  /* accumulatore  */
+\end_layout
+
+\begin_layout LyX-Code
+
+	n = 0;    /* posizione bit */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* n a fine ciclo conterrà il # di bit */
+\end_layout
+
+\begin_layout LyX-Code
+
+	base = 1; /* accumulatore delle potenze di 10 */
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (Q > 0){ 
+\end_layout
+
+\begin_layout LyX-Code
+
+		dec = dec + (Q % 2) * base; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		Q = Q / 2 ; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		n = n + 1 ; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		base = base * 10; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nNum.
+ dec.
+ emula la sequenza "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("binaria di %d bit : %d ",n, dec); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione 3 - Smash by power of 2
+\end_layout
+
+\begin_layout Standard
+L'algoritmo da utilizzare è quello delle divisioni per decrescenti potenze
+ di 
+\begin_inset Formula $2$
+\end_inset
+
+.
+ Si inizia a dividere il numero per la più grande potenza di 
+\begin_inset Formula $2$
+\end_inset
+
+ minore di esso e si procede a dividere i resti della divisione intera per
+ potenze decrescenti.
+ L'output è dato dal quoziente della divisione così calcolato.
+ L'algoritmo termina quando le potenze decrescenti di 
+\begin_inset Formula $2$
+\end_inset
+
+ arrivano a 
+\begin_inset Formula $2^{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Il problema principale è identificare qual è la più grande potenza di due
+ minore di un numero.
+ Questa soluzione calcola la più piccola potenza di 
+\begin_inset Formula $2$
+\end_inset
+
+ maggiore di 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+ Decrementando di uno è poi possibile calcolare la più grande potenza di
+ 
+\begin_inset Formula $2$
+\end_inset
+
+ contenuta in 
+\begin_inset Formula $Q$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "language=C,numbers=left,breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Soluzione3"
+
+\end_inset
+
+Conversione da decimale a binairo: Soluzione 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+int main( ) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, d, n, Q; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nInserisci un numero positivo Q: "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &Q); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (Q <= 0); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	n = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	d = 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		n = n + 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		d = d * 2; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (Q > d); 
+\end_layout
+
+\begin_layout LyX-Code
+
+/* d contiene la più piccola potenza di 2 maggiore di Q */
+\end_layout
+
+\begin_layout LyX-Code
+
+/* n ha il valore dell'esponente della potenza di 2 memorizzata in d e coincide
+ con il numero di bit minimo per rappresentare Q.
+ */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+/* n-1 è il valore dell'esponente più significativo presente nella rappresentazi
+one binaria del numero Q */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+n%d in decimale, con %d bit = ", Q, n); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	n = n - 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	d = d / 2; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (Q >= d) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("1"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+			Q = Q - d; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} else { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("0"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} 
+\end_layout
+
+\begin_layout LyX-Code
+
+		n = n - 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		d = d / 2; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while ( n >= 0 ); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Intervallo di caratteri
+\end_layout
+
+\begin_layout Quotation
+Si scriva un programma in linguaggio C che risolva il problema seguente.
+ 
+\end_layout
+
+\begin_layout Quotation
+Ricevere dallo standard input due caratteri alfabetici, convertirli in maiuscolo
+ e stampare a video ordinatamente tutti i caratteri dell'alfabeto fra essi
+ compresi, estremi inclusi.
+ 
+\end_layout
+
+\begin_layout Quotation
+Esempio: dati 'g' e 'M' stampa a video la sequenza GHIJKLM.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Input di due caratteri alfabetici
+\end_layout
+
+\begin_layout Standard
+Occorre verificare che i caratteri inseriti siano caratteri alfabetici.
+ Sfruttando la tabella della codifica ASCII è possibile identificare gli
+ intervalli su cui fare il controllo.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "language=C,numbers=left,breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+do {
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("Inserisci due caratteri alfabetici separati da spazio: ");
+\end_layout
+
+\begin_layout LyX-Code
+
+	scanf("%c %c", &c1, &c2);
+\end_layout
+
+\begin_layout LyX-Code
+
+} while ((c1 < 'A') || (c2 < 'A') || (c1 > 'z') || (c2 > 'z') || (c1 > 'Z'
+ && c1 < 'a') || (c2 > 'Z' && c2 < 'a'));
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Lowercase to uppercase
+\end_layout
+
+\begin_layout Standard
+Nota
+\end_layout
+
+\begin_layout Standard
+In ASCII si hanno le seguenti corrispondenze tra i caratteri alfanumerici
+ e le loro codifiche:
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $'0'\div'9'$
+\end_inset
+
+ 
+\begin_inset Formula $48\div57$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $'A'\div'Z'$
+\end_inset
+
+ 
+\begin_inset Formula $65\div90$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+\begin_inset Formula $'a'\div'z'$
+\end_inset
+
+ 
+\begin_inset Formula $97\div122$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per passare da minuscolo a maiuscolo bisogna sottrarre al carattere, la
+ differenza tra i due range.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+'a'-'A'=97-65=32
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "language=C,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+if (c1 >= 'a') {
+\end_layout
+
+\begin_layout LyX-Code
+
+	c1 = c1 - 32;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nel caso non ci fosse disponibile la tabella ASCII per calcolare la differenza
+ tra i due intervalli, è possibile farla calcolare al programma.
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "language=C,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+const int diff = 'A' - 'a';
+\end_layout
+
+\begin_layout LyX-Code
+
+if (c1 < 'a' || c1 > 'z') {
+\end_layout
+
+\begin_layout LyX-Code
+
+	c1 = c1 + diff;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "numbers=left,breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Intervallo di caratteri
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+int main( ) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	char x, y; /* dati in ingresso  */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	char t;    /* ausiliaria per scambiare */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i;     /* contatore  */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nInserisci il carattere alfabetico x: "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%c", &x); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (!(((x >= 'a') && (x <= 'z')) || ((x >= 'A') && (x <= 'Z'))));
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* lowercase to uppercase */
+\end_layout
+
+\begin_layout LyX-Code
+
+	if ((x >= 'a') && (x <= 'z')) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		x = x - ('a'-'A'); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nInserisci il carattere alfabetico y: "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%c", &y); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (!(((y >= 'a') && (y <= 'z')) || ((y >= 'A') && (y <= 'Z'))));
+ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* lowercase to uppercase */
+\end_layout
+
+\begin_layout LyX-Code
+
+	if ((y >= 'a') && (y <= 'z')) 
+\end_layout
+
+\begin_layout LyX-Code
+
+		y = y - ('a'-'A'); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* ordina i due caratteri x, y in ordine crescente */
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (x > y) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		t = x; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		x = y; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		y = t; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nLa sequenza di caratteri richiesta e': "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	i = (int)x; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (i <= (int)y) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%c", (char)i); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* operatori di casting opzionali */
+\end_layout
+
+\begin_layout LyX-Code
+
+		i = i + 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sequenze pari crescenti
+\end_layout
+
+\begin_layout Quotation
+Si codifichi un programma C che legge dallo standard input una sequenza
+ (di lunghezza arbitraria) di interi positivi terminata dal valore 0 e,
+ al termine della sequenza, visualizza su standard output un messaggio che
+ indica quante terne di numeri consecutivi diversi e pari sono contenute
+ nella sequenza.
+\end_layout
+
+\begin_layout Quotation
+Esempio:
+\end_layout
+
+\begin_layout Description
+input 2 50 13 16 8 6 4 6 18 6 6 16 4 1 25 0
+\end_layout
+
+\begin_layout Description
+output 4
+\end_layout
+
+\begin_layout Standard
+Le sequenze sono 16-8-6 8-6-4 4-6-18 6-16-4
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+La sentinella
+\end_layout
+
+\begin_layout Standard
+Quando si tratta di prendere in input una sequenza di numeri, è necessario
+ stabilire quanti numeri in input è necessario acquisire.
+ 
+\end_layout
+
+\begin_layout Itemize
+È possibile che i numeri siano in un numero prestabilito noto a priori.
+ 
+\end_layout
+
+\begin_layout Itemize
+È possibile chiedere all'utente la lunghezza della sequenza.
+\end_layout
+
+\begin_layout Itemize
+È possibile che la sequenza abbia un terminatore che ne delimita la fine
+ (la sentinella).
+\end_layout
+
+\begin_layout Standard
+La sentinella può essere richiesta all'utente prima che l'utente inserisca
+ il primo elemento oppure può essere nota a priori.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Flag
+\end_layout
+
+\begin_layout Standard
+Quando una condizione è molto complessa e viene valutata in diversi punti
+ del programma, può essere utile utilizzare per controlli una variabile
+ ausiliaria.
+ Questa variabile ausiliaria viene impostata come 
+\emph on
+attiva
+\emph default
+ o 
+\emph on
+disattiva
+\emph default
+ una sola volta, quando si verifica che la condizione sia vera o falsa.
+ Per convenzione questo tipo di variabili ausiliarie vengono chiamate 
+\emph on
+flag
+\emph default
+, bandiere di segnalazione, che si alzano e si abbassano a seconda che la
+ condizione sia vera o falsa.
+\end_layout
+
+\begin_layout Standard
+Di natura le flag sono di tipo booleano (solo vero o falso).
+ In c99 non esiste un tipo che rappresenti una variabile booleana quindi
+ si utilizzano variabili intere.
+ Il valore 
+\begin_inset Formula $0$
+\end_inset
+
+ significa falso mentre un valore 
+\begin_inset Formula $\neq0$
+\end_inset
+
+ rappresenta il valore logico vero (di solito si utiliza 
+\begin_inset Formula $1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset listings
+lstparams "language=C,numbers=left,breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Conteggio terne positive
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout Plain Layout
+
+#define SENTINELLA 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+int main() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int cont = 0; /* conteggio delle terne valide */
+\end_layout
+
+\begin_layout Plain Layout
+
+	int prev2, prev1 = 1, cur = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* Le inizializzazioni di cur e prev1 a 1 sono innocue perché impostate
+ con valori positivi dispari
+\end_layout
+
+\begin_layout Plain Layout
+
+	cur, prev1, prev2: rappresentano rispettivamente il valore corrente e i
+ due precedenti */
+\end_layout
+
+\begin_layout Plain Layout
+
+	int cond = 0; /* flag */
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nSeq.
+ di int separati da spazi "); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("(termina con %d)
+\backslash
+n
+\backslash
+n", SENTINELLA); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	do { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		prev2 = prev1; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		prev1 = cur; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &cur); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		cond = (prev2 > 0 && prev1 > 0 && cur >= 0); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		cond = cond && !(prev2 == prev1 || prev2 == cur || prev1 == cur); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		cond = cond && (prev2 % 2 == 0 && prev1 % 2 == 0 && cur % 2 == 0); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		if (cond) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+			cont++; 
+\end_layout
+
+\begin_layout Plain Layout
+
+			printf("
+\backslash
+nNuova terna: ");
+\end_layout
+
+\begin_layout Plain Layout
+
+			printf("(%d, %d, %d)", prev2, prev1, cur); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while ( cur != SENTINELLA ); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nLe terne di numeri cercati sono %d", cont); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2013/14.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
