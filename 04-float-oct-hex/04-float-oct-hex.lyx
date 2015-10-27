@@ -4503,7 +4503,7 @@ L'errore di approssimazione non è fisso in valore assoluto ma aumenta al
 
 \end_deeper
 \begin_layout Itemize
-La notazione scientifica per i numeri in binairo è simile: 
+La notazione scientifica per i numeri in binario è simile: 
 \begin_inset Formula $1.mantissa\cdot2^{exp}$
 \end_inset
 
@@ -5263,8 +5263,8 @@ Operazioni in virgola fissa
 
 \begin_deeper
 \begin_layout Standard
-Esegui le seguenti operazioni in binario senza segno, virgola fissa rispettando
- come vicoli di rappresentazione 4 bit per la parte intera, 4 bit per la
+Esegui le seguenti operazioni in binario senza segno, virgola fissa, rispettando
+ come vincoli di rappresentazione 4 bit per la parte intera, 4 bit per la
  parte decimale
 \end_layout
 
