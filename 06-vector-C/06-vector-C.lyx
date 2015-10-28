@@ -1,0 +1,1574 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi sui vettori in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+30/10/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #6
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analisi del fatturato
+\end_layout
+
+\begin_layout Quotation
+Sono arrivati dal reparto vendite i dati relativi all'andamento del volume
+ di mercato dell'ultimo anno.
+ I dati rappresentano le quantità vendute per ogni mese dell'anno.
+ Si calcoli il mese con il massimo volume di vendita e la più lunga serie
+ crescente.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Standard
+Il problema richiede la ricerca del valore massimo e della più lunga sequenza
+ di valori crescenti.
+\end_layout
+
+\begin_layout Standard
+È possibile 
+\end_layout
+
+\begin_layout Standard
+Non sapendo le unità di misura del volume, si può fare una assunzione esplicita
+ che si tratti di unità vendute e quindi utilizzare il tipo 
+\begin_inset listings
+lstparams "language=C,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+int
+\end_layout
+
+\end_inset
+
+ oppure utilizzare il tipo 
+\begin_inset listings
+lstparams "language=C,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float
+\end_layout
+
+\end_inset
+
+ senza imporre vincoli o assunzioni sulle unità di misura dei dati in ingresso.
+ In entrambi i casi, trattandosi di quantità nette vendute, si dovrà verificare
+ che i dati in ingresso siano positivi o nulli.
+\end_layout
+
+\begin_layout Subsection
+Posizione o valore
+\end_layout
+
+\begin_layout Standard
+Quando si eseguono operazioni di ricerca (di un elemento, del massimo, del
+ minimo, di un intervallo, ...) all'interno di un vettore si può scegliere
+ se lavorare con il valore o con la posizione.
+ Ad esempio durante la ricerca del massimo, si può memorizzare il valore
+ massimo e aggiornarlo ogni volta.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+for (i = 0; i < N; ++i) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (v[i] > max) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		max = v[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Un altro approccio è quello di aggiornare la posizione del valore massimo;
+ utilizzando la posizione, è sempre possibile tornare al valore massimo
+ e consente di occupare in memoria solamente una variabile per l'indice
+ relativo alla posizione dell'elemento di interesse.
+ Inoltre risulta più semplice effettuare ordinamenti più complessi (ordinamento
+ su più livelli, ordinamento di elementi complessi, ...).
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+for (i = 0; i < N; ++i) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (v[i] > v[pmax]) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		pmax = i;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - Store and scan
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Soluzione-1"
+
+\end_inset
+
+Analisi fatturato
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+
+#define L 12
+\end_layout
+
+\begin_layout LyX-Code
+
+int main () { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	float volume[L];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, p1, p2, current_p1, current_p2, pmax; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < L; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nVolume del mese %d: ", i); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%f", &volume[i]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (volume[i] < 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("
+\backslash
+nVolumi negativi non ammessi");
+\end_layout
+
+\begin_layout LyX-Code
+
+			--i;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	pmax = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	p1 = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	p2 = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	current_p1 = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	current_p2 = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 1; i < L; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (volume[pamx] < volume[i]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			pmax = i;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (volume[i] > volume[i - 1]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			current_p2 = i;
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (current_p1 = 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				current_p1 = i - 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+			if ((current_p2 - current_p1) > (p2 - p1)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				p2 = current_p2;
+\end_layout
+
+\begin_layout LyX-Code
+
+				p1 = current_p1;
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+		} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+			current_p1 = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+			current_p2 = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nIl massimo si è avuto al mese %d con %f", pmax, volume[pmax]);
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nLa più lunga sequenza positiva è dal mese %d al mese %d.", p1, p2);
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Variante: confronto con l'anno passato
+\end_layout
+
+\begin_layout Quotation
+Si vuole confrontare i dati di quest'anno con i dati dell'anno scorso.
+ Si acquisiscano due sequenze di volumi.
+ Si assuma che questi volumi rappresentino unità di prodotto vendute e siano
+ interi positivi (o nulli).
+ Si determini in quale mese si è avuto l'incremento massimo rispetto al
+ corrispettivo del precedente anno e si identifichi la più lunga sequenza
+ di incrementi positivi.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:Soluzione-variante"
+
+\end_inset
+
+Analisi fatturato: confronto con l'anno passato
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+
+#define L 12
+\end_layout
+
+\begin_layout LyX-Code
+
+int main () { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	float inc[L];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int volume[L];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int old[L];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, p1, p2, current_p1, current_p2, pmax; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < L; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nVolume del mese %d per l'anno corrente: ", i); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &volume[i]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (volume[i] < 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("
+\backslash
+nVolumi negativi non ammessi");
+\end_layout
+
+\begin_layout LyX-Code
+
+			--i;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < L; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nVolume del mese %d per l'anno passato: ", i); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &old[i]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (old[i] < 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("
+\backslash
+nVolumi negativi non ammessi");
+\end_layout
+
+\begin_layout LyX-Code
+
+			--i;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < L; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (old[i] != 0) { /* evita divisione per 0 */
+\end_layout
+
+\begin_layout LyX-Code
+
+			inc[i] = (float) (volume[i] - old[i]) / old[i];
+\end_layout
+
+\begin_layout LyX-Code
+
+		} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+			inc[i] = 9999.9;/* valore di comodo */
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	pmax = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	p1 = -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	p2 = -2;
+\end_layout
+
+\begin_layout LyX-Code
+
+	current_p1 = -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	current_p2 = -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < L; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (inc[pmax] < inc[i]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			pmax = i;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (inc[i] > 0.0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			current_p2 = i;
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (current_p1 == -1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				current_p1 = i;
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+			if ((current_p2 - current_p1) > (p2 - p1)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				p2 = current_p2;
+\end_layout
+
+\begin_layout LyX-Code
+
+				p1 = current_p1;
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+		} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+			current_p1 = -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+			current_p2 = -2;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nIl massimo si è avuto al mese %d con %f", pmax, inc[pmax]);
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (p1 != -1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nLa più lunga sequenza positiva è dal mese %d al mese %d.", p1, p2);
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nNon esiste una sequenza positiva rispetto al precedente anno");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Merge
+\end_layout
+
+\begin_layout Quotation
+Scrivere un programma in linguaggio C che lette dallo standard input due
+ sequenze vettoriali ordinate di interi V1[n], V2[m] ne crei una terza V3[n+m]
+ anch'essa ordinata, che contenga tutti gli elementi di V1 e di V2 .
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+Sfruttando il fatto che le sequenze V1 e V2 sono già ordinate, posso scandirle
+ progressivamente entrambe e per ogni elemento da inserire in V3 scegliere
+ l'elemento minore tra le due sorgenti.
+ Quando una delle due sorgenti termina, esaurisco gli elementi residui copiandol
+i in coda al risultato V3.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Merge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAX_LEN 50
+\end_layout
+
+\begin_layout LyX-Code
+
+int main( ) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int V1[MAX_LEN], V2[MAX_LEN]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int V3[2*MAX_LEN]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int n, m; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j, k; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* acquisizione dei due vettori */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nInserire il # di elementi del vettore V1 (max %d), n = ", MAX_LEN); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d",&n); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while ((n <= 0) || (n > MAX_LEN)); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nInserire gli elementi ordinati del vettore V1:
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < n; ++i) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &V1[i]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nInserire il # di elementi del vettore V2 (max %d), m = ", MAX_LEN); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d",&m); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while ((m <= 0) || (m > MAX_LEN)); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nInserire gli elementi ordinati del vettore V2:
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (j = 0; j < m; ++j)
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &V2[j]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* fusione delle due sequenze */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	i = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	j = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	k = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	while ((i<n) && (j<m)) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (V1[i] < V2[j]) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			V3[k] = V1[i]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+			i++; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} else { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			V3[k] = V2[j]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+			j++; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} 
+\end_layout
+
+\begin_layout LyX-Code
+
+		k++; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (i < n) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		V3[k] = V1[i]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		i++; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		k++; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (j < m) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		V3[k] = V2[j]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		j++; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		k++; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nIl risultato della fusione dei due vettori e':
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (k = 0; k < n + m; ++k) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%d ", V3[k]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ordinamento di vettori
+\end_layout
+
+\begin_layout Quotation
+Data una sequenza vettoriale V[n] permutare i suoi elementi in modo che
+ risulti ordinata in senso non decrescente.
+\end_layout
+
+\begin_layout Quotation
+Esempio: 
+\begin_inset Formula $v\left[0\right]\leq v\left[1\right]\leq v\left[2\right]\leq\ldots\leq v\left[n-1\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Standard
+Esistono diversi algoritmi di ordinamento di vettori.
+ Di seguito ne viene presentato uno, tra i più semplici: l'ordinamento per
+ selezione.
+\end_layout
+
+\begin_layout Standard
+L'idea è quella di trovare il minimo fra gli elementi nella sequenza e scambiarl
+o con l'elemento al primo posto.
+ Trovare il minimo fra gli elementi tra il secondo e l'ultimo posto, e scambiarl
+o con il secondo e così via.
+ Il metodo è chiamato 
+\emph on
+per selezione 
+\emph default
+perché si basa sulla ripetizione della selezione dell'elemento minore, tra
+ quelli rimasti da ordinare.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - Selection Sort
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ordinamento per selezione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MAX_LEN 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+int main ( ) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int V[MAX_LEN]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int n, min; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, j, jmin; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	do { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("
+\backslash
+nInserire il # di elementi del vettore V, n = "); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &n); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}while ((n <= 0) || (n > MAX_LEN)); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire gli elementi del vettore V:
+\backslash
+n"); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < n; ++i) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &V[i]); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < n; i++) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmin = i; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		min = V[jmin]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		for (j = i + 1; j < n; j++) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (V[j] < min) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+				jmin = j; 
+\end_layout
+
+\begin_layout Plain Layout
+
+				min = V[j]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+			} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* min ora contiene il minimo parziale, cioè il minimo calcolato dalla
+ posizione i alla fine del vettore */ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		V[jmin] = V[i]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		V[i] = min; /* scambio V[i] e V[jmin] */ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+n il vettore ordinato e':
+\backslash
+n "); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < n; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("%d ",V[i]); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2013/14.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
