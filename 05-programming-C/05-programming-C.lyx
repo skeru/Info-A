@@ -11,7 +11,7 @@
 \fontencoding global
 \font_roman default
 \font_sans default
-\font_typewriter default
+\font_typewriter tgcursor
 \font_math auto
 \font_default_family default
 \use_non_tex_fonts false
@@ -251,9 +251,9 @@ Per ogni nuovo bit si procede poi alla distruzione per divisioni successive
 .
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 \begin_inset listings
-lstparams "language=C,numbers=left,showstringspaces=false,tabsize=2"
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -262,7 +262,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset label
 LatexCommand label
 name "lis:Soluzione-1"
@@ -410,9 +409,9 @@ Questa soluzione utilizza l'algoritmo per divisioni successive che fornisce
  il risultato.
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 \begin_inset listings
-lstparams "language=C,numbers=left,showstringspaces=false,tabsize=2"
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -421,7 +420,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset label
 LatexCommand label
 name "lis:Soluzione-2"
@@ -605,9 +603,9 @@ Il problema principale è identificare qual è la più grande potenza di due
 .
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 \begin_inset listings
-lstparams "language=C,numbers=left,breaklines=true,showstringspaces=false,tabsize=2"
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -616,7 +614,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 \begin_inset CommandInset label
 LatexCommand label
 name "lis:Soluzione3"
@@ -839,9 +836,9 @@ Occorre verificare che i caratteri inseriti siano caratteri alfabetici.
  intervalli su cui fare il controllo.
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 \begin_inset listings
-lstparams "language=C,numbers=left,breaklines=true,showstringspaces=false,tabsize=2"
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -933,9 +930,9 @@ Per passare da minuscolo a maiuscolo bisogna sottrarre al carattere, la
 
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 \begin_inset listings
-lstparams "language=C,showstringspaces=false,tabsize=2"
+lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -964,9 +961,9 @@ Nel caso non ci fosse disponibile la tabella ASCII per calcolare la differenza
  tra i due intervalli, è possibile farla calcolare al programma.
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 \begin_inset listings
-lstparams "language=C,showstringspaces=false,tabsize=2"
+lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -1003,9 +1000,9 @@ if (c1 < 'a' || c1 > 'z') {
 Soluzione C
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 \begin_inset listings
-lstparams "numbers=left,breaklines=true,showstringspaces=false,tabsize=2"
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -1014,7 +1011,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Intervallo di caratteri
 \end_layout
 
@@ -1320,9 +1316,9 @@ Di natura le flag sono di tipo booleano (solo vero o falso).
 Soluzione C
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
 \begin_inset listings
-lstparams "language=C,numbers=left,breaklines=true,showstringspaces=false,tabsize=2"
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline false
 status open
 
@@ -1331,7 +1327,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Conteggio terne positive
 \end_layout
 
