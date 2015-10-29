@@ -97,7 +97,7 @@ status open
 \end_layout
 
 \begin_layout Date
-30/10/2015
+03/11/2015
 \end_layout
 
 \begin_layout Standard
@@ -1277,6 +1277,594 @@ n");
 \end_layout
 
 \begin_layout Section
+Valutazione di un polinomio in un punto
+\end_layout
+
+\begin_layout Quotation
+Leggere un polinomio di grado n a coefficienti reali e successivamente valutarlo
+ in un dato punto x.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Standard
+Nel caso in cui il punto in cui calcolare questo polinomio fosse noto a
+ priori si poteva calcolare il risultato parziale mentre l'utente inseriva
+ i valori senza doverli memorizzare in un vettore.
+\end_layout
+
+\begin_layout Subsection
+Soluzione 1: calcolo per monomi
+\end_layout
+
+\begin_layout Standard
+Il primo approccio che sicuramente si può individuare è quello di valutare
+ monomio per monomio l'espressione.
+ In altre parole, sostituire ad x un certo valore, valutare le diverse potenze
+ di x e moltiplicare per il corrispettivo coefficiente accumulando man mano
+ il risultato in una variabile.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Valutazione polinomio: calcolo per monomi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MAX_LEN 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+int main() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	float V[MAX_LEN]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	float pot, f, x; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, n;
+\end_layout
+
+\begin_layout Plain Layout
+
+	do { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("
+\backslash
+nInserire il grado del polinomio (max %d), n = ", MAX_LEN - 1); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &n); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while ((n <= 0) || (n >= MAX_LEN)); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire i coefficienti del polinomio dal grado %d al termine noto: ",
+ n);
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i <= n; ++i) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%f", &V[i]); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire il valore in cui valutare il polinomio, x = ");
+\end_layout
+
+\begin_layout Plain Layout
+
+	scanf("%f", &x); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	f = 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i <= n; ++i) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		pot = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* calcola pot=x^i */
+\end_layout
+
+\begin_layout Plain Layout
+
+		for (j = 0; j < i; ++j) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			pot = pot * x;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		f = f + V[i] * pot; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nf(%f) = %f", x, f); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione 2: costruzione progressiva della potenza
+\end_layout
+
+\begin_layout Standard
+Iniziando a leggere il polinomio dal termine noto (il quale, considerato
+ che il vettore avrà n+1 elementi, occuperà la posizione n-esima), si ha:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+f\left(x\right) & = & a_{n}\cdot x^{n}+a_{n-1}\cdot x^{n-1}+\ldots+a_{1}\cdot x+a_{0}\\
+ & = & \left(a_{n}\cdot x^{n}+\left(a_{n-1}\cdot x^{n-1}+\ldots+\left(a_{1}\cdot x+\left(a_{0}\right)\right)\right)\right)\\
+ & = & \left(\left(\left(\left(a_{0}\right)+a_{1}\cdot x\right)+\ldots+a_{n-1}\cdot x^{n-1}\right)+a_{n}\cdot x^{n}\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+È quindi possibile costruire la potenza 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+ mentre si sta iterando sul vettore senza doverla ricalcolare da 
+\begin_inset Formula $x^{0}$
+\end_inset
+
+ ogni volta.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Valutazione polinomio: costruzione progressiva della potenza
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MAX_LEN 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+int main() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	float V[MAX_LEN]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	float pot, f, x; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, n;
+\end_layout
+
+\begin_layout Plain Layout
+
+	do { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("
+\backslash
+nInserire il grado del polinomio (max %d), n = ", MAX_LEN - 1); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &n); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while ((n <= 0) || (n >= MAX_LEN)); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire i coefficienti del polinomio dal grado %d al termine noto: ",
+ n);
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i <= n; ++i) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%f", &V[i]); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire il valore in cui valutare il polinomio, x = ");
+\end_layout
+
+\begin_layout Plain Layout
+
+	scanf("%f", &x); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	f = 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	pot = 1; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = n; i >= 0; i--) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		f = f + V[i] * pot; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		pot = pot * x; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nf(%f) = %f", x, f); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione 3: potenza implicita
+\end_layout
+
+\begin_layout Standard
+Sempre sfruttando proprietà matematiche dei polinomi, possiamo riscrivere
+ il polinomio come
+\begin_inset Formula 
+\begin{eqnarray*}
+f\left(x\right) & = & a_{n}\cdot x^{n}+a_{n-1}\cdot x^{n-1}+\ldots+a_{1}\cdot x+a_{0}\\
+ & = & \left(\left(\left(0\cdot x+a_{n}\right)\cdot x+a_{n-1}\right)\cdot x+\ldots+a_{1}\right)\cdot x+a_{0}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In questo modo non è necessario calcolare la potenza 
+\begin_inset Formula $x^{n}$
+\end_inset
+
+ ma implicitamente viene calcolata moltiplicando il risultato parziale 
+\begin_inset Formula $n$
+\end_inset
+
+ volte per 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Valutazione polinomio: potenza implicita
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MAX_LEN 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+int main() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	float V[MAX_LEN]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	float pot, f, x; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, n;
+\end_layout
+
+\begin_layout Plain Layout
+
+	do { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("
+\backslash
+nInserire il grado del polinomio (max %d), n = ", MAX_LEN - 1); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &n); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while ((n <= 0) || (n >= MAX_LEN)); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire i coefficienti del polinomio dal grado %d al termine noto: ",
+ n);
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i <= n; ++i) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%f", &V[i]); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire il valore in cui valutare il polinomio, x = ");
+\end_layout
+
+\begin_layout Plain Layout
+
+	scanf("%f", &x); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	f = 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i <= n; ++i) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		f = f * x + V[i]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nf(%f) = %f", x, f); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Ordinamento di vettori
 \end_layout
 
@@ -1303,6 +1891,10 @@ Esistono diversi algoritmi di ordinamento di vettori.
  selezione.
 \end_layout
 
+\begin_layout Subsection
+Soluzione C - Selection Sort
+\end_layout
+
 \begin_layout Standard
 L'idea è quella di trovare il minimo fra gli elementi nella sequenza e scambiarl
 o con l'elemento al primo posto.
@@ -1314,10 +1906,6 @@ per selezione
 \emph default
 perché si basa sulla ripetizione della selezione dell'elemento minore, tra
  quelli rimasti da ordinare.
-\end_layout
-
-\begin_layout Subsection
-Soluzione C - Selection Sort
 \end_layout
 
 \begin_layout Standard
@@ -1378,7 +1966,7 @@ int main ( ) {
 
 		printf("
 \backslash
-nInserire il # di elementi del vettore V, n = "); 
+nInserire il # di elementi del vettore V (max %d), n = ", MAX_LEN); 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1388,7 +1976,7 @@ nInserire il # di elementi del vettore V, n = ");
 
 \begin_layout Plain Layout
 
-	}while ((n <= 0) || (n > MAX_LEN)); 
+	}while ((n <= 0) || (n >= MAX_LEN)); 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1503,6 +2091,395 @@ n ");
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - Insertion sort
+\end_layout
+
+\begin_layout Standard
+L'idea di questo algoritmo non è molto diversa dal metodo con cui molti
+ giocatori di poker ordinano le carte ricevute nella prima fase del gioco.
+ Il vettore, di lunghezza n, lo si immagina logicamente partizionato in
+ due parti:
+\end_layout
+
+\begin_layout Itemize
+la prima parte già ordinata
+\end_layout
+
+\begin_layout Itemize
+la seconda parte (contigua alla precedente) con elementi ancora da posizionare
+ correttamente
+\end_layout
+
+\begin_layout Standard
+Questo algoritmo prevede di allargare ad ogni iterazione la parte ordinata
+ inserendo nella posizione corretta un elemento preso dalla parte non ordinata.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Ordinamento per inserzione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MAX_LEN 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+int V[MAX_LEN]; /* vettore da ordinare - var.
+ globale */ 
+\end_layout
+
+\begin_layout Plain Layout
+
+int main( ) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, j, n, aux; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	do { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("
+\backslash
+nInserire il # di elementi del vettore (max %d) V, n = ", MAX_LEN); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &n);
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while ((n <= 0) || (n >= MAX_LEN)); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire gli elementi del vettore V:
+\backslash
+n"); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < n; ++i){ 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d",&V[i]); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* dal secondo al penultimo elemento */
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 1; i < n; i++) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		aux = V[i]; /* elemento da inserire ordinato */
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* Shift verso dx della parte ordinata */
+\end_layout
+
+\begin_layout Plain Layout
+
+		for (j = i - 1; j >= 0 && V[j] > aux; j--) 
+\end_layout
+
+\begin_layout Plain Layout
+
+			V[j+1] = V[j]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* inserimento in ordine */
+\end_layout
+
+\begin_layout Plain Layout
+
+		V[j+1] = aux; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nIl vettore ordinato e':
+\backslash
+n "); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < n; i++) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("%d ",V[i]); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - Bubblesort
+\end_layout
+
+\begin_layout Standard
+L'idea di questo algoritmo è quella di confrontare i primi due elementi
+ e se non sono ordinati li si scambia; poi si confrontano il secondo e il
+ terzo e se non sono ordinati li si scambia e così via sino a confrontare
+ penultimo e ultimo elemento.
+ 
+\end_layout
+
+\begin_layout Standard
+Dopo aver scandito una prima volta tutto il vettore si è sicuri che l'elemento
+ maggiore è nella cella più a destra, quindi si comincia un nuovo ciclo
+ che confronta ancora a due a due le celle dalla prima all'ultima.
+ 
+\end_layout
+
+\begin_layout Standard
+Se n è il numero di elementi del vettore, si itera questo processo di scansione
+ per n-1 volte al termine delle quali il vettore risulterà completamente
+ ordinato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MAX_LEN 100 
+\end_layout
+
+\begin_layout Plain Layout
+
+int V[MAX_LEN]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+int main( ){ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, j, n, aux; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	do { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("
+\backslash
+nInserire il # di elementi del vettore V (max %d), n = ", MAX_LEN); 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &n);
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while ((n <= 0) || (n > MAX_LEN)); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nInserire gli elementi del vettore V:
+\backslash
+n"); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < n; ++i) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d", &V[i]); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* L'ultimo controllo deve essere tra penultimo e ultimo.
+ Quindi stop a n-1 */
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < n - 1; i++) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* Dopo la i-esima iterazione, le ultime i posizioni sono già ordinate:
+ posso quindi evitare di fare controlli su di esse */
+\end_layout
+
+\begin_layout Plain Layout
+
+		for (j = 0; j < n - 1 - i; j++) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (V[j] > V[j + 1]) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+				aux = V[j + 1];
+\end_layout
+
+\begin_layout Plain Layout
+
+				V[j + 1] = V[j]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+				V[j] = aux; 
+\end_layout
+
+\begin_layout Plain Layout
+
+			} 
+\end_layout
+
+\begin_layout Plain Layout
+
+		} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("
+\backslash
+nIl vettore ordinato e':
+\backslash
+n "); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < n; i++) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("%d ", V[i]); 
 \end_layout
 
 \begin_layout Plain Layout
