@@ -2687,7 +2687,7 @@ B
 \begin_layout Standard
 \begin_inset Formula 
 \[
-1011011_{2}=5B_{8}
+1011011_{2}=5B_{16}
 \]
 
 \end_inset
@@ -6370,7 +6370,7 @@ Portare le mantisse tutte al maggiore degli esponenti in gioco (25)
 \begin_inset Text
 
 \begin_layout Plain Layout
-1
+0
 \end_layout
 
 \end_inset
