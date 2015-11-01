@@ -1,0 +1,1082 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi su stringhe e struct in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+03/11/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #7
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Parole al contrario
+\end_layout
+
+\begin_layout Quotation
+Presa in input una stringa che rappresenta una frase di più parole, stampare
+ in output la stessa frase con ogni parola scritta al contrario.
+ Le parole sono separate da uno spazio.
+\end_layout
+
+\begin_layout Standard
+Esempio:
+\end_layout
+
+\begin_layout Description
+Input non ho studiato informatica a sufficienza
+\end_layout
+
+\begin_layout Description
+Output non oh otaiduts acitamrofni a azneiciffus 
+\end_layout
+
+\begin_layout Description
+Nota per poter acquisire da tastiera una stringa str contenente 'spazi'
+ e terminata dal carattere 'invio' l'istruzione da utilizzare é la seguente:
+ 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+scanf("%[^
+\backslash
+n]s", str);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Parole al contrario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+
+#define LEN 50
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() { 	
+\end_layout
+
+\begin_layout LyX-Code
+
+	int inizio_parola, i, j;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char str[LEN + 1]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("Inserisci una sequenza di parole: "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	scanf("%[^
+\backslash
+n]s", str); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	inizio_parola = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	i = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* fino alla fine della stringa */
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (str[i] != '
+\backslash
+0') {
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* lo spazio è la fine della parola */
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (str[i] == ' ') {
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* stampa la parola al contrario */
+\end_layout
+
+\begin_layout LyX-Code
+
+			for (j = i - 1 ; j >= inizio_parola; j--) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				printf("%c", str[j]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+			} 
+\end_layout
+
+\begin_layout LyX-Code
+
+			inizio_parola = i + 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf(" ");
+\end_layout
+
+\begin_layout LyX-Code
+
+		} 
+\end_layout
+
+\begin_layout LyX-Code
+
+		i++; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* ultima parola (che termina con '
+\backslash
+0' ) */
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (j = i - 1; j >= inizio_parola; j--) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%c", str[j]);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Parole palindrome
+\end_layout
+
+\begin_layout Quotation
+Scrivere un programma in linguaggio C che letta dallo standard input una
+ parola, determini se essa è palindroma.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+Una parola è palindroma se letta al contrario è identica a sè stessa.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Palindrome
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <string.h>	/* libreria per strlen */
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAX_LEN 50
+\end_layout
+
+\begin_layout LyX-Code
+
+int main( ) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	char parola[MAX_LEN + 1];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int len, i, flag; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* acquisizione */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nInserire una parola per verificare se e' palindroma "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	scanf("%s", parola); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	len = strlen(parola);
+\end_layout
+
+\begin_layout LyX-Code
+
+	flag = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* Controlla i caratteri partendo dalle estremità verso la metà.
+ Interrompe al primo carattere non corrispondente.
+ */
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < len / 2 && flag == 1; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* parola[len] = '
+\backslash
+0'
+\end_layout
+
+\begin_layout LyX-Code
+
+			parola[len-1] = ultimo carattere */
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (parola[i] != parola[len - 1 - i]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			flag = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (flag == 1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nLa parola e' palindroma.");
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nLa parola NON e' palindroma.");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Prodotti scaduti
+\end_layout
+
+\begin_layout Quotation
+Caricare un vettore di 5 elementi 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Prodotto
+\end_layout
+
+\end_inset
+
+ rappresentanti degli ingredienti presenti nel frigorifero.
+ Al termine del caricamento si deve acquisire in input una data e verificare
+ per ogni prodotto se a quella data il prodotto sarà o meno scaduto.
+\end_layout
+
+\begin_layout Standard
+Per rappresentare un 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+Prodotto
+\end_layout
+
+\end_inset
+
+ si utilizzi un tipo strutturato che abbia come elementi il nome del prodotto
+ e una data di scadenza.
+\end_layout
+
+\begin_layout Standard
+Si utilizzi per rappresentare una data un tipo così definito
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+typedef struct { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int giorno; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int mese; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int anno; 
+\end_layout
+
+\begin_layout Plain Layout
+
+} Data;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Prodotti scaduti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout Plain Layout
+
+#define MAX_LEN 100 /* lunghezza nome */
+\end_layout
+
+\begin_layout Plain Layout
+
+#define N_PROD 5 /* numero prodotti */
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int giorno; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int mese; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int anno; 
+\end_layout
+
+\begin_layout Plain Layout
+
+} Data;
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct {
+\end_layout
+
+\begin_layout Plain Layout
+
+	char nome[MAX_LEN];
+\end_layout
+
+\begin_layout Plain Layout
+
+	Data scadenza;
+\end_layout
+
+\begin_layout Plain Layout
+
+} Prodotto;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main() { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	Prodotto frigo[N_PROD]; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	Data controllo;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, flag;
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* input frigo */
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(i = 0; i < N_PROD; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("
+\backslash
+nInserisci il nome del prodotto: ");
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%s", frigo[i].nome);
+\end_layout
+
+\begin_layout Plain Layout
+
+		do { /* input blindato sulla data */
+\end_layout
+
+\begin_layout Plain Layout
+
+			printf("
+\backslash
+nInserisci la data di scadenza di %s ", frigo[i].nome);
+\end_layout
+
+\begin_layout Plain Layout
+
+			scanf("%d %d %d", &frigo[i].scadenza.giorno, &frigo[i].scadenza.mese, &frigo[i].sc
+adenza.anno);
+\end_layout
+
+\begin_layout Plain Layout
+
+		} while (frigo[i].scadenza.giorno <= 0 || frigo[i].scadenza.giorno > 31 ||
+ frigo[i].scadenza.mese <= 0 || frigo[i].scadenza.mese > 12 || frigo[i].scadenza.anno
+ < 2015);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* input data di controllo */
+\end_layout
+
+\begin_layout Plain Layout
+
+	do {
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("
+\backslash
+nInserisci la data a cui controllare la scadenza ");
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%d %d %d", &controllo.giorno, &controllo.mese, &controllo.anno);
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while (controllo.giorno <= 0 || controllo.giorno > 31 || controllo.mese
+ <= 0 || controllo.mese > 12);
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* controllo */
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < N_PROD; ++i) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* flag -1 -> scaduto
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag 1 -> buono
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag 0 -> scade oggi */
+\end_layout
+
+\begin_layout Plain Layout
+
+		if (frigo[i].scadenza.anno > controllo.anno)
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		else if (frigo[i].scadenza.anno < controllo.anno)
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag = -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		else if (frigo[i].scadenza.mese > controllo.mese)
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		else if (frigo[i].scadenza.mese < controllo.mese)
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag = -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		else if (frigo[i].scadenza.giorno > controllo.giorno)
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		else if (frigo[i].scadenza.giorno < controllo.giorno)
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag = -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		else
+\end_layout
+
+\begin_layout Plain Layout
+
+			flag = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* output */
+\end_layout
+
+\begin_layout Plain Layout
+
+		switch (flag) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			case 1:
+\end_layout
+
+\begin_layout Plain Layout
+
+				printf("
+\backslash
+nIl prodotto %s sara' ancora buono!", frigo[i].nome);
+\end_layout
+
+\begin_layout Plain Layout
+
+				break;
+\end_layout
+
+\begin_layout Plain Layout
+
+			case 0:
+\end_layout
+
+\begin_layout Plain Layout
+
+				printf("
+\backslash
+nIl prodotto %s scade esattamente in quella data.", frigo[i].nome);
+\end_layout
+
+\begin_layout Plain Layout
+
+				break;
+\end_layout
+
+\begin_layout Plain Layout
+
+			case -1:
+\end_layout
+
+\begin_layout Plain Layout
+
+				printf("
+\backslash
+nIl prodotto %s sara' ormai da buttare!", frigo[i].nome);
+\end_layout
+
+\begin_layout Plain Layout
+
+				break;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
