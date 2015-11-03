@@ -420,22 +420,22 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-	p1 = 0;
+	p1 = -1;
 \end_layout
 
 \begin_layout LyX-Code
 
-	p2 = 0;
+	p2 = -2;
 \end_layout
 
 \begin_layout LyX-Code
 
-	current_p1 = 0;
+	current_p1 = -1;
 \end_layout
 
 \begin_layout LyX-Code
 
-	current_p2 = 0;
+	current_p2 = -2;
 \end_layout
 
 \begin_layout LyX-Code
@@ -445,7 +445,7 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-		if (volume[pamx] < volume[i]) {
+		if (volume[pmax] < volume[i]) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -470,7 +470,7 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-			if (current_p1 = 0) {
+			if (current_p1 == -1) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -510,12 +510,12 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-			current_p1 = 0;
+			current_p1 = -1;
 \end_layout
 
 \begin_layout LyX-Code
 
-			current_p2 = 0;
+			current_p2 = -2;
 \end_layout
 
 \begin_layout LyX-Code
@@ -1318,7 +1318,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Valutazione polinomio: calcolo per monomi
 \end_layout
 
@@ -1526,7 +1525,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Valutazione polinomio: costruzione progressiva della potenza
 \end_layout
 
@@ -1719,7 +1717,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Valutazione polinomio: potenza implicita
 \end_layout
 
@@ -2144,7 +2141,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Ordinamento per inserzione
 \end_layout
 
