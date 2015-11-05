@@ -1,0 +1,2435 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi su matrici in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+06/11/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #8
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Simmetria rispetto alla diagonale secondaria
+\end_layout
+
+\begin_layout Quotation
+Leggere una matrice quadrata di numeri reali dallo standard input, determinare
+ se si tratta di una matrice “simmetrica rispetto alla diagonale secondaria”
+ e in caso contrario annullare le diagonali principali della matrice inserita
+ e stampare a video la matrice risultato.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simmetria diagonale secondaria
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAXLEN 30 
+\end_layout
+
+\begin_layout LyX-Code
+
+int main( ) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int main( ) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	float mat[MAXLEN][MAXLEN]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j, n; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int flag; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* acquisizione dati*/ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nOrdine della matrice 0 < n <= MAXLEN : "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &n); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while ( n <= 0 || n > MAXLEN); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nInserire coeff.
+ matrice di ordine %d 
+\backslash
+n", n); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* Lettura della matrice */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < n; i++) 
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (j = 0; j < n; j++) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("
+\backslash
+n mat[%d][%d] := ", i, j); 
+\end_layout
+
+\begin_layout LyX-Code
+
+			scanf("%f", &mat[i][j]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* Verifica simmetria rispetto alla diagonale secondaria */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+	flag = 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = n - 1; i > 0 && flag == 1 ; --i) 
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (j = n - 1; j > n - 1 - i && flag == 1; --j) 
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (mat[i][j] != mat[n-1-j][n-1-i]) 
+\end_layout
+
+\begin_layout LyX-Code
+
+				flag = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (flag == 0) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nLa matrice inserita non e' simmetrica!"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nAnnullo le diagonali principali.....
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (i = 0; i < n; i++) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			mat[i][i] = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+			mat[i][n-i-1] = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+n i valori nella matrice sono:
+\backslash
+n
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (i = 0; i < n ; i++) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			for (j = 0; j < n ; j++) 
+\end_layout
+
+\begin_layout LyX-Code
+
+				printf("%f", mat[i][j]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+n"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+n la matrice inserita e' simmetrica!"); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Quadrato magico
+\end_layout
+
+\begin_layout Quotation
+i progetti e codifichi una funzione C che avendo come parametri d'ingresso
+ una matrice di interi e l'ordine di tale matrice, riempia le celle della
+ matrice con i valori corrispondenti di un quadrato magico di dimensione
+ n, con n dispari.
+ 
+\end_layout
+
+\begin_layout Quotation
+Un quadrato magico di ordine n contiene i primi n numeri naturali 
+\begin_inset Formula $\left(1,2,3,\ldots,n^{2}\right)$
+\end_inset
+
+ disposti in modo tale che la somma dei numeri su ogni riga, su ogni colonna
+ e sulle due diagonali principali sia sempre la stessa.
+ 
+\end_layout
+
+\begin_layout Standard
+Esiste una regola molto semplice per percorrere la matrice disponendo i
+ numeri interi in ordine crescente.
+ 
+\end_layout
+
+\begin_layout Standard
+Partendo col posizionare un 
+\begin_inset Formula $1$
+\end_inset
+
+ nella posizione centrale sull'ultima riga, si percorre la matrice incrementando
+ di una unità il numero di riga e il numero di colonna dell'elemento attuale,
+ avendo cura di considerare i bordi opposti della matrice come adiacenti.
+ 
+\end_layout
+
+\begin_layout Itemize
+Se durante questa operazione si individua una cella vuota si scrive il numero
+ con valore successivo a quello della cella di partenza; 
+\end_layout
+
+\begin_layout Itemize
+altrimenti, il numero successivo, viene posizionato nella cella avente riga
+ immediatamente precedente a quella della cella di partenza.
+\end_layout
+
+\begin_layout Standard
+Es: n = 3 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="15">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Quadrato magico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAX_DIM 51 
+\end_layout
+
+\begin_layout LyX-Code
+
+void quadratoMagico(int mat[][MAX_DIM], int n); 
+\end_layout
+
+\begin_layout LyX-Code
+
+int main( ) {      
+\end_layout
+
+\begin_layout LyX-Code
+
+	int matrix[MAX_DIM][MAX_DIM];      
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j, lim, sum; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do {  
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+n dim.
+ quadrato (dispari <= %d):", MAX_DIM);  
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &lim); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while ( lim > MAX_DIM || lim % 2 == 0 ); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	quadratoMagico(matrix, lim); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	sum = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (j = 0; j < lim; j++)    
+\end_layout
+
+\begin_layout LyX-Code
+
+		sum += matrix[0][j]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nIl quadrato magico di ordine %d è:
+\backslash
+n", lim); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nLa somma su ogni linea è %d.
+\backslash
+n", sum); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < lim; i++) {    
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+n");    
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (j = 0; j < lim; j++)       
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("%4d", matrix[i][j]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+} // end main  
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void quadratoMagico(int mat[][MAX_DIM], int n){      
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j, k ;     
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < n; i++)    
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (j = 0; j < n; j++)  
+\end_layout
+
+\begin_layout LyX-Code
+
+			mat[i][j] = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	i = n - 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	j = n / 2; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (k = 0; k < n * n; k++) {   
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* passa alla riga immediatamente precedente */
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (mat[i][j] != 0) 
+\end_layout
+
+\begin_layout LyX-Code
+
+			i = (i - 1) % n;   
+\end_layout
+
+\begin_layout LyX-Code
+
+		mat[i][j] = k + 1;   
+\end_layout
+
+\begin_layout LyX-Code
+
+/* indice + 1 % n consente di restare sempre nei limiti, passando alla riga
+ o colonna successiva considerando adiacenti la l'indice n-1 e 0.
+ Infatti n - 1 + 1 % n = 0 */ 
+\end_layout
+
+\begin_layout LyX-Code
+
+		i = (i + 1) % n;  
+\end_layout
+
+\begin_layout LyX-Code
+
+		j = (j + 1) % n; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+} // end quadratoMagico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Tappeto elastico
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Quotation
+
+#define DIM 10 
+\end_layout
+
+\begin_layout Quotation
+
+typedef struct Intv { unsigned int r, c; } Casella; 
+\end_layout
+
+\begin_layout Quotation
+
+typedef Casella TappetoElastico[DIM][DIM]; 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pare che tra le discipline degli ottocenteschi "circhi delle pulci" non
+ ci fosse il tappeto elastico (non in quello del Prof.
+ Heckler, almeno).
+ Avrebbe potuto funzionare così:
+\end_layout
+
+\begin_layout Quotation
+la pulce salta sulla prima cella (0,0) del tappeto elastico (quadrato),
+ atterrandovi legge le coordinate (riga e colonna) della prossima cella
+ su cui saltare, e da lì continua a saltare, ogni volta leggendo le coordinate
+ della cella successiva verso cui saltare.
+ Se/quando le coordinate lette indicano un punto esterno al tappeto, la
+ pulce scende (tra gli applausi del pubblico).
+ 
+\end_layout
+
+\begin_layout Quotation
+Si implementino le seguenti funzioni in C e si spieghi brevemente come funzionan
+o gli algoritmi usati.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+...
+ ciclico(...)
+\end_layout
+
+\end_inset
+
+ che riceve in input un tappeto elastico e restituisce 1 se esso obbliga
+ a saltare indefinitamente, 0 se invece a un certo punto la pulce potrà
+ scendere 
+\end_layout
+
+\begin_layout Description
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+...
+ contasalti(...)
+\end_layout
+
+\end_inset
+
+ che riceve un tappeto elastico e misura il numero di salti che la pulce
+ compie prima di scendere (se il tappeto non è ciclico), oppure ­1 
+\end_layout
+
+\begin_layout Description
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+...
+ dicoppia(...)
+\end_layout
+
+\end_inset
+
+ che controlla se un tappeto è adatto all’esibizione di coppia: una seconda
+ pulce inizia a saltare dalla casella (DIM­1, DIM­1) contemporaneamente
+ alla prima pulce, ed esse continuano a saltare e atterrare in perfetta
+ sincronia fino a uscire assieme dal tappeto, senza mai "scontrarsi", cioè
+ atterrare contemporaneamente sulla stessa casella
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+ciclico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int ciclico(TappetoElastico te) {   
+\end_layout
+
+\begin_layout Plain Layout
+
+/* tappeto aus.
+ per tenere traccia delle caselle attraversate */
+\end_layout
+
+\begin_layout Plain Layout
+
+	int tec[DIM][DIM] = { 0 };      
+\end_layout
+
+\begin_layout Plain Layout
+
+/* flag per controllare se la destinazione del salto è fuori dal tappeto:
+ */
+\end_layout
+
+\begin_layout Plain Layout
+
+	int jmpOff; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	jmpOff == 1    
+\end_layout
+
+\begin_layout Plain Layout
+
+/* esiste un unico punto d'ingresso al tappeto: (0,0) */
+\end_layout
+
+\begin_layout Plain Layout
+
+	int r = 0, c = 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	do {        
+\end_layout
+
+\begin_layout Plain Layout
+
+		tec[r][c] = 1;        
+\end_layout
+
+\begin_layout Plain Layout
+
+		r = te[r][c].r;         
+\end_layout
+
+\begin_layout Plain Layout
+
+		c = te[r][c].c;        
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpOff = !(r >= 0 && r < DIM && c >= 0 && c < DIM);
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while (jmpOff == 0 && tec[r][c] == 0);   
+\end_layout
+
+\begin_layout Plain Layout
+
+/* return 1 se il percorso della pulce è ciclico: cioè le coordinate di
+ arrivo del prossimo salto (r,c) indicano una posizione già attraversata:
+ tec[r][c] == 0  in questo caso il valore di jmpOff e': jmpOff == 0 
+\end_layout
+
+\begin_layout Plain Layout
+
+return 0, se il percorso della pulce termina: jmpOff == 1 */
+\end_layout
+
+\begin_layout Plain Layout
+
+	return !JmpOff; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Contasalti Versione 1 */
+\end_layout
+
+\begin_layout Plain Layout
+
+int contasalti(TappetoElastico te) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int jmpOff, jmpCount = 0, r = 0, c = 0;    
+\end_layout
+
+\begin_layout Plain Layout
+
+	do {        
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpCount++;        
+\end_layout
+
+\begin_layout Plain Layout
+
+		r = te[r][c].r;         
+\end_layout
+
+\begin_layout Plain Layout
+
+		c = te[r][c].c;                    
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while(r >= 0 && r < DIM && c >= 0 && c < DIM && jmpCount <= DIM * DIM
+ + 1);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* troppi salti, era un ciclo infinito */
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (jmpCount > DIM * DIM + 1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		return ­1;   
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 1 + jmpCount; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Contasalti Versione 2 */
+\end_layout
+
+\begin_layout Plain Layout
+
+int contasalti(TappetoElastico te) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int jmpCount = 0, r = 0, c = 0;    
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (ciclico(te) == 1)      
+\end_layout
+
+\begin_layout Plain Layout
+
+		return ­1;  
+\end_layout
+
+\begin_layout Plain Layout
+
+	do {       
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpCount++;      
+\end_layout
+
+\begin_layout Plain Layout
+
+		r = te[r][c].r;       
+\end_layout
+
+\begin_layout Plain Layout
+
+		c = te[r][c].c;                   
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while (r >= 0 && r < DIM && c >= 0 && c < DIM);  
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 1 + jmpCount; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Contasalti Versione 3   */
+\end_layout
+
+\begin_layout Plain Layout
+
+int contasalti(TappetoElastico te)  {   
+\end_layout
+
+\begin_layout Plain Layout
+
+	int tec[DIM][DIM] = { 0 };    
+\end_layout
+
+\begin_layout Plain Layout
+
+	int jmpOff, jmpCount = 0, r = 0, c = 0;   
+\end_layout
+
+\begin_layout Plain Layout
+
+	do {       
+\end_layout
+
+\begin_layout Plain Layout
+
+		tec[r][c] = 1;        
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpCount++;       
+\end_layout
+
+\begin_layout Plain Layout
+
+		r = te[r][c].r;        
+\end_layout
+
+\begin_layout Plain Layout
+
+		c = te[r][c].c;       
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpOff = !(r >= 0 && r < DIM && c >= 0 && c < DIM);
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while (jmpOff == 0 && tec[r][c] == 0);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (jmpOff == 1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		return 1 + jmpCount;   
+\end_layout
+
+\begin_layout Plain Layout
+
+	return ­1; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int dicoppia(TappetoElastico te) {    
+\end_layout
+
+\begin_layout Plain Layout
+
+	int tec1[DIM][DIM] = { 0 }, tec2[DIM][DIM] = { 0 };
+\end_layout
+
+\begin_layout Plain Layout
+
+	int jmpOff1, jmpOff2, r1 = 0, c1 = 0, r9 = DIM­1, c9 = DIM­1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	do {        
+\end_layout
+
+\begin_layout Plain Layout
+
+		tec1[r1][c1] = 1; 
+\end_layout
+
+\begin_layout Plain Layout
+
+		tec2[r9][c9] = 1;                        
+\end_layout
+
+\begin_layout Plain Layout
+
+		r1 = te[r1][c1].r;  
+\end_layout
+
+\begin_layout Plain Layout
+
+		c1 = te[r1][c1].c;        
+\end_layout
+
+\begin_layout Plain Layout
+
+		r9 = te[r9][c9].r;  
+\end_layout
+
+\begin_layout Plain Layout
+
+		c9 = te[r9][c9].c;        
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpOff1 = !(r1 >= 0 && r1 < DIM && c1 >= 0 && c1 < DIM);         
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpOff2 = !(r9 >= 0 && r9 < DIM && c9 >= 0 && c9 < DIM);
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while ( jmpOff1 == 0 && jmpOff2 == 0 && !(r1 == r9 && c1 == c9) && tec1[r1][c
+1] == 0 && tec2[r9][c9] == 0 );    
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (jmpOff1 == 1 && jmpOff2 == 1 && !(r1 == r9 && c1 == c9))
+\end_layout
+
+\begin_layout Plain Layout
+
+		return 1;         
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2014/15.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
