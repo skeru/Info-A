@@ -1,0 +1,1671 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi su funzioni e puntatori in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+12/11/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #9
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analisi di codice
+\end_layout
+
+\begin_layout Quotation
+Si discuta quali errori, se ne esistono, possono verificarsi nel codice
+ delle stesse funzioni.
+ Si dica anche quante e quali stringhe comparirebbero a video nel caso venissero
+ chiamate le seguenti funzioni.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sandra
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int sandra(int *sonno) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	*sonno = 0
+\end_layout
+
+\begin_layout LyX-Code
+
+	while(++(*sonno)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Che barba, che noia!");
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Che noia, che barba!");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("Buonanotte!");
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Raimondo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int raimondo() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int *sonno;
+\end_layout
+
+\begin_layout LyX-Code
+
+	sonno = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while(sonno) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Posso leggere il giornale?");
+\end_layout
+
+\begin_layout LyX-Code
+
+		*sonno++;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Paolo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int paolo(int *alfa) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	*alfa = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("Un uomo chiamato ");
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (*alfa++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("contratto.");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return alfa;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Luca
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int luca() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int *paga;
+\end_layout
+
+\begin_layout LyX-Code
+
+	paga = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while(++paga) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Un caffè e poi al lavoro?");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return paga;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Sandra
+\end_layout
+
+\begin_layout Standard
+La funzione entra in un ciclo infinito e a video vengono stampate ripetutamente
+ le stringhe 
+\family typewriter
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+"Che barba, che noia!" "Che noia, che barba!"
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Raimondo
+\end_layout
+
+\begin_layout Standard
+La funzione non entra mai nel ciclo e restituisce subito il valore 
+\family typewriter
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+0
+\end_layout
+
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Paolo
+\end_layout
+
+\begin_layout Standard
+La funzione stampa a video la stringa 
+\family typewriter
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+"Un uomo chiamato "
+\end_layout
+
+\end_inset
+
+
+\family default
+ e restituisce il valore 
+\family typewriter
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+1
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Luca
+\end_layout
+
+\begin_layout Standard
+La funzione entra in un ciclo infinito e a video viene stampata ripetutamente
+ la stringa 
+\family typewriter
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+"Un caffè e poi torno al lavoro?"
+\end_layout
+
+\end_inset
+
+
+\family default
+ senza mai ritornare alcun valore.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Case-insensitive strcmp
+\end_layout
+
+\begin_layout Quotation
+Si scriva una funzione in grado di confrontare due stringhe, ritornando
+ un risultato compatibile con la funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+strcmp
+\end_layout
+
+\end_inset
+
+, salvo il fatto che si devono ignorare le differenze tra caratteri maiuscoli
+ e minuscoli.
+ 
+\end_layout
+
+\begin_layout Quotation
+Si utilizzi una scansione delle stringhe basata su puntatori.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+Si noti come in questa soluzione i vettori di caratteri rappresentanti le
+ stringhe vengono passati alla funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+confrontaStr
+\end_layout
+
+\end_inset
+
+ come puntatori.
+ Si ricorda che le stringhe sono vettori di caratteri.
+ Si ricorda inoltre che i vettori sono degli array monodimensionali.
+ Per come sono definiti gli array in C99, essi contengono l'indirizzo di
+ memoria della prima delle celle contigue che l'array contiene.
+ In questo caso i puntatori parametro rappresentano il primo carattere delle
+ rispettive stringhe.
+\end_layout
+
+\begin_layout Standard
+Per accedere al valore puntato da un puntatore, è sufficiente e necessario
+ dereferenziare il puntatore.
+ Ciò si fa tramite l'operatore di dereferenziazione (
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+*
+\end_layout
+
+\end_inset
+
+, applicato a sinistra del puntatore).
+\end_layout
+
+\begin_layout Standard
+L'incremento di un puntatore equivale all'incremento di una unità di tipo
+ puntato.
+ Accade cioè che l'incremento unitario(
+operatore 
+\lang italian
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+++
+\end_layout
+
+\end_inset
+
+) di un puntatore a 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+char
+\end_layout
+
+\end_inset
+
+ causerà la variazione del puntatore di un ammontare pari alla dimensione
+ di un 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+char
+\end_layout
+
+\end_inset
+
+, portando così il puntatore a puntare al carattere successivo.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+case-insensitive strcmp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+char capilatize (char c);
+\end_layout
+
+\begin_layout LyX-Code
+
+int confrontaStr(char *s0, char *s1);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int confrontaStr(char *s0, char *s1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char *p0 = s0, *p1 = s1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (*p0 != '
+\backslash
+0' && *p1 != '
+\backslash
+0' && capitalize(*p0) == capitalize(*p1)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		p0++;
+\end_layout
+
+\begin_layout LyX-Code
+
+		p1++;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return (int)capitalize(*p0) - (int)capitalize(*p1);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+char capilatize (char c) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (c >= 'a' && c <= 'z')
+\end_layout
+
+\begin_layout LyX-Code
+
+		return (char)((int)c - ((int)'a' - (int)'A'));
+\end_layout
+
+\begin_layout LyX-Code
+
+	return c; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Versione senza parti superflue
+\end_layout
+
+\begin_layout Standard
+La definizione dei prototipi
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+altrimenti noti come 
+\emph on
+firma 
+\emph default
+della funzione o 
+\emph on
+dichiarazione
+\emph default
+ della funzione
+\end_layout
+
+\end_inset
+
+ di funzione è opzionale quando tutte le chiamate a quella funzione avvengono
+ in righe di codice successive alla sua implementazione.
+\end_layout
+
+\begin_layout Standard
+Si ricorda inoltre che esiste un 
+\emph on
+cast
+\emph default
+ implicito tra i tipi 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+int
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+char
+\end_layout
+
+\end_inset
+
+ (che fa riferimento alla codifica ASCII del carattere).
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+case-insensitive strcmp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+char capilatize (char c) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (c >= 'a' && c <= 'z')
+\end_layout
+
+\begin_layout LyX-Code
+
+		return (c - ('a' - 'A'));
+\end_layout
+
+\begin_layout LyX-Code
+
+	return c; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int confrontaStr(char *s0, char *s1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char *p0 = s0, *p1 = s1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (*p0 != '
+\backslash
+0' && *p1 != '
+\backslash
+0' && capitalize(*p0) == capitalize(*p1)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		p0++;
+\end_layout
+
+\begin_layout LyX-Code
+
+		p1++;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return capitalize(*p0) - capitalize(*p1);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Versione senza puntatori
+\end_layout
+
+\begin_layout Standard
+Questa versione è corretta secondo la sintassi C99 e semanticamente equivalente
+ alle versioni precedentemente proposte.
+ Questa versione non sarebbe considerata del tutto corretta in sede d'esame
+ in quanto non fa uso, come esplicitamente richiesto dal testo dell'esercizio
+ di una scansione basata sui puntatori.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+case-insensitive strcmp
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+char capilatize (char c) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (c >= 'a' && c <= 'z')
+\end_layout
+
+\begin_layout LyX-Code
+
+		return (c - ('a' - 'A'));
+\end_layout
+
+\begin_layout LyX-Code
+
+	return c; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int confrontaStr(char s0[], char s1[]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int p0, p1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (p0 = 0, p1 = 0; s0[p0] != '
+\backslash
+0' && s1[p1] != '
+\backslash
+0' && capitalize(s0[p0]) == capitalize(s1[p1]); p0++, p1++) ;
+\end_layout
+
+\begin_layout LyX-Code
+
+	return capitalize(s0[p0]) - capitalize(s1[p1]);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Calendario perpetuo
+\end_layout
+
+\begin_layout Quotation
+Scrivere un programma che realizzi un calendario perpetuo, ovvero calcoli
+ il giorno della settimana corrispondente a una certa data, sapendo che
+ il 1 Gennaio 1900 è stato un lunedì.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Standard
+Calcolare il numero di giorni trascorsi dal 01/Gen/1900 alla data richiesta,
+ e valutare con l'operatore mod il resto della divisione per 7 di tale numero.
+ Se il resto è 0, il giorno è lunedì, se 1 è martedì e così via.
+\end_layout
+
+\begin_layout Subsection
+Definizione dei sottoproblemi
+\end_layout
+
+\begin_layout Standard
+Cercando di decomporre il problema in sottoproblemi più semplici da risolvere,
+ si possono individuare delle parti di problema che possono essere risolte
+ con pazienza e non troppa difficoltà e che consentono l'avvicinamento alla
+ soluzione del problema principale.
+\end_layout
+
+\begin_layout Standard
+Per determinare il numero di giorni trascorsi dal 01/Gen/1900, occorre un
+ criterio per stabilire
+\end_layout
+
+\begin_layout Itemize
+quanti sono i giorni in un mese
+\end_layout
+
+\begin_layout Itemize
+se un anno è bisestile
+\end_layout
+
+\begin_layout Subsubsection
+Anni bisestili
+\end_layout
+
+\begin_layout Standard
+L'anno bisestile è un accorgimento utilizzato per mantenere in sincronia
+ l'anno civile con il ciclo delle stagioni.
+ Infatti, la durata dell'anno civile e la durata media dell'anno tropico
+ (tempo tra due solstizi o due equinozi dello stesso tipo) non è dato da
+ un numero intero di giorni.
+ La durata di un anno civile era di 365 giorni ma la durata di un anno tropico
+ era stata misurata in 365 giorni e 6 ore.
+\end_layout
+
+\begin_layout Standard
+Per ovviare a questo problema il Calendario Giuliano (46 a.C.) introdusse
+ un anno bisestile 1 volta ogni 4 anni (si 
+\emph on
+recuperava
+\emph default
+ un giorno perso una volta ogni quattro anni).
+\end_layout
+
+\begin_layout Standard
+In realtà l'anno tropico ha durata di circa 365 giorni, 6 ore, 11 minuti,
+ e 14 secondi.
+ Usando il calendario Giuliano l'anno tropico era in ritardo rispetto all'anno
+ civile (di 1 giorno ogni 128 anni); con la conseguenza che, con il passare
+ dei secoli, la data ufficiale d'inizio delle stagioni veniva anticipata
+ sempre più rispetto alle posizioni astronomiche.
+\end_layout
+
+\begin_layout Standard
+Secondo il Calendario Gregoriano (in vigore dal 1582 in poi), un anno è
+ bisestile se il suo numero è divisibile per 4, con l'eccezione degli anni
+ secolari (divisibili per 100) che sono bisestili solo se divisibili anche
+ per 400 (in questo modo l'inizio dell’anno tropico è in ritardo di circa
+ 26 secondi per anno civile (circa 1 giorno ogni 3323 anni).
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Calendario perpetuo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAX_LEN 11 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+typedef struct { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int giorno; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int mese; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int anno; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int bis; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	char Giorno[MAX_LEN]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+} Data; 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int bisestile(int anno); 
+\end_layout
+
+\begin_layout LyX-Code
+
+int GiorniMese(int mese, int anno); 
+\end_layout
+
+\begin_layout LyX-Code
+
+Data Calendario(int gg, int mese, int anno);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int mm, aa, gg; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	Data d; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("
+\backslash
+nInserire giorno: ");
+\end_layout
+
+\begin_layout LyX-Code
+
+			scanf("%d",&gg); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} while (gg < 1 || gg > 31);
+\end_layout
+
+\begin_layout LyX-Code
+
+		do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("
+\backslash
+nInserire mese: ");
+\end_layout
+
+\begin_layout LyX-Code
+
+			scanf("%d",&mm); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} while (mm < 1 || mm > 12); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		do { 
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("
+\backslash
+nInserire anno: ");
+\end_layout
+
+\begin_layout LyX-Code
+
+			scanf("%d",&aa); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		} while (aa < 1900); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (GiorniMese(mm, aa) < gg);
+\end_layout
+
+\begin_layout LyX-Code
+
+	d = Calendario(gg,mm,aa); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+nLa data inserita corrisponde a: "); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("
+\backslash
+n %s %d / %d / %d", d.Giorno, d.giorno, d.mese, d.anno); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (bisestile(d.anno)) 
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nL'anno è bisestile."); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int bisestile(int anno) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (((anno % 4 == 0) && (anno % 100 != 0)) || (anno % 400 == 0)) 
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	else 
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int GiorniMese(int mese, int anno) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (mese == 2) 
+\end_layout
+
+\begin_layout LyX-Code
+
+		return (28 + bisestile(anno)); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	else if ((mese == 11) || (mese == 4) || (mese == 6) || (mese == 9)) 
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 30; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	else 
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 31; 
+\end_layout
+
+\begin_layout LyX-Code
+
+} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+Data Calendario(int gg, int mese, int anno) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	typedef char nome[MAX_LEN]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	nome week[7] = { "Lunedì", "Martedì", "Mercoledì", "Giovedì", "Venerdì",
+ "Sabato", "Domenica" }; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	Data risultato; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int count, i; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	risultato.giorno = gg; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	risultato.mese = mese; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	risultato.anno = anno; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	risultato.bis = bisestile(anno); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	count = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 1900; i < anno; i++) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		count = count + 365 + bisestile(i); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 1; i < mese; i++) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		count = count + GiorniMese(i, anno); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	count = count + gg - 1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	count = count % 7; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	i = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	while ((week[count])[i] != '
+\backslash
+0') { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		risultato.Giorno[i] = (week[count])[i]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		i = i+1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	risultato.Giorno[i] = (week[count])[i]; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return risultato;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2014/15.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
