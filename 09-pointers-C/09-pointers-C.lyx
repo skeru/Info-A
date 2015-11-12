@@ -365,7 +365,7 @@ int paolo(int *alfa) {
 
 \begin_layout LyX-Code
 
-	return alfa;
+	return *alfa;
 \end_layout
 
 \begin_layout LyX-Code
@@ -431,7 +431,7 @@ int luca() {
 
 \begin_layout LyX-Code
 
-	return paga;
+	return *paga;
 \end_layout
 
 \begin_layout LyX-Code
@@ -648,10 +648,7 @@ status open
 \begin_layout Standard
 L'incremento di un puntatore equivale all'incremento di una unità di tipo
  puntato.
- Accade cioè che l'incremento unitario(
-operatore 
-\lang italian
-
+ Accade cioè che l'incremento unitario(operatore 
 \begin_inset listings
 lstparams "language=C,basicstyle={\ttfamily},tabsize=2"
 inline true
@@ -717,7 +714,7 @@ case-insensitive strcmp
 
 \begin_layout LyX-Code
 
-char capilatize (char c);
+char capitalize(char c);
 \end_layout
 
 \begin_layout LyX-Code
@@ -736,7 +733,17 @@ int confrontaStr(char *s0, char *s1) {
 
 \begin_layout LyX-Code
 
-	char *p0 = s0, *p1 = s1;
+	char *p0, *p1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	p0 = s0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	p1 = s1;
 \end_layout
 
 \begin_layout LyX-Code
@@ -779,7 +786,7 @@ int confrontaStr(char *s0, char *s1) {
 
 \begin_layout LyX-Code
 
-char capilatize (char c) {
+char capitalize(char c) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -899,7 +906,7 @@ case-insensitive strcmp
 
 \begin_layout LyX-Code
 
-char capilatize (char c) {
+char capitalize(char c) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -1014,7 +1021,7 @@ case-insensitive strcmp
 
 \begin_layout LyX-Code
 
-char capilatize (char c) {
+char capitalize(char c) {
 \end_layout
 
 \begin_layout LyX-Code

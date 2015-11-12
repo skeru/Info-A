@@ -644,7 +644,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+0
 \end_layout
 
 \end_inset
@@ -653,7 +653,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+4
 \end_layout
 
 \end_inset
@@ -1084,7 +1084,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+0
 \end_layout
 
 \end_inset
@@ -1093,7 +1093,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+4
 \end_layout
 
 \end_inset
@@ -1120,7 +1120,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+0
 \end_layout
 
 \end_inset
@@ -1129,7 +1129,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+4
 \end_layout
 
 \end_inset
@@ -1156,7 +1156,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+0
 \end_layout
 
 \end_inset
@@ -1165,7 +1165,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+4
 \end_layout
 
 \end_inset
@@ -1192,7 +1192,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+0
 \end_layout
 
 \end_inset
@@ -1201,7 +1201,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+4
 \end_layout
 
 \end_inset
@@ -1222,6 +1222,15 @@ Es:
 
 \begin_layout Plain Layout
 3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
 \end_layout
 
 \end_inset
@@ -1239,15 +1248,6 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1266,7 +1266,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+0
 \end_layout
 
 \end_inset
@@ -1275,7 +1275,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+5
 \end_layout
 
 \end_inset
@@ -1294,15 +1294,6 @@ Es:
 
 \begin_layout Plain Layout
 3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5
 \end_layout
 
 \end_inset
@@ -1320,6 +1311,15 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 
 \end_layout
 
@@ -1338,7 +1338,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+7
 \end_layout
 
 \end_inset
@@ -1347,7 +1347,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-7
+5
 \end_layout
 
 \end_inset
@@ -1394,7 +1394,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+6
 \end_layout
 
 \end_inset
@@ -1412,25 +1412,25 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
 \end_layout
 
 \end_inset
@@ -1448,7 +1448,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-6
+0
 \end_layout
 
 \end_inset
@@ -1458,6 +1458,24 @@ Es:
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
 \end_layout
 
 \end_inset
@@ -1467,24 +1485,6 @@ Es:
 
 \begin_layout Plain Layout
 8
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-6
 \end_layout
 
 \end_inset
@@ -1510,7 +1510,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+9
 \end_layout
 
 \end_inset
@@ -1519,7 +1519,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-9
+4
 \end_layout
 
 \end_inset
@@ -1548,7 +1548,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+7
 \end_layout
 
 \end_inset
@@ -1557,7 +1557,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-7
+5
 \end_layout
 
 \end_inset
@@ -1568,7 +1568,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-8
+6
 \end_layout
 
 \end_inset
@@ -1586,7 +1586,7 @@ Es:
 \begin_inset Text
 
 \begin_layout Plain Layout
-6
+8
 \end_layout
 
 \end_inset
