@@ -201,10 +201,6 @@ Simmetria diagonale secondaria
 
 \begin_layout LyX-Code
 
-\end_layout
-
-\begin_layout LyX-Code
-
 #define MAXLEN 30 
 \end_layout
 
@@ -365,7 +361,7 @@ n");
 
 \begin_layout LyX-Code
 
-			mat[i][n-i-1] = 0; 
+			mat[i][n - i - 1] = 0; 
 \end_layout
 
 \begin_layout LyX-Code
@@ -420,7 +416,7 @@ n");
 
 		printf("
 \backslash
-n la matrice inserita e' simmetrica!"); 
+nLa matrice inserita e' simmetrica!"); 
 \end_layout
 
 \begin_layout LyX-Code
@@ -455,10 +451,18 @@ Quadrato magico
 \end_layout
 
 \begin_layout Quotation
-i progetti e codifichi una funzione C che avendo come parametri d'ingresso
+Si progetti e codifichi una funzione C che avendo come parametri d'ingresso
  una matrice di interi e l'ordine di tale matrice, riempia le celle della
  matrice con i valori corrispondenti di un quadrato magico di dimensione
- n, con n dispari.
+ 
+\begin_inset Formula $n$
+\end_inset
+
+, con 
+\begin_inset Formula $n$
+\end_inset
+
+ dispari.
  
 \end_layout
 
@@ -500,7 +504,11 @@ altrimenti, il numero successivo, viene posizionato nella cella avente riga
 \end_layout
 
 \begin_layout Standard
-Es: n = 3 
+Es: 
+\begin_inset Formula $n=3$
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1653,7 +1661,7 @@ int main( ) {
 
 		printf("
 \backslash
-n dim.
+nDim.
  quadrato (dispari <= %d):", MAX_DIM);  
 \end_layout
 
@@ -1664,7 +1672,7 @@ n dim.
 
 \begin_layout LyX-Code
 
-	} while ( lim > MAX_DIM || lim % 2 == 0 ); 
+	} while (lim > MAX_DIM || lim % 2 == 0); 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1739,7 +1747,7 @@ n");
 
 \begin_layout LyX-Code
 
-} // end main  
+} /* end main */ 
 \end_layout
 
 \begin_layout LyX-Code
@@ -1788,7 +1796,7 @@ void quadratoMagico(int mat[][MAX_DIM], int n){
 
 \begin_layout LyX-Code
 
-	/* passa alla riga immediatamente precedente */
+	/* passa a riga immediatamente precedente */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1960,6 +1968,73 @@ status open
 Soluzione C
 \end_layout
 
+\begin_layout Subsubsection
+Ciclico
+\end_layout
+
+\begin_layout Standard
+Viene fatto uso di una struttura di appoggio che simula il tappeto elastico.
+ Inizialmente questa struttura 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+tec
+\end_layout
+
+\end_inset
+
+ è tutta 
+\emph on
+colorata
+\emph default
+ di 0.
+ Viene 
+\emph on
+colorata
+\emph default
+ di 1 quando la corrispondente cella del tappeto elastico viene visitata.
+ 
+\end_layout
+
+\begin_layout Standard
+Ad ogni iterazione vengono controllate 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+jmpOff
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+tec
+\end_layout
+
+\end_inset
+
+ per verificare di essere atterrati all'interno della scacchiera e su una
+ casella 
+\emph on
+colorata
+\emph default
+ di 0.
+\end_layout
+
 \begin_layout Standard
 \begin_inset listings
 lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
@@ -2055,7 +2130,7 @@ int ciclico(TappetoElastico te) {
 
 /* return 1 se il percorso della pulce è ciclico: cioè le coordinate di
  arrivo del prossimo salto (r,c) indicano una posizione già attraversata:
- tec[r][c] == 0  in questo caso il valore di jmpOff e': jmpOff == 0 
+ tec[r][c] == 0  in questo caso il valore di jmpOff è: jmpOff == 0 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2077,6 +2152,86 @@ return 0, se il percorso della pulce termina: jmpOff == 1 */
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Contasalti
+\end_layout
+
+\begin_layout Standard
+Di questa funzione si propongono diverse varianti.
+ Tali varianti differiscono tra loro per la tecnica di riconoscimento della
+ ciclicità della struttura.
+\end_layout
+
+\begin_layout Paragraph
+Versione 1
+\end_layout
+
+\begin_layout Standard
+Questa versione esegue nel ciclo con controllo in coda 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+do { /*code*/ } while(/*cond*/);
+\end_layout
+
+\end_inset
+
+ tutti i controlli.
+ Quelli relativi al fatto che il salto resta contenuto nel quadrato e di
+ seguito un controllo sul numero di salti effettuati.
+\end_layout
+
+\begin_layout Standard
+Fissata 
+\begin_inset Formula $DIM$
+\end_inset
+
+ dimensione della scacchiera, il caso pessimo (in cui la pulce salta su
+ tutte le caselle prima di uscire) prevede di effettuare 
+\begin_inset Formula $DIM^{2}$
+\end_inset
+
+ salti per visitarle tutte (
+\begin_inset Formula $+1$
+\end_inset
+
+ per uscire dalla scacchiera).
+ È quindi matematicamente impossibile essere su un precorso che porta all'uscita
+ dalla scacchiera avendo percorso più di 
+\begin_inset Formula $DIM^{2}+1$
+\end_inset
+
+ salti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+contasalti (v1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 
 /* Contasalti Versione 1 */
@@ -2089,7 +2244,7 @@ int contasalti(TappetoElastico te) {
 
 \begin_layout Plain Layout
 
-	int jmpOff, jmpCount = 0, r = 0, c = 0;    
+	int jmpCount = 0, r = 0, c = 0;    
 \end_layout
 
 \begin_layout Plain Layout
@@ -2130,7 +2285,7 @@ int contasalti(TappetoElastico te) {
 
 \begin_layout Plain Layout
 
-		return ­1;   
+		return -1;   
 \end_layout
 
 \begin_layout Plain Layout
@@ -2143,7 +2298,43 @@ int contasalti(TappetoElastico te) {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Versione 2
+\end_layout
+
+\begin_layout Standard
+Sfruttando il codice scritto in precedenza, questa versione dell'algoritmo
+ controlla prima la ciclicità del tappeto e si sviluppa poi supponendo sempre
+ che il tappeto sia aciclico.
+\end_layout
+
+\begin_layout Standard
+Questa variante sarà più lenta perché ripercorre due volte il tappeto (una
+ volta per controllare la ciclicità e una seconda volta per effettuare il
+ conteggio) ma sicuramente ha un corpo più snello rispetto alle altre.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
 \begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+contasalti (v2)
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -2207,13 +2398,137 @@ int contasalti(TappetoElastico te) {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Versione 3
+\end_layout
+
+\begin_layout Standard
+Questa versione prende spunto dalla prima ma utilizza più memoria per migliorare
+ il tempo di esecuzione e la leggibilità del codice.
+ Risulta essere una fusione tra la prima versione e la funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
 \begin_layout Plain Layout
+
+ciclico
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Viene introdotta una flag chiamata 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+jmpOff
+\end_layout
+
+\end_inset
+
+ che viene aggiornata ad ogni ciclo per verificare il caso di terminazione
+ per salto fuori dalla scacchiera.
+\end_layout
+
+\begin_layout Standard
+Viene inoltre fatto uso di una struttura di appoggio che simula il tappeto
+ elastico.
+ Inizialmente questa struttura 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+tec
+\end_layout
+
+\end_inset
+
+ è tutta 
+\emph on
+colorata
+\emph default
+ di 0.
+ Viene 
+\emph on
+colorata
+\emph default
+ di 1 quando la corrispondente cella del tappeto elastico viene visitata.
+\end_layout
+
+\begin_layout Standard
+Ad ogni iterazione vengono controllate 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+jmpOff
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+tec
+\end_layout
+
+\end_inset
+
+ per verificare di essere atterrati all'interno della scacchiera e su una
+ casella 
+\emph on
+colorata
+\emph default
+ di 0.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+contasalti (v3)
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Plain Layout
 
-/* Contasalti Versione 3   */
+/* Contasalti Versione 3 */
 \end_layout
 
 \begin_layout Plain Layout
@@ -2238,7 +2553,7 @@ int contasalti(TappetoElastico te)  {
 
 \begin_layout Plain Layout
 
-		tec[r][c] = 1;        
+		tec[r][c] = 1;
 \end_layout
 
 \begin_layout Plain Layout
@@ -2286,7 +2601,31 @@ int contasalti(TappetoElastico te)  {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+DiCoppia
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
 \begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+dicoppia
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
