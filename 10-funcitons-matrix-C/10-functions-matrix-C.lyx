@@ -1,0 +1,2654 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi su funzioni e matrici in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+17/11/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #10
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Tappeto elastico 2.0
+\end_layout
+
+\begin_layout Standard
+Sulla stessa struttura definita per il problema presentato nell'esercitazione
+ #8, si vuole apportare una modifica alle richieste del problema per venire
+ incontro a un raffinamento dei requisiti del software.
+ Viene di seguito riportato il testo originale del problema con le richieste
+ aggiornate.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Quotation
+
+#define DIM 10 
+\end_layout
+
+\begin_layout Quotation
+
+typedef struct Intv { unsigned int r, c; } Casella; 
+\end_layout
+
+\begin_layout Quotation
+
+typedef Casella TappetoElastico[DIM][DIM]; 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pare che tra le discipline degli ottocenteschi "circhi delle pulci" non
+ ci fosse il tappeto elastico (non in quello del Prof.
+ Heckler, almeno).
+ Avrebbe potuto funzionare così:
+\end_layout
+
+\begin_layout Quotation
+la pulce salta sulla prima cella (0,0) del tappeto elastico (quadrato),
+ atterrandovi legge le coordinate (riga e colonna) della prossima cella
+ su cui saltare, e da lì continua a saltare, ogni volta leggendo le coordinate
+ della cella successiva verso cui saltare.
+ Se/quando le coordinate lette indicano un punto esterno al tappeto, la
+ pulce scende (tra gli applausi del pubblico).
+ 
+\end_layout
+
+\begin_layout Quotation
+Si implementi una funzione C 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ciclico
+\end_layout
+
+\end_inset
+
+ che riceve in input un 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+TappetoElastico
+\end_layout
+
+\end_inset
+
+ e restituisce 1 se esso obbliga a saltare indefinitivamente, 0 se invece
+ a un certo punto la pulce potrà scendere e, in quel caso, fornisca anche
+ indicazione di quanti salti è stato necessario effettuare prima di saltare
+ fuori dal tappeto.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Restituire più di un dato al chiamante
+\end_layout
+
+\begin_layout Standard
+In questo esercizio viene richiesto di fornire indicazioni relative alla
+ ciclicità del tappeto nei valori di ritorno ma viene anche chiesto di fornire
+ indicazioni riguardo al numero di salti compiuti.
+ Vediamo come è possibile fornire queste indicazioni da una funzione.
+\end_layout
+
+\begin_layout Paragraph
+Output tramite printf
+\end_layout
+
+\begin_layout Standard
+Una prima idea molto rude può essere quella di eseguire una printf per comunicar
+e il risultato della computazione prima di eseguire l'istruzione di return.
+\end_layout
+
+\begin_layout Standard
+Sebbene letteralmente questo approccio rispecchi i requisiti del problema,
+ non è usanza comune nè tantomeno si può definire elegante lasciare alla
+ funzione il compito di comunicare il risultato della sua computazione all'utent
+e.
+ Il risultato del calcolo dovrebbe prima passare dal chiamante perché possa
+ valutare cosa farne.
+ Se chi ha chiamato una tale funzione lo riterrà necessario, allora quel
+ dato verrà mostrato all'utente.
+\end_layout
+
+\begin_layout Paragraph
+Restituire tipi strutturati
+\end_layout
+
+\begin_layout Standard
+È possibile definire una struttura di comodo in modo che possa essere usata
+ come tipo restituito.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+typedef struct { int haCicli; int nSalti; } S;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+S ciclico(TappetoElastico te) { ...
+ }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tuttavia il testo del problema richiedeva esplicitamente che il valore di
+ ritorno fosse solamente il dato relativo alla ciclicità del tappeto.
+ Questo non è l'approccio che la soluzione richiedeva.
+\end_layout
+
+\begin_layout Paragraph
+Passaggio di parametri per indirizzo
+\end_layout
+
+\begin_layout Standard
+Il passaggio di parametri per indirizzo consente di passare ad una funzione
+ un puntatore ad una variabile definita nel chiamante (o a un livello superiore)
+ concedendo quindi alla funzione la possibilità di modificare un valore
+ che resterà tale anche dopo l'istruzione di return.
+\end_layout
+
+\begin_layout Standard
+Questo significa che modificando il valore puntato da un parametro puntatore,
+ esso non svanirà al termine della funzione e può essere usato all'occorrenza
+ per fornire un ulteriore output.
+ La soluzione è presentata più nel dettaglio di seguito.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+Questa versione prende spunto dalla versione 3 della funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+contasalti
+\end_layout
+
+\end_inset
+
+ presentata nell'esercitazione #8.
+\end_layout
+
+\begin_layout Standard
+Viene aggiunto un parametro, di tipo puntatore a intero, che sarà utilizzato
+ in caso di tappeto aciclico per memorizzare il numero di salti compiuti
+ per uscire dal tappeto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Tappeto ciclico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int ciclico(TappetoElastico te, int *nSalti)  {   
+\end_layout
+
+\begin_layout Plain Layout
+
+	int tec[DIM][DIM] = { 0 };    
+\end_layout
+
+\begin_layout Plain Layout
+
+	int jmpOff, jmpCount = 0, r = 0, c = 0;   
+\end_layout
+
+\begin_layout Plain Layout
+
+	do {       
+\end_layout
+
+\begin_layout Plain Layout
+
+		tec[r][c] = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpCount++;       
+\end_layout
+
+\begin_layout Plain Layout
+
+		r = te[r][c].r;        
+\end_layout
+
+\begin_layout Plain Layout
+
+		c = te[r][c].c;       
+\end_layout
+
+\begin_layout Plain Layout
+
+		jmpOff = !(r >= 0 && r < DIM && c >= 0 && c < DIM);
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while (jmpOff == 0 && tec[r][c] == 0);   
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (jmpOff == 1) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		*nSalti = 1 + jmpCount;
+\end_layout
+
+\begin_layout Plain Layout
+
+		return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+ASCII Art: il bersaglio
+\end_layout
+
+\begin_layout Quotation
+Scrivere una funzione che prenda in input come parametro una matrice quadrata
+ di numeri interi e un numero intero 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+n
+\end_layout
+
+\end_inset
+
+.
+ Si riempia la matrice secondo lo schema 
+\begin_inset Quotes fld
+\end_inset
+
+bersaglio
+\begin_inset Quotes frd
+\end_inset
+
+, come in esempio.
+ 
+\end_layout
+
+\begin_layout Quotation
+Si assuma che la matrice sia stata dichiarata di dimensione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+N
+\end_layout
+
+\end_inset
+
+x
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+N
+\end_layout
+
+\end_inset
+
+, con 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+#define N 50
+\end_layout
+
+\end_inset
+
+ in precedenti istruzioni.
+ 
+\end_layout
+
+\begin_layout Quotation
+Esempio: 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+n = 5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione per colorazioni successive
+\end_layout
+
+\begin_layout Standard
+Questa soluzione propone di riempire tutta la matrice quadrata di 1
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+...per poi restringere i limiti del quadrato e riempire con i 2...e infine con
+ i 3
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bersaglio (colorazioni successive)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void bersaglio(int m[][N], int n) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j, k; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (k = 0; k < (n + 1) / 2; k++)
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (i = k; i < n - k; i++) 
+\end_layout
+
+\begin_layout LyX-Code
+
+			for (j = k; j < n - k; j++) 
+\end_layout
+
+\begin_layout LyX-Code
+
+				m[i][j] = k + 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione per relazione tra valore e indici
+\end_layout
+
+\begin_layout Standard
+Questa soluzione propone di identificare le relazioni tra gli indici e il
+ valore ed eventualmente sfruttare la simmetria del pattern per risparmiare
+ calcoli.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="5">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In questa sotto-matrice (si consideri la parte non nulla) vige la regola
+ 
+\end_layout
+
+\begin_layout LyX-Code
+m[i][j] = ((i + 1) + (j + 1)) / 2
+\end_layout
+
+\begin_layout Standard
+Successivamente, la parte mascherata da 0 può essere ottenuta per simmetria
+\end_layout
+
+\begin_layout LyX-Code
+m[i][n-1-j] = m[i][j]
+\end_layout
+
+\begin_layout LyX-Code
+m[n-1-i][j] = m[i][j]
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bersaglio (relazione tra valore e indici)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void bersaglio(int m[][N], int n) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j, k; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < n / 2; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (j = 0; j < n / 2; j++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			m[i][j] = (i + j + 2) / 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* per simmetria, completo la riga */
+\end_layout
+
+\begin_layout LyX-Code
+
+			m[i][n-j-1] = m[i][j];
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* per simmetria, completo la colonna */
+\end_layout
+
+\begin_layout LyX-Code
+
+			m[n-1-i][j] = m[i][j];
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* completo l'ultimo quadrante */
+\end_layout
+
+\begin_layout LyX-Code
+
+			m[n-1-i][n-1-j] = m[i][j];
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+ASCII Art: la farfalla
+\end_layout
+
+\begin_layout Quotation
+Scrivere una funzione che prenda in input come parametro una matrice quadrata
+ di numeri interi e un numero intero 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+n
+\end_layout
+
+\end_inset
+
+.
+ Si riempia la matrice secondo lo schema 
+\begin_inset Quotes fld
+\end_inset
+
+farfalla
+\begin_inset Quotes frd
+\end_inset
+
+, come in esempio.
+ 
+\end_layout
+
+\begin_layout Quotation
+Si assuma che la matrice sia stata dichiarata di dimensione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+N
+\end_layout
+
+\end_inset
+
+x
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+N
+\end_layout
+
+\end_inset
+
+, con 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+#define N 50
+\end_layout
+
+\end_inset
+
+ in precedenti istruzioni.
+ 
+\end_layout
+
+\begin_layout Quotation
+Esempio: 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+n = 6
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+La soluzione consiste nello scandire la matrice e riconoscere il settore
+ in cui ci si trova in base agli indici.
+\end_layout
+
+\begin_layout Standard
+Si ricorda che i settori sono delimitati dalla diagonale principale (equazione
+ 
+\begin_inset Formula $i=j$
+\end_inset
+
+) e dalla diagonale secondaria (equazione 
+\begin_inset Formula $i=n-1-j$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Farfalla
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void farfalla(int m[][N], int n) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j, k; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < n; i++) 
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (j = 0; j < n; j++) 
+\end_layout
+
+\begin_layout LyX-Code
+
+			if ((i > j && i < n - 1 - j) || (i < j && i > n - 1 - j))
+\end_layout
+
+\begin_layout LyX-Code
+
+				m[i][j] = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+			else
+\end_layout
+
+\begin_layout LyX-Code
+
+				m[i][j] = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2014/15.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
