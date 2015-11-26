@@ -1,0 +1,526 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi su Record di Attivazione
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+17/11/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #11
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Calcolo della media
+\end_layout
+
+\begin_layout Quotation
+Dato il seguente codice sorgente espresso in linguaggio C relativo ad una
+ funzione, si disegni il record di attivazione che la sua esecuzione genera
+ in memoria.
+ Si valuti la memoria del programma all'istante prima dell'esecuzione dell'istru
+zione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+return
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+float media(int v[], int N) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i;
+\end_layout
+
+\begin_layout LyX-Code
+
+	float sum;
+\end_layout
+
+\begin_layout LyX-Code
+
+	sum = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < N, i++)
+\end_layout
+
+\begin_layout LyX-Code
+
+		sum += v[i];
+\end_layout
+
+\begin_layout LyX-Code
+
+	sum /= N;
+\end_layout
+
+\begin_layout LyX-Code
+
+	return sum;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Assunzioni sull'architettura
+\end_layout
+
+\begin_layout Standard
+La richiesta dell'esercizio non contiene dati relativi all'architettura
+ del calcolatore che eseguirà questo codice.
+ Si fanno quindi assunzioni relative alle dimenisoni in memoria di ciascun
+ tipo di dato e alla struttura della memoria stessa.
+\end_layout
+
+\begin_layout Standard
+Queste assunzioni sono le medesime presentate a lezione
+\end_layout
+
+\begin_layout Paragraph
+Struttura della memoria
+\end_layout
+
+\begin_layout Standard
+Si assume di lavorare con una memoria indirizzabile al singolo Byte, con
+ parole di 32 bit.
+ Si assume inoltre avere indirizzi (sia per i dati sia per le istruzioni)
+ di 32 bit.
+\end_layout
+
+\begin_layout Standard
+Lo stack cresce da indirizzi più alti verso indirizzi più bassi, lo heap
+ cresce in verso opposto.
+\end_layout
+
+\begin_layout Paragraph
+Dimensione dei tipi
+\end_layout
+
+\begin_layout Description
+int 4 Byte
+\end_layout
+
+\begin_layout Description
+char 1 Byte
+\end_layout
+
+\begin_layout Description
+float 4 Byte
+\end_layout
+
+\begin_layout Description
+double 8 Byte
+\end_layout
+
+\begin_layout Description
+(pointers) 4 Byte
+\end_layout
+
+\begin_layout Subsubsection
+Vettori in memoria
+\end_layout
+
+\begin_layout Standard
+Si ricorda che un vettore altro non è che un puntatore ad un'area di memoria.
+ Passare come parametro un vettore equivale a passare alla funzione l'indirizzo
+ dell'area di memoria dove il vettore è locato e non avviene una copia di
+ tutto il vettore completo.
+ 
+\end_layout
+
+\begin_layout Standard
+Ogni volta che avviene il passaggio di un indirizzo come parametro, un puntatore
+ viene chiamato in causa.
+ Nel caso di un vettore, si avrà un puntatore al tipo del vettore.
+ Nell'esempio di questo esercizio, un vettore di interi passato come parametro
+ sarà equivalente a un puntatore a intero 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+int*
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Soluzione
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "60col%"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/es1.svg
+	lyxscale 20
+	width 55col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Stack:-calcolo-della-media"
+
+\end_inset
+
+Stack: calcolo della media
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'immagine 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "fig:Stack:-calcolo-della-media"
+
+\end_inset
+
+ mostra la rappresentazione dell'area di memoria del programma mettendo
+ in evidenza (in verde) il record di attivazione della funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+media
+\end_layout
+
+\end_inset
+
+ all'istante di tempo richiesto.
+\end_layout
+
+\begin_layout Standard
+La rappresentazione dell'area di memoria del programma è coerente con una
+ chiamata alla funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+media
+\end_layout
+
+\end_inset
+
+ da parte del 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+main
+\end_layout
+
+\end_inset
+
+.
+ A indirizzi più alti in valore, contigui al record di attivazione di 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+media
+\end_layout
+
+\end_inset
+
+, si trova infatti il record di attivazione della funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+main
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+A sinistra dello stack sono indicati i valori contenuti nei registri Stack
+ Pointer e Frame Pointer.
+ Questi indicano rispettivamente la prima parola di memoria non allocata
+ sullo stack e l'indirizzo base del record di attivazione corrente.
+ Variabili e parametri a livello macchina saranno espressi come spiazzamenti
+ positivi e negativi relativi al FP.
+\end_layout
+
+\begin_layout Standard
+Si noti che la memoria è rappresentata a blocchi di 1 parola (= 32 bit =
+ 4 Byte) e che ciascun elemento sullo stack occupa esattamente una parola
+ di memoria, coerentemente con le assunzioni discusse in precedenza.
+\end_layout
+
+\begin_layout Standard
+Al puro scopo di migliorare la leggibilità dello schema, per ogni parametro
+ e variabile viene indicato all'interno della porzione di memoria che occupa,
+ il tipo e il nome assegnatogli in linguaggio C.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
