@@ -79,7 +79,11 @@
 \begin_body
 
 \begin_layout Title
-Esercizi su Record di Attivazione
+Esercizi su visibilità delle variabili
+\begin_inset Newline newline
+\end_inset
+
+e Record di Attivazione
 \end_layout
 
 \begin_layout Author
@@ -159,6 +163,599 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
+The Shadow
+\end_layout
+
+\begin_layout Standard
+Sia dato il seguente programma.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+#define MAXL 30
+\end_layout
+
+\begin_layout LyX-Code
+
+#define TURN_TO_APOCALYPSE 2
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+typedef struct {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char playerClass;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char name[MAXL];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int hp;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int mp;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int canCastSpells;
+\end_layout
+
+\begin_layout LyX-Code
+
+} Player;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int attack(Player *attacker);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+Player TheShadow;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	Player warrior, drunkCitizen, mage, bard, orc;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* Initialize party */
+\end_layout
+
+\begin_layout LyX-Code
+
+	warrior.playerClass = 'W';
+\end_layout
+
+\begin_layout LyX-Code
+
+	strcpy(warrior.name, "Gerardo");
+\end_layout
+
+\begin_layout LyX-Code
+
+	warrior.hp = 60;
+\end_layout
+
+\begin_layout LyX-Code
+
+	warrior.mp = 15;
+\end_layout
+
+\begin_layout LyX-Code
+
+	warrior.canCastSpells = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	drunkCitizen.playerClass = 'C';
+\end_layout
+
+\begin_layout LyX-Code
+
+	strcpy(drunkCitizen.name, "Giovanni");
+\end_layout
+
+\begin_layout LyX-Code
+
+	drunkCitizen.hp = 20;
+\end_layout
+
+\begin_layout LyX-Code
+
+	drunkCitizen.mp = 5; /* magic burp! */
+\end_layout
+
+\begin_layout LyX-Code
+
+	drunkCitizen.canCastSpells = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	mage.playerClass = 'M';
+\end_layout
+
+\begin_layout LyX-Code
+
+	strcpy(mage.name, "Alex");
+\end_layout
+
+\begin_layout LyX-Code
+
+	mage.hp = 45;
+\end_layout
+
+\begin_layout LyX-Code
+
+	mage.mp = 55;
+\end_layout
+
+\begin_layout LyX-Code
+
+	mage.canCastSpells = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	bard.playerClass = 'M';
+\end_layout
+
+\begin_layout LyX-Code
+
+	strcpy(bard.name, "Stefano");
+\end_layout
+
+\begin_layout LyX-Code
+
+	bard.hp = 40;
+\end_layout
+
+\begin_layout LyX-Code
+
+	bard.mp = 25;
+\end_layout
+
+\begin_layout LyX-Code
+
+	bard.canCastSpells = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	orc.playerClass = 'M';
+\end_layout
+
+\begin_layout LyX-Code
+
+	strcpy(orc.name, "Michele");
+\end_layout
+
+\begin_layout LyX-Code
+
+	orc.hp = 75;
+\end_layout
+
+\begin_layout LyX-Code
+
+	orc.mp = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	orc.canCastSpells = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* Initialize enemy */
+\end_layout
+
+\begin_layout LyX-Code
+
+	TheShadow.playerClass = 'M';
+\end_layout
+
+\begin_layout LyX-Code
+
+	strcpy(TheShadow.name, "Venom");
+\end_layout
+
+\begin_layout LyX-Code
+
+	TheShadow.hp = 100;
+\end_layout
+
+\begin_layout LyX-Code
+
+	TheShadow.mp = 100;
+\end_layout
+
+\begin_layout LyX-Code
+
+	TheShadow.canCastSpells = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* let the game begin! */
+\end_layout
+
+\begin_layout LyX-Code
+
+	int turn = TURN_TO_APOCALYPSE;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (turn > 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		attack(warrior);
+\end_layout
+
+\begin_layout LyX-Code
+
+		attack(drunkCitizen);
+\end_layout
+
+\begin_layout LyX-Code
+
+		attack(mage);
+\end_layout
+
+\begin_layout LyX-Code
+
+		attack(bard);
+\end_layout
+
+\begin_layout LyX-Code
+
+		attack(orc);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (TheShadow.hp > 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("The world is lost!");
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("The world is safe!");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int _attack(Player *attacker) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	Player theShadow;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (attacker->mp > 10) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		Player citizen;
+\end_layout
+
+\begin_layout LyX-Code
+
+		damage = attacker->hp / 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+		attacker->mp -= 5;
+\end_layout
+
+\begin_layout LyX-Code
+
+		TheShadow.hp -= damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+		citizen.hp -= damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else if(attacker->canCastSpell){
+\end_layout
+
+\begin_layout LyX-Code
+
+		damage = attacker->hp / 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+		attacker->mp -= 5;
+\end_layout
+
+\begin_layout LyX-Code
+
+		theShadow.hp -= damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		Player TheShadow;
+\end_layout
+
+\begin_layout LyX-Code
+
+		damage = attacker->hp / 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+		attacker->hp -= 10;
+\end_layout
+
+\begin_layout LyX-Code
+
+		TheShadow.hp -= damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int attack(Player *attacker) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (attacker->canCastSpell && attacker->mp >= 20) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		damage = attacker->mp / 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+		attacker->mp -= 20;
+\end_layout
+
+\begin_layout LyX-Code
+
+		TheShadow.hp -= damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		damage = _attack(attacker);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Si dica quali giocatori, se ne esistono, sono effettivamente in grado di
+ recare danno almeno una volta al malefico 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+"Venom"
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si dica se con queste impostazioni il mondo si salverà.
+\end_layout
+
+\begin_layout Enumerate
+Si trovi un valore (se esiste) per la 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+#define TURN_TO_APOCALYPSE 
+\end_layout
+
+\end_inset
+
+ in grado di cambiare le sorti del mondo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Il record di attivazione attraverso un esempio
+\end_layout
+
+\begin_layout Subsection
 Calcolo della media
 \end_layout
 
@@ -240,41 +837,38 @@ float media(int v[], int N) {
 \end_layout
 
 \begin_layout Subsection
-Approccio alla soluzione
-\end_layout
-
-\begin_layout Subsubsection
 Assunzioni sull'architettura
 \end_layout
 
 \begin_layout Standard
-La richiesta dell'esercizio non contiene dati relativi all'architettura
- del calcolatore che eseguirà questo codice.
+Il testo non contiene dati relativi all'architettura del calcolatore che
+ eseguirà questo codice.
  Si fanno quindi assunzioni relative alle dimenisoni in memoria di ciascun
  tipo di dato e alla struttura della memoria stessa.
 \end_layout
 
-\begin_layout Standard
-Queste assunzioni sono le medesime presentate a lezione
-\end_layout
-
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Struttura della memoria
 \end_layout
 
 \begin_layout Standard
-Si assume di lavorare con una memoria indirizzabile al singolo Byte, con
- parole di 32 bit.
- Si assume inoltre avere indirizzi (sia per i dati sia per le istruzioni)
- di 32 bit.
+Si assume di lavorare con una memoria indirizzabile alla parola (unità minima
+ allocabile), con parole di 32 bit.
+ 
 \end_layout
 
 \begin_layout Standard
-Lo stack cresce da indirizzi più alti verso indirizzi più bassi, lo heap
+Si assume inoltre di avere indirizzi (sia per i dati sia per le istruzioni)
+ di lunghezza 32 bit.
+\end_layout
+
+\begin_layout Standard
+L'area di memoria della funzione si assume divisa tra stack e heap.
+ Lo stack cresce da indirizzi più alti verso indirizzi più bassi, lo heap
  cresce in verso opposto.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Dimensione dei tipi
 \end_layout
 
@@ -314,8 +908,8 @@ Si ricorda che un vettore altro non è che un puntatore ad un'area di memoria.
 Ogni volta che avviene il passaggio di un indirizzo come parametro, un puntatore
  viene chiamato in causa.
  Nel caso di un vettore, si avrà un puntatore al tipo del vettore.
- Nell'esempio di questo esercizio, un vettore di interi passato come parametro
- sarà equivalente a un puntatore a intero 
+ In questo esempio, un vettore di interi passato come parametro sarà equivalente
+ a un puntatore a intero 
 \begin_inset listings
 lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline true
@@ -332,7 +926,7 @@ int*
 \end_layout
 
 \begin_layout Subsection
-Soluzione
+La struttura della memoria
 \end_layout
 
 \begin_layout Standard
@@ -467,8 +1061,8 @@ A sinistra dello stack sono indicati i valori contenuti nei registri Stack
  Pointer e Frame Pointer.
  Questi indicano rispettivamente la prima parola di memoria non allocata
  sullo stack e l'indirizzo base del record di attivazione corrente.
- Variabili e parametri a livello macchina saranno espressi come spiazzamenti
- positivi e negativi relativi al FP.
+ Le variabili e i parametri, a livello macchina, saranno espressi come spiazzame
+nti positivi e negativi relativi al FP.
 \end_layout
 
 \begin_layout Standard
