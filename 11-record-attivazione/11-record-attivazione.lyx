@@ -178,6 +178,16 @@ status open
 
 \begin_layout LyX-Code
 
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <string.h>
+\end_layout
+
+\begin_layout LyX-Code
+
 #define MAXL 30
 \end_layout
 
@@ -232,6 +242,15 @@ typedef struct {
 \begin_layout LyX-Code
 
 int attack(Player *attacker);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int _attack(Player *attacker);
 \end_layout
 
 \begin_layout LyX-Code
@@ -469,27 +488,32 @@ int main() {
 
 \begin_layout LyX-Code
 
-		attack(warrior);
+		attack(&warrior);
 \end_layout
 
 \begin_layout LyX-Code
 
-		attack(drunkCitizen);
+		attack(&drunkCitizen);
 \end_layout
 
 \begin_layout LyX-Code
 
-		attack(mage);
+		attack(&mage);
 \end_layout
 
 \begin_layout LyX-Code
 
-		attack(bard);
+		attack(&bard);
 \end_layout
 
 \begin_layout LyX-Code
 
-		attack(orc);
+		attack(&orc);
+\end_layout
+
+\begin_layout LyX-Code
+
+		turn--;
 \end_layout
 
 \begin_layout LyX-Code
@@ -504,7 +528,9 @@ int main() {
 
 \begin_layout LyX-Code
 
-		printf("The world is lost!");
+		printf("The world is lost!
+\backslash
+n");
 \end_layout
 
 \begin_layout LyX-Code
@@ -514,7 +540,9 @@ int main() {
 
 \begin_layout LyX-Code
 
-		printf("The world is safe!");
+		printf("The world is safe!
+\backslash
+n");
 \end_layout
 
 \begin_layout LyX-Code
@@ -525,6 +553,65 @@ int main() {
 \begin_layout LyX-Code
 
 	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int attack(Player *attacker) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (attacker->canCastSpells && attacker->mp >= 20) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		damage = attacker->mp / 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+		attacker->mp -= 20;
+\end_layout
+
+\begin_layout LyX-Code
+
+		TheShadow.hp -= damage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		damage = _attack(attacker);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return damage;
 \end_layout
 
 \begin_layout LyX-Code
@@ -583,7 +670,7 @@ int _attack(Player *attacker) {
 
 \begin_layout LyX-Code
 
-	} else if(attacker->canCastSpell){
+	} else if(attacker->canCastSpells){
 \end_layout
 
 \begin_layout LyX-Code
@@ -624,65 +711,6 @@ int _attack(Player *attacker) {
 \begin_layout LyX-Code
 
 		TheShadow.hp -= damage;
-\end_layout
-
-\begin_layout LyX-Code
-
-	}
-\end_layout
-
-\begin_layout LyX-Code
-
-	return damage;
-\end_layout
-
-\begin_layout LyX-Code
-
-}
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-
-int attack(Player *attacker) {
-\end_layout
-
-\begin_layout LyX-Code
-
-	int damage;
-\end_layout
-
-\begin_layout LyX-Code
-
-	if (attacker->canCastSpell && attacker->mp >= 20) {
-\end_layout
-
-\begin_layout LyX-Code
-
-		damage = attacker->mp / 2;
-\end_layout
-
-\begin_layout LyX-Code
-
-		attacker->mp -= 20;
-\end_layout
-
-\begin_layout LyX-Code
-
-		TheShadow.hp -= damage;
-\end_layout
-
-\begin_layout LyX-Code
-
-	} else {
-\end_layout
-
-\begin_layout LyX-Code
-
-		damage = _attack(attacker);
 \end_layout
 
 \begin_layout LyX-Code
