@@ -1027,7 +1027,7 @@ int main() {
 
 \begin_layout LyX-Code
 
-	bard.playerClass = 'M';
+	bard.playerClass = 'B';
 \end_layout
 
 \begin_layout LyX-Code
@@ -1057,7 +1057,7 @@ int main() {
 
 \begin_layout LyX-Code
 
-	orc.playerClass = 'M';
+	orc.playerClass = 'O';
 \end_layout
 
 \begin_layout LyX-Code
@@ -1092,7 +1092,7 @@ int main() {
 
 \begin_layout LyX-Code
 
-	TheShadow.playerClass = 'M';
+	TheShadow.playerClass = 'S';
 \end_layout
 
 \begin_layout LyX-Code
@@ -1382,6 +1382,13 @@ int _attack(Player *attacker) {
 
 \end_layout
 
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 Si dica quali giocatori, se ne esistono, sono effettivamente in grado di
  recare danno almeno una volta al malefico 
@@ -1413,12 +1420,148 @@ status open
 
 \begin_layout LyX-Code
 
-#define TURN_TO_APOCALYPSE 
+#define TURN_TO_APOCALYPSE
 \end_layout
 
 \end_inset
 
  in grado di cambiare le sorti del mondo.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione
+\end_layout
+
+\begin_layout Enumerate
+Infligono danno a 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+"Venom"
+\end_layout
+
+\end_inset
+
+ almeno una volta tutti i giocatori che iniziano con 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+mp
+\end_layout
+
+\end_inset
+
+ > 10, cioè:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+warrior 
+\begin_inset Quotes fld
+\end_inset
+
+Gerardo
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+mage 
+\begin_inset Quotes fld
+\end_inset
+
+Alex
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+bard 
+\begin_inset Quotes fld
+\end_inset
+
+Stefano
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Il mondo è destinato a non salvarsi.
+\end_layout
+
+\begin_layout Enumerate
+Aumentando il valore assegnato alla 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+#define TURN_TO_APOCALYPSE
+\end_layout
+
+\end_inset
+
+ il mondo si salverà.
+ Un valore di 3 permetterebbe al party di distruggere 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+"Venom"
+\end_layout
+
+\end_inset
+
+ prima che sia troppo tardi.
+ È quindi sufficiente trovare il modo di distrarre 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+TheShadow
+\end_layout
+
+\end_inset
+
+ per un turno.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1781,7 +1924,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Meggaggi offuscati
 \end_layout
 
@@ -2449,7 +2591,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Ricorsione tropicale
 \end_layout
 
@@ -2576,24 +2717,66 @@ reference "sub:Ispezionare-la-memoria"
 Si mostri la linea stampata dal programma sullo standard output.
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
 
-
+\begin_layout Subsubsection
+Funzioni ricorsive
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+La funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
 status open
 
-\begin_layout Plain Layout
-TODO approccio alla soluzione.
+\begin_layout LyX-Code
+
+f
 \end_layout
 
 \end_inset
 
+ chiama sè stessa al suo interno, è quindi un esempio di funzione ricorsiva.
+ In memoria, viene creato un record di attivazione per ogni chiamata ad
+ una funzione.
+ Anche nel caso di multiple chiamate alla stessa funzione, si ha un nuovo
+ record di attivazione per ogni chiamata.
+ 
+\end_layout
 
+\begin_layout Standard
+I record di attivazione ricorsivamente allocati si accumulano sullo stack
+ e vengono deallocati, partendo dall'ultimo inserito, al raggiungimento
+ della rispettiva istruzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+return
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Valori e indirizzi
+\end_layout
+
+\begin_layout Standard
+Si noti che la funzione f accetta come parametri due indirizzi e un valore.
+ Quando viene passato come parametro un indirizzo, l'area di memoria a cui
+ viene fatto riferimento (destinazione della freccia) viene stabilita dal
+ chiamante; quando viene passato come parametro un valore, viene eseguita
+ una copia del valore che risiederà nel record di attivazione della funzione
+ chiamata.
 \end_layout
 
 \begin_layout Subsection
