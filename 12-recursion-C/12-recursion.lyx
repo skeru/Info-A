@@ -883,8 +883,60 @@ int binarySearchIter(int key, int v[], int n) {
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace vfill
+\begin_layout Section
+Inversione array ricorsiva
+\end_layout
+
+\begin_layout Quotation
+Scrivere una funzione che inverta un vettore di interi con prodedimento
+ ricorsivo.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+void vectorInverterRecursive(int v[], int n) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (n <= 1)	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int t = v[0];
+\end_layout
+
+\begin_layout LyX-Code
+
+	v[0] = v[n - 1];
+\end_layout
+
+\begin_layout LyX-Code
+
+	v[n - 1] = t;
+\end_layout
+
+\begin_layout LyX-Code
+
+	vectorInverterRecursive(&v[1], n - 1);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
 \end_inset
 
 
@@ -943,6 +995,10 @@ status open
 \end_inset
 
  volte.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
 \end_layout
 
 \begin_layout Standard
@@ -1004,6 +1060,223 @@ void BoomBang(int k) {
 
 \end_layout
 
+\begin_layout Section
+Potenza ricorsiva
+\end_layout
+
+\begin_layout Quotation
+Scrivere una funzione che calcoli il valore 
+\begin_inset Formula $M^{N}$
+\end_inset
+
+, con 
+\begin_inset Formula $M$
+\end_inset
+
+ numero in virgola mobile e 
+\begin_inset Formula $N$
+\end_inset
+
+ numero intero.
+\end_layout
+
+\begin_layout Enumerate
+Si implementi la funzione rispecchiando la seguente specifica:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+se 
+\begin_inset Formula $N$
+\end_inset
+
+ = 0 allora 
+\begin_inset Formula $M^{N}$
+\end_inset
+
+ = 1
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+caso base
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+se 
+\begin_inset Formula $N$
+\end_inset
+
+ è pari allora 
+\begin_inset Formula $M^{N}$
+\end_inset
+
+ = 
+\begin_inset Formula $\left(M^{\nicefrac{M}{2}}\right)^{2}$
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+passo indut.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+se 
+\begin_inset Formula $N$
+\end_inset
+
+ è dispari allora 
+\begin_inset Formula $M^{N}$
+\end_inset
+
+ = 
+\begin_inset Formula $\left(M^{N-1}\right)\cdot M$
+\end_inset
+
+
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+passo indut.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Si trovi il modo di gestire anche il caso di potenze negative 
+\begin_inset Formula $\left(N<0\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Potenza ricorsiva
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+double myExp(double M, int N) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (N < 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		return myExp(1.0 / M, -N); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (N == 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (N % 2 == 0) { 
+\end_layout
+
+\begin_layout LyX-Code
+
+		long t = myExp(M, N / 2); 
+\end_layout
+
+\begin_layout LyX-Code
+
+		return t*t; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (N % 2 == 1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		return M * myExp(M, N - 1);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
@@ -1044,11 +1317,18 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Formula $n$
 \end_inset
 
- crescenti dall'alto verso il basso e 
+ cresscenti dall'alto verso il basso e 
 \begin_inset Formula $k$
 \end_inset
 
  crescenti da sinistra verso destra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1073,16 +1353,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $k=0$
+\begin_inset Formula $\downarrow n\backslash k\rightarrow$
 \end_inset
 
 
@@ -1094,7 +1365,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=1$
+\begin_inset Formula $0$
 \end_inset
 
 
@@ -1106,7 +1377,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=2$
+\begin_inset Formula $1$
 \end_inset
 
 
@@ -1118,7 +1389,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=3$
+\begin_inset Formula $2$
 \end_inset
 
 
@@ -1130,7 +1401,19 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=4$
+\begin_inset Formula $3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4$
 \end_inset
 
 
@@ -1151,7 +1434,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=0$
+\begin_inset Formula $0$
 \end_inset
 
 
@@ -1163,7 +1446,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=1$
+\begin_inset Formula $1$
 \end_inset
 
 
@@ -1175,7 +1458,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=2$
+\begin_inset Formula $2$
 \end_inset
 
 
@@ -1187,7 +1470,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=3$
+\begin_inset Formula $3$
 \end_inset
 
 
@@ -1199,7 +1482,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $k=4$
+\begin_inset Formula $4$
 \end_inset
 
 
@@ -1323,7 +1606,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $n=0$
+\begin_inset Formula $0$
 \end_inset
 
 
@@ -1549,7 +1832,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $n=1$
+\begin_inset Formula $1$
 \end_inset
 
 
@@ -1778,7 +2061,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $n=2$
+\begin_inset Formula $2$
 \end_inset
 
 
@@ -2010,7 +2293,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $n=3$
+\begin_inset Formula $3$
 \end_inset
 
 
@@ -2245,7 +2528,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $n=4$
+\begin_inset Formula $4$
 \end_inset
 
 
@@ -2375,6 +2658,13 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Coefficienti Binomiali
 \end_layout
@@ -2421,48 +2711,76 @@ con
 \end_inset
 
 
-\end_layout
+\begin_inset Marginal
+status open
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Plain Layout
 
 \emph on
-primo caso base
+caso base
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-i coefficienti non validi (
-\begin_inset Formula $n<k||n<0||k<0$
 \end_inset
 
-), si assumono avere valore 
+
+\end_layout
+
+\begin_layout Itemize
+i coefficienti binomiali con (
+\begin_inset Formula $n<k$
+\end_inset
+
+, 
+\begin_inset Formula $n<0$
+\end_inset
+
+, 
+\begin_inset Formula $k<0$
+\end_inset
+
+) non sono validi e si assumono avere valore 
 \begin_inset Formula $0$
 \end_inset
 
 
-\end_layout
+\begin_inset Marginal
+status open
 
-\begin_deeper
-\begin_layout Itemize
-
-\emph on
-secondo caso base
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Ogni coefficiente è la somma del soprastante e del predecessore di quest'ultimo.
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Plain Layout
 
 \emph on
-passo induttivo
+caso base
 \end_layout
 
-\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+ogni coefficiente è la somma del soprastante e del predecessore di quest'ultimo
+ 
+\begin_inset Marginal
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+passo indut.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Soluzione C
 \end_layout
@@ -2530,7 +2848,7 @@ int cobin(int n, int k) {
 Stampa il tringolo
 \end_layout
 
-\begin_layout Quotation
+\begin_layout Enumerate
 Stampare il triangolo di Tartaglia fino alla riga 
 \begin_inset Formula $n$
 \end_inset
@@ -2540,6 +2858,22 @@ Stampare il triangolo di Tartaglia fino alla riga
 \end_inset
 
  inserito dall'utente.
+\end_layout
+
+\begin_layout Enumerate
+Stampare il triangolo di Tartaglia al contrario, partendo dalla riga 
+\begin_inset Formula $n$
+\end_inset
+
+, con 
+\begin_inset Formula $n$
+\end_inset
+
+ inserito dall'utente.
+\end_layout
+
+\begin_layout Subsubsection
+Soluzione C - Stampa del triangolo
 \end_layout
 
 \begin_layout Standard
@@ -2617,7 +2951,7 @@ void triangoloTartaglia(int maxRiga) {
 
 \begin_layout LyX-Code
 
-		for (k = 0; k < n; ++k) {
+		for (k = 0; k <= n; ++k) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -2707,31 +3041,188 @@ int main() {
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage clearpage
+\begin_inset VSpace vfill
 \end_inset
 
 
 \end_layout
 
-\begin_layout Subsection
-Stampa il tringolo al contrario
+\begin_layout Subsubsection
+Soluzione C - Stampa del triangolo al contrario
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
 status open
 
-\begin_layout Plain Layout
-TODO
-\end_layout
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Stampa il triangolo di tartaglia dalla riga N
+Triangolo di Tartaglia invertito
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout LyX-Code
+
+int cobin(int n, int k) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (n < k || n < 0 || k < 0)
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (k == 0 || k == n || n == 0)
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	return cobin(n - 1, k - 1) + cobin(n - 1, k);
+\end_layout
+
+\begin_layout LyX-Code
+
+} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void triangoloTartagliaReverse(int maxRiga) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int n, k, c;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (n = 0; n <= maxRiga; ++n) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (k = n; k >= 0; --k) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			c = cobin(n, k);
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf ("%d ", c);
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf ("
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int r;
+\end_layout
+
+\begin_layout LyX-Code
+
+	do {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Triangolo di Tartaglia invertito, dalla a riga ");
+\end_layout
+
+\begin_layout LyX-Code
+
+		scanf("%d", &r);
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while (r < 0);
+\end_layout
+
+\begin_layout LyX-Code
+
+	triangoloTartagliaReverse(r);
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
