@@ -163,10 +163,647 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-The Shadow
+Understand fixes
+\end_layout
+
+\begin_layout Quotation
+Simulare l'esecuzione di ciascuna delle chiamate a sottoprogrammi, limitandosi
+ alla descrizione dei valori stampati tramite 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+printf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Understanding fixes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int varA = 12, varB = 25;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int fix(int* par) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	*par = *par - 7;
+\end_layout
+
+\begin_layout LyX-Code
+
+	return(23);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void veryImportantFix(int* varX, int varY) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int varB;
+\end_layout
+
+\begin_layout LyX-Code
+
+	*varX = varY;
+\end_layout
+
+\begin_layout LyX-Code
+
+	varB = *varX + varY;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int thisReallyFix(int varA) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int varZ = 17;
+\end_layout
+
+\begin_layout LyX-Code
+
+	varA = varA + varZ;
+\end_layout
+
+\begin_layout LyX-Code
+
+	return(varA);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* initially...
+ */   
+\end_layout
+
+\begin_layout LyX-Code
+
+	int varC = 63;
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("0) varA: %d, varB: %d,  varC: %d
+\backslash
+n", varA, varB, varC);
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* step 1 */
+\end_layout
+
+\begin_layout LyX-Code
+
+	varC = fix(&varA);
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("1) varA: %d, varB: %d,  varC: %d
+\backslash
+n", varA, varB, varC);
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* step 2 */
+\end_layout
+
+\begin_layout LyX-Code
+
+	veryImportantFix(&varA, varC);
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("2) varA: %d, varB: %d,  varC: %d
+\backslash
+n", varA, varB, varC);
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* step 3 */
+\end_layout
+
+\begin_layout LyX-Code
+
+	varB = thisReallyFix(varC);
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("3) varA: %d, varB: %d,  varC: %d
+\backslash
+n", varA, varB, varC);
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* step 4 */
+\end_layout
+
+\begin_layout LyX-Code
+
+	varB = fix(&varB);
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("4) varA: %d, varB: %d,  varC: %d
+\backslash
+n", varA, varB, varC);
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione
 \end_layout
 
 \begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+varA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+varB
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+varC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+initially
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+63
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+step 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+step 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+step 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+step 4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The Shadow
+\end_layout
+
+\begin_layout Quotation
 Sia dato il seguente programma.
 \end_layout
 
@@ -175,6 +812,20 @@ Sia dato il seguente programma.
 lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline false
 status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+The Shadow
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout LyX-Code
 
@@ -1112,8 +1763,215 @@ Al puro scopo di migliorare la leggibilità dello schema, per ogni parametro
 
 \end_layout
 
+\begin_layout Section
+Messaggi offuscati
+\end_layout
+
+\begin_layout Quotation
+Sia dato il seguente programma.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+void f(char *c, char **p) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (*c != '
+\backslash
+0') {
+\end_layout
+
+\begin_layout LyX-Code
+
+		*(p++) = c;
+\end_layout
+
+\begin_layout LyX-Code
+
+		c += 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char c[15] = "ESPRITCOWLIOND";
+\end_layout
+
+\begin_layout LyX-Code
+
+	char *p[7], **q;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	f( c, p );
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (*(p[i%7]) != '
+\backslash
+0')
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%c", **( p+((i++)%7)));
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ispezionare la memoria
+\end_layout
+
+\begin_layout Standard
+Si disegni lo stack dei record di attivazione di questo programma all'esecuzione
+ dell'istruzione alla riga 6.
+\end_layout
+
+\begin_layout Standard
+Si rappresentino tutti i record di attivazione delle funzioni attive, incluso
+ quello relativo alla funzione main.
+ Si mostrino 
+\series bold
+tutte
+\series default
+ le variabili dichiarate.
+\end_layout
+
+\begin_layout Standard
+Si adottino le seguenti convenzioni:
+\end_layout
+
+\begin_layout Description
+vettori blocchi contigui
+\end_layout
+
+\begin_layout Description
+puntatori frecce
+\end_layout
+
+\begin_layout Description
+valori
+\begin_inset space ~
+\end_inset
+
+indefiniti ?
+\end_layout
+
+\begin_layout Subsection
+Ispezionare l'output
+\end_layout
+
+\begin_layout Standard
+Si dica qual è l'output del programma
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Deoffuscare il codice
+\end_layout
+
+\begin_layout Standard
+Il testo dell'esercizio presenta del codice sintatticamente corretto ma
+ alquanto poco leggibile.
+ Si procede quindi ad effettuare delle riscritture che pur mantenendo invariati
+ i valori delle variabili, contribuiscano a rendere più comprensibile il
+ programma.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Plain Layout
+deoffuscare, step by step.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+riscrivere listato.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi.
 \end_layout
 
 \begin_layout Subsection*
