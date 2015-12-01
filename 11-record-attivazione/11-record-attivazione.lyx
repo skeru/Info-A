@@ -195,7 +195,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Understanding fixes
 \end_layout
 
@@ -818,7 +817,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 The Shadow
 \end_layout
 
@@ -1705,7 +1703,8 @@ main
 \end_inset
 
 .
- A indirizzi più alti in valore, contigui al record di attivazione di 
+ A in\SpecialChar \-
+dirizzi più alti in valore, contigui al record di attivazione di 
 \begin_inset listings
 lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline true
@@ -1779,6 +1778,20 @@ status open
 
 \begin_layout LyX-Code
 
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Meggaggi offuscati
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
 void f(char *c, char **p) {
 \end_layout
 
@@ -1840,7 +1853,7 @@ int main() {
 
 \begin_layout LyX-Code
 
-	f( c, p );
+	f(c, p);
 \end_layout
 
 \begin_layout LyX-Code
@@ -1871,6 +1884,12 @@ int main() {
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Ispezionare-la-memoria"
+
+\end_inset
+
 Ispezionare la memoria
 \end_layout
 
@@ -1933,26 +1952,745 @@ Il testo dell'esercizio presenta del codice sintatticamente corretto ma
  programma.
 \end_layout
 
+\begin_layout Paragraph
+Scorrimento di un array con post-incremento dei puntatori
+\end_layout
+
 \begin_layout Standard
-\begin_inset Note Note
+Si ricorda che il post-incremento si applica dopo la valutazione dell'espression
+e.
+ Separare l'incremento dalla valutazione dell'espressione migliora la leggibilit
+a dell'espressione ed evita una errata interpretazione dell'incremento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
 status open
 
-\begin_layout Plain Layout
-TODO
+\begin_layout LyX-Code
+
+*(p++) = c;
 \end_layout
 
-\begin_layout Plain Layout
-deoffuscare, step by step.
- 
+\begin_layout LyX-Code
+
+/* it's equivalent to */
 \end_layout
 
-\begin_layout Plain Layout
-riscrivere listato.
+\begin_layout LyX-Code
+
+*p = c;
+\end_layout
+
+\begin_layout LyX-Code
+
+p++; 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Paragraph
+Accesso ad un array con notazione implicita
+\end_layout
+
+\begin_layout Standard
+Si ricorda che 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+*(p + i)
+\end_layout
+
+\end_inset
+
+ si può riscrivere in notazione implicita (e per alcuni più intuitiva) con
+ le parentesi quadre come 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+p[i]
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+**(p+((i++)%7))
+\end_layout
+
+\begin_layout LyX-Code
+
+/* it's equivalent to */
+\end_layout
+
+\begin_layout LyX-Code
+
+*p[i%7];
+\end_layout
+
+\begin_layout LyX-Code
+
+i++;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Risultato delle trasformazioni
+\end_layout
+
+\begin_layout Standard
+Applicando queste trasformazioni al codice dato, si ottiene il seguente
+ codice.
+ Si osservi che l'istruzione da considerare ora non si trova più alla riga
+ 6 ma viene spostata alla riga 7.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+void f(char *c, char **p) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (*c != '
+\backslash
+0') {
+\end_layout
+
+\begin_layout LyX-Code
+
+		*p = c;
+\end_layout
+
+\begin_layout LyX-Code
+
+		p++;
+\end_layout
+
+\begin_layout LyX-Code
+
+		c += 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char c[15] = "ESPRITCOWLIOND";
+\end_layout
+
+\begin_layout LyX-Code
+
+	char *p[7], **q;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	f(c, p);
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (*(p[i%7]) != '
+\backslash
+0') {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%c", *p[i%7]);
+\end_layout
+
+\begin_layout LyX-Code
+
+		i++;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "65col%"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/epicwin.svg
+	lyxscale 40
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Soluzione-al-quesito"
+
+\end_inset
+
+Soluzione al quesito 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Ispezionare-la-memoria"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Schema di memoria
+\end_layout
+
+\begin_layout Standard
+La granularità ritenuta sufficiente per rispondere a questo quesito è quella
+ mostrata in Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Soluzione-al-quesito"
+
+\end_inset
+
+ che distingue i diversi record di attivazione e colloca i blocchi di memoria
+ relativi alle variabili nel corretto record di attivazione a cui appartiene.
+\end_layout
+
+\begin_layout Subsubsection
+Output del programma
+\end_layout
+
+\begin_layout Standard
+Il programma stampa la stringa 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+EPICWINEPICWIN
+\end_layout
+
+\end_inset
+
+...
+\end_layout
+
+\begin_layout Subsubsection
+Approfondimento
+\end_layout
+
+\begin_layout Standard
+La stampa si ripete molte volte ma non prosegue all'infinito nè fino alla
+ saturazione della memoria.
+\end_layout
+
+\begin_layout Standard
+La memoria non satura perché non vi sono istruzioni che allocano memoria
+ tra una stampa e la successiva.
+\end_layout
+
+\begin_layout Standard
+L'esecuzione non prosegue all'infinito perché la variabile 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+int i
+\end_layout
+
+\end_inset
+
+ non può rappresentare infiniti valori.
+ Al superamento del massimo valore rappresentabile in una variabile intera,
+ occorrerà 
+\emph on
+overflow
+\emph default
+ e 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+i
+\end_layout
+
+\end_inset
+
+ contterrà valori negativi.
+ 
+\end_layout
+
+\begin_layout Standard
+Matematicamente parlando, questo non dovrebbe fermare l'esecuzione del programma
+ tuttavia 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+i%7
+\end_layout
+
+\end_inset
+
+ invece di restituire sempre valori compresi tra 0 e 6, quando 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+i
+\end_layout
+
+\end_inset
+
+ è negativa restituisce valori tra -6 e 0.
+ Al primo valore negativo usato per accedere ad un vettore, avremo un tentativo
+ di accesso alla memoria 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+*(p+i)
+\end_layout
+
+\end_inset
+
+ non definita per valori negativi di 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+i
+\end_layout
+
+\end_inset
+
+.
+ Questo con elevata probabilità causerà un errore di violazione di memoria
+ (accesso a memoria al di fuori dei limiti consentiti).
+\end_layout
+
+\begin_layout Standard
+È possibile aggirare questo problema cambiando la dichiarazione della variabile
+ in 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+unsigned int i
+\end_layout
+
+\end_inset
+
+; un overflow su variabili unsigned riporta la variabile semplicamente a
+ 0.
+ Si avrà quindi una discontinuità dell'output (perché il massimo valore
+ rappresentabile in una variabile 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+unsigned int
+\end_layout
+
+\end_inset
+
+ non è multiplo di 7) ma l'output non si fermerà.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Brescia-Napoli: ricorsione tropicale
+\end_layout
+
+\begin_layout Quotation
+Sia dato il seguente programma
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+Ricorsione tropicale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int f(char *nord, char *sud, int x) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if(!x)
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf(" & ");
+\end_layout
+
+\begin_layout LyX-Code
+
+	else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%c", sud[x % 2]);
+\end_layout
+
+\begin_layout LyX-Code
+
+		x = f(nord, sud, x - 1 );
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%c", sud[x % 2]);
+\end_layout
+
+\begin_layout LyX-Code
+
+  }
+\end_layout
+
+\begin_layout LyX-Code
+
+  return x + 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+} 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int x = 5;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char nord[] = "BS", sud[] = "NA";
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("%c", nord[(++x) % 2]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	x = f(nord, sud, x - 1);
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("%c", nord[(++x) % 2]); 
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Si disegni lo stack dei record di attivazione nell'istante precedente al
+ momento in cui viene eseguita per la prima volta l'istruzione alla riga
+ 9.
+ Si rappresentino tutte le variabili adottando le convenzioni precedentemente
+ specificate al punto 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Ispezionare-la-memoria"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Si mostri la linea stampata dal programma sullo standard output.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO approccio alla soluzione.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione
+\end_layout
+
+\begin_layout Standard
+\begin_inset Wrap figure
+lines 0
+placement o
+overhang 0in
+width "65col%"
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/ricorsione-tropicale.svg
+	lyxscale 40
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ricorsione-tropicale:-schema"
+
+\end_inset
+
+Ricorsione tropicale: schema di memoria
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Schema di memoria
+\end_layout
+
+\begin_layout Standard
+Si osservi come lo schema di memoria in Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ricorsione-tropicale:-schema"
+
+\end_inset
+
+ allochi diversi record di memoria per diverse chiamate ricorsive alla funzione
+ 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+f
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Output del programma
+\end_layout
+
+\begin_layout Standard
+Il programma stampa su standard output la stringa 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout LyX-Code
+
+BANANA & ANANAS
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
