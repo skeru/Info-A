@@ -1,0 +1,2268 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi su files di testo in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+11/12/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #13
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Giralettere
+\end_layout
+
+\begin_layout Quotation
+Si desidera sviluppare un programma in linguaggio C per la modifica di un
+ file di testo.
+ La modifica consiste nel sostituire (scambiandoli tra loro) due caratteri
+ alfabetici dati.
+ In particolare, tutte le occorrenze del primo carattere dovranno essere
+ sostituite dal secondo e viceversa.
+ 
+\end_layout
+
+\begin_layout Quotation
+La sostituzione deve avvenire mantenendo la forma (maiuscola o minuscola)
+ della lettera originaria.
+\end_layout
+
+\begin_layout Quotation
+La libreria 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+ctype.h
+\end_layout
+
+\end_inset
+
+ contiene alcune funzioni utili che possono essere usate, quali:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+char toupper(char)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+char tolower(char)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+int isupper(char)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+int islower(char)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Riga per riga vs carattere per carattere
+\end_layout
+
+\begin_layout Standard
+È possibile acquisire una riga alla volta del file di input ed effettuare
+ operazioni di sostituzione lettere in memoria prima di scrivere sul file
+ di output.
+ Questo tuttavia non è possibile perché non viene fornita alcuna indicazione
+ sulla dimensione massima delle righe del file.
+ Non potendo seguire l'approccio riga per riga in questo caso, si ricorre
+ all'approccio carattere per carattere.
+\end_layout
+
+\begin_layout Standard
+È comunque possibile leggere un buffer sufficientemente grande di caratteri
+ dal file di input, elaborarne i caratteri, scriverlo i output e poi riprendere
+ a leggere dal punto di interruzione.
+ Questa soluzione non viene però presentata per brevità; le viene preferito
+ un approccio carattere per carattere, il quale è più semplice e di intuitiva
+ applicazione al problema presentato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Giralettere
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <ctype.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#define FILEIN "input.txt"
+\end_layout
+
+\begin_layout LyX-Code
+
+#define FILEOUT "output.txt"s
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	FILE* fin;
+\end_layout
+
+\begin_layout LyX-Code
+
+	FILE* fout;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char ch, c1, c2;	
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("Inserisci i due caratteri che vuoi scambiare, senza separarli da
+ spazio
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+	scanf("%c%c", &c1, &c2);
+\end_layout
+
+\begin_layout LyX-Code
+
+	fin = fopen(FILEIN, "r");
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!fin) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nErrore apertura file.");
+\end_layout
+
+\begin_layout LyX-Code
+
+		return -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	fin = fopen(FILEOUT, "w");
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!fout) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nErrore apertura file.");
+\end_layout
+
+\begin_layout LyX-Code
+
+		return -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	c1 = tolower(c1);
+\end_layout
+
+\begin_layout LyX-Code
+
+	c2 = tolower(c2);
+\end_layout
+
+\begin_layout LyX-Code
+
+	while ((ch = fgetc(fin)) != EOF ) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (tolower(ch) == c1 ){
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (isupper(ch)) 
+\end_layout
+
+\begin_layout LyX-Code
+
+				ch = toupper(c2);
+\end_layout
+
+\begin_layout LyX-Code
+
+			else 
+\end_layout
+
+\begin_layout LyX-Code
+
+				ch = c2;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		else if (tolower(ch) == c2) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (isupper(ch) ) 
+\end_layout
+
+\begin_layout LyX-Code
+
+				ch = toupper(c1);
+\end_layout
+
+\begin_layout LyX-Code
+
+			else 
+\end_layout
+
+\begin_layout LyX-Code
+
+				ch = c1;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		fputc(ch, fout);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	fclose(fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+	fclose(fout);
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Election simulator 2016
+\end_layout
+
+\begin_layout Quotation
+Si consideri la seguente versione semplificata dalla nuova legge elettorale
+ italiana 
+\begin_inset Quotes fld
+\end_inset
+
+
+\emph on
+Italicum
+\emph default
+
+\begin_inset Quotes frd
+\end_inset
+
+, in vigore da luglio 2016
+\end_layout
+
+\begin_layout Itemize
+Gli elettori eleggono 630 deputati alla Camera dei Deputati, unica camera
+ i cui membri sono scelti con elezione diretta
+\end_layout
+
+\begin_layout Itemize
+13 di questi deputati, in rappresentanza delle regioni a statuto speciale
+ Valle D'Aosta e Trentino-Alto Adige, vengono scelti attraverso un sistema
+ elettorale dedicato, in modo non diverso da come avveniva con la precedente
+ legge elettorale
+\end_layout
+
+\begin_layout Itemize
+Le liste che non superano la soglia di sbarramento posta al 3% dei voti,
+ non ottengono seggi
+\end_layout
+
+\begin_layout Itemize
+La lista che da sola ottiene più del 40% dei voti ottiene il premio di maggioran
+za
+\end_layout
+
+\begin_layout Itemize
+Se nessuna singola lista ottiene più del 40% dei voti, il premio di maggioranza
+ si decide al ballottaggio tra le due liste che hanno ottenuto più voti
+ (è questo il caso di nessuna lista sopra il 40% o due liste sopra il 40%)
+\end_layout
+
+\begin_layout Itemize
+Il premio di maggioranza è costituito da 340 seggi
+\end_layout
+
+\begin_layout Itemize
+I restanti 277 seggi saranno assegnati con il metodo proporzionale di Hare-Nieme
+r a tutte le altre liste che superano la soglia di sbarramento
+\end_layout
+
+\begin_layout Itemize
+Il metodo proporzionale di Hare-Niemer prevede l'assegnazione dei seggi
+ in base alle percentuali di voti ottenute e si sviluppa in due fasi:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fase dei quozienti
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sia 
+\begin_inset Formula $Q=\nicefrac{V}{N}$
+\end_inset
+
+ numero intero detto quoziente di Hare, con 
+\begin_inset Formula $V$
+\end_inset
+
+ numero di voti validi e 
+\begin_inset Formula $N$
+\end_inset
+
+ numero di seggi da assegnare
+\end_layout
+
+\begin_layout Itemize
+Data una lista 
+\begin_inset Formula $l$
+\end_inset
+
+, sia 
+\begin_inset Formula $V_{l}$
+\end_inset
+
+ il numero di voti che essa ha ottenuto
+\end_layout
+
+\begin_layout Itemize
+I seggi assegnati alla lista 
+\begin_inset Formula $l$
+\end_inset
+
+ si ottengono come arrotondamento per difetto della divisione 
+\begin_inset Formula $N_{l}=\nicefrac{V_{l}}{Q}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Fase dei resti
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sia 
+\begin_inset Formula $R_{l}=V_{l}-\left(N_{l}\cdot Q\right)$
+\end_inset
+
+ numero intero associato alla lista 
+\begin_inset Formula $l$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Si ordino tutte le liste 
+\begin_inset Formula $l$
+\end_inset
+
+ in ordine decrescente in base al rispettivo valore 
+\begin_inset Formula $R_{l}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Si assegni un ulteriore seggio a ciascuna lista, partendo da quella con
+ 
+\begin_inset Formula $R_{l}$
+\end_inset
+
+ maggiore, fino a esaurimento dei seggi disponibili
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Scrivere un programma C che, ricevuto in input il nome di un file contentente
+ i voti di tutti gli elettori al primo turno
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+ad eccezione di Valle D'Aosta e Trentino-Alto Adige
+\end_layout
+
+\end_inset
+
+, dica quale lista ha vinto le elezioni o, nel caso di ballottaggio, quali
+ liste andranno al ballottaggio.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Il file in input si compone di un elenco dove ogni voce corrisponde al nome
+ di una lista
+\end_layout
+
+\begin_layout Itemize
+Supporre che non ci siano più di 10 liste indipendenti in corsa
+\end_layout
+
+\begin_layout Itemize
+Supporre che il nome del file sia dato da una 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+#define
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ampliare il programma del punto precedente per indicare quali liste otterranno
+ dei seggi
+\end_layout
+
+\begin_layout Enumerate
+Ampliare il programma del punto precedente per indicare quanti seggi otterrà
+ ciascuna lista
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Gestire-numero-imprecisato"
+
+\end_inset
+
+Gestire un numero imprecisato di liste
+\end_layout
+
+\begin_layout Standard
+Non viene fornito nel testo dell'esercizio il numero esatto né il nome delle
+ liste che partecipano alle elezioni.
+ È un dato che è possibile ricavare dal file di input.
+\end_layout
+
+\begin_layout Standard
+Per ogni riga letta in input dal file, si può verificare se tale voce è
+ già nota o se essa è nuova e necessita di essere aggiunta alle liste note.
+\end_layout
+
+\begin_layout Standard
+L'informazione sul numero massimo di liste consente la dichiarazione di
+ un array per contenere i nomi delle liste e i rispettivi contatori.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+#define MAXLISTE 10
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAXLEN 35 /* nomi delle liste */
+\end_layout
+
+\begin_layout LyX-Code
+
+int numListe = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+/* vettori i cui valori sono validi da 0 a numListe - per ogni nuova lista
+ trovata si incrementa numListe */
+\end_layout
+
+\begin_layout LyX-Code
+
+int voti[MAXLISTE] = {0};
+\end_layout
+
+\begin_layout LyX-Code
+
+char nomi[MAXLISTE][MAXLEN];
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Struct vs vettori paralleli
+\end_layout
+
+\begin_layout Standard
+È possibile definire un tipo strutturato che contenga al suo interno tutte
+ le informazioni necessarie a descrivere una lista.
+ Il vettore sarà quindi unico e definito sul tipo strutturato.
+ Di seguito si riporta l'esempio del punto 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Gestire-numero-imprecisato"
+
+\end_inset
+
+, gestito con un tipo strutturato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+#define MAXLISTE 10
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAXLEN 35 /* nomi delle liste */
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+typedef struct {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char nome[MAXLEN];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int voti;
+\end_layout
+
+\begin_layout LyX-Code
+
+} t_lista;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int numListe = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+/* vettore i cui valori sono validi da 0 a numListe - per ogni nuova lista
+ trovata si incrementa numListe */
+\end_layout
+
+\begin_layout LyX-Code
+
+t_lista risultati[MAXLISTE];
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La soluzione è del tutto equivalente alla precedente, la quale faceva uso
+ di due distinti vettori utilizzati in parallelo.
+ Si usa dire che due vettori vengono utilizzati in parallelo quando sono
+ definiti indipendentemente uno dall'altro e sono connessi solo logicamente.
+ 
+\end_layout
+
+\begin_layout Standard
+In questo caso la connessione logica è data dal fatto che nella posizione
+ 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+i
+\end_layout
+
+\end_inset
+
+ del primo vettore ci sia il nome della lista i cui voti sono nella posizione
+ 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+i
+\end_layout
+
+\end_inset
+
+ dell'altro vettore.
+ Questo è deducibile solo dall'uso che viene fatto di questi vettori nella
+ logica del programma e non è esplicitato in nessun costrutto.
+ L'utilizzo di vettori paralleli ha come svantaggio il fatto di dover gestire
+ due vettori anziché uno solo: per ogni modifica (ad esempio ordinamento)
+ a ciascun vettore, è necessario riflettere le modifiche sull'altro vettore
+ per mantenere l'accoppiamento.
+\end_layout
+
+\begin_layout Standard
+Questo problema si presta maggiormente ad essere risolto tramite la definizione
+ e l'utilizzo di un tipo strutturato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Vincitore delle elezioni
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Election Simulator - punto 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <string.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAXLISTE 10
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAXLEN 35 /* nomi delle liste */
+\end_layout
+
+\begin_layout LyX-Code
+
+#define FILENAME "Elezioni.txt"
+\end_layout
+
+\begin_layout LyX-Code
+
+#define KEY_NOT_FOUND -1
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+typedef struct {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char nome[MAXLEN];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int voti;
+\end_layout
+
+\begin_layout LyX-Code
+
+} t_lista;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+/* restituisce l'indice della stringa k in res, se non lo trova restituisce
+ KEY_NOT_FOUND */
+\end_layout
+
+\begin_layout LyX-Code
+
+int find(char *k, t_lista res[], int nListe);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+/* ordina res con ordinamento non crescente sul campo voti */
+\end_layout
+
+\begin_layout LyX-Code
+
+void sort(t_lista res[], int nListe);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	FILE* fin;
+\end_layout
+
+\begin_layout LyX-Code
+
+	t_lista res[MAXLISTE];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, nListe, l, len, numVoti;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char bufin[MAXLEN];
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	fin = fopen(FILENAME, "r");
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!fin) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nErrore apertura file.");
+\end_layout
+
+\begin_layout LyX-Code
+
+		return -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	nListe = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (!feof(fin)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			fgets(bufin, MAXLEN, fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* fgets copia in bufin anche '
+\backslash
+n' */
+\end_layout
+
+\begin_layout LyX-Code
+
+			len = strlen(bufin);
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (len > 0 && bufin[len - 1] == '
+\backslash
+n') {
+\end_layout
+
+\begin_layout LyX-Code
+
+				bufin[len - 1] = '
+\backslash
+0';
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+			l = find(bufin, res, nListe);
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (l != KEY_NOT_FOUND) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				res[l].voti++;
+\end_layout
+
+\begin_layout LyX-Code
+
+			} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+				res[nListe].voti = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+				strcpy(res[nListe].nome, bufin);
+\end_layout
+
+\begin_layout LyX-Code
+
+				nListe++;
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	fclose(fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	sort(res, nListe);
+\end_layout
+
+\begin_layout LyX-Code
+
+	numVoti = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < nListe; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		numVoti += res[i].voti;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (nListe < 1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Nessun voto trovato!
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+		return -2;
+\end_layout
+
+\begin_layout LyX-Code
+
+	} 
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (nListe < 2) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Allerta dittatura! Ha partecipato solo %s!
+\backslash
+n", res[0].nome);
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else if ((float) res[0].voti / numVoti < 0.4f || (float) res[1].voti / numVoti
+ >= 0.4) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Si andrà al ballotaggio tra %s e %s
+\backslash
+n", res[0].nome, res[1].nome);
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Vince le elezioni al primo turno la lista %s
+\backslash
+n", res[0].nome);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int find(char *k, t_lista res[], int nListe) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < nListe; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (strcmp(res[i].nome, k) == 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			return i;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return KEY_NOT_FOUND;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void sort(t_lista res[], int nListe) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	t_lista tmp;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < nListe - 1; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (j = i + 1; j < nListe; j++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (res[i].voti < res[j].voti) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				tmp = res[i];
+\end_layout
+
+\begin_layout LyX-Code
+
+				res[i] = res[j];
+\end_layout
+
+\begin_layout LyX-Code
+
+				res[j] = tmp;
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Soluzione punti 2 e 3
+\end_layout
+
+\begin_layout Standard
+Di seguito viene riportato il programma modificato, limitato alle sole parti
+ soggette a modifiche rispetto alla versione precedente.
+ Sono quindi omesse le funzioni precedentemente definite.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Election Simulator - punto 2, punto3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <string.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAXLISTE 10
+\end_layout
+
+\begin_layout LyX-Code
+
+#define MAXLEN 35 /* nomi delle liste */
+\end_layout
+
+\begin_layout LyX-Code
+
+#define KEY_NOT_FOUND -1
+\end_layout
+
+\begin_layout LyX-Code
+
+#define FILENAME "Elezioni.txt"
+\end_layout
+
+\begin_layout LyX-Code
+
+#define SEGGI_PROPORZ 277
+\end_layout
+
+\begin_layout LyX-Code
+
+#define SEGGI_MAGGIOR 340
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+typedef struct {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char nome[MAXLEN];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int voti;
+\end_layout
+
+\begin_layout LyX-Code
+
+} t_lista;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+/* restituisce l'indice della stringa k in res, se non lo trova restituisce
+ KEY_NOT_FOUND */
+\end_layout
+
+\begin_layout LyX-Code
+
+int find(char *k, t_lista res[], int nListe);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+/* ordina res con ordinamento non crescente sul campo voti */
+\end_layout
+
+\begin_layout LyX-Code
+
+void sort(t_lista res[], int nListe);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+/* trova la posizione dell'elemento massimo in un vettore di interi */
+\end_layout
+
+\begin_layout LyX-Code
+
+int pmax(int v[], int n);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	FILE* fin;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char bufin[MAXLEN];
+\end_layout
+
+\begin_layout LyX-Code
+
+	t_lista res[MAXLISTE];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, nListe, l, len, nVoti, ballottaggio;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int seggi[MAXLISTE] = {0};
+\end_layout
+
+\begin_layout LyX-Code
+
+	int resti[MAXLISTE] = {0};
+\end_layout
+
+\begin_layout LyX-Code
+
+	int Q, seggiAssegnati, over3;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	fin = fopen(FILENAME, "r");
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!fin) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nErrore apertura file.");
+\end_layout
+
+\begin_layout LyX-Code
+
+		return -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	nListe = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (!feof(fin)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			fgets(bufin, MAXLEN, fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* fgets copia in bufin anche '
+\backslash
+n' */
+\end_layout
+
+\begin_layout LyX-Code
+
+			len = strlen(bufin);
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (len > 0 && bufin[len - 1] == '
+\backslash
+n') {
+\end_layout
+
+\begin_layout LyX-Code
+
+				bufin[len - 1] = '
+\backslash
+0';
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+			l = find(bufin, res, nListe);
+\end_layout
+
+\begin_layout LyX-Code
+
+			if (l != KEY_NOT_FOUND) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				res[l].voti++;
+\end_layout
+
+\begin_layout LyX-Code
+
+			} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+				res[nListe].voti = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+				strcpy(res[nListe].nome, bufin);
+\end_layout
+
+\begin_layout LyX-Code
+
+				nListe++;
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	fclose(fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	sort(res, nListe);
+\end_layout
+
+\begin_layout LyX-Code
+
+	nVoti = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < nListe; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		nVoti += res[i].voti;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (nListe < 1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Nessun voto trovato!
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+		return -2;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	ballottaggio = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (nListe < 2) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Allerta dittatura! Ha partecipato solo %s!
+\backslash
+n", res[0].nome);
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else if ((float) res[0].voti / nVoti < 0.4f || (float) res[1].voti / nVoti
+ >= 0.4) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Si andrà al ballottaggio tra %s e %s
+\backslash
+n", res[0].nome, res[1].nome);
+\end_layout
+
+\begin_layout LyX-Code
+
+		ballottaggio = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Vince le elezioni al primo turno la lista %s
+\backslash
+n", res[0].nome);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	over3 = 0; /* Ottengono più del 3% */
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("Ottengono seggi le seguenti liste:
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < nListe; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (res[i].voti >= 0.03 * nVoti) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("%s
+\backslash
+n", res[i].nome);
+\end_layout
+
+\begin_layout LyX-Code
+
+			over3++;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* calcola il numero dei seggi solo in caso di esito certo delle elezioni
+ */
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!ballottaggio) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* quota maggioritaria */
+\end_layout
+
+\begin_layout LyX-Code
+
+		seggi[0] = SEGGI_MAGGIOR;
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* la maggioranza non deve ottenere seggi nella fase dei resti */
+\end_layout
+
+\begin_layout LyX-Code
+
+		resti[0] = -1; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* quota proporzionale - fase quozienti */
+\end_layout
+
+\begin_layout LyX-Code
+
+		seggiAssegnati = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+		Q = nVoti / SEGGI_PROPORZ;
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (i = 1; i < over3; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			seggi[i] = res[i].voti / Q;
+\end_layout
+
+\begin_layout LyX-Code
+
+			resti[i] = res[i].voti % Q;
+\end_layout
+
+\begin_layout LyX-Code
+
+			seggiAssegnati += seggi[i];
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* quota proporzionale - fase resti */
+\end_layout
+
+\begin_layout LyX-Code
+
+		while (seggiAssegnati < SEGGI_PROPORZ) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* trova resto max */
+\end_layout
+
+\begin_layout LyX-Code
+
+			i = pmax(resti, over3);
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* passa al resto massimo immediatamente più piccolo */
+\end_layout
+
+\begin_layout LyX-Code
+
+			resti[i] -= Q;	
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* la maggioranza non deve ottenere seggi nella fase dei resti */
+\end_layout
+
+\begin_layout LyX-Code
+
+			resti[0] -= Q;
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* assegna il seggio */
+\end_layout
+
+\begin_layout LyX-Code
+
+			++seggi[i];
+\end_layout
+
+\begin_layout LyX-Code
+
+			++seggiAssegnati;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("L'assegnazione del numero di seggi è la seguente:
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (i = 0; i < nListe; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("Lista %s: %d seggi
+\backslash
+n", res[i].nome, seggi[i]);
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int pmax(int v[], int n) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int pmax, i;
+\end_layout
+
+\begin_layout LyX-Code
+
+	pmax = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 1; i < n; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (v[i] > v[pmax]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			pmax = i;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return pmax;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2014/15.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
