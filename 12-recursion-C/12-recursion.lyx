@@ -929,7 +929,7 @@ void vectorInverterRecursive(int v[], int n) {
 
 \begin_layout LyX-Code
 
-	vectorInverterRecursive(&v[1], n - 1);
+	vectorInverterRecursive(&v[1], n - 2);
 \end_layout
 
 \begin_layout LyX-Code
