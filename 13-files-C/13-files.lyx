@@ -1671,7 +1671,7 @@ int main() {
 
 \begin_layout LyX-Code
 
-	int Q, seggiAssegnati, over3;
+	int Q, seggiAssegnati, over3, votiMin;
 \end_layout
 
 \begin_layout LyX-Code
@@ -1929,6 +1929,11 @@ n", res[0].nome);
 
 \begin_layout LyX-Code
 
+	votiMin = 0; /* Voti alla minoranza */
+\end_layout
+
+\begin_layout LyX-Code
+
 	printf("Ottengono seggi le seguenti liste:
 \backslash
 n");
@@ -1954,6 +1959,11 @@ n", res[i].nome);
 \begin_layout LyX-Code
 
 			over3++;
+\end_layout
+
+\begin_layout LyX-Code
+
+			votiMin += res[i].voti;
 \end_layout
 
 \begin_layout LyX-Code
@@ -2018,7 +2028,17 @@ n", res[i].nome);
 
 \begin_layout LyX-Code
 
-		Q = nVoti / SEGGI_PROPORZ;
+		votiMin -= res[0].voti; 
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* proporzione sui voti della minoranza */
+\end_layout
+
+\begin_layout LyX-Code
+
+		Q = votiMin / SEGGI_PROPORZ;
 \end_layout
 
 \begin_layout LyX-Code
