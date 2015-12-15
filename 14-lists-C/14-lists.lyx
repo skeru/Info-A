@@ -1,0 +1,821 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi su liste in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+11/12/2015
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #14
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Esercizi di riscaldamento
+\end_layout
+
+\begin_layout Quotation
+Sia data la seguente definizione di tipo
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+typedef struct list_elem_s {
+\end_layout
+
+\begin_layout Plain Layout
+
+	int value;
+\end_layout
+
+\begin_layout Plain Layout
+
+	struct list_elem_s* next;
+\end_layout
+
+\begin_layout Plain Layout
+
+} list_elem_t; 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+Si definiscano le seguenti procedure in linguaggio C.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+void displayOdd(list_elem_t* list)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+visualizza su standard output i soli elementi della lista che occupano posto
+ di posizione dispari (si consideri la testa della lista come posizione
+ 0, quindi pari)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+void displayEven(list_elem_t* list)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+visualizza su standard output i soli elementi della lista che occupano posto
+ di posizione pari (si consideri la testa della lista come posizione 0,
+ quindi pari).
+ Si fornisca una versione ricorsiva di questa procedura.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+void dump(list_elem_t* list, const char* filename)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+esegue il dump (copia tutto il contenuto) della lista in un file di testo
+ il cui nome è passato come parametro.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - displayOdd
+\end_layout
+
+\begin_layout Standard
+Di seguito si presentano due equivalenti versioni.
+ La prima analizza due elementi della lista per ogni iterazione, l'altra
+ conserva un contatore con l'indice della posizione e controlla la parità
+ dell'indice ad ogni iterazione.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+displayOdd
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void displayOdd(list_elem_t* list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* while (list != NULL) */
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* salta il primo perché pari */
+\end_layout
+
+\begin_layout LyX-Code
+
+		list = list->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("%d->", list->value);
+\end_layout
+
+\begin_layout LyX-Code
+
+			list = list->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("||
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+displayOdd - variante con contatore
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void displayOddCount(list_elem_t* list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* while (list != NULL) */
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* if (i % 2 != 0) */
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (i % 2) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf("%d->", list->value);
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		list = list->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+		++i;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	printf("||
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - displayEven
+\end_layout
+
+\begin_layout Standard
+Di seguito si presenta una versione che fa uso di due procedure chiamate
+ ricorsivamente in catena.
+ La prima si occupa di numeri dispari, la seconda di numeri.
+ Solo la seconda contiene l'output su standard output.
+\end_layout
+
+\begin_layout Standard
+Considerato che le due funzioni si chiamano ricorsivamente l'un l'altra,
+ è fondamentale che i prototipi delle stesse vengano anteposti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+displayEven
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void displayOddRec(list_elem_t* list);
+\end_layout
+
+\begin_layout LyX-Code
+
+void displayEvenRec(list_elem_t* list);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void displayOddRec(list_elem_t* list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		list = list->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+		displayEvenRec(list);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void displayEvenRec(list_elem_t* list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("%d->", list->value);
+\end_layout
+
+\begin_layout LyX-Code
+
+		list = list->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+		displayOddRec(list);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - dump
+\end_layout
+
+\begin_layout Standard
+La soluzione consta in uno scorrimento della lista, accoppiato con la scrittura
+ del file.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+dump
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void dump(list_elem_t* list, const char* filename) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	FILE* f;
+\end_layout
+
+\begin_layout LyX-Code
+
+	f = fopen(filename, "w");
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (f) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		while (list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			fprintf(f, "%d
+\backslash
+n", list->value);
+\end_layout
+
+\begin_layout LyX-Code
+
+			list = list->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		fclose(f);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return;
+\end_layout
+
+\begin_layout LyX-Code
+
+} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+ADT
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Plain Layout
+queue & stack
+\end_layout
+
+\begin_layout Plain Layout
+push - top - pop
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+HTML, quando voi nasceste
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\begin_layout Plain Layout
+write a complex struct to an html file, checking whether each element satisfy
+ or not some useless condition.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2014/15.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
