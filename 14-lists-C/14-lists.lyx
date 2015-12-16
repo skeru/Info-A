@@ -97,7 +97,7 @@ status open
 \end_layout
 
 \begin_layout Date
-11/12/2015
+12/01/2016
 \end_layout
 
 \begin_layout Standard
@@ -159,6 +159,12 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Esercizi-di-riscaldamento"
+
+\end_inset
+
 Esercizi di riscaldamento
 \end_layout
 
@@ -718,19 +724,359 @@ ADT
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+Si implementino facendo uso di liste semplici concatenate i seguenti tipi
+ di dato astratto
+\end_layout
+
+\begin_layout Enumerate
+Stack (pila)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+La cancellazione (pop) può avvenire solo sull'ultimo elemento
+\end_layout
+
+\begin_layout Itemize
+L'inserimento (push) può avvenire solo dopo l'ultimo elemento
+\end_layout
+
+\begin_layout Itemize
+L'accesso (top) può avvenire solo sull'ultimo elemento
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Queue (coda)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+L'inserimento (push) può avvenire solo dopo l'ultimo elemento
+\end_layout
+
+\begin_layout Itemize
+La cancellazione (pop) può avvenire solo sul primo elemento
+\end_layout
+
+\begin_layout Itemize
+L'accesso (top) può avvenire solo sul primo elemento
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Si faccia uso del tipo 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
 status open
 
 \begin_layout Plain Layout
-TODO
+
+list_elem_t* 
 \end_layout
 
-\begin_layout Plain Layout
-queue & stack
+\end_inset
+
+ utilizzato nell'esercizio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Esercizi-di-riscaldamento"
+
+\end_inset
+
+.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace smallskip*
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - stack
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
 \begin_layout Plain Layout
-push - top - pop
+stack
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+list_elem_t* stack_pop(list_elem_t* list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	list_elem_t* tmp;
+\end_layout
+
+\begin_layout LyX-Code
+
+	tmp = list;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		list = list->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+		free(tmp);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return list;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+list_elem_t* stack_push(list_elem_t* list, list_elem_t* elem) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (elem) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		elem->next = list;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return elem;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+list_elem_t* stack_top(list_elem_t* list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	return list;
+\end_layout
+
+\begin_layout LyX-Code
+
+}  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - queue
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+queue
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+list_elem_t* queue_pop(list_elem_t* list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	list_elem_t* tmp;
+\end_layout
+
+\begin_layout LyX-Code
+
+	tmp = list;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		list = list->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+		free(tmp);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return list;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+list_elem_t* queue_push(list_elem_t* list, list_elem_t* elem) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	elem->next = NULL;
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		return elem;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	list_elem_t* tmp = list;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (tmp->next) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		tmp = tmp->next;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	tmp->next = elem;
+\end_layout
+
+\begin_layout LyX-Code
+
+	return list;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+list_elem_t* queue_top(list_elem_t* list) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	return list;
+\end_layout
+
+\begin_layout LyX-Code
+
+}   
 \end_layout
 
 \end_inset
@@ -749,22 +1095,206 @@ push - top - pop
 HTML, quando voi nasceste
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
+\begin_layout Quotation
+Si considerino le strutture dati definiti come segue
 \end_layout
 
-\begin_layout Plain Layout
-write a complex struct to an html file, checking whether each element satisfy
- or not some useless condition.
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+#define TITLE_LEN 15 
+\end_layout
+
+\begin_layout LyX-Code
+
+#define BODY_LEN 15
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+typedef struct date_s {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int dd;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int mm;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int yyyy;
+\end_layout
+
+\begin_layout LyX-Code
+
+} date_t;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+typedef struct node_s {
+\end_layout
+
+\begin_layout LyX-Code
+
+	char title[TITLE_LEN];
+\end_layout
+
+\begin_layout LyX-Code
+
+	char body[BODY_LEN];
+\end_layout
+
+\begin_layout LyX-Code
+
+	date_t date;
+\end_layout
+
+\begin_layout LyX-Code
+
+} node_t; 
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+Si codifichi in linguaggio C una struttura dati senza modificare le strutture
+ sopra presentate per rappresentare una lista di nodi.
+\end_layout
+
+\begin_layout Enumerate
+Si codifichi in linguaggio C una procedura 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+dumpToHTML(list_t* l, date_t birthday, char* htmlFile)
+\end_layout
+
+\end_inset
+
+ che prende in input una lista di nodi, il giorno di nascita di una persona
+ e il nome di un file e scriva su file in linguaggio HTML i soli nodi contenuti
+ nella lista associati ad una data antecedente alla data di riferimento.
+ 
+\end_layout
+
+\begin_layout Quotation
+Si ricorda che un documento HTML è un file di testo che inizia con il tag
+ 
+\begin_inset listings
+lstparams "language=HTML,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+<html>
+\end_layout
+
+\end_inset
+
+ e termina con il tag 
+\begin_inset listings
+lstparams "language=HTML,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+</html>
+\end_layout
+
+\end_inset
+
+.
+ Si compone di due sezioni (head e body).
+ Nella sezione head è possibile specificare dettagli come il titolo della
+ pagina 
+\begin_inset listings
+lstparams "language=HTML,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+<head><title>TITOLO PAGINA</title></head>
+\end_layout
+
+\end_inset
+
+.
+ Nella sezione body è possibile specificare il contenuto del documento;
+ si suggerisce l'utilizzo dei tag 
+\begin_inset listings
+lstparams "language=HTML,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+<h1>TITOLO</h1>
+\end_layout
+
+\end_inset
+
+ e 
+\begin_inset listings
+lstparams "language=HTML,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+<p>CORPO DEL PARAGRAFO</p>
+\end_layout
+
+\end_inset
+
+ per specificare rispettivamente i titoli e i contenuti testuali da inserire
+ nel documento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione
+\end_layout
+
+\begin_layout Standard
+La soluzione di questo esercizio viene lasciata come esercizio a casa agli
+ studenti.
+ Verrà resa dipsonibile in una versione successiva di questo documento che
+ sarà pubblicata in prossimità della data dell'esercitazione.
 \end_layout
 
 \begin_layout Standard
