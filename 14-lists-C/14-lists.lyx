@@ -97,7 +97,7 @@ status open
 \end_layout
 
 \begin_layout Date
-12/01/2016
+22/12/2015
 \end_layout
 
 \begin_layout Standard
@@ -1287,14 +1287,212 @@ status open
 \end_layout
 
 \begin_layout Subsection
-Soluzione
+Soluzione C
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 La soluzione di questo esercizio viene lasciata come esercizio a casa agli
  studenti.
  Verrà resa dipsonibile in una versione successiva di questo documento che
- sarà pubblicata in prossimità della data dell'esercitazione.
+ sarà pubblicata in prossimità della data dell'esercitazione successiva.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+dumpToHTML
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int compareDate(date_t lhs, date_t rhs) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (lhs.yyyy < rhs.yyyy) return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (lhs.yyyy > rhs.yyyy) return +1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (lhs.mm < rhs.mm) return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (lhs.mm > rhs.mm) return +1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (lhs.dd < rhs.dd) return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (lhs.dd > rhs.dd) return +1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+void dumpToHTML(my_list_elem_t* list, date_t birthday, char* htmlfile) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	FILE* f;
+\end_layout
+
+\begin_layout Plain Layout
+
+	f = fopen(htmlfile, "w");
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (f) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		fprintf(f, "<html>
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+		fprintf(f, "<head><title>Result page</title></head>
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+		fprintf(f, "<body>
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+		while (list) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (compareDate(list->val.date, birthday) < 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+				fprintf(f, "<h1>%s
+\backslash
+n</h1>", list->val.title);
+\end_layout
+
+\begin_layout Plain Layout
+
+				fprintf(f, "<p>%s
+\backslash
+n</p>", list->val.body);
+\end_layout
+
+\begin_layout Plain Layout
+
+				fprintf(f, "<p>%d %d %d
+\backslash
+n</p>", list->val.date.dd, list->val.date.mm, list->val.date.yyyy);
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+		list = list->next;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	fprintf(f, "</body>
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+	fprintf(f, "</html>
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+	fclose(f);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1306,17 +1504,6 @@ La soluzione di questo esercizio viene lasciata come esercizio a casa agli
 
 \begin_layout Section*
 Licenza e crediti
-\end_layout
-
-\begin_layout Subsection*
-Crediti
-\end_layout
-
-\begin_layout Standard
-Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
- per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
- a.a.
- 2014/15.
 \end_layout
 
 \begin_layout Subsection*
