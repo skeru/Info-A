@@ -1,0 +1,1852 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Esercizi su memoria dinamica in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+07/01/2016
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #15
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+String Fusion
+\end_layout
+
+\begin_layout Quotation
+Si implementi una funzione C con il seguente prototipo che resituisca la
+ concatenazione delle stringhe prese in input senza modifcare le stringhe
+ originali.
+\end_layout
+
+\begin_layout Quotation
+È possibile avvalersi della libreria 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+string.h
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+char* strfusion(char* str0, char* str1)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Stringa di lunghezza indeterminata
+\end_layout
+
+\begin_layout Standard
+Nella libreria 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+string.h
+\end_layout
+
+\end_inset
+
+ esiste già una funzione che esegue la concatenazione di due stringhe, 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+char* strcat(char* dst, char* src)
+\end_layout
+
+\end_inset
+
+ ma questa non preserva la stringhe originarie, modificando la stringa 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+dst
+\end_layout
+
+\end_inset
+
+ per accodarle 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+src
+\end_layout
+
+\end_inset
+
+.
+ Occorre allocare uno spazio dedicato per il risultato per non intaccare
+ le due stringhe in ingresso.
+ Lo spazio dedicato dovrà essere dimensionato in funzione delle stringhe
+ in ingresso, la cui dimensione non è nota a priori.
+ La soluzione fara quindi uso di memoria dinamica, allocando una stringa
+ al momento delle esatte dimensioni richieste dai dati.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+String Fusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdlib.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <string.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+char* strfusion(char* str0, char* str1) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int len;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char* str;
+\end_layout
+
+\begin_layout LyX-Code
+
+	len = strlen(str0) + strlen(str1) + 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	str = (char*) malloc(len * sizeof(char));
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!str) return str;
+\end_layout
+
+\begin_layout LyX-Code
+
+	strcpy(str, str0);
+\end_layout
+
+\begin_layout LyX-Code
+
+	strcat(str, str1);
+\end_layout
+
+\begin_layout LyX-Code
+
+	return str;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Dynamic merge
+\end_layout
+
+\begin_layout Quotation
+Scrivere una funzione C che esegua il merge di due vettori di interi allocati
+ dinamicamente.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Dynamic merge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int* dynVecMerge(int v1[], int n, int v2[], int m) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	int* v;
+\end_layout
+
+\begin_layout Plain Layout
+
+	v = (int*) malloc(n + m);
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (!v) return v;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int j = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int k = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	while (i < n && j < m) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		if (v1[i] < v2[j]) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			v[k] = v1[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+			i++;
+\end_layout
+
+\begin_layout Plain Layout
+
+		} else {
+\end_layout
+
+\begin_layout Plain Layout
+
+			v[k] = v2[j];
+\end_layout
+
+\begin_layout Plain Layout
+
+			j++;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		k++;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	while (i < n) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		v[k] = v1[i];
+\end_layout
+
+\begin_layout Plain Layout
+
+		i++;
+\end_layout
+
+\begin_layout Plain Layout
+
+		k++;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	while (j < m) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		v[k] = v2[j];
+\end_layout
+
+\begin_layout Plain Layout
+
+		j++;
+\end_layout
+
+\begin_layout Plain Layout
+
+		k++;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return v;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Dynamic matrix
+\end_layout
+
+\begin_layout Quotation
+Si scriva una funzione 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+malloc2d
+\end_layout
+
+\end_inset
+
+, in grado di allocare una matrice rettangolare di numeri reali (tipo 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float
+\end_layout
+
+\end_inset
+
+), le cui dimensioni sono ricevute come parametri.
+ La matrice viene inizializzata ponendo il valore di tutte le celle 0.0 eccetto
+ quelle sull'ultima riga con valore 1.0.
+\end_layout
+
+\begin_layout Quotation
+Per semplicità, si trascuri la possibilità che la allocazione dinamica non
+ vada a buon fine.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Array di array
+\end_layout
+
+\begin_layout Standard
+Così come è possibile allocare dinamicamente una struttura di tipo primitivo,
+ è anche possibile allocare dinamicamente dei puntatori.
+ A loro volta i puntatori allocati dinamicamente potranno contenere indirizzi
+ di memoria allocata dinamicamente.
+\end_layout
+
+\begin_layout Standard
+Un vettore di vettori 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float
+\end_layout
+
+\end_inset
+
+ per esempio può essere visto logicamente come una matrice, pur avendo allocato
+ ogni riga (o ogni colonna) in modo indipendente.
+ Un esempio è riportato in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Matrice-come-vect-of-vect"
+
+\end_inset
+
+.
+ Di seguito sono riportate diverse versioni di soluzione per meglio chiarire
+ questo concetto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/array_of_array_by_row.svg
+	lyxscale 25
+	width 40col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vettore di 
+\begin_inset Quotes fld
+\end_inset
+
+vettori riga
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/array_of_array_by_column.svg
+	lyxscale 25
+	width 40col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vettore di 
+\begin_inset Quotes fld
+\end_inset
+
+vettori colonna
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Matrice-come-vect-of-vect"
+
+\end_inset
+
+Matrice allocata come vettore di vettori
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Allocazione e inizializzazione
+\end_layout
+
+\begin_layout Standard
+L'allocazione dinamica consente di richiedere aree di memoria extra durante
+ l'esecuzione.
+ L'allocazione dinamica eseguita tramite 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+malloc
+\end_layout
+
+\end_inset
+
+ consente di effettuare una sorta di 
+\begin_inset Quotes fld
+\end_inset
+
+dichiarazione al volo
+\begin_inset Quotes frd
+\end_inset
+
+ di aree di memoria.
+ Sebbene sussistano molte differenze tra una allocazione dinamica e una
+ dichiarazione di variabile statica, è bene ricordare una analogia tra le
+ due operazioni: 
+\series bold
+non è garantita l'inizializzazione
+\series default
+ dell'area di memoria riservata.
+ Occorre quindi inizializzare ogni volta tutta l'area di memoria allocata
+ che si andrà ad utilizzare.
+\end_layout
+
+\begin_layout Standard
+L'operazione di inizializzazione di un'area di memoria può essere fatta
+ a valle di una istruzione di dichiarazione di variabile (o 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+malloc
+\end_layout
+
+\end_inset
+
+) oppure può essere fatta 
+\emph on
+in-place
+\emph default
+ (esempio: 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float a = 1.0f;
+\end_layout
+
+\end_inset
+
+).
+ Esiste una istruzione, simile alla 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+malloc
+\end_layout
+
+\end_inset
+
+, la quale, oltre ad eseguire una richiesta di memoria a tempo di esecuzione,
+ effettua anche una inizializzazione delle celle di memoria a 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+0
+\end_layout
+
+\end_inset
+
+: tale istruzione di chiama 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+calloc
+\end_layout
+
+\end_inset
+
+ e vengono riportati alcuni esempi di utilizzo di questa funzione nelle
+ soluzioni che seguono.
+ Per una trattazione più completa, si rimanda ad una qualunque reference
+ della libreria 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+stdlib.h
+\end_layout
+
+\end_inset
+
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+www.tutorialspoint.com/c_standard_library/c_function_calloc.htm
+\end_layout
+
+\end_inset
+
+, tra i tanti disponibili online
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Vettore di 
+\begin_inset Quotes fld
+\end_inset
+
+vettori riga
+\begin_inset Quotes frd
+\end_inset
+
+, con malloc e sovrascritture
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+vettore di 
+\begin_inset Quotes fld
+\end_inset
+
+vettori riga
+\begin_inset Quotes frd
+\end_inset
+
+ (malloc)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+float** malloc2d(int nr, int nc) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* vettore di "array riga" */
+\end_layout
+
+\begin_layout Plain Layout
+
+	float** m;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, j;
+\end_layout
+
+\begin_layout Plain Layout
+
+	m = (float**) malloc(nr * sizeof(float*));
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < nr; ++i) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		m[i] = (float*) malloc(nc * sizeof(float));
+\end_layout
+
+\begin_layout Plain Layout
+
+		for (j = 0; j < nc; j++)
+\end_layout
+
+\begin_layout Plain Layout
+
+			m[i][j] = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (j = 0; j < nc; ++j) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		m[nr - 1][j] = 1.0; /* equivale a 
+\end_layout
+
+\begin_layout Plain Layout
+
+		*(*(m + (nr - 1) * sizeof(float*)) + j * sizeof(float)) = 1.0; */
+\end_layout
+
+\begin_layout Plain Layout
+
+	return m; 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Vettore di 
+\begin_inset Quotes fld
+\end_inset
+
+vettori riga
+\begin_inset Quotes frd
+\end_inset
+
+, con calloc
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+vettore di 
+\begin_inset Quotes fld
+\end_inset
+
+vettori riga
+\begin_inset Quotes frd
+\end_inset
+
+ (calloc)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+float** malloc2d(int nr, int nc) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* vettore di "array riga" */
+\end_layout
+
+\begin_layout Plain Layout
+
+	float** m;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, j;
+\end_layout
+
+\begin_layout Plain Layout
+
+	m = (float**)malloc(nr * sizeof(float*));
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < nr; ++i) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		m[i] = (float*)calloc(nc, sizeof(float));
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (j = 0; j < nc; ++j) 
+\end_layout
+
+\begin_layout Plain Layout
+
+		m[nr - 1][j] = 1.0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	return m; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Vettore di 
+\begin_inset Quotes fld
+\end_inset
+
+vettori colonna
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+vettore di 
+\begin_inset Quotes fld
+\end_inset
+
+vettori colonna
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+float** malloc2d(int nr, int nc) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* vettore di "array colonna" */ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	float** m; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, j; 
+\end_layout
+
+\begin_layout Plain Layout
+
+	m = (float**) malloc (nc * sizeof(float*)); 
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (j = 0; j < nc; ++j) { 
+\end_layout
+
+\begin_layout Plain Layout
+
+		m[j] = (float*) calloc(nr, sizeof(float));
+\end_layout
+
+\begin_layout Plain Layout
+
+		m[j][nr - 1] = 1.0; /* equivale a 
+\end_layout
+
+\begin_layout Plain Layout
+
+		*(*(m + j * sizeof(float*)) + (nr - 1) * sizeof(float)) = 1.0; */
+\end_layout
+
+\begin_layout Plain Layout
+
+	} 
+\end_layout
+
+\begin_layout Plain Layout
+
+	return m; 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Matrix product
+\end_layout
+
+\begin_layout Enumerate
+Si scriva una funzione che prenda come parametri di input due matrici di
+ numeri reali e restituisca:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+una matrice data dal prodotto delle due matrici in input
+\end_layout
+
+\begin_layout Itemize
+NULL quando le matrici non sono moltiplicabili
+\end_layout
+
+\begin_layout Itemize
+NULL quando non vi è sufficiente memoria per allocare il risultato
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Si modifichi la funzione precedente per fare in modo che il valore di ritorno
+ sia 0 in caso di matrice moltiplicabile e un valore intero diverso da 0
+ in caso di matrice non moltiplicabile.
+ La matrice risultato deve comunque essere calcolata e restituita.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Controllo di corretta allocazione
+\end_layout
+
+\begin_layout Standard
+La memoria dinamica è uno strumento molto potente ma deve essere maneggiato
+ con cura.
+ Dopo ogni tentativo di allocazione dinamica è necessario controllare se
+ l'allocazione è andata o meno a buon fine.
+ In caso di allocazione non riuscita è necessario gestire questa situazione
+ segnalando opportunamente l'errore e fermando il normale flusso di esecuzione
+ del programma.
+ Se accadesse che il programma provasse ad accedere a un'area di memoria
+ che non è stato possibile allocare dinamicamente si verificherebbe un errore
+ irreversibile con conseguente crash del programma (nella migliore delle
+ ipotesi).
+ 
+\end_layout
+
+\begin_layout Standard
+Nel caso di molteplici allocazioni di memoria, come ad esempio un array
+ di array dinamicamente allocati, se si verifica un problema di allocazione
+ su uno qualsiasi degli array, esso può influire anche sulle precedenti
+ allocazioni andate a buon fine.
+ Quando non ha senso avere una struttura allocata solo in parte, deve essere
+ resa inutilizzabile tutta la struttura di memoria ed è necessario liberare
+ eplicitamente la memoria già allocata con opportune 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+free
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Passare un indirizzo per indirizzo
+\end_layout
+
+\begin_layout Standard
+È sempre possibile aggiungere un parametro di output ad una funzione passandolo
+ per indirizzo.
+ Nel caso di un puntatore a memoria da allocare, è opportuno passare per
+ indirizzo il puntatore stesso.
+ Se un normale puntatore a numero reale avrà tipo 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float*
+\end_layout
+
+\end_inset
+
+, un parametro di output che conterrà memoria allocata di tipo 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float*
+\end_layout
+
+\end_inset
+
+ sarà dichiarato come 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float**
+\end_layout
+
+\end_inset
+
+ nel prototipo di funzione.
+ Allo stesso modo la cosa può essere applicata anche a puntatori a puntatori
+ così un 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float**
+\end_layout
+
+\end_inset
+
+ che deve essere allocato nella funzione sarà 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+float***
+\end_layout
+
+\end_inset
+
+ nel prototipo.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - matrix return
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matrix product (return result matrix)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+float **matrixprod(float** m1, int r1, int c1, float** m2, int r2, int c2)
+ {
+\end_layout
+
+\begin_layout Plain Layout
+
+	float** res;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, j, k;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (c1 != r2) return NULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+	res = (float**)malloc(r1 * sizeof(float*));
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (!res) return NULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* allocation */
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < r1; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		res[i] = (float*)calloc(c2, sizeof(float));
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* check if allocation is successful */
+\end_layout
+
+\begin_layout Plain Layout
+
+		if (!res[i]) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			/* ALL OR NONE: if one fails, free all previously allocated rows */
+\end_layout
+
+\begin_layout Plain Layout
+
+			for (i = i - 1; i >= 0; i--) {
+\end_layout
+
+\begin_layout Plain Layout
+
+				free(res[i]);
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* free also the vector of pointers */
+\end_layout
+
+\begin_layout Plain Layout
+
+		free(res);
+\end_layout
+
+\begin_layout Plain Layout
+
+		return NULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* compute matrix product */
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < r1; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		for (j = 0; j < c2; j++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			/* res[i][j] already initialized from calloc */
+\end_layout
+
+\begin_layout Plain Layout
+
+			for (k = 0; k < c1; k++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+				res[i][j] += m1[i][k] * m2[k][j];
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return res;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C - check return
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Matrix product (return check value)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int matrixProd(float** m1, int r1, int c1, float** m2, int r2, int c2, float***
+ res) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i, j, k;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (c1 != r2) return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	*res = (float**) malloc(r1 * sizeof(float*));
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (!*res) return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* allocation */
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < r1; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		*res[i] = (float*) calloc(c2, sizeof(float));
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* check if allocation is successful */
+\end_layout
+
+\begin_layout Plain Layout
+
+		if (!*res[i]) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			/* ALL OR NONE: if one fails, free all previously allocated rows */
+\end_layout
+
+\begin_layout Plain Layout
+
+			for (i = i - 1; i >= 0; i--) {
+\end_layout
+
+\begin_layout Plain Layout
+
+				free(*res[i]);
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+			/* free also the vector of pointers */
+\end_layout
+
+\begin_layout Plain Layout
+
+			free(*res);
+\end_layout
+
+\begin_layout Plain Layout
+
+			*res = NULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+			return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* compute matrix product */
+\end_layout
+
+\begin_layout Plain Layout
+
+	for (i = 0; i < r1; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		for (j = 0; j < c2; j++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			/* *res[i][j] already initialized from calloc */
+\end_layout
+
+\begin_layout Plain Layout
+
+			for (k = 0; k < c1; k++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+				*res[i][j] += m1[i][k] * m2[k][j];
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Crediti
+\end_layout
+
+\begin_layout Standard
+Quest'opera contiene elementi tratti da materiale di Gerardo Pelosi redatto
+ per il corso di Fondamenti di Informatica per Ingegneria dell'Automazione
+ a.a.
+ 2014/15.
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
