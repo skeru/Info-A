@@ -163,7 +163,7 @@ Mastermind
 \end_layout
 
 \begin_layout Quotation
-Si implementi la seguenti versioni semplificate del famoso gioco crittografico
+Si implementino le seguenti versioni semplificate del famoso gioco crittografico
  mastermind.
 \end_layout
 
@@ -660,7 +660,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Mastermind (dynamic lenght)
 \end_layout
 
@@ -1014,7 +1013,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Mastermind (like the original)
 \end_layout
 
