@@ -175,8 +175,12 @@ Versione base
 Il gioco si svolge utente contro computer.
  Il computer genera casualmente un codice come disposizione con ripetizione
  di lunghezza N.
- Ciascuna cifra del codice (detta anche colore) deve essere rappresentata
- da un numero intero 
+ Ciascuna cifra 
+\begin_inset Formula $elem$
+\end_inset
+
+ del codice (detta anche colore) deve essere rappresentata da un numero
+ intero 
 \begin_inset Formula $elem\in\left[0;maxColors-1\right]$
 \end_inset
 
@@ -195,7 +199,8 @@ La variabile
 \end_inset
 
 ).
- La lunghezza del codice N viene impostata nel codice tramite 
+ La lunghezza N del codice (in numero di cifre per codice) viene impostata
+ nel codice tramite 
 \begin_inset listings
 lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline true
@@ -265,7 +270,7 @@ Si consideri il gioco descritto al punto precedente.
  Il giocatore sceglierà il numero di cifre inserendolo in input dopo aver
  scelto il numero dei colori.
  Sia 
-\begin_inset Formula $numDigits=2$
+\begin_inset Formula $N=numDigits=2$
 \end_inset
 
  il numero minimo di cifre consentite.
@@ -359,11 +364,7 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset VSpace defskip
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -452,6 +453,10 @@ int main() {
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	/* set random seed to current time */
 \end_layout
 
@@ -462,9 +467,22 @@ int main() {
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	printf("*****Welcome to Mastermind*****
 \backslash
 n");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* set difficulty */
 \end_layout
 
 \begin_layout Plain Layout
@@ -501,6 +519,15 @@ nProvide a number of color greater than 1 ");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* compute secret code */
+\end_layout
+
+\begin_layout Plain Layout
+
 	for (i = 0; i < LEN; i++) {
 \end_layout
 
@@ -512,6 +539,10 @@ nProvide a number of color greater than 1 ");
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -529,6 +560,11 @@ n");
 \begin_layout Plain Layout
 
 	do {
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* input */
 \end_layout
 
 \begin_layout Plain Layout
@@ -553,6 +589,15 @@ n", LEN, maxColors - 1);
 \begin_layout Plain Layout
 
 		}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* check */
 \end_layout
 
 \begin_layout Plain Layout
@@ -612,6 +657,10 @@ n", LEN, maxColors - 1);
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	printf("
 \backslash
 nCongrats! You've guessed in %d turns!
@@ -635,11 +684,7 @@ n", turn);
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset VSpace defskip
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -719,14 +764,31 @@ int main() {
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	srand(time(NULL));
 \end_layout
 
 \begin_layout Plain Layout
 
-	printf("***** Welcome to Mastermind *****
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("*****Welcome to Mastermind*****
 \backslash
 n");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* set difficulty */
 \end_layout
 
 \begin_layout Plain Layout
@@ -763,6 +825,10 @@ nProvide a number of color greater than 1 ");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	printf("Please tell me how many digits should have your challenge: ");
 \end_layout
 
@@ -795,6 +861,10 @@ nProvide a number of digits greater than 1 ");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	sol = (int*) malloc(sizeof(int) * numDigits);
 \end_layout
 
@@ -818,6 +888,10 @@ n");
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -854,6 +928,10 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	for (i = 0; i < numDigits; i++) {
 \end_layout
 
@@ -865,6 +943,10 @@ n");
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -906,6 +988,10 @@ n", numDigits, maxColors - 1);
 \begin_layout Plain Layout
 
 		}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -965,11 +1051,25 @@ n", numDigits, maxColors - 1);
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	printf("
 \backslash
 nCongrats! You've guessed in %d turns!
 \backslash
 n", turn);
+\end_layout
+
+\begin_layout Plain Layout
+
+	free(input);
+\end_layout
+
+\begin_layout Plain Layout
+
+	free(sol);
 \end_layout
 
 \begin_layout Plain Layout
@@ -988,11 +1088,7 @@ n", turn);
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset VSpace defskip
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -1066,7 +1162,12 @@ int main() {
 
 \begin_layout Plain Layout
 
-	int i, j, maxColors, numDigits, guessed, turn, found;
+	int i, j, maxColors, numDigits, guessed;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int turn, found;
 \end_layout
 
 \begin_layout Plain Layout
@@ -1091,12 +1192,20 @@ int main() {
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	srand(time(NULL));
 \end_layout
 
 \begin_layout Plain Layout
 
-	printf("***** Welcome to Mastermind *****
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("*****Welcome to Mastermind*****
 \backslash
 n");
 \end_layout
@@ -1135,6 +1244,10 @@ nProvide a number of color greater than 1 ");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	printf("Please tell me how many digits should have your challenge: ");
 \end_layout
 
@@ -1167,6 +1280,10 @@ nProvide a number of digits greater than 1 ");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	sol = (int*) malloc(sizeof(int) * numDigits);
 \end_layout
 
@@ -1190,6 +1307,10 @@ n");
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1226,6 +1347,10 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	for (i = 0; i < numDigits; i++) {
 \end_layout
 
@@ -1237,6 +1362,10 @@ n");
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1282,6 +1411,10 @@ n", numDigits, maxColors - 1);
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 		/* look for blacks */
 \end_layout
 
@@ -1323,6 +1456,10 @@ n", numDigits, maxColors - 1);
 \begin_layout Plain Layout
 
 		}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1387,6 +1524,10 @@ n", numDigits, maxColors - 1);
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 		/* output */
 \end_layout
 
@@ -1427,12 +1568,20 @@ n", numDigits, maxColors - 1);
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 		++turn;
 \end_layout
 
 \begin_layout Plain Layout
 
 	} while(!guessed && turn < MAXTURNS);
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1456,7 +1605,9 @@ n", turn);
 
 \begin_layout Plain Layout
 
-		printf("Computer Wins
+		printf("
+\backslash
+nComputer Wins
 \backslash
 n");
 \end_layout
@@ -1464,6 +1615,21 @@ n");
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	free(input);
+\end_layout
+
+\begin_layout Plain Layout
+
+	free(sol);
 \end_layout
 
 \begin_layout Plain Layout
