@@ -1,0 +1,684 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language italian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter tgcursor
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Orario dipendenti in C
+\end_layout
+
+\begin_layout Author
+Stefano Cherubin
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+<nome.cognome>@polimi.it
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+12/01/2016
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Address
+[
+\series bold
+Informatica A
+\series default
+] Esercitazione #17
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5theight%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Right Address
+corso per Ing.
+ Gestionale a.a.
+ 2015/16
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Orario dipendenti
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+WIP
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+Si implementino le seguenti versioni di un sistema di conteggio ore lavorative
+ per i dipendenti di una azienda.
+\end_layout
+
+\begin_layout Subsection
+Versione base
+\end_layout
+
+\begin_layout Quotation
+\align block
+L'azienda dove lavorate ha di recente installato un nuovo sistema di controllo
+ degli accessi nella sua sede principale.
+ Ogni dipendente ha un badge che striscia su un rilevatore di accessi.
+ Settimanalmente il rilevatore fornisce un file di testo che riporta gli
+ accessi rilevati.
+ Ogni riga del file corrisponde ad un passaggio di badge e si presenta come
+ si seguito
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+hh mm id_badge
+\end_layout
+
+\begin_layout LyX-Code
+8 29 xfc052a8
+\end_layout
+
+\end_deeper
+\begin_layout Quotation
+Ogni dipendente ha un codice identificativo univoco salvato sul proprio
+ badge; questo codice è composto da una stringa alfanumerica di 8 caratteri
+ e viene registrato dal rilevatore.
+\end_layout
+
+\begin_layout Quotation
+Uno dei vostri superiori vi chiede una verifica sul numero di ore effettivamente
+ lavorate nella passata settimana da uno specifico dipendente della vostra
+ azienda (id: 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+xfc026b7
+\end_layout
+
+\end_inset
+
+) perché sospettato di assenteismo.
+\end_layout
+
+\begin_layout Quotation
+Scrivete un programma che esegua la suddetta verifica in modo automatico.
+\end_layout
+
+\begin_layout Subsection
+Variante: controllo globale
+\end_layout
+
+\begin_layout Quotation
+Il vostro superiore ha realizzato che il programma che avete scritto al
+ punto precedente può tornare utile per controllare le effettive ore lavorate
+ da tutti i dipendenti della sede.
+ Non vi ricordate quanti dipendenti esattamente ha l'azienda ma sapete che
+ quelli che lavorano nella sede principale e utilizzano il nuovo sistema
+ di controllo degli accessi sono in numero compreso tra 500 e 550.
+\end_layout
+
+\begin_layout Quotation
+Il brillante lavoro svolto con il controllo del dipendente assenteista vi
+ ha resi automaticamente il massimo esperto dell'ufficio nella gestione
+ del sistema di controllo degli accessi, è vostro compito implementare questo
+ miglioramento.
+\end_layout
+
+\begin_layout Standard
+Suggerimento: per semplificare l'output, si generi un file di testo che
+ elenca, per ogni dipendente, il numero di ore effettivamente lavorate.
+\end_layout
+
+\begin_layout Subsection
+Variante: azienda in crescita
+\end_layout
+
+\begin_layout Quotation
+Alcuni giorni dopo aver consegnato il lavoro del punto precedente, sentite
+ il vostro superiore di cui sopra che parla al telefono del nuovo sistema
+ di controllo degli accessi e di come si potrebbe estendere a tutte le sedi
+ dell'azienda il sistema sperimentato con successo nella sede principale.
+ Sapete già che vi toccherà rimettere mano al programma per portarlo su
+ scala aziendale.
+ Prevedendo questa richiesta, nel tentativo di non perdere la festa di compleann
+o del vostro migliore amico che avete in programma per la serata, avete
+ 40 minuti di tempo per modificare il programma del punto precedente per:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Gestire un numero imprecisato di dipendenti
+\end_layout
+
+\begin_layout Itemize
+Ammettere che un dipendente possa andare in trasferta in una diversa sede
+ dell'azienda
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Suggerimento: si assuma possibile eseguire il programma su diversi file
+ di input e/o accodare uno o più file di testo prima di eseguire il programma.
+\end_layout
+
+\begin_layout Standard
+Si fornisca assieme alla soluzione in linguaggio C, una accurata descrizione
+ delle assunzioni fatte.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzioni
+\end_layout
+
+\begin_layout Subsubsection
+Versione base
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Orario dipendenti (base)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h> 
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <string.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+#define DIPENDENTE_MOLESTO "xfc026b7"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+const char* nomeFile = "passaggi.txt";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main() {
+\end_layout
+
+\begin_layout Plain Layout
+
+	FILE* f;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int h, m, h_in, m_in, h_exit, m_exit;
+\end_layout
+
+\begin_layout Plain Layout
+
+	char id[9];
+\end_layout
+
+\begin_layout Plain Layout
+
+	int h_lav, m_lav, trovato;
+\end_layout
+
+\begin_layout Plain Layout
+
+	f = fopen(nomeFile, "r");
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (!f) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("Impossibile aprire il file
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+		return -1;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	h_lav = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	m_lav = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	do{
+\end_layout
+
+\begin_layout Plain Layout
+
+		trovato = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+		while (!feof(f) && !trovato) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			fscanf(f, "%d %d %s", &h, &m, id);
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (strcmp(id, DIPENDENTE_MOLESTO) == 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+				h_in = h;
+\end_layout
+
+\begin_layout Plain Layout
+
+				m_in = m;
+\end_layout
+
+\begin_layout Plain Layout
+
+				trovato = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		trovato = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+		while (!feof(f) && !trovato) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			fscanf(f, "%d %d %s", &h, &m, id);
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (strcmp(id, DIPENDENTE_MOLESTO) == 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+				h_exit = h;
+\end_layout
+
+\begin_layout Plain Layout
+
+				m_exit = m;
+\end_layout
+
+\begin_layout Plain Layout
+
+				trovato = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+				/* calcolo ore lavorative */
+\end_layout
+
+\begin_layout Plain Layout
+
+				h_lav += h_exit - h_in;
+\end_layout
+
+\begin_layout Plain Layout
+
+				m_lav += m_exit - m_in;
+\end_layout
+
+\begin_layout Plain Layout
+
+				if (m_exit - m_in < 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+					m_lav += 60;
+\end_layout
+
+\begin_layout Plain Layout
+
+					h_lav -= 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+				}
+\end_layout
+
+\begin_layout Plain Layout
+
+				if (m_lav >= 60) {
+\end_layout
+
+\begin_layout Plain Layout
+
+					m_lav -= 60;
+\end_layout
+
+\begin_layout Plain Layout
+
+					h_lav += 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+				}
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while (!feof(f));
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("Il dipendete %s ha lavorato %d ore e %d minuti.
+\backslash
+n", DIPENDENTE_MOLESTO, h_lav, m_lav);
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Controllo globale
+\end_layout
+
+\begin_layout Standard
+Questa soluzione verrà fornita in un successivo aggiornamento del presente
+ documento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Azienda in crescita
+\end_layout
+
+\begin_layout Standard
+Questa soluzione verrà fornita in un successivo aggiornamento del presente
+ documento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Licenza e crediti
+\end_layout
+
+\begin_layout Subsection*
+Licenza beerware
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://people.freebsd.org/~phk/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quest'opera è stata redatta da Stefano Cherubin.
+ Mantenendo questa nota, puoi fare quello che vuoi con quest'opera.
+ Se ci dovessimo incontrare e tu ritenessi che quest'opera lo valga, in
+ cambio puoi offrirmi una birra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
