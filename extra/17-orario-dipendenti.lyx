@@ -296,12 +296,58 @@ Si fornisca assieme alla soluzione in linguaggio C, una accurata descrizione
  delle assunzioni fatte.
 \end_layout
 
+\begin_layout Subsection
+Variante: rivolta sindacale
+\end_layout
+
 \begin_layout Standard
-\begin_inset VSpace defskip
+A seguito delle analisi che avete fornito, diversi dipendenti della vostra
+ azienda, sparsi per le diverse sedi, sono stati raggiunti da provvedimenti
+ disciplinari e, in alcuni casi, da lettere di licenziamento motivato da
+ scarsa presenza sul luogo di lavoro.
+ I sindacati si rivolgono a voi per confrontare le ore di lavoro effettive
+ dei dipendenti raggiunti da provvedimenti con quelle dei loro superiori
+ che hanno deciso di avviare la procedura.
+ Sapete che le prime 3 cifre del codice identificativo identificano il grado
+ del dipendente e che i responsabili di grado più alto hanno codice che
+ inizia con 
+\begin_inset listings
+lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+xfA
+\end_layout
+
 \end_inset
 
+.
+ Si calcoli il numero di ore effettivamente lavorate da tutti i dipendenti
+ di quel grado, se ne calcoli la media e si visualizzi a schermo inoltre
+ il codice identificativo del dipendente tra questi che ha lavorato di meno.
+\end_layout
 
-\begin_inset VSpace defskip
+\begin_layout Subsection
+Fine della storia
+\end_layout
+
+\begin_layout Standard
+Dalle statistiche che avete scovato al punto precedente emerge che i più
+ sfaticati tra tutti i lavoratori sono appunto i dirigenti che avevano deciso
+ i licenziamenti.
+\end_layout
+
+\begin_layout Standard
+Alla fine i sindacati e i dirigenti dell'azienda trovano un accordo e i
+ provvedimenti disciplinari avviati in precedenza vengono ritirati.
+ L'unico dipendente ad essere licenziato siete voi perché mentre stavate
+ risolvendo questo esercizio vi siete scordati di passare il badge.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -389,6 +435,10 @@ int main() {
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	f = fopen(nomeFile, "r");
 \end_layout
 
@@ -416,6 +466,10 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	h_lav = 0;
 \end_layout
 
@@ -426,7 +480,21 @@ n");
 
 \begin_layout Plain Layout
 
-	do{
+	/* Per tutto il file */
+\end_layout
+
+\begin_layout Plain Layout
+
+	do{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* Orario Ingresso */
 \end_layout
 
 \begin_layout Plain Layout
@@ -442,6 +510,10 @@ n");
 \begin_layout Plain Layout
 
 			fscanf(f, "%d %d %s", &h, &m, id);
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -476,6 +548,15 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+		/* Orario Uscita */
+\end_layout
+
+\begin_layout Plain Layout
+
 		trovato = 0;
 \end_layout
 
@@ -491,7 +572,11 @@ n");
 
 \begin_layout Plain Layout
 
-			if (strcmp(id, DIPENDENTE_MOLESTO) == 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (strcmp(id, DIPENDENTE_MOLESTO)==0) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -511,6 +596,10 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 				/* calcolo ore lavorative */
 \end_layout
 
@@ -522,6 +611,15 @@ n");
 \begin_layout Plain Layout
 
 				m_lav += m_exit - m_in;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+				/* aggiusta conteggio minuti */
 \end_layout
 
 \begin_layout Plain Layout
@@ -577,6 +675,10 @@ n");
 \begin_layout Plain Layout
 
 	} while (!feof(f));
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -808,6 +910,10 @@ int main() {
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	f_in = fopen(inputFileName, "r");
 \end_layout
 
@@ -835,6 +941,10 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	fscanf(f_in, "%d %d %s", &h, &m, id);
 \end_layout
 
@@ -845,7 +955,15 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 		i = getIndexPosition(id);
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -861,6 +979,10 @@ n");
 \begin_layout Plain Layout
 
 		}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -885,7 +1007,15 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 		enqueue(i, h, m);
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -901,6 +1031,10 @@ n");
 \begin_layout Plain Layout
 
 	fclose(f_in);
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -932,6 +1066,10 @@ n");
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 	for (i = 0; i < actual_N; i++) {
 \end_layout
 
@@ -950,6 +1088,10 @@ n", timeTable[i].id, h, m);
 \begin_layout Plain Layout
 
 	}
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1315,6 +1457,26 @@ void computeEmployee(int index, int* hh, int* mm) {
 
 \begin_layout Subsubsection
 Azienda in crescita
+\end_layout
+
+\begin_layout Standard
+Questa soluzione verrà fornita in un successivo aggiornamento del presente
+ documento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Rivolta sindacale
 \end_layout
 
 \begin_layout Standard
