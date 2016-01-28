@@ -3,6 +3,9 @@
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language italian
@@ -675,7 +678,6 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
 Prodotti scaduti
 \end_layout
 
