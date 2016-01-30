@@ -1505,6 +1505,636 @@ n");
 
 \end_layout
 
+\begin_layout Section
+Statistiche
+\end_layout
+
+\begin_layout Quotation
+Si definisca una struttura di lista concatenata semplice dove ciascun nodo
+ contiene un numero in virgola mobile.
+\end_layout
+
+\begin_layout Quotation
+Si scriva un programma che acquisisce da tastiera un indeterminato numero
+ di elementi e li inserisca nella lista.
+ Al primo valore nullo inserito dall'utente, l'inserimento termina e si
+ calcoli il valore minimo, massimo e mediano nella lista.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#include <stdlib.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+typedef struct node_s {
+\end_layout
+
+\begin_layout Plain Layout
+
+	float val;
+\end_layout
+
+\begin_layout Plain Layout
+
+	struct node_s *next;
+\end_layout
+
+\begin_layout Plain Layout
+
+} node_t;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int countNodes(node_t *head);
+\end_layout
+
+\begin_layout Plain Layout
+
+node_t * getElementByPosition(node_t *head, int position);
+\end_layout
+
+\begin_layout Plain Layout
+
+node_t * loadList();
+\end_layout
+
+\begin_layout Plain Layout
+
+node_t * sortList(node_t *head);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main() {
+\end_layout
+
+\begin_layout Plain Layout
+
+	node_t *head;
+\end_layout
+
+\begin_layout Plain Layout
+
+	node_t *min, *max, *med;
+\end_layout
+
+\begin_layout Plain Layout
+
+	int numberOfNodes;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	head = loadList();
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (head == NULL) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("Lista vuota
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+		return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	head = sortList(head);
+\end_layout
+
+\begin_layout Plain Layout
+
+	numberOfNodes = countNodes(head);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+	/* min = head */
+\end_layout
+
+\begin_layout Plain Layout
+
+	min = getElementByPosition(head, 0);
+\end_layout
+
+\begin_layout Plain Layout
+
+	max = getElementByPosition(head, numberOfNodes - 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+	med = getElementByPosition(head, numberOfNodes / 2);
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("Minimo: %f
+\backslash
+tMediano: %f
+\backslash
+tMassimo:%f
+\backslash
+n", min->val, med->val, max->val);
+\end_layout
+
+\begin_layout Plain Layout
+
+	return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int countNodes(node_t *head) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i;
+\end_layout
+
+\begin_layout Plain Layout
+
+	for(i = 0; head; head = head->next, i++);
+\end_layout
+
+\begin_layout Plain Layout
+
+	return i;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+node_t * getElementByPosition(node_t *head, int position) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	int i;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (position < 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		return NULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	i = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+	while (i < position && head) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		i ++;
+\end_layout
+
+\begin_layout Plain Layout
+
+		head = head->next;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return head;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+node_t * loadList() {
+\end_layout
+
+\begin_layout Plain Layout
+
+	node_t *head, *tmp, *aux;
+\end_layout
+
+\begin_layout Plain Layout
+
+	float tmp_val;
+\end_layout
+
+\begin_layout Plain Layout
+
+	head = NULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+	tmp = head;
+\end_layout
+
+\begin_layout Plain Layout
+
+	printf("Inserisci un valore nella lista (0 per terminare): ");
+\end_layout
+
+\begin_layout Plain Layout
+
+	scanf("%f", &tmp_val);
+\end_layout
+
+\begin_layout Plain Layout
+
+	while (tmp_val) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		tmp = (node_t*) malloc(sizeof(node_t));
+\end_layout
+
+\begin_layout Plain Layout
+
+		if (tmp == NULL) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			printf("Errore di allocazione memoria.
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+			return head;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		tmp->val = tmp_val;
+\end_layout
+
+\begin_layout Plain Layout
+
+		tmp->next = NULL;
+\end_layout
+
+\begin_layout Plain Layout
+
+		if (head) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			for (aux = head; aux->next; aux = aux->next);
+\end_layout
+
+\begin_layout Plain Layout
+
+			aux->next = tmp;
+\end_layout
+
+\begin_layout Plain Layout
+
+		} else {
+\end_layout
+
+\begin_layout Plain Layout
+
+			head = tmp;
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+		printf("Inserisci un valore nella lista (0 per terminare): ");
+\end_layout
+
+\begin_layout Plain Layout
+
+		scanf("%f", &tmp_val);
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	return head;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+/* Bubblesort: take head of the list as parameter and returns the updated
+ head of the list */
+\end_layout
+
+\begin_layout Plain Layout
+
+node_t * sortList(node_t *head) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	int changed;
+\end_layout
+
+\begin_layout Plain Layout
+
+	node_t *prev, *prev2, *tmp, *other;
+\end_layout
+
+\begin_layout Plain Layout
+
+	if (head == NULL || head->next == NULL) {
+\end_layout
+
+\begin_layout Plain Layout
+
+		return head;
+\end_layout
+
+\begin_layout Plain Layout
+
+	}
+\end_layout
+
+\begin_layout Plain Layout
+
+	do {
+\end_layout
+
+\begin_layout Plain Layout
+
+		changed = 0; 			/* termination flag */
+\end_layout
+
+\begin_layout Plain Layout
+
+		prev2 = NULL;			/* element before 	*/
+\end_layout
+
+\begin_layout Plain Layout
+
+		prev = head;			/*  first node to compare */
+\end_layout
+
+\begin_layout Plain Layout
+
+		tmp = prev->next;	/* second node to compare */
+\end_layout
+
+\begin_layout Plain Layout
+
+		while (tmp != NULL) {
+\end_layout
+
+\begin_layout Plain Layout
+
+			other = tmp->next;
+\end_layout
+
+\begin_layout Plain Layout
+
+			if (prev->val > tmp->val) {
+\end_layout
+
+\begin_layout Plain Layout
+
+				/* swap nodes */
+\end_layout
+
+\begin_layout Plain Layout
+
+				tmp->next = prev;
+\end_layout
+
+\begin_layout Plain Layout
+
+				prev->next = other;
+\end_layout
+
+\begin_layout Plain Layout
+
+				if (prev == head) {
+\end_layout
+
+\begin_layout Plain Layout
+
+					head = tmp;
+\end_layout
+
+\begin_layout Plain Layout
+
+				}
+\end_layout
+
+\begin_layout Plain Layout
+
+				if (prev2) {
+\end_layout
+
+\begin_layout Plain Layout
+
+					prev2->next = tmp;
+\end_layout
+
+\begin_layout Plain Layout
+
+				}
+\end_layout
+
+\begin_layout Plain Layout
+
+				/* update for next iteration */
+\end_layout
+
+\begin_layout Plain Layout
+
+				prev2 = tmp;
+\end_layout
+
+\begin_layout Plain Layout
+
+				tmp = other;
+\end_layout
+
+\begin_layout Plain Layout
+
+				changed = 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+			} else {
+\end_layout
+
+\begin_layout Plain Layout
+
+				/* update for next iteration */
+\end_layout
+
+\begin_layout Plain Layout
+
+				prev2 = prev;
+\end_layout
+
+\begin_layout Plain Layout
+
+				prev = tmp;
+\end_layout
+
+\begin_layout Plain Layout
+
+				tmp = other;
+\end_layout
+
+\begin_layout Plain Layout
+
+			}
+\end_layout
+
+\begin_layout Plain Layout
+
+		}
+\end_layout
+
+\begin_layout Plain Layout
+
+	} while (changed);
+\end_layout
+
+\begin_layout Plain Layout
+
+	return head;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section*
 Licenza e crediti
 \end_layout
