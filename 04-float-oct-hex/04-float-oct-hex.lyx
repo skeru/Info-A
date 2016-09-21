@@ -6248,7 +6248,8 @@ mantissa
 \end_layout
 
 \begin_layout Standard
-Portare le mantisse tutte al maggiore degli esponenti in gioco (25)
+Portare tutte le mantisse al maggiore degli esponenti in gioco (25) tramite
+ opportuni bit shift
 \end_layout
 
 \begin_layout Standard
@@ -6631,29 +6632,10 @@ Si portano tutte le mantisse al maggiore degli esponenti in gioco (6); si
  calcola il complemento a 2 delle mantisse negative e si esegue la somma.
 \end_layout
 
-\end_deeper
-\begin_layout Separator
+\begin_layout Pause
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Operazioni in virgola mobile: 
-\begin_inset Formula $1.5\cdot2^{4}-2\cdot2^{5}$
-\end_inset
-
- (2/2)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
 \begin_layout Standard
 \align center
 \begin_inset Tabular
@@ -6756,19 +6738,56 @@ Operazioni in virgola mobile:
 
 \end_layout
 
+\end_deeper
+\begin_layout Separator
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Operazioni in virgola mobile: 
+\begin_inset Formula $1.5\cdot2^{4}-2\cdot2^{5}$
+\end_inset
+
+ (2/2)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align block
+Si calcola il risultato in notazione complemento a 2 e poi si converte in
+ modulo e segno.
+ A priori si sa che il risultato sarà negativo (perché l'operando negativo
+ ha esponente maggiore).
+ Per tornare in notazione modulo e segno:
+\end_layout
+
 \begin_layout Pause
 
 \end_layout
 
-\begin_layout Standard
-A priori si sa che il risultato sarà negativo (perché l'operando negativo
- ha esponente maggiore).
- Si calcola quindi il complemento a 2 del risultato (per tornare in notazione
- modulo e segno), si normalizza in modo da ottenere la forma 
+\begin_layout Enumerate
+si esegue un complemento a 2 (per ottenere il modulo)
+\end_layout
+
+\begin_layout Enumerate
+si normalizza in modo da ottenere la forma 
 \begin_inset Formula $1.mantissa$
 \end_inset
 
- e si setta il bit di segno.
+
+\end_layout
+
+\begin_layout Enumerate
+si imposta il bit di segno.
 \begin_inset Foot
 status open
 
@@ -6789,6 +6808,10 @@ http://pages.cs.wisc.edu/~smoler/x86text/lect.notes/arith.flpt.html
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Pause
 
 \end_layout
 
