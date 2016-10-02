@@ -275,7 +275,7 @@ Un altro approccio è quello di aggiornare la posizione del valore massimo;
  e consente di occupare in memoria solamente una variabile per l'indice
  relativo alla posizione dell'elemento di interesse.
  Inoltre risulta più semplice effettuare ordinamenti più complessi (ordinamento
- su più livelli, ordinamento di elementi complessi, ...).
+ su più livelli, ordinamento di elementi strutturati, ...).
 \end_layout
 
 \begin_layout Standard
@@ -354,12 +354,20 @@ Analisi fatturato
 
 \begin_layout LyX-Code
 
+\end_layout
+
+\begin_layout LyX-Code
+
 #define L 12
 \end_layout
 
 \begin_layout LyX-Code
 
-int main () { 
+\end_layout
+
+\begin_layout LyX-Code
+
+int main () {
 \end_layout
 
 \begin_layout LyX-Code
@@ -370,6 +378,15 @@ int main () {
 \begin_layout LyX-Code
 
 	int i, p1, p2, current_p1, current_p2, pmax; 
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* inserimento dati - reparto vendite */
 \end_layout
 
 \begin_layout LyX-Code
@@ -418,22 +435,31 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* inizializzazioni */
+\end_layout
+
+\begin_layout LyX-Code
+
 	pmax = 0;
 \end_layout
 
 \begin_layout LyX-Code
 
-	p1 = -1;
+	p1 = -1; /* pos inizio sequenza più lunga */
 \end_layout
 
 \begin_layout LyX-Code
 
-	p2 = -2;
+	p2 = -2; /* p2 - p1 inizializzata negativa */
 \end_layout
 
 \begin_layout LyX-Code
 
-	current_p1 = -1;
+	current_p1 = -1; /* inizio sequenza corrente */
 \end_layout
 
 \begin_layout LyX-Code
@@ -443,7 +469,25 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* scansione vettore */
+\end_layout
+
+\begin_layout LyX-Code
+
 	for (i = 1; i < L; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* ricerca del massimo */
 \end_layout
 
 \begin_layout LyX-Code
@@ -463,12 +507,30 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
+\end_layout
+
+\begin_layout LyX-Code
+
+		/* ricerca sequenza crescente */
+\end_layout
+
+\begin_layout LyX-Code
+
 		if (volume[i] > volume[i - 1]) {
 \end_layout
 
 \begin_layout LyX-Code
 
 			current_p2 = i;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* aggiorna current_p1 solo se all'inizio */
 \end_layout
 
 \begin_layout LyX-Code
@@ -484,6 +546,15 @@ nVolumi negativi non ammessi");
 \begin_layout LyX-Code
 
 			}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+			/* ricerca sequenza più lunga */
 \end_layout
 
 \begin_layout LyX-Code
@@ -580,6 +651,13 @@ Si vuole confrontare i dati di quest'anno con i dati dell'anno scorso.
 \end_layout
 
 \begin_layout Standard
+In questa variante l'approccio alla risoluzione è il medesimo utilizzato
+ in precedenza.
+ Si introduce una parte di calcolo per ricavare il vettore degli incrementi,
+ l'effettiva struttura dati su cui viene applicato l'algoritmo.
+\end_layout
+
+\begin_layout Standard
 \begin_inset listings
 lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline false
@@ -636,7 +714,11 @@ int main () {
 
 \begin_layout LyX-Code
 
-	int i, p1, p2, current_p1, current_p2, pmax; 
+	int i, p1, p2, current_p1, current_p2, pmax;
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -729,6 +811,10 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
+\end_layout
+
+\begin_layout LyX-Code
+
 	for (i = 0; i < L; ++i) {
 \end_layout
 
@@ -764,6 +850,10 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
+\end_layout
+
+\begin_layout LyX-Code
+
 	pmax = 0;
 \end_layout
 
@@ -785,6 +875,10 @@ nVolumi negativi non ammessi");
 \begin_layout LyX-Code
 
 	current_p2 = -1;
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
