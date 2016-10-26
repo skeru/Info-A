@@ -209,12 +209,12 @@ Esercitazione
 \begin_inset Newline newline
 \end_inset
 
-22 Ottobre 2015
+03 Novembre 2016
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-22 Ottobre 2015
+03 Novembre 2016
 \end_layout
 
 \end_inset
@@ -268,24 +268,38 @@ Ciao :)
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 Stefano Cherubin
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-PhD student 
+PhD student
 \end_layout
 
 \begin_layout Itemize
-c/o DEIB (Dipartimento Elettronica, Informazione e Bioningegneria)
+c/o DEIB 
+\size small
+(Dipartimento Elettronica, Informazione e Bioningegneria)
 \end_layout
 
 \begin_layout Itemize
-sede Milano Leonardo, edificio 21, interno 9623
+sede Milano Leonardo, edificio 21, interno 9683
 \end_layout
 
-\end_deeper
+\begin_layout Itemize
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://home.deib.polimi.it/cherubin/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset VSpace vfill
 \end_inset
@@ -294,7 +308,7 @@ sede Milano Leonardo, edificio 21, interno 9623
 \end_layout
 
 \begin_layout Standard
-Se vi servo, scrivete una email
+Se vi servo, scrivete una e-mail
 \end_layout
 
 \begin_layout Standard
@@ -329,9 +343,9 @@ non preparo e non correggo io gli esami
 \begin_layout Itemize
 
 \series bold
-NO 
+NO
 \series default
-non curo io la parte di laboratorio
+ non mi occuperò io dei laboratori
 \end_layout
 
 \end_deeper
@@ -380,7 +394,7 @@ Quanti di voi hanno intenzione di superare l'esame?
 \end_layout
 
 \begin_layout Section
-Le esercitazioni
+Durante il corso
 \end_layout
 
 \begin_layout Frame
@@ -410,12 +424,18 @@ Giovedì mattina
 dalle 8.30 alle 11:15 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
-per un totale di 40 ore
+
+\series bold
+Venerdì mattina
+\series default
+ in BL.27.04
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-salvo sporadiche variazioni
+dalle 10:30 alle 13:15
 \end_layout
 
 \end_deeper
@@ -514,6 +534,13 @@ Lo scopo del corso è di fornire le conoscenze e formare le competenze necessari
 
 \end_deeper
 \begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Tale scopo lo si intende raggiungere insegnandovi le basi della programmazione
  secondo il linguaggio standard C99.
 \end_layout
@@ -527,10 +554,14 @@ capacità di programmare
 \end_layout
 
 \begin_layout Itemize
-capacità di rispettare lo standard in uso
+conoscenza e capacità di rispettare lo standard in uso
 \end_layout
 
 \end_deeper
+\begin_layout Separator
+
+\end_layout
+
 \begin_layout Section
 Strumenti
 \end_layout
@@ -658,7 +689,9 @@ Compilatore
 \end_layout
 
 \begin_layout Standard
-tutto il resto non è indispensabile
+tutto il resto non è indispensabile e 
+\bar under
+non mi interessa
 \end_layout
 
 \begin_layout Standard
@@ -706,11 +739,11 @@ Editor di testo
 
 \begin_deeper
 \begin_layout Itemize
-gedit
+atom
 \end_layout
 
 \begin_layout Itemize
-vim
+gedit
 \end_layout
 
 \begin_layout Itemize
@@ -718,7 +751,7 @@ nano
 \end_layout
 
 \begin_layout Itemize
-atom
+vim
 \end_layout
 
 \end_deeper
@@ -818,10 +851,6 @@ IDE e Compilatori
 
 \begin_deeper
 \begin_layout Itemize
-CodeBlocks
-\end_layout
-
-\begin_layout Itemize
 DevC++
 \end_layout
 
@@ -830,7 +859,7 @@ Microsoft Visual Studio
 \end_layout
 
 \begin_layout Itemize
-mingw
+CodeBlocks
 \end_layout
 
 \end_deeper
@@ -893,7 +922,14 @@ StackOverflow
 \end_layout
 
 \begin_layout Enumerate
-Traduci il tuo problema in inglese tecnico e riparti dal punto 1
+Cerca i termini tecnici (in inglese) sul manuale e riparti dal punto 1
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
