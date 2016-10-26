@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-30/10/2015
+03/11/2016
 \end_layout
 
 \begin_layout Standard
@@ -130,7 +130,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -403,7 +403,7 @@ nCodifica di Q = %d con %d bit = ", Q, n);
 \end_layout
 
 \begin_layout Subsection
-Soluzione 2 - raddrizzamento dell'output con algoritmo più semplice
+Soluzione 2 - Raddrizzamento dell'output con algoritmo più semplice
 \end_layout
 
 \begin_layout Standard
