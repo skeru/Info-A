@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-03/11/2015
+03/11/2016
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -170,7 +170,7 @@ Sono arrivati dal reparto vendite i dati relativi all'andamento del volume
  di mercato dell'ultimo anno.
  I dati rappresentano le quantità vendute per ogni mese dell'anno.
  Si calcoli il mese con il massimo volume di vendita e la più lunga serie
- crescente.
+ di vendite strettamente crescente.
 \end_layout
 
 \begin_layout Subsection
@@ -183,7 +183,12 @@ Il problema richiede la ricerca del valore massimo e della più lunga sequenza
 \end_layout
 
 \begin_layout Standard
-È possibile 
+È possibile calcolare questi parametri contemporaneamente all'inserimento
+ dei dati, aggiornando variabili temporanee tra un dato e il seguente.
+ Un approccio alternativo consiste nel memorizzare i dati in un vettore
+ e scansire il vettore in un secondo momento.
+ A scopo didattico, si mostrerà il secondo approccio nella soluzione che
+ segue.
 \end_layout
 
 \begin_layout Standard
@@ -217,6 +222,103 @@ float
  senza imporre vincoli o assunzioni sulle unità di misura dei dati in ingresso.
  In entrambi i casi, trattandosi di quantità nette vendute, si dovrà verificare
  che i dati in ingresso siano positivi o nulli.
+\end_layout
+
+\begin_layout Subsection
+Due parametri, un algoritmo
+\end_layout
+
+\begin_layout Standard
+Il problema richiede di estrarre due parametri dal vettore.
+ Per separare semanticamente i due algoritmi che si devono implementare
+ sarebbe consigliato di ricavare un parametro senza modificare i dati di
+ input e poi eseguire in seguito il secondo algoritmo per ricavare il secondo
+ parametro.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+for (i = 0; i < N; ++i) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	// find max
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+for (i = 0; i < N; ++i) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	// find sequence
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I due algoritmi sono molto simili come struttura, eseguono il medesimo ciclo
+ di scansione del vettore.
+ Per ragioni di efficienza è sempre auspicabile ridurre al minimo il numero
+ di scansioni di un vettore.
+ Di seguito si presenta una soluzione che racchiude in un unico algoritmo
+ l'estrazione di entrambi i parametri.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+for (i = 0; i < N; ++i) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	// find max
+\end_layout
+
+\begin_layout Plain Layout
+
+	// find sequence
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
