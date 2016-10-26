@@ -221,12 +221,12 @@ Esercitazione 4
 \begin_inset Newline newline
 \end_inset
 
-30 Ottobre 2015
+03 Novembre 2016
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-30 Ottobre 2015
+03 Novembre 2016
 \end_layout
 
 \end_inset
@@ -3712,8 +3712,13 @@ Si assegnano un numero fisso di bit per la parte intera e un numero fisso
 \end_layout
 
 \begin_layout Itemize
+Solitamente si sceglie la dimensione della parte intera in modo da non causare
+ overflow / underflow
+\end_layout
+
+\begin_layout Itemize
 È possibile che venga rappresentata solo una approssimazione del numero
- decimale equivalente (non ho infiniti decimali)
+ decimale equivalente (non dispongo di infinite cifre per la parte frazionaria)
 \end_layout
 
 \begin_deeper
@@ -4530,6 +4535,10 @@ float single precision (32 bit)
 
 \begin_deeper
 \begin_layout Standard
+Standard IEEE 754
+\end_layout
+
+\begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="32">
@@ -5265,7 +5274,7 @@ Operazioni in virgola fissa
 \begin_layout Standard
 Esegui le seguenti operazioni in binario senza segno, virgola fissa, rispettando
  come vincoli di rappresentazione 4 bit per la parte intera, 4 bit per la
- parte decimale
+ parte frazionaria
 \end_layout
 
 \begin_layout Itemize
@@ -6765,8 +6774,26 @@ Operazioni in virgola mobile:
 \align block
 Si calcola il risultato in notazione complemento a 2 e poi si converte in
  modulo e segno.
- A priori si sa che il risultato sarà negativo (perché l'operando negativo
- ha esponente maggiore).
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+approfondimenti sulle operazioni in virgola mobile 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://pages.cs.wisc.edu/~smoler/x86text/lect.notes/arith.flpt.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
  Per tornare in notazione modulo e segno:
 \end_layout
 
@@ -6787,23 +6814,14 @@ si normalizza in modo da ottenere la forma
 \end_layout
 
 \begin_layout Enumerate
-si imposta il bit di segno.
+si imposta il bit di segno
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-approfondimenti sulle operazioni in virgola mobile 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://pages.cs.wisc.edu/~smoler/x86text/lect.notes/arith.flpt.html
-\end_layout
-
-\end_inset
-
-
+\align block
+A priori si sa che il risultato sarà negativo perché l'operando negativo
+ ha esponente maggiore
 \end_layout
 
 \end_inset
