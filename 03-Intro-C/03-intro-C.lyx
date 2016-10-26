@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-22/10/2015
+03/11/2015
 \end_layout
 
 \begin_layout Standard
@@ -130,7 +130,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -204,7 +204,19 @@ Esempio:
 \begin_inset Formula $c=9$
 \end_inset
 
- deve dare in uscita 7 9 10.
+ deve dare in uscita 
+\begin_inset Formula $7$
+\end_inset
+
+ 
+\begin_inset Formula $9$
+\end_inset
+
+ 
+\begin_inset Formula $10$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
