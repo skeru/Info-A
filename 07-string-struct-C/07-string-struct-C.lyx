@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-03/11/2015
+03/11/2016
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -199,6 +199,13 @@ scanf("%[^
 n]s", str);
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -408,7 +415,7 @@ Soluzione C
 \end_layout
 
 \begin_layout Standard
-Una parola è palindroma se letta al contrario è identica a sè stessa.
+Una parola è palindroma se letta al contrario è identica a sé stessa.
 \end_layout
 
 \begin_layout Standard
@@ -583,6 +590,252 @@ nLa parola NON e' palindroma.");
 \end_layout
 
 \begin_layout Section
+Alla ricerca dello Jedi
+\end_layout
+
+\begin_layout Quotation
+Siete alla ricerca di nuovi Jedi per le diverse colonie della Repubblica.
+ I Jedi hanno carateristiche straordinarie, nelle loro cellule si ha un'elevata
+ concentrazione di midi-chlorian.
+ Per semplicità si supponga che questa elevata concentrazione di midi-chlorian
+ (indicatore del potenziale di uno Jedi) derivi da un particolare gene (
+\emph on
+key
+\emph default
+) nel DNA dello Jedi.
+\end_layout
+
+\begin_layout Quotation
+Dato il DNA di un individuo, espresso come sequenza di caratteri, stabilire
+ se esso contiene o meno la stringa del gene Jedi.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Alla ricerca dello Jedi
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <string.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#define DATA_SIZE 100
+\end_layout
+
+\begin_layout LyX-Code
+
+#define KEY_SIZE 25
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main ( )
+\end_layout
+
+\begin_layout LyX-Code
+
+{
+\end_layout
+
+\begin_layout LyX-Code
+
+  char data[DATA_SIZE + 1];
+\end_layout
+
+\begin_layout LyX-Code
+
+  char key[KEY_SIZE + 1];
+\end_layout
+
+\begin_layout LyX-Code
+
+  int data_len, key_len;
+\end_layout
+
+\begin_layout LyX-Code
+
+  int i, j, found;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+  printf("please insert data ");
+\end_layout
+
+\begin_layout LyX-Code
+
+  scanf("%s", data);
+\end_layout
+
+\begin_layout LyX-Code
+
+  printf("please insert key ");
+\end_layout
+
+\begin_layout LyX-Code
+
+  scanf("%s", key);
+\end_layout
+
+\begin_layout LyX-Code
+
+  data_len = strlen(data);
+\end_layout
+
+\begin_layout LyX-Code
+
+  key_len = strlen(key);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+  found = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+  for (i = 0; i < (data_len - key_len) && !found; ++i) {
+\end_layout
+
+\begin_layout LyX-Code
+
+    found = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+    for (j = 0; j < key_len && found; ++j) {
+\end_layout
+
+\begin_layout LyX-Code
+
+      if (data[i + j] != key[j]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+        found = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+      }
+\end_layout
+
+\begin_layout LyX-Code
+
+    }
+\end_layout
+
+\begin_layout LyX-Code
+
+  }
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (found)
+\end_layout
+
+\begin_layout LyX-Code
+
+    printf("Key was found!
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+  else
+\end_layout
+
+\begin_layout LyX-Code
+
+    printf("key not found...
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+  return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Prodotti scaduti
 \end_layout
 
@@ -658,6 +911,13 @@ typedef struct {
 } Data;
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
