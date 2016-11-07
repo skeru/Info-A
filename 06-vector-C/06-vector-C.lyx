@@ -456,15 +456,12 @@ Analisi fatturato
 
 \begin_layout LyX-Code
 
+#define INVALID_POS -1
 \end_layout
 
 \begin_layout LyX-Code
 
 #define L 12
-\end_layout
-
-\begin_layout LyX-Code
-
 \end_layout
 
 \begin_layout LyX-Code
@@ -546,27 +543,50 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-	pmax = 0;
+	pmax = 0;	/* posizione valore massimo */
 \end_layout
 
 \begin_layout LyX-Code
 
-	p1 = -1; /* pos inizio sequenza più lunga */
 \end_layout
 
 \begin_layout LyX-Code
 
-	p2 = -2; /* p2 - p1 inizializzata negativa */
+	/* posizioni della sequenza più lunga */
 \end_layout
 
 \begin_layout LyX-Code
 
-	current_p1 = -1; /* inizio sequenza corrente */
+	p1 = INVALID_POS;
 \end_layout
 
 \begin_layout LyX-Code
 
-	current_p2 = -2;
+	/* p2 - p1 inizializzata negativa */
+\end_layout
+
+\begin_layout LyX-Code
+
+	p2 = INVALID_POS -1;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* posizioni della sequenza corrente */
+\end_layout
+
+\begin_layout LyX-Code
+
+	current_p1 = INVALID_POS;
+\end_layout
+
+\begin_layout LyX-Code
+
+	current_p2 = INVALID_POS - 1;
 \end_layout
 
 \begin_layout LyX-Code
@@ -632,12 +652,17 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-			/* aggiorna current_p1 solo se all'inizio */
+			/* aggiorna current_p1 solo all'inizio */
 \end_layout
 
 \begin_layout LyX-Code
 
-			if (current_p1 == -1) {
+			if (current_p1 == INVALID_POS) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				/* la sequenza inizia a i - 1  */
 \end_layout
 
 \begin_layout LyX-Code
@@ -686,12 +711,12 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-			current_p1 = -1;
+			current_p1 = INVALID_POS;
 \end_layout
 
 \begin_layout LyX-Code
 
-			current_p2 = -2;
+			current_p2 = INVALID_POS - 1;
 \end_layout
 
 \begin_layout LyX-Code
@@ -792,6 +817,11 @@ Analisi fatturato: confronto con l'anno passato
 \begin_layout LyX-Code
 
 #define L 12
+\end_layout
+
+\begin_layout LyX-Code
+
+#define INVALID_POS -1
 \end_layout
 
 \begin_layout LyX-Code
@@ -961,22 +991,22 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-	p1 = -1;
+	p1 = INVALID_POS;
 \end_layout
 
 \begin_layout LyX-Code
 
-	p2 = -2;
+	p2 = INVALID_POS - 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-	current_p1 = -1;
+	current_p1 = INVALID_POS;
 \end_layout
 
 \begin_layout LyX-Code
 
-	current_p2 = -1;
+	current_p2 = INVALID_POS - 1;
 \end_layout
 
 \begin_layout LyX-Code
@@ -1015,7 +1045,7 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-			if (current_p1 == -1) {
+			if (current_p1 == INVALID_POS) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -1055,12 +1085,12 @@ nVolumi negativi non ammessi");
 
 \begin_layout LyX-Code
 
-			current_p1 = -1;
+			current_p1 = INVALID_POS;
 \end_layout
 
 \begin_layout LyX-Code
 
-			current_p2 = -2;
+			current_p2 = INVALID_POS - 1;
 \end_layout
 
 \begin_layout LyX-Code
@@ -1087,7 +1117,7 @@ nIl massimo si è avuto al mese %d con %f", pmax, inc[pmax]);
 
 \begin_layout LyX-Code
 
-	if (p1 != -1) {
+	if (p1 != INVALID_POS) {
 \end_layout
 
 \begin_layout LyX-Code
