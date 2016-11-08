@@ -656,12 +656,12 @@ Alla ricerca dello Jedi
 
 \begin_layout LyX-Code
 
-#define DATA_SIZE 100
+#define MAX_DATA_SIZE 100
 \end_layout
 
 \begin_layout LyX-Code
 
-#define KEY_SIZE 25
+#define MAX_KEY_SIZE 25
 \end_layout
 
 \begin_layout LyX-Code
@@ -680,22 +680,22 @@ int main ( )
 
 \begin_layout LyX-Code
 
-  char data[DATA_SIZE + 1];
+  char dna_data[MAX_DATA_SIZE + 1];
 \end_layout
 
 \begin_layout LyX-Code
 
-  char key[KEY_SIZE + 1];
+  char key[MAX_KEY_SIZE + 1];
 \end_layout
 
 \begin_layout LyX-Code
 
-  int data_len, key_len;
+  int dna_len, key_len;
 \end_layout
 
 \begin_layout LyX-Code
 
-  int i, j, found;
+  int i, j, jedi, equal;
 \end_layout
 
 \begin_layout LyX-Code
@@ -709,7 +709,7 @@ int main ( )
 
 \begin_layout LyX-Code
 
-  scanf("%s", data);
+  scanf("%s", dna_data);
 \end_layout
 
 \begin_layout LyX-Code
@@ -724,7 +724,7 @@ int main ( )
 
 \begin_layout LyX-Code
 
-  data_len = strlen(data);
+  dna_len = strlen(dna_data);
 \end_layout
 
 \begin_layout LyX-Code
@@ -738,32 +738,38 @@ int main ( )
 
 \begin_layout LyX-Code
 
-  found = 0;
+  jedi = 0;
 \end_layout
 
 \begin_layout LyX-Code
 
-  for (i = 0; i < (data_len - key_len) && !found; ++i) {
+  for (i = 0; i < (dna_len - key_len) && !jedi; ++i) {
 \end_layout
 
 \begin_layout LyX-Code
 
-    found = 1;
+ /* un'altra flag per controllare l'uguaglianza della sottostringa carattere
+ per carattere */
 \end_layout
 
 \begin_layout LyX-Code
 
-    for (j = 0; j < key_len && found; ++j) {
+    equal = 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-      if (data[i + j] != key[j]) {
+    for (j = 0; j < key_len && equal; ++j) {
 \end_layout
 
 \begin_layout LyX-Code
 
-        found = 0;
+      if (dna_data[i + j] != key[j]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+        equal = 0;
 \end_layout
 
 \begin_layout LyX-Code
@@ -778,6 +784,17 @@ int main ( )
 
 \begin_layout LyX-Code
 
+ /* jedi trovato se equal rimane 1 per tutta la lunghezza di key - era anche
+ possibile utilizzare un'unica flag per entrambi i controlli */
+\end_layout
+
+\begin_layout LyX-Code
+
+    jedi = equal;
+\end_layout
+
+\begin_layout LyX-Code
+
   }
 \end_layout
 
@@ -787,12 +804,12 @@ int main ( )
 
 \begin_layout LyX-Code
 
-  if (found)
+  if (jedi)
 \end_layout
 
 \begin_layout LyX-Code
 
-    printf("Key was found!
+    printf("Jedi was found!
 \backslash
 n");
 \end_layout
@@ -804,13 +821,9 @@ n");
 
 \begin_layout LyX-Code
 
-    printf("key not found...
+    printf("Not the Jedi you were looking for...
 \backslash
 n");
-\end_layout
-
-\begin_layout LyX-Code
-
 \end_layout
 
 \begin_layout LyX-Code
