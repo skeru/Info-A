@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-06/11/2015
+10/11/2016
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -172,6 +172,13 @@ Leggere una matrice quadrata di numeri reali dallo standard input, determinare
  e stampare a video la matrice risultato.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C
 \end_layout
@@ -199,12 +206,16 @@ Simmetria diagonale secondaria
 
 \begin_layout LyX-Code
 
-#include <stdio.h> 
+#include <stdio.h>
 \end_layout
 
 \begin_layout LyX-Code
 
-#define MAXLEN 30 
+#define MAXLEN 30
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -219,52 +230,64 @@ int main( ) {
 
 \begin_layout LyX-Code
 
-	float mat[MAXLEN][MAXLEN]; 
+	float mat[MAXLEN][MAXLEN];
 \end_layout
 
 \begin_layout LyX-Code
 
-	int i, j, n; 
+	int i, j, n;
 \end_layout
 
 \begin_layout LyX-Code
 
-	int flag; 
+	int flag;
 \end_layout
 
 \begin_layout LyX-Code
 
-	/* acquisizione dati*/ 
 \end_layout
 
 \begin_layout LyX-Code
 
-	do { 
+	/* acquisizione dati*/
+\end_layout
+
+\begin_layout LyX-Code
+
+	do {
 \end_layout
 
 \begin_layout LyX-Code
 
 		printf("
 \backslash
-nOrdine della matrice 0 < n <= MAXLEN : "); 
+nOrdine n della matrice");
 \end_layout
 
 \begin_layout LyX-Code
 
-		scanf("%d", &n); 
+		printf(" (0 < n <= MAXLEN) : ");
 \end_layout
 
 \begin_layout LyX-Code
 
-	} while ( n <= 0 || n > MAXLEN); 
+		scanf("%d", &n);
+\end_layout
+
+\begin_layout LyX-Code
+
+	} while ( n <= 0 || n > MAXLEN);
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
 
 	printf("
 \backslash
-nInserire coeff.
- matrice di ordine %d 
+nInserire coefficienti della matrice di ordine %d 
 \backslash
 n", n); 
 \end_layout
@@ -276,29 +299,33 @@ n", n);
 
 \begin_layout LyX-Code
 
-	for (i = 0; i < n; i++) 
+	for (i = 0; i < n; i++)
 \end_layout
 
 \begin_layout LyX-Code
 
-		for (j = 0; j < n; j++) { 
+		for (j = 0; j < n; j++) {
 \end_layout
 
 \begin_layout LyX-Code
 
 			printf("
 \backslash
-n mat[%d][%d] := ", i, j); 
+n mat[%d][%d] := ", i, j);
 \end_layout
 
 \begin_layout LyX-Code
 
-			scanf("%f", &mat[i][j]); 
+			scanf("%f", &mat[i][j]);
 \end_layout
 
 \begin_layout LyX-Code
 
-		} 
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -308,27 +335,31 @@ n mat[%d][%d] := ", i, j);
 
 \begin_layout LyX-Code
 
-	flag = 1; 
+	flag = 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-	for (i = n - 1; i > 0 && flag == 1 ; --i) 
+	for (i = n - 1; i > 0 && flag == 1 ; --i)
 \end_layout
 
 \begin_layout LyX-Code
 
-		for (j = n - 1; j > n - 1 - i && flag == 1; --j) 
+		for (j = n - 1; j > n - 1 - i && flag == 1; --j)
 \end_layout
 
 \begin_layout LyX-Code
 
-			if (mat[i][j] != mat[n-1-j][n-1-i]) 
+			if (mat[i][j] != mat[n-1-j][n-1-i])
 \end_layout
 
 \begin_layout LyX-Code
 
 				flag = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -340,36 +371,40 @@ n mat[%d][%d] := ", i, j);
 
 		printf("
 \backslash
-nLa matrice inserita non e' simmetrica!"); 
+nLa matrice non e' simmetrica!"); 
 \end_layout
 
 \begin_layout LyX-Code
 
 		printf("
 \backslash
-nAnnullo le diagonali principali.....
+nAnnullo le diagonali principali....
 \backslash
 n"); 
 \end_layout
 
 \begin_layout LyX-Code
 
-		for (i = 0; i < n; i++) { 
+		for (i = 0; i < n; i++) {
 \end_layout
 
 \begin_layout LyX-Code
 
-			mat[i][i] = 0; 
+			mat[i][i] = 0;
 \end_layout
 
 \begin_layout LyX-Code
 
-			mat[i][n - i - 1] = 0; 
+			mat[i][n - i - 1] = 0;
 \end_layout
 
 \begin_layout LyX-Code
 
-		} 
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -380,56 +415,60 @@ n i valori nella matrice sono:
 \backslash
 n
 \backslash
-n"); 
+n");
 \end_layout
 
 \begin_layout LyX-Code
 
-		for (i = 0; i < n ; i++) { 
+		for (i = 0; i < n ; i++) {
 \end_layout
 
 \begin_layout LyX-Code
 
-			for (j = 0; j < n ; j++) 
+			for (j = 0; j < n ; j++)
 \end_layout
 
 \begin_layout LyX-Code
 
-				printf("%f", mat[i][j]); 
+				printf("%f", mat[i][j]);
 \end_layout
 
 \begin_layout LyX-Code
 
-		} 
-\end_layout
-
-\begin_layout LyX-Code
-
-		printf("
-\backslash
-n"); 
-\end_layout
-
-\begin_layout LyX-Code
-
-	} else { 
+		}
 \end_layout
 
 \begin_layout LyX-Code
 
 		printf("
 \backslash
-nLa matrice inserita e' simmetrica!"); 
+n");
 \end_layout
 
 \begin_layout LyX-Code
 
-	} 
 \end_layout
 
 \begin_layout LyX-Code
 
-	return 0; 
+	} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+nLa matrice inserita e' simmetrica!");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
 \end_layout
 
 \begin_layout LyX-Code
@@ -1602,6 +1641,13 @@ Es:
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C
 \end_layout
@@ -1627,37 +1673,53 @@ Quadrato magico
 
 \begin_layout LyX-Code
 
-#include <stdio.h> 
+#include <stdio.h>
 \end_layout
 
 \begin_layout LyX-Code
 
-#define MAX_DIM 51 
 \end_layout
 
 \begin_layout LyX-Code
 
-void quadratoMagico(int mat[][MAX_DIM], int n); 
+#define MAX_DIM 51
 \end_layout
 
 \begin_layout LyX-Code
 
-int main( ) {      
 \end_layout
 
 \begin_layout LyX-Code
 
-	int matrix[MAX_DIM][MAX_DIM];      
+void quadratoMagico(int mat[][MAX_DIM], int n);
 \end_layout
 
 \begin_layout LyX-Code
 
-	int i, j, lim, sum; 
 \end_layout
 
 \begin_layout LyX-Code
 
-	do {  
+int main( ) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int matrix[MAX_DIM][MAX_DIM];
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i, j, lim, sum;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	do {
 \end_layout
 
 \begin_layout LyX-Code
@@ -1665,82 +1727,102 @@ int main( ) {
 		printf("
 \backslash
 nDim.
- quadrato (dispari <= %d):", MAX_DIM);  
+ quadro (dispari <= %d):", MAX_DIM);
 \end_layout
 
 \begin_layout LyX-Code
 
-		scanf("%d", &lim); 
+		scanf("%d", &lim);
 \end_layout
 
 \begin_layout LyX-Code
 
-	} while (lim > MAX_DIM || lim % 2 == 0); 
+	} while (lim > MAX_DIM || lim % 2 == 0);
 \end_layout
 
 \begin_layout LyX-Code
 
-	quadratoMagico(matrix, lim); 
 \end_layout
 
 \begin_layout LyX-Code
 
-	sum = 0; 
+	quadratoMagico(matrix, lim);
 \end_layout
 
 \begin_layout LyX-Code
 
-	for (j = 0; j < lim; j++)    
 \end_layout
 
 \begin_layout LyX-Code
 
-		sum += matrix[0][j]; 
+	sum = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (j = 0; j < lim; j++)
+\end_layout
+
+\begin_layout LyX-Code
+
+		sum += matrix[0][j];
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
 
 	printf("
 \backslash
-nIl quadrato magico di ordine %d è:
+nIl quadrato magico ordine %d e':
 \backslash
-n", lim); 
+n", lim);
 \end_layout
 
 \begin_layout LyX-Code
 
 	printf("
 \backslash
-nLa somma su ogni linea è %d.
+nLa somma su ogni linea e' %d.
 \backslash
-n", sum); 
+n", sum);
 \end_layout
 
 \begin_layout LyX-Code
 
-	for (i = 0; i < lim; i++) {    
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (i = 0; i < lim; i++) {
 \end_layout
 
 \begin_layout LyX-Code
 
 		printf("
 \backslash
-n");    
+n");
 \end_layout
 
 \begin_layout LyX-Code
 
-		for (j = 0; j < lim; j++)       
+		for (j = 0; j < lim; j++)
 \end_layout
 
 \begin_layout LyX-Code
 
-			printf("%4d", matrix[i][j]); 
+			printf("%4d", matrix[i][j]);
 \end_layout
 
 \begin_layout LyX-Code
 
 	}
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -1759,37 +1841,45 @@ n");
 
 \begin_layout LyX-Code
 
-void quadratoMagico(int mat[][MAX_DIM], int n){      
+void quadratoMagico(int mat[][MAX_DIM], int n){
 \end_layout
 
 \begin_layout LyX-Code
 
-	int i, j, k;     
+	int i, j, k;
 \end_layout
 
 \begin_layout LyX-Code
 
-	for (i = 0; i < n; i++)    
 \end_layout
 
 \begin_layout LyX-Code
 
-		for (j = 0; j < n; j++)  
+	for (i = 0; i < n; i++)
 \end_layout
 
 \begin_layout LyX-Code
 
-			mat[i][j] = 0; 
+		for (j = 0; j < n; j++)
 \end_layout
 
 \begin_layout LyX-Code
 
-	i = n - 1; 
+			mat[i][j] = 0;
 \end_layout
 
 \begin_layout LyX-Code
 
-	j = n / 2; 
+\end_layout
+
+\begin_layout LyX-Code
+
+	i = n - 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	j = n / 2;
 \end_layout
 
 \begin_layout LyX-Code
@@ -1799,14 +1889,18 @@ void quadratoMagico(int mat[][MAX_DIM], int n){
 
 \begin_layout LyX-Code
 
-		mat[i][j] = k + 1;   
+		mat[i][j] = k + 1;
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
 
 /* indice + 1 % n consente di restare sempre nel limite, passando alla riga
  o colonna successiva considerando adiacenti la l'indice n-1 e 0.
- Infatti (n - 1) + 1 % n == 0 */ 
+ Infatti (n - 1) + 1 % n == 0 */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1816,7 +1910,11 @@ void quadratoMagico(int mat[][MAX_DIM], int n){
 
 \begin_layout LyX-Code
 
-		j = (j + 1) % n; 
+		j = (j + 1) % n;
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -1838,6 +1936,10 @@ void quadratoMagico(int mat[][MAX_DIM], int n){
 \begin_layout LyX-Code
 
 			j = j - 1;
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -1887,7 +1989,501 @@ void quadratoMagico(int mat[][MAX_DIM], int n){
 
 \begin_layout LyX-Code
 
-} // end quadratoMagico
+} /* end quadratoMagico */
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+La guerra contro i giganti di ghiaccio
+\end_layout
+
+\begin_layout Quotation
+Odino promise non ci sarebbero stati più giganti di ghiaccio sotto il suo
+ regno.
+ Immaginate di essere suo figlio Thor e cercate di non disattendere le sue
+ aspettative.
+\end_layout
+
+\begin_layout Quotation
+Si scriva un programma C che simuli una battaglia contro i giganti di ghiaccio.
+\end_layout
+
+\begin_layout Quotation
+Esistono un numero noto di giganti di ghiaccio disposti a caso su una mappa
+ quadrata N x N.
+ Thor può scagliare un fulmine alla volta per incendiare un punto della
+ mappa.
+ Quando un fulmine colpisce la mappa in un punto tutti i giganti di ghiaccio
+ in quel punto si dissolvono e un incendio divampa.
+ Tutti gli altri giganti di ghiaccio si muovono in un punto non incendiato
+ della mappa.
+\end_layout
+
+\begin_layout Quotation
+Sembrerebbe tutto molto facile ma Thor ha solo un numero limitato di fulmini
+ che può lanciare.
+ Nel caso in cui non riuscisse a sconfiggere i giganti di ghiaccio, egli
+ subirà l'ira di suo padre, che è ben peggio di perdere una guerra...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Thor vs Giganti di ghiaccio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <stdlib.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+#include <time.h>
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#define N 5
+\end_layout
+
+\begin_layout Plain Layout
+
+#define ICE_GIANTS_POPULATION 10
+\end_layout
+
+\begin_layout Plain Layout
+
+#define THUNDERS 15
+\end_layout
+
+\begin_layout Plain Layout
+
+#define BURNING -1
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+int main() {
+\end_layout
+
+\begin_layout Plain Layout
+
+  int map[N][N];
+\end_layout
+
+\begin_layout Plain Layout
+
+  int alive, kill, x, y, turns;
+\end_layout
+
+\begin_layout Plain Layout
+
+  int i, j;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* Map initialization */
+\end_layout
+
+\begin_layout Plain Layout
+
+  for (i = 0; i < N; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (j = 0; j < N; j++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      map[i][j] = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* make random really random */
+\end_layout
+
+\begin_layout Plain Layout
+
+  srand(time(NULL));
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  /* Giants population */
+\end_layout
+
+\begin_layout Plain Layout
+
+  for (i = 0; i < ICE_GIANTS_POPULATION; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    x = rand() % N;
+\end_layout
+
+\begin_layout Plain Layout
+
+    y = rand() % N;
+\end_layout
+
+\begin_layout Plain Layout
+
+    map[x][y] += 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  printf("Good morning Thor.
+ Let's end this war!
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+  turns = THUNDERS;
+\end_layout
+
+\begin_layout Plain Layout
+
+  alive = ICE_GIANTS_POPULATION;
+\end_layout
+
+\begin_layout Plain Layout
+
+  while (turns > 0 && alive > 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    do {
+\end_layout
+
+\begin_layout Plain Layout
+
+      printf("Shoot a thunder to position x y
+\backslash
+t");
+\end_layout
+
+\begin_layout Plain Layout
+
+      scanf(" %d %d", &x, &y);
+\end_layout
+
+\begin_layout Plain Layout
+
+      if (x < 0 || x >= N || y < 0 || y >= N) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        printf("Invalid coordinates
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+    } while (x < 0 || x >= N || y < 0 || y >= N);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /* kill them! */
+\end_layout
+
+\begin_layout Plain Layout
+
+    kill = map[x][y];
+\end_layout
+
+\begin_layout Plain Layout
+
+    if (kill == BURNING) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      printf("You hit a burning point
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+    } else {
+\end_layout
+
+\begin_layout Plain Layout
+
+      alive -= kill;
+\end_layout
+
+\begin_layout Plain Layout
+
+      printf("You killed %d giants
+\backslash
+n", kill);
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /* Set the land on fire! */
+\end_layout
+
+\begin_layout Plain Layout
+
+    map[x][y] = BURNING;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    /* move other giants */
+\end_layout
+
+\begin_layout Plain Layout
+
+    /* reset the position of the survived giants */
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (i = 0; i < N; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      for (j = 0; j < N; j++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+        if (map[i][j] != BURNING) {
+\end_layout
+
+\begin_layout Plain Layout
+
+          map[i][j] = 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+        }
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+    /* give them another position */
+\end_layout
+
+\begin_layout Plain Layout
+
+    for (i = 0; i < alive; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+      do {
+\end_layout
+
+\begin_layout Plain Layout
+
+        x = rand() % N;
+\end_layout
+
+\begin_layout Plain Layout
+
+        y = rand() % N;
+\end_layout
+
+\begin_layout Plain Layout
+
+      } while(map[x][y] == BURNING);
+\end_layout
+
+\begin_layout Plain Layout
+
+      map[x][y] += 1;
+\end_layout
+
+\begin_layout Plain Layout
+
+    }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    turns--;
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (alive > 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    printf("You wasn't able to eliminate them.
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+  } else {
+\end_layout
+
+\begin_layout Plain Layout
+
+    printf("There are no more frost giants.
+\backslash
+n");
+\end_layout
+
+\begin_layout Plain Layout
+
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
@@ -2011,6 +2607,13 @@ status open
  alla prima pulce, ed esse continuano a saltare e atterrare in perfetta
  sincronia fino a uscire assieme dal tappeto, senza mai "scontrarsi", cioè
  atterrare contemporaneamente sulla stessa casella
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -2206,6 +2809,13 @@ return 0, se il percorso della pulce termina: jmpOff == 1 */
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Contasalti
 \end_layout
@@ -2352,6 +2962,13 @@ int contasalti(TappetoElastico te) {
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Paragraph
 Versione 2
 \end_layout
@@ -2447,6 +3064,13 @@ int contasalti(TappetoElastico te) {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -2650,6 +3274,13 @@ int contasalti(TappetoElastico te)  {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
