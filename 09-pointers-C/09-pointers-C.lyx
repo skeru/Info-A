@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-12/11/2015
+17/11/2016
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -206,7 +206,7 @@ int sandra(int *sonno) {
 
 \begin_layout LyX-Code
 
-	while(++(*sonno)) {
+	while (++(*sonno)) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -282,7 +282,7 @@ int raimondo() {
 
 \begin_layout LyX-Code
 
-	while(sonno) {
+	while (sonno) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -419,7 +419,7 @@ int luca() {
 
 \begin_layout LyX-Code
 
-	while(++paga) {
+	while (++paga) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -442,6 +442,194 @@ int luca() {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Bud
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int bud() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int *cazzotti, *botte;
+\end_layout
+
+\begin_layout LyX-Code
+
+	*cazzotti = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	botte = cazzotti;
+\end_layout
+
+\begin_layout LyX-Code
+
+	for (++*botte; *cazzotti; (*cazzotti)++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("*tonf* E stai giu'!
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return *botte;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Terence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int terence() {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int hill[2] = {0, 0};
+\end_layout
+
+\begin_layout LyX-Code
+
+	*hill = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int *donMatteo = hill;
+\end_layout
+
+\begin_layout LyX-Code
+
+	++donMatteo;
+\end_layout
+
+\begin_layout LyX-Code
+
+	*hill = 666;
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (++*donMatteo) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("
+\backslash
+n...E continuavano a chiamarlo");
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (--(*hill)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			printf(" Trinita'");
+\end_layout
+
+\begin_layout LyX-Code
+
+		} else {
+\end_layout
+
+\begin_layout LyX-Code
+
+			(*hill)++;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	return *hill;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -563,7 +751,77 @@ status open
 
 
 \family default
- senza mai ritornare alcun valore.
+ senza mai restituire alcun valore.
+\end_layout
+
+\begin_layout Subsubsection
+Bud
+\end_layout
+
+\begin_layout Standard
+La funzione entra in un ciclo infinito e a video viene stampato ripetutamente
+ 
+\family typewriter
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+"*tonf* E stai giu'!"
+\end_layout
+
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\begin_layout Subsubsection
+Terence
+\end_layout
+
+\begin_layout Standard
+La funzione entra in un ciclo infinito e a video viene stampata per 665
+ volte la stringa 
+\family typewriter
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+"...E continuavano a chiamarlo Trinita'"
+\end_layout
+
+\end_inset
+
+
+\family default
+.
+ A seguito verrà stampata ripetutamente la stringa 
+\family typewriter
+
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+"...E continuavano a chiamarlo"
+\end_layout
+
+\end_inset
+
+
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -599,6 +857,36 @@ strcmp
 
 \begin_layout Quotation
 Si utilizzi una scansione delle stringhe basata su puntatori.
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Standard
+Il testo dell'esercizio in questo caso è vincolante su un approccio da utilizzar
+e.
+ In particolare viene richiesto che la scansione delle stringhe sia basata
+ su puntatori.
+ In sede d'esame sarà accettata come parzialmente corretta qualunque soluzione
+ che risolva il problema dato ma il 100% del punteggio sarà assegnato solo
+ a coloro che sapranno soddisfare anche questo vincolo.
+\end_layout
+
+\begin_layout Standard
+Di seguito viene proposta una soluzione che fa uso di puntatori e, di seguito,
+ una versione senza puntatori.
+ Può risultare più istintivo proporre una soluzione che segua un approccio
+ invece di un altro.
+ Si vuole qui dimostrare l'equivalenza tra le due rappresentazioni fornendo
+ il codice per entrambe.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -821,6 +1109,13 @@ char capitalize(char c) {
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Versione senza parti superflue
 \end_layout
@@ -985,6 +1280,13 @@ int confrontaStr(char *s0, char *s1) {
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Versione senza puntatori
 \end_layout
@@ -992,9 +1294,10 @@ Versione senza puntatori
 \begin_layout Standard
 Questa versione è corretta secondo la sintassi C99 e semanticamente equivalente
  alle versioni precedentemente proposte.
- Questa versione non sarebbe considerata del tutto corretta in sede d'esame
+ Questa versione non sarebbe considerata corretta al 100% in sede d'esame
  in quanto non fa uso, come esplicitamente richiesto dal testo dell'esercizio
  di una scansione basata sui puntatori.
+ Si propone anche questa versione a scopo didattico di confronto.
 \end_layout
 
 \begin_layout Standard
