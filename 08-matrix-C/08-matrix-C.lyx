@@ -2552,56 +2552,41 @@ o gli algoritmi usati.
 \end_layout
 
 \begin_layout Description
-\begin_inset listings
-lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
-inline true
-status open
 
-\begin_layout Plain Layout
-
+\family typewriter
 ...
- ciclico(...)
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
+ciclico(...)
+\family default
  che riceve in input un tappeto elastico e restituisce 1 se esso obbliga
  a saltare indefinitamente, 0 se invece a un certo punto la pulce potrà
  scendere 
 \end_layout
 
 \begin_layout Description
-\begin_inset listings
-lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
-inline true
-status open
 
-\begin_layout Plain Layout
-
+\family typewriter
 ...
- contasalti(...)
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
+contasalti(...)
+\family default
  che riceve un tappeto elastico e misura il numero di salti che la pulce
  compie prima di scendere (se il tappeto non è ciclico), oppure ­1 
 \end_layout
 
 \begin_layout Description
-\begin_inset listings
-lstparams "language=C,basicstyle={\ttfamily},showstringspaces=false,tabsize=2"
-inline true
-status open
 
-\begin_layout Plain Layout
-
+\family typewriter
 ...
- dicoppia(...)
-\end_layout
-
+\begin_inset space ~
 \end_inset
 
+dicoppia(...)
+\family default
  che controlla se un tappeto è adatto all’esibizione di coppia: una seconda
  pulce inizia a saltare dalla casella (DIM­1, DIM­1) contemporaneamente
  alla prima pulce, ed esse continuano a saltare e atterrare in perfetta
