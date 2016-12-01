@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-04/12/2015
+15/12/2016
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -886,6 +886,13 @@ int binarySearchIter(int key, int v[], int n) {
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Inversione array ricorsiva
 \end_layout
@@ -893,6 +900,13 @@ Inversione array ricorsiva
 \begin_layout Quotation
 Scrivere una funzione che inverta un vettore di interi con prodedimento
  ricorsivo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -940,6 +954,13 @@ void vectorInverterRecursive(int v[], int n) {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -1000,6 +1021,13 @@ status open
  volte.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C
 \end_layout
@@ -1058,6 +1086,13 @@ void BoomBang(int k) {
 } 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -1175,6 +1210,13 @@ Si trovi il modo di gestire anche il caso di potenze negative
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
