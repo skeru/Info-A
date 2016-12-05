@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-15/12/2016
+05/12/2016
 \end_layout
 
 \begin_layout Standard
@@ -3262,6 +3262,1183 @@ int main() {
 
 \begin_layout Standard
 \begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+KITT
+\end_layout
+
+\begin_layout Quotation
+Negli anni '80 una serie TV americana introduceva uno dei primi concept
+ di smart self-driving car con 
+\begin_inset Quotes fld
+\end_inset
+
+Supercar
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Il display montato sul muso dell'auto era composto da led rossi illuminati
+ a diverse intensità.
+ Il pattern di illuminazione del display era un segmento in movimento.
+ Il segmento aveva maggiore intensità nella sua parte centrale e intensità
+ decrescente verso i suoi estremi.
+ Lo stesso segmento si spostava sul display avanti e indietro lungo la direzione
+ orizzontale.
+\end_layout
+
+\begin_layout Quotation
+Si consideri di avere a disposizione un display simile.
+ Per comandare l'illuminazione del display, esso riceve in input un vettore
+ di N elementi interi.
+ Ogni elemento del vettore rappresenta l'intensità di illuminazione di un
+ elemento del display.
+ Ogni elemento del display può illuminarsi a L livelli di intensità (da
+ 0 a L-1).
+\end_layout
+
+\begin_layout Quotation
+Esempio di configurazione del vettore all'istante di tempo 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout LyX-Code
+t0: 1 2 3 2 1 0 0
+\end_layout
+
+\begin_layout LyX-Code
+t1: 0 1 2 3 2 1 0
+\end_layout
+
+\begin_layout LyX-Code
+t2: 0 0 1 2 3 2 1
+\end_layout
+
+\begin_layout LyX-Code
+t3: 0 0 0 1 2 3 2
+\end_layout
+
+\begin_layout LyX-Code
+t4: 0 0 0 0 1 2 3
+\end_layout
+
+\begin_layout LyX-Code
+t5: 0 0 0 1 2 3 2
+\end_layout
+
+\begin_layout LyX-Code
+t6: 0 0 1 2 3 2 1
+\end_layout
+
+\begin_layout LyX-Code
+t7: 0 1 2 3 2 1 0
+\end_layout
+
+\begin_layout LyX-Code
+t8: 1 2 3 2 1 0 0
+\end_layout
+
+\begin_layout Quotation
+Si scriva una funzione C ricorsiva che permetta di riempire il vettore display
+ per ogni istante di tempo 
+\begin_inset Formula $t_{x}$
+\end_inset
+
+.
+ Si consiglia di utilizzare le seguenti funzioni per eseguire una più efficace
+ implementazione:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <unistd.h>  // sleep()
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#define N 15
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+sleep(1); // stop the program for 1 second
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void print(int v[]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  // print backspace: erase display
+\end_layout
+
+\begin_layout LyX-Code
+
+  for (int i = 0; i < N; i++) printf("
+\backslash
+b
+\backslash
+b
+\backslash
+b");
+\end_layout
+
+\begin_layout LyX-Code
+
+  // print vector
+\end_layout
+
+\begin_layout LyX-Code
+
+  for (int i = 0; i < N; i++) printf("%d ", v[i]);
+\end_layout
+
+\begin_layout LyX-Code
+
+  // flush the buffer
+\end_layout
+
+\begin_layout LyX-Code
+
+  fflush(stdout);
+\end_layout
+
+\begin_layout LyX-Code
+
+  return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Dividi et impera
+\end_layout
+
+\begin_layout Standard
+Il problema dato all'apparenza ha una complessità notevole.
+ Ad una attenta anilisi si possono però riconoscere alcuni sottoproblemi
+ più semplici che possono essere affrontati più facilmente.
+ Scrivere una funzione C o anche solo un frammento di codice che risolva
+ un sottoproblema sarà sicuramente di aiuto nella stesura della soluzione
+ finale.
+\end_layout
+
+\begin_layout Subsubsection
+Disegna un segmento
+\end_layout
+
+\begin_layout Standard
+Tra le altre cose, viene richiesto di disegnare un segmento in un vettore
+ secondo un determinato pattern.
+ Il pattern richiesto prevede una sequenza di numeri crescente seguita da
+ una sequenza di numeri decrescente.
+\end_layout
+
+\begin_layout Standard
+Esempio:
+\end_layout
+
+\begin_layout LyX-Code
+1 2 3 2 1
+\end_layout
+
+\begin_layout Paragraph
+Una soluzione di getto...
+\end_layout
+
+\begin_layout Standard
+Un frammento di codice che produce questa soluzione è il seguente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+#define L 4
+\end_layout
+
+\begin_layout LyX-Code
+
+#define N 5
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int i, k;
+\end_layout
+
+\begin_layout LyX-Code
+
+int v[N] = {0};
+\end_layout
+
+\begin_layout LyX-Code
+
+i = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+k = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+while (k < L) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  v[i] = k;
+\end_layout
+
+\begin_layout LyX-Code
+
+  i++;
+\end_layout
+
+\begin_layout LyX-Code
+
+  k++;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+k -= 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+while (k > 0) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  v[i] = k;
+\end_layout
+
+\begin_layout LyX-Code
+
+  k--;
+\end_layout
+
+\begin_layout LyX-Code
+
+  i++;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Facciamolo ricorsivo
+\end_layout
+
+\begin_layout Standard
+Il frammento di codice riportato qui sopra ha però un problema.
+ Esso è scritto in forma iterativa.
+ Il testo dell'esercizio esplicitamente chiedeva che venisse scritto in
+ forma ricorsiva.
+\end_layout
+
+\begin_layout Standard
+Riadattiamo quindi l'algoritmo in forma ricorsiva.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+#define L 4
+\end_layout
+
+\begin_layout LyX-Code
+
+#define N 5
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill_wrapper(int v[]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill_up(v, 0, 1);
+\end_layout
+
+\begin_layout LyX-Code
+
+  return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill_up(int v[], int i, int k) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (k >= L) return fill_down(v, i+1, k-1);
+\end_layout
+
+\begin_layout LyX-Code
+
+  v[i] = k;
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill_up(v, i+1, k+1);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill_down(int v[], int i, int k) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (k <= 0) return;
+\end_layout
+
+\begin_layout LyX-Code
+
+  v[i] = k;
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill_down(v, i+1, k-1);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Si noti come in questo specifico caso le condizioni di terminazione dei
+ cicli sono diventate casi base per terminare la ricorsione.
+ La semantica è preservata.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Ottimizziamo
+\end_layout
+
+\begin_layout Standard
+Con l'aggiunta si un caso base nella ricorsione è possibile gestire anche
+ la situazione di segmento più lungo del vettore.
+\end_layout
+
+\begin_layout Standard
+Si noti che le due funzioni fill_up e fill_down sono molto simili tra di
+ loro.
+ Si propone di seguito una soluzione che le fonde assieme in una unica funzione
+ con l'aggiunta di un parametro flag.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+#define L 4
+\end_layout
+
+\begin_layout LyX-Code
+
+#define N 5
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill_wrapper(int v[]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill(v, 0, 1, 1);
+\end_layout
+
+\begin_layout LyX-Code
+
+  return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill(int v[], int i, int k, int direction) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (i >= N) // end of vector
+\end_layout
+
+\begin_layout LyX-Code
+
+    return;
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (k >= L) // change direction
+\end_layout
+
+\begin_layout LyX-Code
+
+    return fill(v, i+1, k-1, !direction);
+\end_layout
+
+\begin_layout LyX-Code
+
+  v[i] = k;
+\end_layout
+
+\begin_layout LyX-Code
+
+  // continue in the same direction
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (direction)
+\end_layout
+
+\begin_layout LyX-Code
+
+    fill(v, i+1, k+1, direction);
+\end_layout
+
+\begin_layout LyX-Code
+
+  else
+\end_layout
+
+\begin_layout LyX-Code
+
+    fill (v, i+1, k-1, direction);
+\end_layout
+
+\begin_layout LyX-Code
+
+  return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Spostare un segmento
+\end_layout
+
+\begin_layout Standard
+Il problema chiede di spostare il segmento avanti e indietro nel vettore.
+\end_layout
+
+\begin_layout Standard
+Per fare ciò è sufficiente cambiare l'indice che stabilsce l'inizio del
+ segmento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+int start;
+\end_layout
+
+\begin_layout LyX-Code
+
+for (start = 0; start < N; start ++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  // initialize v to all 0
+\end_layout
+
+\begin_layout LyX-Code
+
+  // ...
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill(v, start, 1, 1); // move ahead
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+for (start = N-2; start > 0; start --) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  // initialize v to all 0
+\end_layout
+
+\begin_layout LyX-Code
+
+  // ...
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill(v, start, 1, 1); // move backward
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sarà sufficiente riadattare il codice scritto in precedenza per disegnare
+ un segmento alla struttura qui illustrata per ottenere l'effetto desiderato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Inserire una stampa a video
+\end_layout
+
+\begin_layout Standard
+Si utilizzi la stampa a video fornita nel testo del problema.
+ In quali punti è opportuno mostrare l'output? Al termine di ogni iterazione
+ si avrà un risultato diverso.
+ Si consiglia pertanto di osservare l'output di ogni iterazione.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+int start;
+\end_layout
+
+\begin_layout LyX-Code
+
+for (start = 0; start < N; start ++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  // initialize v to all 0
+\end_layout
+
+\begin_layout LyX-Code
+
+  // ...
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill(v, start, 1, 1); // move ahead
+\end_layout
+
+\begin_layout LyX-Code
+
+  print(v);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+for (start = N-2; start > 0; start --) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  // initialize v to all 0
+\end_layout
+
+\begin_layout LyX-Code
+
+  // ...
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill(v, start, 1, 1); // move backward
+\end_layout
+
+\begin_layout LyX-Code
+
+  print(v);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Chi è più veloce: l'occhio o il computer?
+\end_layout
+
+\begin_layout Standard
+Per ovvi motivi di velocità di esecuzione del computer, le iterazioni saranno
+ sovrascritte con una velocità superiore alla umana possibilità di osservare
+ l'output.
+ Esiste però il modo di costringere il programma a fermarsi per un intervallo
+ di tempo sufficiente a permettere l'osservazione del risultato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+int start;
+\end_layout
+
+\begin_layout LyX-Code
+
+for (start = 0; start < N; start ++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  // initialize v to all 0
+\end_layout
+
+\begin_layout LyX-Code
+
+  // ...
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill(v, start, 1, 1); // move ahead
+\end_layout
+
+\begin_layout LyX-Code
+
+  sleep(1);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+for (start = N-2; start > 0; start --) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  // initialize v to all 0
+\end_layout
+
+\begin_layout LyX-Code
+
+  // ...
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill(v, start, 1, 1); // move backward
+\end_layout
+
+\begin_layout LyX-Code
+
+  sleep(1);
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+KITT
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <unistd.h>  // sleep()
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#define N 15
+\end_layout
+
+\begin_layout LyX-Code
+
+#define L 5
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void print(int v[]);
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill(int v[], int start, int val, int raising);
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill_wrap(int v[], int start);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int main(int argc, char*argv[]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  int display[N] = {0};
+\end_layout
+
+\begin_layout LyX-Code
+
+  for (int i = 0; i < N; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+    fill_wrap(display, i);
+\end_layout
+
+\begin_layout LyX-Code
+
+    print(display);
+\end_layout
+
+\begin_layout LyX-Code
+
+    sleep(1); // stop the program for 1 second
+\end_layout
+
+\begin_layout LyX-Code
+
+  }
+\end_layout
+
+\begin_layout LyX-Code
+
+  for (int i = N-2; i > 0; i--) {
+\end_layout
+
+\begin_layout LyX-Code
+
+    fill_wrap(display, i);
+\end_layout
+
+\begin_layout LyX-Code
+
+    print(display);
+\end_layout
+
+\begin_layout LyX-Code
+
+    sleep(1); // stop the program for 1 second
+\end_layout
+
+\begin_layout LyX-Code
+
+  }
+\end_layout
+
+\begin_layout LyX-Code
+
+  return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill_wrap(int v[], int start) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  for (int i = 0; i < N; i++)
+\end_layout
+
+\begin_layout LyX-Code
+
+    v[i] = 0;  // initialize to 0 every time
+\end_layout
+
+\begin_layout LyX-Code
+
+  fill(v, start, 1, 1);
+\end_layout
+
+\begin_layout LyX-Code
+
+  return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void fill(int v[], int start, int val, int raising) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (start >= N) return;           // end of vector
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (!raising && val <= 0) return; // end of segment
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (val >= L) // change direction
+\end_layout
+
+\begin_layout LyX-Code
+
+    return fill(v, start+1, val-1, !raising);
+\end_layout
+
+\begin_layout LyX-Code
+
+  v[start] = val;
+\end_layout
+
+\begin_layout LyX-Code
+
+  if (raising) fill(v, start+1, val+1, raising);
+\end_layout
+
+\begin_layout LyX-Code
+
+  else fill(v, start+1, val-1, raising);
+\end_layout
+
+\begin_layout LyX-Code
+
+  return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+void print(int v[]) {
+\end_layout
+
+\begin_layout LyX-Code
+
+  // print backspace: erase display
+\end_layout
+
+\begin_layout LyX-Code
+
+  for (int i = 0; i < N; i++) printf("
+\backslash
+b
+\backslash
+b
+\backslash
+b");
+\end_layout
+
+\begin_layout LyX-Code
+
+  // print vector
+\end_layout
+
+\begin_layout LyX-Code
+
+  for (int i = 0; i < N; i++) printf("%d ", v[i]);
+\end_layout
+
+\begin_layout LyX-Code
+
+  // flush the buffer
+\end_layout
+
+\begin_layout LyX-Code
+
+  fflush(stdout);
+\end_layout
+
+\begin_layout LyX-Code
+
+  return;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
 \end_inset
 
 
