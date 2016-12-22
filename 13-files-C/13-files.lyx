@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-11/12/2015
+22/12/2015
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -335,7 +335,7 @@ Giralettere
 
 \begin_layout LyX-Code
 
-#define FILEOUT "output.txt"s
+#define FILEOUT "output.txt"
 \end_layout
 
 \begin_layout LyX-Code
@@ -400,7 +400,7 @@ nErrore apertura file.");
 
 \begin_layout LyX-Code
 
-	fin = fopen(FILEOUT, "w");
+	fout = fopen(FILEOUT, "w");
 \end_layout
 
 \begin_layout LyX-Code
@@ -413,6 +413,11 @@ nErrore apertura file.");
 		printf("
 \backslash
 nErrore apertura file.");
+\end_layout
+
+\begin_layout LyX-Code
+
+		fclose(fin);
 \end_layout
 
 \begin_layout LyX-Code
@@ -467,12 +472,7 @@ nErrore apertura file.");
 
 \begin_layout LyX-Code
 
-		}
-\end_layout
-
-\begin_layout LyX-Code
-
-		else if (tolower(ch) == c2) {
+		} else if (tolower(ch) == c2) {
 \end_layout
 
 \begin_layout LyX-Code
@@ -543,12 +543,1725 @@ nErrore apertura file.");
 \end_layout
 
 \begin_layout Section
-Election simulator 2016
+WC
 \end_layout
 
 \begin_layout Quotation
-Si consideri la seguente versione semplificata dalla nuova legge elettorale
- italiana 
+Si consideri il comando unix 
+\begin_inset listings
+lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+wc
+\end_layout
+
+\end_inset
+
+.
+ Esso fornisce delle statistiche relative ad un file di testo, tra cui numero
+ di caratteri, numero di parole, numero di linee contenute nel file di testo.
+ Si codifichi in linguaggio C una funzione che prenda in input il nome di
+ un file di testo e restituisca in output le statistiche sopra descritte.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+word count
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+typedef struct ret_s {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int linecount, wordcount, charcount;	
+\end_layout
+
+\begin_layout LyX-Code
+
+} ret_t;
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+ret_t wc (const char* filename) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	FILE *fp;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char ch;
+\end_layout
+
+\begin_layout LyX-Code
+
+	ret_t ret;
+\end_layout
+
+\begin_layout LyX-Code
+
+	int twospaces = 1; // flag for multiple spaces
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	ret.linecount = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	ret.wordcount = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	ret.charcount = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+	
+\end_layout
+
+\begin_layout LyX-Code
+
+	fp = fopen(filename, "r");
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!fp) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		return ret;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+    
+\end_layout
+
+\begin_layout LyX-Code
+
+	ch = getc(fp);
+\end_layout
+
+\begin_layout LyX-Code
+
+	while (!feof(fp)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (ch != ' ' && ch != '
+\backslash
+n') {
+\end_layout
+
+\begin_layout LyX-Code
+
+			ret.charcount++;
+\end_layout
+
+\begin_layout LyX-Code
+
+			twospaces = 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		if ((ch == ' ' || ch == '
+\backslash
+n') && !twospaces) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			ret.wordcount++;
+\end_layout
+
+\begin_layout LyX-Code
+
+			twospaces = 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		if (ch == '
+\backslash
+n') {
+\end_layout
+
+\begin_layout LyX-Code
+
+			ret.linecount++;
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		ch = getc(fp);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	fclose(fp);
+\end_layout
+
+\begin_layout LyX-Code
+
+	return ret;
+\end_layout
+
+\begin_layout LyX-Code
+
+} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Cesare
+\end_layout
+
+\begin_layout Quotation
+Il cifrario di Cesare è uno dei più antichi algoritmi crittografici conosciuti.
+ Prende il suo nome da Giulio Cesare, utilizzatore di questo strumento nella
+ sua corrispondenza privata.
+\end_layout
+
+\begin_layout Quotation
+Esso converte un testo in chiaro (
+\emph on
+plain message
+\emph default
+) in un testo cifrato (
+\emph on
+encoded message
+\emph default
+).
+ Il messaggio cifrato si ottiene tramite uno spostamento applicato lettera
+ per lettera sul testo originale di 3 posizioni nell'ordine alfabetico.
+ Si veda il seguente schema di cifratura.
+\end_layout
+
+\begin_layout Quotation
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="27" columns="2">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="2cm">
+<column alignment="center" valignment="top" width="2cm">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+plain
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+encoded
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+A
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+X
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Y
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+C
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Z
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+D
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+E
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+B
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+F
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+C
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+G
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+D
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+H
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+E
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+I
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+F
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+J
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+G
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+K
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+H
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+L
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+I
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+M
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+J
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+N
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+K
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+O
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+L
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+M
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Q
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+N
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+R
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+O
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+S
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+P
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+T
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Q
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+U
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+R
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+V
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+S
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+W
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+T
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+U
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+V
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Z
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+W
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+Si sciva una funzione C che applichi la cifratura di Cesare ad un file di
+ testo, producendo un secondo file di testo contenente il testo cifrato.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
+inline false
+status open
+
+\begin_layout LyX-Code
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+cifrario di cesare
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#include <stdio.h>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+#define BUF_LEN 1024
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+int cesare (const char* plain, const char* encoded) {
+\end_layout
+
+\begin_layout LyX-Code
+
+	int i;
+\end_layout
+
+\begin_layout LyX-Code
+
+	FILE* fin;
+\end_layout
+
+\begin_layout LyX-Code
+
+	FILE* fout;
+\end_layout
+
+\begin_layout LyX-Code
+
+	char buffer[BUF_LEN];
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!(fin = fopen(plain, "r"))) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Error opening input file
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	if (!(fout = fopen(encoded, "w"))) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		fclose(fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+		printf("Error opening output file
+\backslash
+n");
+\end_layout
+
+\begin_layout LyX-Code
+
+		return 1;
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	fgets(buffer, BUF_LEN, fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+	while(!feof(fin)) {
+\end_layout
+
+\begin_layout LyX-Code
+
+		for (i = 0; buffer[i] != '
+\backslash
+0'; i++) {
+\end_layout
+
+\begin_layout LyX-Code
+
+			// if it is a printable character
+\end_layout
+
+\begin_layout LyX-Code
+
+			if ((buffer[i] >= 'a' && buffer[i] <= 'z') || (buffer[i] >= 'A' && buffer[i]
+ <= 'Z')) {
+\end_layout
+
+\begin_layout LyX-Code
+
+				buffer[i] = buffer[i] + 3;
+\end_layout
+
+\begin_layout LyX-Code
+
+				// if it is no more a printable character
+\end_layout
+
+\begin_layout LyX-Code
+
+				if (!((buffer[i] >= 'a' && buffer[i] <= 'z') || (buffer[i] >= 'A' &&
+ buffer[i] <= 'Z')))
+\end_layout
+
+\begin_layout LyX-Code
+
+					buffer[i] = buffer[i] + 'a' - 'z';
+\end_layout
+
+\begin_layout LyX-Code
+
+			}
+\end_layout
+
+\begin_layout LyX-Code
+
+		}
+\end_layout
+
+\begin_layout LyX-Code
+
+		fputs(buffer, fout);
+\end_layout
+
+\begin_layout LyX-Code
+
+		fgets(buffer, BUF_LEN, fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+	}
+\end_layout
+
+\begin_layout LyX-Code
+
+	fclose(fin);
+\end_layout
+
+\begin_layout LyX-Code
+
+	fclose(fout);
+\end_layout
+
+\begin_layout LyX-Code
+
+	return 0;
+\end_layout
+
+\begin_layout LyX-Code
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Election simulator 2017
+\end_layout
+
+\begin_layout Quotation
+Si consideri la seguente versione semplificata dalla legge elettorale italiana
+ 
 \begin_inset Quotes fld
 \end_inset
 
@@ -560,7 +2273,7 @@ Italicum
 \begin_inset Quotes frd
 \end_inset
 
-, in vigore da luglio 2016
+ per la Camera dei Deputati, in vigore da luglio 2016
 \end_layout
 
 \begin_layout Itemize
