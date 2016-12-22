@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-22/12/2015
+22/12/2016
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -210,6 +210,13 @@ typedef struct list_elem_s {
 Si definiscano le seguenti procedure in linguaggio C.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 \begin_inset listings
 lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
@@ -231,6 +238,13 @@ void displayOdd(list_elem_t* list)
 visualizza su standard output i soli elementi della lista che occupano posto
  di posizione dispari (si consideri la testa della lista come posizione
  0, quindi pari)
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -258,6 +272,13 @@ visualizza su standard output i soli elementi della lista che occupano posto
  Si fornisca una versione ricorsiva di questa procedura.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Enumerate
 \begin_inset listings
@@ -281,6 +302,13 @@ esegue il dump (copia tutto il contenuto) della lista in un file di testo
  il cui nome è passato come parametro.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Newpage clearpage
@@ -298,6 +326,13 @@ Di seguito si presentano due equivalenti versioni.
  La prima analizza due elementi della lista per ogni iterazione, l'altra
  conserva un contatore con l'indice della posizione e controlla la parità
  dell'indice ad ogni iterazione.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -386,6 +421,13 @@ n");
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
 \end_inset
 
 
@@ -487,6 +529,13 @@ n");
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C - displayEven
 \end_layout
@@ -501,6 +550,13 @@ Di seguito si presenta una versione che fa uso di due procedure chiamate
 \begin_layout Standard
 Considerato che le due funzioni si chiamano ricorsivamente l'un l'altra,
  è fondamentale che i prototipi delle stesse vengano anteposti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -620,6 +676,20 @@ void displayEvenRec(list_elem_t* list) {
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C - dump
 \end_layout
@@ -627,6 +697,13 @@ Soluzione C - dump
 \begin_layout Standard
 La soluzione consta in uno scorrimento della lista, accoppiato con la scrittura
  del file.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -716,6 +793,13 @@ n", list->value);
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -729,6 +813,13 @@ ADT
 \begin_layout Standard
 Si implementino facendo uso di liste semplici concatenate i seguenti tipi
  di dato astratto
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -746,6 +837,13 @@ L'inserimento (push) può avvenire solo dopo l'ultimo elemento
 
 \begin_layout Itemize
 L'accesso (top) può avvenire solo sull'ultimo elemento
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -767,6 +865,13 @@ L'accesso (top) può avvenire solo sul primo elemento
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Si faccia uso del tipo 
 \begin_inset listings
@@ -792,7 +897,14 @@ reference "sec:Esercizi-di-riscaldamento"
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace smallskip*
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -800,6 +912,13 @@ reference "sec:Esercizi-di-riscaldamento"
 
 \begin_layout Subsection
 Soluzione C - stack
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -925,6 +1044,13 @@ list_elem_t* stack_top(list_elem_t* list) {
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -933,6 +1059,13 @@ list_elem_t* stack_top(list_elem_t* list) {
 
 \begin_layout Subsection
 Soluzione C - queue
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1082,6 +1215,13 @@ list_elem_t* queue_top(list_elem_t* list) {
 }   
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
 \end_inset
 
 
@@ -1294,22 +1434,6 @@ Soluzione C
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-La soluzione di questo esercizio viene lasciata come esercizio a casa agli
- studenti.
- Verrà resa dipsonibile in una versione successiva di questo documento che
- sarà pubblicata in prossimità della data dell'esercitazione successiva.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset listings
 lstparams "language=C,numbers=left,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline false
@@ -1499,6 +1623,22 @@ n");
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La soluzione di questo esercizio viene lasciata come esercizio a casa agli
+ studenti.
+ Verrà resa dipsonibile in una versione successiva di questo documento che
+ sarà pubblicata in prossimità della data dell'esercitazione successiva.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Newpage clearpage
 \end_inset
 
@@ -1519,6 +1659,13 @@ Si scriva un programma che acquisisce da tastiera un indeterminato numero
  di elementi e li inserisca nella lista.
  Al primo valore nullo inserito dall'utente, l'inserimento termina e si
  calcoli il valore minimo, massimo e mediano nella lista.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
