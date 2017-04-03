@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-12/01/2016
+24/01/2017
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -237,6 +237,13 @@ xfc026b7
 Scrivete un programma che esegua la suddetta verifica in modo automatico.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Variante: controllo globale
 \end_layout
@@ -260,6 +267,13 @@ Il brillante lavoro svolto con il controllo del dipendente assenteista vi
 \begin_layout Standard
 Suggerimento: per semplificare l'output, si generi un file di testo che
  elenca, per ogni dipendente, il numero di ore effettivamente lavorate.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -299,6 +313,13 @@ Si fornisca assieme alla soluzione in linguaggio C, una accurata descrizione
  delle assunzioni fatte.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Variante: rivolta sindacale
 \end_layout
@@ -330,6 +351,13 @@ xfA
  Si calcoli il numero di ore effettivamente lavorate da tutti i dipendenti
  di quel grado, se ne calcoli la media e si visualizzi a schermo inoltre
  il codice identificativo del dipendente tra questi che ha lavorato di meno.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
