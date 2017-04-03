@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-12/01/2016
+19/01/2016
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -168,6 +168,13 @@ Mastermind
 \begin_layout Quotation
 Si implementino le seguenti versioni semplificate del famoso gioco crittografico
  mastermind.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -262,6 +269,20 @@ Si stampi a video il numero di turni che il giocatore ha impiegato a indovinare
  il codice.
 \end_layout
 
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Variante: lunghezza dinamica
 \end_layout
@@ -279,6 +300,13 @@ Si consideri il gioco descritto al punto precedente.
  il numero minimo di cifre consentite.
 \end_layout
 
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Variante: difficile come il gioco originale
 \end_layout
@@ -287,6 +315,13 @@ Variante: difficile come il gioco originale
 Si consideri il gioco descritto al punto precedente.
  Si applichino modifiche alle regole del turno e alle condizioni di fine
  del gioco.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -343,6 +378,13 @@ e, la loro posizione non ha alcun significato.
 \end_layout
 
 \end_deeper
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Condizione di sconfitta
 \end_layout
@@ -364,6 +406,13 @@ status open
  inoltre un numero massimo di turni che l'utente ha per indovinare.
  Se l'utente supera questo numero, si dice che il gioco viene vinto dal
  computer.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
