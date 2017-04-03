@@ -91,7 +91,7 @@ Stefano Cherubin
 status open
 
 \begin_layout Plain Layout
-<nome.cognome>@polimi.it
+<nome>.<cognome>@polimi.it
 \end_layout
 
 \end_inset
@@ -100,7 +100,7 @@ status open
 \end_layout
 
 \begin_layout Date
-07/01/2016
+19/01/2017
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2015/16
+ 2016/17
 \end_layout
 
 \begin_layout Standard
@@ -204,6 +204,13 @@ char* strfusion(char* str0, char* str1)
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Approccio alla soluzione
 \end_layout
@@ -239,7 +246,8 @@ char* strcat(char* dst, char* src)
 
 \end_inset
 
- ma questa non preserva la stringhe originarie, modificando la stringa 
+ ma questa non preserva la stringhe originarie.
+ Essa infatti modifica la stringa 
 \begin_inset listings
 lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline true
@@ -252,7 +260,7 @@ dst
 
 \end_inset
 
- per accodarle 
+, aggiungendole in coda 
 \begin_inset listings
 lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
 inline true
@@ -266,12 +274,20 @@ src
 \end_inset
 
 .
- Occorre allocare uno spazio dedicato per il risultato per non intaccare
- le due stringhe in ingresso.
+ Per ottemperare alla richiesta del testo dell'esercizio occorre allocare
+ uno spazio dedicato per il risultato.
+ Così facendo non si andrà ad intaccare le due stringhe in ingresso.
  Lo spazio dedicato dovrà essere dimensionato in funzione delle stringhe
  in ingresso, la cui dimensione non è nota a priori.
- La soluzione fara quindi uso di memoria dinamica, allocando una stringa
- al momento delle esatte dimensioni richieste dai dati.
+ La soluzione farà quindi uso di memoria dinamica, allocando una stringa
+ al momento, utilizzando le esatte dimensioni richieste dai dati.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -389,6 +405,13 @@ Scrivere una funzione C che esegua il merge di due vettori di interi allocati
  dinamicamente.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C
 \end_layout
@@ -424,7 +447,7 @@ int* dynVecMerge(int v1[], int n, int v2[], int m) {
 
 \begin_layout Plain Layout
 
-	v = (int*) malloc(n + m);
+	v = (int*) malloc((n + m) * sizeof(int));
 \end_layout
 
 \begin_layout Plain Layout
@@ -610,6 +633,13 @@ Per semplicità, si trascuri la possibilità che la allocazione dinamica non
  vada a buon fine.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Approccio alla soluzione
 \end_layout
@@ -763,10 +793,13 @@ Matrice allocata come vettore di vettori
 
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
+
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -925,6 +958,13 @@ www.tutorialspoint.com/c_standard_library/c_function_calloc.htm
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione
 \end_layout
@@ -1048,6 +1088,13 @@ float** malloc2d(int nr, int nc) {
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Vettore di 
 \begin_inset Quotes fld
@@ -1147,6 +1194,13 @@ float** malloc2d(int nr, int nc) {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
