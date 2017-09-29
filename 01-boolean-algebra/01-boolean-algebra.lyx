@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \usetheme{Madrid}
@@ -19,7 +21,7 @@
 \usenavigationsymbolstemplate{}
 % hide navigation symbols (bottom-right corner in every slide)
 
-%\titlegraphic{\includegraphics[height=2cm]{poul-logo.pdf}}
+\titlegraphic{\includegraphics[height=2cm]{extended.pdf}}
 % Aggiunge il logo del POuL in prima pagina
 % Ricordate che dovete sempre avere il logo in pdf nella cartella dove avete il documento (poul-logo.pdf)
 
@@ -61,16 +63,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -209,12 +211,12 @@ Esercitazione 1
 \begin_inset Newline newline
 \end_inset
 
-03 Novembre 2016
+05 Ottobre 2017
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-06 Novembre 2016
+05 Ottobre 2017
 \end_layout
 
 \end_inset
@@ -284,7 +286,10 @@ ab & = & ba
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -328,7 +333,10 @@ a+bc & = & \left(a+b\right)\left(a+c\right)
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -372,7 +380,10 @@ Distributiva di AND rispetto a OR
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -417,7 +428,10 @@ a+\overline{a} & = & 1\\
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -449,7 +463,10 @@ a\overline{a} & = & 0\\
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -494,7 +511,10 @@ a\left(a+b\right) & = & a
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -526,7 +546,10 @@ Elemento neuto
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -616,7 +639,10 @@ si provi a semplificare l'espressione usando le proprietà dell'algebra di
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -638,7 +664,7 @@ Esercizio 1 - tabella della verità
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="7">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1260,7 +1286,10 @@ Esercizio 1 - tabella della verità
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1367,7 +1396,10 @@ tautologia
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1436,7 +1468,10 @@ compilando la tabella di verità
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1464,13 +1499,17 @@ H & = & \overline{b}+\overline{a}
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="9">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2262,7 +2301,10 @@ H & = & \overline{b}+\overline{a}
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2304,7 +2346,10 @@ F & = & \overline{a}\cdot b+a\cdot\overline{b}+\underbrace{\overline{a+b\cdot c}
 
 \end_layout
 
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2354,7 +2399,10 @@ Si procede quindi con la tebella di verità
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2382,13 +2430,17 @@ H & = & \overline{b}+a
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="9">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3198,7 +3250,10 @@ H & = & \overline{b}+a
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3256,7 +3311,10 @@ semplificazioni algebriche
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3278,6 +3336,10 @@ Esercizio 3 - metodo algebrico
 \begin_inset Formula $\underbrace{\left(\overline{a}\cdot\overline{b}\right)+a}+b=$
 \end_inset
 
+
+\begin_inset space \hfill{}
+\end_inset
+
 Distributiva di OR
 \end_layout
 
@@ -3287,6 +3349,10 @@ Distributiva di OR
 
 \begin_layout Standard
 \begin_inset Formula $=\underbrace{\left(\overline{a}+a\right)}\cdot\left(\overline{b}+a\right)+b=$
+\end_inset
+
+
+\begin_inset space \hfill{}
 \end_inset
 
 Tautologia
@@ -3314,6 +3380,7 @@ Tautologia
 \end_inset
 
 
+\family default
 \series default
 \shape default
 \size default
@@ -3325,6 +3392,12 @@ Tautologia
 \noun default
 \color inherit
 \lang italian
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\family roman
 Elemento neutro di AND
 \end_layout
 
@@ -3334,6 +3407,10 @@ Elemento neutro di AND
 
 \begin_layout Standard
 \begin_inset Formula $=\underbrace{\overline{b}+a}+b=$
+\end_inset
+
+
+\begin_inset space \hfill{}
 \end_inset
 
 Commutativa di OR
@@ -3348,12 +3425,19 @@ Commutativa di OR
 \end_inset
 
 
+\begin_inset space \hfill{}
+\end_inset
+
+
 \series bold
 Tautologia
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3375,7 +3459,7 @@ Esercizio 3 - tabella di verità
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="5">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3639,7 +3723,10 @@ Esercizio 3 - tabella di verità
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3710,7 +3797,10 @@ semplificazioni algebriche
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3852,7 +3942,10 @@ De Morgan
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3881,13 +3974,17 @@ T & = & \left(a+b\right)\cdot\left(\overline{a}+\overline{b}\right)
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="11">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
