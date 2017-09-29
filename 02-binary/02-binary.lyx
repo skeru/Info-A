@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
 \usetheme{Madrid}
@@ -19,7 +21,7 @@
 \usenavigationsymbolstemplate{}
 % hide navigation symbols (bottom-right corner in every slide)
 
-%\titlegraphic{\includegraphics[height=2cm]{poul-logo.pdf}}
+\titlegraphic{\includegraphics[height=2cm]{extended.pdf}}
 % Aggiunge il logo del POuL in prima pagina
 % Ricordate che dovete sempre avere il logo in pdf nella cartella dove avete il documento (poul-logo.pdf)
 
@@ -61,16 +63,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -213,12 +215,12 @@ Esercitazione 2
 \begin_inset Newline newline
 \end_inset
 
-03 Novembre 2016
+05 Ottobre 2017
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-03 Novembre 2016
+05 Ottobre 2017
 \end_layout
 
 \end_inset
@@ -285,7 +287,10 @@ Dividere ripetutamente per la base (2).
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -331,7 +336,7 @@ Moltiplicare il valore di ciascuno dei bit di modulo per la base (2) elevata
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -597,7 +602,10 @@ modulo
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -648,7 +656,7 @@ Modulo e segno
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -818,7 +826,10 @@ modulo
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -840,7 +851,7 @@ Complemento a 2
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1006,7 +1017,10 @@ Complemento a 2
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1053,7 +1067,7 @@ Modulo e segno
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1227,7 +1241,10 @@ Cambiare il bit di segno, mantenendo uguale il modulo.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1249,7 +1266,7 @@ Complemento a 2
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1354,7 +1371,10 @@ Invertire tutti i bit.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1397,7 +1417,7 @@ Moltiplicare il valore di ciascuno dei bit per la base (2) elevata alla
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1666,7 +1686,10 @@ modulo
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1760,7 +1783,10 @@ Con la rappresentazione in complemento a due, il valore che in modulo e
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1874,7 +1900,10 @@ http://teaching.idallen.com/dat2343/10f/notes/040_overflow.txt
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1927,7 +1956,10 @@ Trova la rappresentazione in complemento a 2 di lunghezza fissa 8 bit dei
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1968,7 +2000,7 @@ Trova la rappresentazione in complemento a 2 di lunghezza fissa 8 bit di
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2158,13 +2190,17 @@ Applichiamo un bit in più per il segno: 01110
 
 \begin_layout Standard
 Estendiamo in segno fino a raggiungere 8 bit
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="5col%">
 <column alignment="center" valignment="top" width="5col%">
 <column alignment="center" valignment="top" width="5col%">
@@ -2357,7 +2393,10 @@ Estendiamo in segno fino a raggiungere 8 bit
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -2387,7 +2426,7 @@ Complemento a 2: -66
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="8" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -2689,7 +2728,7 @@ Invertire tutti i bit e poi sommare 1
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="9">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3055,7 +3094,10 @@ Invertire tutti i bit e poi sommare 1
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3085,7 +3127,7 @@ Complemento a 2: -31
 
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3319,7 +3361,7 @@ Invertire tutti i bit e poi sommare 1
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="9">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -3860,7 +3902,10 @@ Invertire tutti i bit e poi sommare 1
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -3916,7 +3961,10 @@ Qual è il numero minimo di bit necessari a rappresentare i seguenti numeri
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4004,7 +4052,10 @@ Infatti con 8 bit possiamo rappresentare numeri da
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4092,7 +4143,10 @@ Infatti con 6 bit possiamo rappresentare numeri da
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4179,7 +4233,10 @@ Infatti con 10 bit possiamo rappresentare numeri da
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4273,7 +4330,10 @@ Servono quindi 9 bit per rappresentare il modulo di
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4344,7 +4404,10 @@ Si eseguano le seguenti operazioni in binario su 6 bit e si dica in quali
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4381,7 +4444,7 @@ Si esegua la seguente operazione in binario
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="7">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4755,7 +4818,10 @@ Si esegua la seguente operazione in binario
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -4801,7 +4867,7 @@ Si esegua la seguente operazione in binario
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="9">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -5068,7 +5134,10 @@ Si esegua la seguente operazione in binario
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -5115,7 +5184,7 @@ Si esegua la seguente operazione in binario su 6 bit e si dica se si presenta
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -5462,7 +5531,10 @@ NO underflow
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -5509,7 +5581,7 @@ Si esegua la seguente operazione in binario su 6 bit e si dica se si presenta
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -5877,7 +5949,10 @@ SÌ underflow
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -5924,7 +5999,7 @@ Si esegua la seguente operazione in binario su 6 bit e si dica se si presenta
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="8">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -6288,7 +6363,10 @@ NO underflow
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
