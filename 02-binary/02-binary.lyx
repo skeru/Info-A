@@ -2190,10 +2190,6 @@ Applichiamo un bit in più per il segno: 01110
 
 \begin_layout Standard
 Estendiamo in segno fino a raggiungere 8 bit
-\begin_inset Separator latexpar
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2240,7 +2236,7 @@ Estendiamo in segno fino a raggiungere 8 bit
 \begin_layout Plain Layout
 
 \series bold
-\color blue
+\color red
 0
 \end_layout
 
@@ -2252,7 +2248,8 @@ Estendiamo in segno fino a raggiungere 8 bit
 \begin_layout Plain Layout
 
 \series bold
-1
+\color blue
+0
 \end_layout
 
 \end_inset
@@ -2343,6 +2340,9 @@ Estendiamo in segno fino a raggiungere 8 bit
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Formula $\leftarrow$
+\end_inset
+
 
 \end_layout
 
