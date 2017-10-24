@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
@@ -12,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter tgcursor
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "tgcursor" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,10 +99,21 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename square_framed.pdf
+	height 3.5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-03/11/2016
+19/10/2017
 \end_layout
 
 \begin_layout Standard
@@ -130,7 +143,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2016/17
+ 2017/18
 \end_layout
 
 \begin_layout Standard
@@ -223,7 +236,10 @@ Esistono diversi approcci a questo problema: di seguito ne sono riportati
  3.
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
 
 \end_layout
 
@@ -286,7 +302,7 @@ Conversione da decimale a binairo: Soluzione 1
 
 \begin_layout LyX-Code
 
-int main () { 
+int main () {
 \end_layout
 
 \begin_layout LyX-Code
@@ -303,12 +319,12 @@ int main () {
 
 		printf("
 \backslash
-nNumero intero : Q = "); 
+nNumero intero : Q = ");
 \end_layout
 
 \begin_layout LyX-Code
 
-		scanf("%d", &Q); 
+		scanf("%d", &Q);
 \end_layout
 
 \begin_layout LyX-Code
@@ -318,74 +334,74 @@ nNumero intero : Q = ");
 
 \begin_layout LyX-Code
 
-	Qaux = Q; 
+	Qaux = Q;
 \end_layout
 
 \begin_layout LyX-Code
 
-	n = 0; 
+	n = 0;
 \end_layout
 
 \begin_layout LyX-Code
 
-	do { 
+	do {
 \end_layout
 
 \begin_layout LyX-Code
 
-		Qaux = Qaux / 2; 
+		Qaux = Qaux / 2;
 \end_layout
 
 \begin_layout LyX-Code
 
-		n += 1; 
+		n += 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-	} while (Qaux != 0); 
+	} while (Qaux != 0);
 \end_layout
 
 \begin_layout LyX-Code
 
 	printf("
 \backslash
-nCodifica di Q = %d con %d bit = ", Q, n); 
+nCodifica di Q = %d con %d bit = ", Q, n);
 \end_layout
 
 \begin_layout LyX-Code
 
-	for (current = n - 1; current >= 0; current--) { 
+	for (current = n - 1; current >= 0; current--) {
 \end_layout
 
 \begin_layout LyX-Code
 
-		Qaux = Q; 
+		Qaux = Q;
 \end_layout
 
 \begin_layout LyX-Code
 
-		for (i = 0; i < current; i++) 
+		for (i = 0; i < current; i++)
 \end_layout
 
 \begin_layout LyX-Code
 
-			Qaux = Qaux / 2; 
+			Qaux = Qaux / 2;
 \end_layout
 
 \begin_layout LyX-Code
 
-		printf("%d", Qaux % 2); 
+		printf("%d", Qaux % 2);
 \end_layout
 
 \begin_layout LyX-Code
 
-	} 
+	}
 \end_layout
 
 \begin_layout LyX-Code
 
-	return 0; 
+	return 0;
 \end_layout
 
 \begin_layout LyX-Code
@@ -399,6 +415,9 @@ nCodifica di Q = %d con %d bit = ", Q, n);
 \end_layout
 
 \begin_layout LyX-Code
+\begin_inset Newpage clearpage
+\end_inset
+
 
 \end_layout
 
@@ -553,6 +572,13 @@ nNum.
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione 3 - Smash by power of 2
 \end_layout
@@ -568,8 +594,12 @@ L'algoritmo da utilizzare è quello delle divisioni per decrescenti potenze
 \begin_inset Formula $2$
 \end_inset
 
- minore di esso e si procede a dividere i resti della divisione intera per
- potenze decrescenti.
+ che non eccede il numero in input.
+ Si procede a dividere i resti della divisione intera per potenze di 
+\begin_inset Formula $2$
+\end_inset
+
+ decrescenti.
  L'output è dato dal quoziente della divisione così calcolato.
  L'algoritmo termina quando le potenze decrescenti di 
 \begin_inset Formula $2$
@@ -638,154 +668,149 @@ Conversione da decimale a binairo: Soluzione 3
 
 \begin_layout LyX-Code
 
-int main( ) { 
+int main( ) {
 \end_layout
 
 \begin_layout LyX-Code
 
-	int i, d, n, Q; 
+	int i, d, Q, n = 0;
 \end_layout
 
 \begin_layout LyX-Code
 
-	do { 
+	do {
 \end_layout
 
 \begin_layout LyX-Code
 
 		printf("
 \backslash
-nInserisci un numero positivo Q: "); 
+nInserisci un numero positivo Q: ");
 \end_layout
 
 \begin_layout LyX-Code
 
-		scanf("%d", &Q); 
+		scanf("%d", &Q);
 \end_layout
 
 \begin_layout LyX-Code
 
-	} while (Q <= 0); 
+	} while (Q <= 0);
 \end_layout
 
 \begin_layout LyX-Code
 
-	n = 0; 
+	d = 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-	d = 1; 
+	do {
 \end_layout
 
 \begin_layout LyX-Code
 
-	do { 
+		n = n + 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-		n = n + 1; 
+		d = d * 2;
 \end_layout
 
 \begin_layout LyX-Code
 
-		d = d * 2; 
+	} while (Q > d);
 \end_layout
 
 \begin_layout LyX-Code
 
-	} while (Q > d); 
+/* d è la più piccola potenza di 2 maggiore di Q */
 \end_layout
 
 \begin_layout LyX-Code
 
-/* d contiene la più piccola potenza di 2 maggiore di Q */
+/* n ha il valore dell'esponente della potenza di 2 memorizzata in d, e
+ coincide con il numero di bit minimo per rappresentare Q.
+ */
 \end_layout
 
 \begin_layout LyX-Code
 
-/* n ha il valore dell'esponente della potenza di 2 memorizzata in d e coincide
- con il numero di bit minimo per rappresentare Q.
- */ 
-\end_layout
-
-\begin_layout LyX-Code
-
-/* n-1 è il valore dell'esponente più significativo presente nella rappresentazi
-one binaria del numero Q */ 
+/* (n-1) è il valore dell'esponente più significativo presente nella rappresenta
+zione del numero Q */
 \end_layout
 
 \begin_layout LyX-Code
 
 	printf("
 \backslash
-n%d in decimale, con %d bit = ", Q, n); 
+n%d in decimale, con %d bit = ", Q, n);
 \end_layout
 
 \begin_layout LyX-Code
 
-	n = n - 1; 
+	n = n - 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-	d = d / 2; 
+	d = d / 2;
 \end_layout
 
 \begin_layout LyX-Code
 
-	do { 
+	do {
 \end_layout
 
 \begin_layout LyX-Code
 
-		if (Q >= d) { 
+		if (Q >= d) {
 \end_layout
 
 \begin_layout LyX-Code
 
-			printf("1"); 
+			printf("1");
 \end_layout
 
 \begin_layout LyX-Code
 
-			Q = Q - d; 
+			Q = Q - d;
 \end_layout
 
 \begin_layout LyX-Code
 
-		} else { 
+		} else {
 \end_layout
 
 \begin_layout LyX-Code
 
-			printf("0"); 
+			printf("0");
 \end_layout
 
 \begin_layout LyX-Code
 
-		} 
+		}
 \end_layout
 
 \begin_layout LyX-Code
 
-		n = n - 1; 
+		n = n - 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-		d = d / 2; 
+		d = d / 2;
 \end_layout
 
 \begin_layout LyX-Code
 
-	} while ( n >= 0 ); 
+	} while ( n >= 0 );
 \end_layout
 
 \begin_layout LyX-Code
 
-	return 0; 
+	return 0;
 \end_layout
 
 \begin_layout LyX-Code
@@ -823,6 +848,13 @@ Ricevere dallo standard input due caratteri alfabetici, convertirli in maiuscolo
 
 \begin_layout Quotation
 Esempio: dati 'g' e 'M' stampa a video la sequenza GHIJKLM.
+\end_layout
+
+\begin_layout Quotation
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -999,6 +1031,13 @@ if (c1 < 'a' || c1 > 'z') {
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C
 \end_layout
@@ -1029,39 +1068,39 @@ Intervallo di caratteri
 
 \begin_layout LyX-Code
 
-int main( ) { 
+int main( ) {
 \end_layout
 
 \begin_layout LyX-Code
 
-	char x, y; /* dati in ingresso  */ 
+	char x, y; /* dati in ingresso  */
 \end_layout
 
 \begin_layout LyX-Code
 
-	char t;    /* ausiliaria per scambiare */ 
+	char t;    /* ausiliaria per scambiare */
 \end_layout
 
 \begin_layout LyX-Code
 
-	int i;     /* contatore  */ 
+	int i;     /* contatore  */
 \end_layout
 
 \begin_layout LyX-Code
 
-	do { 
+	do {
 \end_layout
 
 \begin_layout LyX-Code
 
 		printf("
 \backslash
-nInserisci il carattere alfabetico x: "); 
+nInserisci il carattere alfabetico x: ");
 \end_layout
 
 \begin_layout LyX-Code
 
-		scanf("%c", &x); 
+		scanf("%c", &x);
 \end_layout
 
 \begin_layout LyX-Code
@@ -1081,7 +1120,7 @@ nInserisci il carattere alfabetico x: ");
 
 \begin_layout LyX-Code
 
-		x = x - ('a'-'A'); 
+		x = x - ('a'-'A');
 \end_layout
 
 \begin_layout LyX-Code
@@ -1091,19 +1130,19 @@ nInserisci il carattere alfabetico x: ");
 
 \begin_layout LyX-Code
 
-	do { 
+	do {
 \end_layout
 
 \begin_layout LyX-Code
 
 		printf("
 \backslash
-nInserisci il carattere alfabetico y: "); 
+nInserisci il carattere alfabetico y: ");
 \end_layout
 
 \begin_layout LyX-Code
 
-		scanf("%c", &y); 
+		scanf("%c", &y);
 \end_layout
 
 \begin_layout LyX-Code
@@ -1119,12 +1158,12 @@ nInserisci il carattere alfabetico y: ");
 
 \begin_layout LyX-Code
 
-	if ((y >= 'a') && (y <= 'z')) 
+	if ((y >= 'a') && (y <= 'z'))
 \end_layout
 
 \begin_layout LyX-Code
 
-		y = y - ('a'-'A'); 
+		y = y - ('a'-'A');
 \end_layout
 
 \begin_layout LyX-Code
@@ -1134,49 +1173,49 @@ nInserisci il carattere alfabetico y: ");
 
 \begin_layout LyX-Code
 
-	if (x > y) { 
+	if (x > y) {
 \end_layout
 
 \begin_layout LyX-Code
 
-		t = x; 
+		t = x;
 \end_layout
 
 \begin_layout LyX-Code
 
-		x = y; 
+		x = y;
 \end_layout
 
 \begin_layout LyX-Code
 
-		y = t; 
+		y = t;
 \end_layout
 
 \begin_layout LyX-Code
 
-	} 
+	}
 \end_layout
 
 \begin_layout LyX-Code
 
 	printf("
 \backslash
-nLa sequenza di caratteri richiesta e': "); 
+nLa sequenza di caratteri richiesta e': ");
 \end_layout
 
 \begin_layout LyX-Code
 
-	i = (int)x; 
+	i = (int)x;
 \end_layout
 
 \begin_layout LyX-Code
 
-	while (i <= (int)y) { 
+	while (i <= (int)y) {
 \end_layout
 
 \begin_layout LyX-Code
 
-		printf("%c", (char)i); 
+		printf("%c", (char)i);
 \end_layout
 
 \begin_layout LyX-Code
@@ -1186,17 +1225,17 @@ nLa sequenza di caratteri richiesta e': ");
 
 \begin_layout LyX-Code
 
-		i = i + 1; 
+		i = i + 1;
 \end_layout
 
 \begin_layout LyX-Code
 
-	} 
+	}
 \end_layout
 
 \begin_layout LyX-Code
 
-	return 0; 
+	return 0;
 \end_layout
 
 \begin_layout LyX-Code
@@ -1204,6 +1243,13 @@ nLa sequenza di caratteri richiesta e': ");
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -1340,17 +1386,17 @@ Conteggio terne positive
 
 \begin_layout Plain Layout
 
-#include <stdio.h> 
+#include <stdio.h>
 \end_layout
 
 \begin_layout Plain Layout
 
-#define SENTINELLA 0 
+#define SENTINELLA 0
 \end_layout
 
 \begin_layout Plain Layout
 
-int main() { 
+int main() {
 \end_layout
 
 \begin_layout Plain Layout
@@ -1385,7 +1431,7 @@ int main() {
 	printf("
 \backslash
 nSeq.
- di int separati da spazi "); 
+ di int separati da spazi ");
 \end_layout
 
 \begin_layout Plain Layout
@@ -1394,52 +1440,52 @@ nSeq.
 \backslash
 n
 \backslash
-n", SENTINELLA); 
+n", SENTINELLA);
 \end_layout
 
 \begin_layout Plain Layout
 
-	do { 
+	do {
 \end_layout
 
 \begin_layout Plain Layout
 
-		prev2 = prev1; 
+		prev2 = prev1;
 \end_layout
 
 \begin_layout Plain Layout
 
-		prev1 = cur; 
+		prev1 = cur;
 \end_layout
 
 \begin_layout Plain Layout
 
-		scanf("%d", &cur); 
+		scanf("%d", &cur);
 \end_layout
 
 \begin_layout Plain Layout
 
-		cond = (prev2 > 0 && prev1 > 0 && cur >= 0); 
+		cond = (prev2 > 0 && prev1 > 0 && cur >= 0);
 \end_layout
 
 \begin_layout Plain Layout
 
-		cond = cond && !(prev2 == prev1 || prev2 == cur || prev1 == cur); 
+		cond = cond && !(prev2 == prev1 || prev2 == cur || prev1 == cur);
 \end_layout
 
 \begin_layout Plain Layout
 
-		cond = cond && (prev2 % 2 == 0 && prev1 % 2 == 0 && cur % 2 == 0); 
+		cond = cond && (prev2 % 2 == 0 && prev1 % 2 == 0 && cur % 2 == 0);
 \end_layout
 
 \begin_layout Plain Layout
 
-		if (cond) { 
+		if (cond) {
 \end_layout
 
 \begin_layout Plain Layout
 
-			cont++; 
+			cont++;
 \end_layout
 
 \begin_layout Plain Layout
@@ -1451,29 +1497,29 @@ nNuova terna: ");
 
 \begin_layout Plain Layout
 
-			printf("(%d, %d, %d)", prev2, prev1, cur); 
+			printf("(%d, %d, %d)", prev2, prev1, cur);
 \end_layout
 
 \begin_layout Plain Layout
 
-		} 
+		}
 \end_layout
 
 \begin_layout Plain Layout
 
-	} while ( cur != SENTINELLA ); 
+	} while ( cur != SENTINELLA );
 \end_layout
 
 \begin_layout Plain Layout
 
 	printf("
 \backslash
-nLe terne di numeri cercati sono %d", cont); 
+nLe terne di numeri cercati sono %d", cont);
 \end_layout
 
 \begin_layout Plain Layout
 
-	return 0; 
+	return 0;
 \end_layout
 
 \begin_layout Plain Layout
