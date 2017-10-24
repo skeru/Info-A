@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
@@ -12,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter tgcursor
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "tgcursor" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,10 +99,21 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename square_framed.pdf
+	height 3.5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-03/11/2016
+26/10/2017
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +141,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2016/17
+ 2017/18
 \end_layout
 
 \begin_layout Standard
@@ -171,6 +184,20 @@ Sono arrivati dal reparto vendite i dati relativi all'andamento del volume
  I dati rappresentano le quantità vendute per ogni mese dell'anno.
  Si calcoli il mese con il massimo volume di vendita e la più lunga serie
  di vendite strettamente crescente.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -222,6 +249,13 @@ float
  senza imporre vincoli o assunzioni sulle unità di misura dei dati in ingresso.
  In entrambi i casi, trattandosi di quantità nette vendute, si dovrà verificare
  che i dati in ingresso siano positivi o nulli.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -321,6 +355,13 @@ for (i = 0; i < N; ++i) {
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Posizione o valore
 \end_layout
@@ -413,6 +454,13 @@ for (i = 0; i < N; ++i) {
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -758,6 +806,13 @@ nLa più lunga sequenza positiva è dal mese %d al mese %d.", p1, p2);
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -1176,6 +1231,13 @@ Scrivere un programma in linguaggio C che lette dallo standard input due
  anch'essa ordinata, che contenga tutti gli elementi di V1 e di V2 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C
 \end_layout
@@ -1514,6 +1576,13 @@ Leggere un polinomio di grado n a coefficienti reali e successivamente valutarlo
  in un dato punto x.
 \end_layout
 
+\begin_layout Quotation
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Approccio alla soluzione
 \end_layout
@@ -1709,6 +1778,13 @@ nf(%f) = %f", x, f);
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione 2: costruzione progressiva della potenza
 \end_layout
@@ -1896,6 +1972,13 @@ nf(%f) = %f", x, f);
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -2117,6 +2200,13 @@ Esistono diversi algoritmi di ordinamento di vettori.
  selezione.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C - Selection Sort
 \end_layout
@@ -2334,6 +2424,13 @@ n ");
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C - Insertion sort
 \end_layout
@@ -2524,6 +2621,13 @@ n ");
 }
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
