@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
@@ -12,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,10 +99,21 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename square_framed.pdf
+	height 3.5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-03/11/2015
+10/10/2017
 \end_layout
 
 \begin_layout Standard
@@ -130,7 +143,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2016/17
+ 2017/18
 \end_layout
 
 \begin_layout Standard
@@ -217,6 +230,13 @@ Esempio:
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -372,6 +392,7 @@ numeri descrizione della logica.
 \begin_layout Description
 interi vincolo.
  Dovrete lavorare con numeri interi.
+ Lasciate perdere numeri con virgola fissa, mobile e altre cose buffe.
 \end_layout
 
 \begin_layout Description
@@ -467,6 +488,17 @@ Esempio
  Al termine della produzione del programma, si consiglia di usare questi
  dati per eseguire una simulazione di esecuzione del programma e verifcare
  che l'output fornito in simulazione coincida con l'output atteso.
+ Se il vostro programma funziona con l'esempio fornito, si consiglia di
+ inventarsi altri esempi che rispettino le regole e provare anche con essi.
+ Il programma che avete scritto non deve funzionare solo con gli esempi
+ forniti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -486,12 +518,10 @@ Scrivere un programma in linguaggio C
 int main() {
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
-return 0;
+   return 0;
 \end_layout
 
-\end_deeper
 \begin_layout LyX-Code
 }
 \end_layout
@@ -504,16 +534,14 @@ tre numeri interi
 int main() {
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
-int a, b, c;
+   int a, b, c;
 \end_layout
 
 \begin_layout LyX-Code
-return 0;
+   return 0;
 \end_layout
 
-\end_deeper
 \begin_layout LyX-Code
 }
 \end_layout
@@ -523,7 +551,7 @@ Letti tre numeri interi dallo standard input
 \end_layout
 
 \begin_layout LyX-Code
-#include <stdio.h>  /* necessaria se voglio utilizzare 
+#include <stdio.h>  /* necessaria se voglio utilizzare
 \end_layout
 
 \begin_layout LyX-Code
@@ -534,50 +562,44 @@ Letti tre numeri interi dallo standard input
 int main() {
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
-int a, b, c;
+   int a, b, c;
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+   printf("
 \backslash
 n Inserisci il numero a: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&a);
+   scanf("%d",&a);
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+   printf("
 \backslash
 n Inserisci il numero b: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&b);
+   scanf("%d",&b);
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+   printf("
 \backslash
 n Inserisci il numero c: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&c);
+   scanf("%d",&c);
 \end_layout
 
 \begin_layout LyX-Code
- 
+   return 0;
 \end_layout
 
-\begin_layout LyX-Code
-return 0;
-\end_layout
-
-\end_deeper
 \begin_layout LyX-Code
 }
 \end_layout
@@ -594,61 +616,58 @@ Stampare a terminale la sequenza dei numeri
 int main() {
 \end_layout
 
-\begin_deeper
 \begin_layout LyX-Code
-int a, b, c;
+   int a, b, c;
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+   printf("
 \backslash
 n Inserisci il numero a: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&a);
+   scanf("%d",&a);
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+   printf("
 \backslash
 n Inserisci il numero b: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&b);
+   scanf("%d",&b);
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+   printf("
 \backslash
 n Inserisci il numero c: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&c);
+   scanf("%d",&c);
 \end_layout
 
 \begin_layout LyX-Code
- 
-\end_layout
-
-\begin_layout LyX-Code
-printf("
+   printf("
 \backslash
 n L'ordine voluto e': %d, %d, %d",a,b,c);
 \end_layout
 
 \begin_layout LyX-Code
-return 0;
+   return 0;
 \end_layout
 
-\end_deeper
 \begin_layout LyX-Code
 }
 \end_layout
 
-\begin_layout LyX-Code
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
 
 \end_layout
 
@@ -673,10 +692,6 @@ Un possibile approccio al problema è quello di valutare tutti i possibili
 
 \begin_layout LyX-Code
 int main( ) {
-\end_layout
-
-\begin_layout LyX-Code
-  
 \end_layout
 
 \begin_layout LyX-Code
@@ -849,6 +864,13 @@ n L'ordine voluto e': %d, %d, %d",b,c,a);
 }
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout LyX-Code
 
 \end_layout
@@ -869,174 +891,162 @@ Un secondo approccio alla risoluzione del problema prevede di fissare un
 \end_layout
 
 \begin_layout LyX-Code
-int main( ) {            
-\end_layout
-
-\begin_deeper
-\begin_layout LyX-Code
-int a,b,c,t; /*   dichiarazione delle variabili       */
+  int main( ) {
 \end_layout
 
 \begin_layout LyX-Code
- 
+  int a,b,c,t; /*   dichiarazione delle variabili       */
 \end_layout
 
 \begin_layout LyX-Code
-/* legge tre interi a,b,c dallo standard input        */
+  /* legge tre interi a,b,c dallo standard input        */
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+  printf("
 \backslash
-nInserisci il numero a: ");   
+nInserisci il numero a: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&a);            
+  scanf("%d",&a);
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+  printf("
 \backslash
-nInserisci il numero b: ");   
+nInserisci il numero b: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&b);            
+  scanf("%d",&b);
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+  printf("
 \backslash
-nInserisci il numero c: ");   
+nInserisci il numero c: ");
 \end_layout
 
 \begin_layout LyX-Code
-scanf("%d",&c);
+  scanf("%d",&c);
 \end_layout
 
 \begin_layout LyX-Code
-              
+
 \end_layout
 
 \begin_layout LyX-Code
-/* ordinamento dei valori delle variabili a,b     */   
+  /* ordinamento dei valori delle variabili a,b     */
 \end_layout
 
 \begin_layout LyX-Code
-if (a > b) {     
-\end_layout
-
-\begin_deeper
-\begin_layout LyX-Code
-/* Scambio dei valori delle due variabili a,b  */     
+  if (a > b) {
 \end_layout
 
 \begin_layout LyX-Code
-t = a;     
+     /* Scambio dei valori delle due variabili a,b  */
 \end_layout
 
 \begin_layout LyX-Code
-a = b;     
+     t = a;
 \end_layout
 
 \begin_layout LyX-Code
-b = t;     
-\end_layout
-
-\end_deeper
-\begin_layout LyX-Code
-}
+     a = b;
 \end_layout
 
 \begin_layout LyX-Code
-     
+     b = t;
 \end_layout
 
 \begin_layout LyX-Code
-/* ordinamento dei valori delle variabili a,c     */
+  }
 \end_layout
 
 \begin_layout LyX-Code
-if (a > c) {     
-\end_layout
 
-\begin_deeper
-\begin_layout LyX-Code
-/* Scambio dei valori delle due variabili a,c  */     
 \end_layout
 
 \begin_layout LyX-Code
-t = a;     
+  /* ordinamento dei valori delle variabili a,c     */
 \end_layout
 
 \begin_layout LyX-Code
-a = c;     
+  if (a > c) {
 \end_layout
 
 \begin_layout LyX-Code
-c = t;     
-\end_layout
-
-\end_deeper
-\begin_layout LyX-Code
-}       
+     /* Scambio dei valori delle due variabili a,c  */
 \end_layout
 
 \begin_layout LyX-Code
-/* la variabile a contiene ora sicuramente il     */
+     t = a;
 \end_layout
 
 \begin_layout LyX-Code
-/* valore più piccolo tra quelli inseriti.
+     a = c;
+\end_layout
+
+\begin_layout LyX-Code
+     c = t;
+\end_layout
+
+\begin_layout LyX-Code
+  }
+\end_layout
+
+\begin_layout LyX-Code
+  /* la variabile a contiene ora sicuramente il     */
+\end_layout
+
+\begin_layout LyX-Code
+  /* valore più piccolo tra quelli inseriti.
         */
 \end_layout
 
 \begin_layout LyX-Code
- 
+
 \end_layout
 
 \begin_layout LyX-Code
-/* ordinamento dei valori delle variabili b,c     */    
+  /* ordinamento dei valori delle variabili b,c     */
 \end_layout
 
 \begin_layout LyX-Code
-if (b > c) {     
-\end_layout
-
-\begin_deeper
-\begin_layout LyX-Code
-/* Scambio dei valori delle due variabili b,c  */     
+  if (b > c) {
 \end_layout
 
 \begin_layout LyX-Code
-t = b;     
+     /* Scambio dei valori delle due variabili b,c  */
 \end_layout
 
 \begin_layout LyX-Code
-b = c;     
+     t = b;
 \end_layout
 
 \begin_layout LyX-Code
-c = t;     
-\end_layout
-
-\end_deeper
-\begin_layout LyX-Code
-}
+     b = c;
 \end_layout
 
 \begin_layout LyX-Code
-printf("
+     c = t;
+\end_layout
+
+\begin_layout LyX-Code
+  }
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
 \backslash
-nL'ordine voluto e': %d, %d, %d",a,b,c);  
+nL'ordine voluto e': %d, %d, %d",a,b,c);
 \end_layout
 
 \begin_layout LyX-Code
-return 0; 
+  return 0;
 \end_layout
 
-\end_deeper
 \begin_layout LyX-Code
 }
 \end_layout
@@ -1086,6 +1096,10 @@ N^{2} & = & 1+3+5+7+9=25
 \end_inset
 
  
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1148,12 +1162,11 @@ Pseudocodice (stesura informale dell'algoritmo)
 \end_layout
 
 \begin_layout Enumerate
-Inizio dell'algoritmo 
+Inizio dell'algoritmo
 \end_layout
 
 \begin_layout Enumerate
 Leggi un numero intero positivo dallo standard input.
- 
 \end_layout
 
 \begin_layout Enumerate
@@ -1161,7 +1174,7 @@ Inizializza un contatore
 \begin_inset Formula $i$
 \end_inset
 
- a 0 
+ a 0
 \end_layout
 
 \begin_layout Enumerate
@@ -1169,7 +1182,7 @@ Inizializza un accumulatore
 \begin_inset Formula $S$
 \end_inset
 
- a 0 
+ a 0
 \end_layout
 
 \begin_layout Enumerate
@@ -1179,25 +1192,24 @@ Finché il valore del contatore è minore del numero letto
 \begin_deeper
 \begin_layout Enumerate
 Somma all'accumulatore il doppio del valore del contatore incrementato di
- 1 
+ 1
 \end_layout
 
 \begin_layout Enumerate
-Incrementa il contatore 
+Incrementa il contatore
 \end_layout
 
 \begin_layout Enumerate
 Torna al punto 5.
- 
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Stampa a terminale il valore dell' accumulatore 
+Stampa a terminale il valore dell' accumulatore
 \end_layout
 
 \begin_layout Enumerate
-Fine dell' algoritmo 
+Fine dell' algoritmo
 \end_layout
 
 \begin_layout Subsubsection
@@ -1225,7 +1237,7 @@ do {
 \begin_layout LyX-Code
 printf("
 \backslash
-nInserisci un numero positivo N: "); 
+nInserisci un numero positivo N: ");
 \end_layout
 
 \begin_layout LyX-Code
@@ -1256,7 +1268,7 @@ do {
 \begin_layout LyX-Code
 printf("
 \backslash
-nInserisci un numero positivo N: "); 
+nInserisci un numero positivo N: ");
 \end_layout
 
 \begin_layout LyX-Code
@@ -1321,7 +1333,14 @@ scanf("%d",&N);
 
 \end_deeper
 \begin_layout LyX-Code
-} 
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1333,20 +1352,20 @@ Soluzione C
 \end_layout
 
 \begin_layout LyX-Code
-int main( ) { 
+int main( ) {
 \end_layout
 
 \begin_deeper
 \begin_layout LyX-Code
-/*        dichiarazione delle variabili                   */ 
+/*        dichiarazione delle variabili                   */
 \end_layout
 
 \begin_layout LyX-Code
-int i; /* contatore                                       */ 
+int i; /* contatore                                       */
 \end_layout
 
 \begin_layout LyX-Code
-int N; /* variabile di cui si vuole calcolare il quadrato */ 
+int N; /* variabile di cui si vuole calcolare il quadrato */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1354,22 +1373,22 @@ int S; /* accumulatore per il risultato del calcolo       */
 \end_layout
 
 \begin_layout LyX-Code
- 
+
 \end_layout
 
 \begin_layout LyX-Code
-       /* ciclo di controllo che garantisce N > 0         */ 
+       /* ciclo di controllo che garantisce N > 0         */
 \end_layout
 
 \begin_layout LyX-Code
-do { 
+do {
 \end_layout
 
 \begin_deeper
 \begin_layout LyX-Code
 printf("
 \backslash
-nInserisci un numero positivo N: "); 
+nInserisci un numero positivo N: ");
 \end_layout
 
 \begin_layout LyX-Code
@@ -1378,16 +1397,16 @@ scanf("%d",&N); /* legge N dallo standard input       */
 
 \end_deeper
 \begin_layout LyX-Code
-/* Finché il numero inserito non è positivo ripetere 
+/* Finché il numero inserito non è positivo ripetere
 \end_layout
 
 \begin_layout LyX-Code
    l'immissione dati.
-                                     */ 
+                                     */
 \end_layout
 
 \begin_layout LyX-Code
-} while (N < =0 ); 
+} while (N < =0 );
 \end_layout
 
 \begin_layout LyX-Code
@@ -1411,12 +1430,12 @@ i = 0;
 \end_layout
 
 \begin_layout LyX-Code
-while(i < N) { 
+while(i < N) {
 \end_layout
 
 \begin_deeper
 \begin_layout LyX-Code
-/* Finché il contatore è minore del numero letto 
+/* Finché il contatore è minore del numero letto
 \end_layout
 
 \begin_layout LyX-Code
@@ -1441,16 +1460,23 @@ printf("
 \backslash
 n Il quadrato del numero inserito e': %d 
 \backslash
-n",S); 
+n",S);
 \end_layout
 
 \begin_layout LyX-Code
-return 0; 
+return 0;
 \end_layout
 
 \end_deeper
 \begin_layout LyX-Code
-} 
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1554,7 +1580,7 @@ Finché il numero
 \begin_inset Formula $S$
 \end_inset
 
- è maggiore di zero 
+ è maggiore di zero
 \end_layout
 
 \begin_deeper
@@ -1585,7 +1611,7 @@ Se il valore residuo di
 \begin_inset Formula $S$
 \end_inset
 
- è zero allora 
+ è zero allora
 \end_layout
 
 \begin_deeper
@@ -1695,7 +1721,7 @@ i = 0;        /* inizializzazione del contatore                  */
 \end_layout
 
 \begin_layout LyX-Code
-while (S > 0) { 
+while (S > 0) {
 \end_layout
 
 \begin_deeper
@@ -1722,6 +1748,10 @@ S = S - i;
 
 \begin_layout LyX-Code
 if (S == 0) {
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1742,6 +1772,10 @@ n %d = alla somma dei primi %d numeri positivi!", Q, i);
 \end_deeper
 \begin_layout LyX-Code
 } else {
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1765,6 +1799,13 @@ return 0;
 \end_deeper
 \begin_layout LyX-Code
 }
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1808,6 +1849,13 @@ Input
 \begin_layout Description
 Output 
 \begin_inset Formula $\underleftarrow{11001_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -1927,6 +1975,13 @@ il numero viene diviso per due (approssimato all'intero inferiore)
 Uscita dal ciclo: quando il numero raggiunge il valore 0
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Soluzione C
 \end_layout
@@ -1936,7 +1991,7 @@ Soluzione C
 \end_layout
 
 \begin_layout LyX-Code
-int main( ) { 
+int main( ) {
 \end_layout
 
 \begin_deeper
@@ -1953,7 +2008,7 @@ int Q; /* variabile per il numero letto da tastiera */
 \end_layout
 
 \begin_layout LyX-Code
-do { 
+do {
 \end_layout
 
 \begin_deeper
@@ -1983,7 +2038,7 @@ n = 0;
 \end_layout
 
 \begin_layout LyX-Code
-do { 
+do {
 \end_layout
 
 \begin_deeper
