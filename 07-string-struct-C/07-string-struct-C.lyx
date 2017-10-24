@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
@@ -12,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter tgcursor
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "tgcursor" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,10 +99,21 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename square_framed.pdf
+	height 3.5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-03/11/2016
+26/10/2017
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +141,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2016/17
+ 2017/18
 \end_layout
 
 \begin_layout Standard
@@ -402,12 +415,142 @@ n");
 \end_layout
 
 \begin_layout Section
-Parole palindrome
+Una storia scalda-ossa
 \end_layout
 
 \begin_layout Quotation
-Scrivere un programma in linguaggio C che letta dallo standard input una
- parola, determini se essa è palindroma.
+Lasciate che vi racconti una storia per scaldarvi le ossa
+\end_layout
+
+\begin_layout Quotation
+È una cosa che mi è successa davvero
+\end_layout
+
+\begin_layout Quotation
+Una notte passeggiavo per le Everglades
+\end_layout
+
+\begin_layout Quotation
+Avevo bevuto un drink ma non di più
+\end_layout
+
+\begin_layout Quotation
+Vagavo godendomi la luce della luna piena
+\end_layout
+
+\begin_layout Quotation
+Camminavo col naso all'insù per guardare le stelle
+\end_layout
+
+\begin_layout Quotation
+Non avevo notato una presenza così vicina
+\end_layout
+
+\begin_layout Quotation
+Che osservava ogni mio movimento
+\end_layout
+
+\begin_layout Quotation
+Preso dallo spavento sono caduto a terra
+\end_layout
+
+\begin_layout Quotation
+Quando qualcosa mi precipitò addosso dagli alberi
+\end_layout
+
+\begin_layout Quotation
+Mi portò in un luogo profano
+\end_layout
+
+\begin_layout Quotation
+Ed è qui che caddi in disgrazia
+\end_layout
+
+\begin_layout Quotation
+Mi convocarono perché mi unissi a loro
+\end_layout
+
+\begin_layout Quotation
+Nella danza dei defunti
+\end_layout
+
+\begin_layout Quotation
+Nel cerchio di fuoco li seguii
+\end_layout
+
+\begin_layout Quotation
+Nel centro fui condotto
+\end_layout
+
+\begin_layout Quotation
+Come se il tempo si fosse fermato, ero intorpidito dalla paura
+\end_layout
+
+\begin_layout Quotation
+Ma non volevo tirarmi indietro
+\end_layout
+
+\begin_layout Quotation
+E le vampate del fuoco non mi ferivano
+\end_layout
+
+\begin_layout Quotation
+Mentre camminavo sulle braci
+\end_layout
+
+\begin_layout Quotation
+Le loro voci erano un coro confuso senza inizio, senza fine
+\end_layout
+
+\begin_layout Quotation
+Ogni parola finiva come iniziava.
+\end_layout
+
+\begin_layout Quotation
+In questa altalena di suoni palindromi la mia voce si perdeva
+\end_layout
+
+\begin_layout Quotation
+Il rito continuò finché non persi anche la cognizione di me
+\end_layout
+
+\begin_layout Quotation
+E i dannati mi sostituirono nel mio corpo
+\end_layout
+
+\begin_layout Quotation
+Ed io fui dannato con loro
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quotation
+Nell'eventualità di trovarvi in una situazione simile, scrivere un programma
+ in linguaggio C che, data una parola in input, determini se essa è palindroma.
+\end_layout
+
+\begin_layout Quotation
+Quando vi troverete nelle Erverglades e riconoscete troppe parole palindrome,
+ iniziate a correre!
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
