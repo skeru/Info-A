@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
@@ -12,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter tgcursor
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "tgcursor" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,10 +99,21 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename square_framed.pdf
+	width 3.5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-22/12/2015
+17/11/2017
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +141,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2016/17
+ 2017/18
 \end_layout
 
 \begin_layout Standard
@@ -836,7 +849,7 @@ encoded message
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="27" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="2cm">
 <column alignment="center" valignment="top" width="2cm">
 <row>
@@ -2316,11 +2329,19 @@ r a tutte le altre liste che superano la soglia di sbarramento
 \begin_layout Itemize
 Il metodo proporzionale di Hare-Niemer prevede l'assegnazione dei seggi
  in base alle percentuali di voti ottenute e si sviluppa in due fasi:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 Fase dei quozienti
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2367,6 +2388,10 @@ I seggi assegnati alla lista
 \end_deeper
 \begin_layout Itemize
 Fase dei resti
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2426,6 +2451,10 @@ ad eccezione di Valle D'Aosta e Trentino-Alto Adige
 
 , dica quale lista ha vinto le elezioni o, nel caso di ballottaggio, quali
  liste andranno al ballottaggio.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2480,7 +2509,7 @@ Approccio alla soluzione
 \begin_layout Subsubsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Gestire-numero-imprecisato"
+name "subsec:Gestire-numero-imprecisato"
 
 \end_inset
 
@@ -2563,7 +2592,7 @@ Struct vs vettori paralleli
  Di seguito si riporta l'esempio del punto 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Gestire-numero-imprecisato"
+reference "subsec:Gestire-numero-imprecisato"
 
 \end_inset
 
