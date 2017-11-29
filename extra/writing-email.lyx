@@ -1,9 +1,12 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass beamer
 \begin_preamble
+\usepackage{forest}
 \usetheme{Madrid}
 \usefonttheme{serif}
 % \usecolortheme{crane} %GIALLA
@@ -61,16 +64,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -199,12 +202,12 @@ Stefano Cherubin
 \end_layout
 
 \begin_layout Date
-Last update: November 2016
+Last update: November 2017
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Nov 2016
+Nov 2017
 \end_layout
 
 \end_inset
@@ -241,7 +244,10 @@ Cos'è una e-mail
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -299,7 +305,10 @@ Allegati
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -323,6 +332,10 @@ Generalmente viene inserito in automatico quando scrivete
 
 \begin_layout Itemize
 È consigliabile usare un indirizzo e-mail serio per e-mail serie
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -345,7 +358,10 @@ Tutti possono avere un indirizzo e-mail, non scrivete dall'indirizzo del
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -376,7 +392,10 @@ A lui/essi vi rivolgete nel corpo dell'e-mail
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -400,6 +419,10 @@ Riassunto in poche parole del motivo per cui scrivete
 
 \begin_layout Itemize
 Una e-mail senza oggetto è una e-mail senza uno scopo
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -428,7 +451,10 @@ to ci va una descrizione di cosa state chiedendo.
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -505,7 +531,10 @@ Un saluto in chiusura non fa schifo a nessuno
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -539,7 +568,10 @@ Possono essere persone che possono intervenire nella conversazione nel caso
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -559,6 +591,10 @@ Allegati
 \begin_deeper
 \begin_layout Itemize
 Gli allegati sono contenuto che non era possibile inserire nel corpo dell'e-mail
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -589,7 +625,10 @@ Il nome dei file allegati deve essere autoesplicativo
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -665,7 +704,10 @@ Paperoga
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -744,7 +786,10 @@ Betty Boop
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -827,12 +872,205 @@ Mata Hari
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
 \begin_layout Section
 Cosa succede se...
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mammaaaa, ègggiustooo???
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+FAI DA TE
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{forest}
+\end_layout
+
+\begin_layout Plain Layout
+
+for tree={
+\end_layout
+
+\begin_layout Plain Layout
+
+ font=
+\backslash
+ttfamily,
+\end_layout
+
+\begin_layout Plain Layout
+
+ grow'=0,
+\end_layout
+
+\begin_layout Plain Layout
+
+ child anchor=west,
+\end_layout
+
+\begin_layout Plain Layout
+
+ parent anchor=south,
+\end_layout
+
+\begin_layout Plain Layout
+
+ anchor=west,
+\end_layout
+
+\begin_layout Plain Layout
+
+ calign=first,
+\end_layout
+
+\begin_layout Plain Layout
+
+ edge path={
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+noexpand
+\backslash
+path [draw, 
+\backslash
+forestoption{edge}] (!u.south west) +(23pt,0) |- node[fill,inner sep=1.25pt]
+ {} (.child anchor)
+\backslash
+forestoption{edge label};
+\end_layout
+
+\begin_layout Plain Layout
+
+ },
+\end_layout
+
+\begin_layout Plain Layout
+
+ before typesetting nodes={ if n=1 {insert before={[,phantom]}} {} },
+\end_layout
+
+\begin_layout Plain Layout
+
+ fit=band,
+\end_layout
+
+\begin_layout Plain Layout
+
+ before computing xy={l=30pt},
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+[Hai provato il codice?
+\end_layout
+
+\begin_layout Plain Layout
+
+ [No - Quindi dovrei provarlo io?! AHAHAHAH NOPE]
+\end_layout
+
+\begin_layout Plain Layout
+
+ [Si - Funziona?
+\end_layout
+
+\begin_layout Plain Layout
+
+  [No - Quale errore ottieni?
+\end_layout
+
+\begin_layout Plain Layout
+
+    [Risolvilo]
+\end_layout
+
+\begin_layout Plain Layout
+
+  ]
+\end_layout
+
+\begin_layout Plain Layout
+
+  [Si - Sempre o solo in alcuni casi?
+\end_layout
+
+\begin_layout Plain Layout
+
+   [Non lo so - Quali casi hai provato?]
+\end_layout
+
+\begin_layout Plain Layout
+
+   [A volte - Traccia di esecuzione]
+\end_layout
+
+\begin_layout Plain Layout
+
+  ]
+\end_layout
+
+\begin_layout Plain Layout
+
+ ]
+\end_layout
+
+\begin_layout Plain Layout
+
+]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{forest}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
@@ -915,7 +1153,10 @@ Il docente sa che un cicciolo99xx sta per abbandonare gli studi
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -949,12 +1190,22 @@ Se urlate qualcosa, non siete molto gentili
 Se non c'è una reale urgenza, sarete classificati come spammer
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Sappiate che anche il voto RIMANDATO si scrive in caps lock
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -990,18 +1241,70 @@ La voglia di rispondere a una e-mail simile cala drasticamente
 
 \begin_deeper
 \begin_layout Itemize
-Prima di rispondere pulisco i vetri dell'ufficio, i vetri di casa, lavo
- i piatti e finisco il sudoku iniziato l'estate del '98
+Sicuramente prima di rispondere pulisco i vetri dell'ufficio, i vetri di
+ casa, lavo i piatti e finisco il sudoku iniziato l'estate del '98
 \end_layout
 
 \begin_layout Itemize
-Saltuariamente gioco fino a vincere una Champion's League con l'Albinoleffe
- in FIFA '03 invece di rispondere
+Saltuariamente inizio un gioco e lo continuo, ad esempio fino a vincere
+ una Champion's League con l'Albinoleffe in FIFA '03, sempre prima di rispondere
+ alla stessa e-mail
 \end_layout
 
 \end_deeper
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ogni volta che...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Arrivano e-mail chilometriche il giorno prima dell'esame
+\end_layout
+
+\begin_layout Itemize
+È evidente che qualcuno ha aspettato l'ultimo minuto per iniziare a studiare
+\end_layout
+
+\begin_layout Itemize
+Risponderò alle e-mail in modo completo e accurato 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+...ma con assoluta calma
+\end_layout
+
+\begin_layout Itemize
+Solitamente inizio a rispondere mezz'ora dopo l'inizio del compito
+\end_layout
+
+\begin_layout Itemize
+A volte più tardi
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1044,7 +1347,10 @@ Un gattino muore tra atroci sofferenze
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
@@ -1091,7 +1397,10 @@ Un cucciolo di cane muore
 \end_layout
 
 \end_deeper
-\begin_layout Separator
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
