@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
@@ -12,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter tgcursor
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "tgcursor" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,10 +99,21 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename square_framed.pdf
+	width 3.5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-05/12/2016
+30/11/2017
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +141,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2016/17
+ 2017/18
 \end_layout
 
 \begin_layout Standard
@@ -1380,7 +1393,7 @@ Il triangolo di tartaglia è formato dai coefficienti binomiali aventi
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="12">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
