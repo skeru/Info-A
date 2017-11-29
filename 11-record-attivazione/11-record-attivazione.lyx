@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
@@ -12,16 +14,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter tgcursor
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "tgcursor" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -101,10 +103,21 @@ status open
 \end_inset
 
 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename square_framed.pdf
+	width 3.5cm
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Date
-02/12/2016
+30/11/2017
 \end_layout
 
 \begin_layout Standard
@@ -132,7 +145,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2016/17
+ 2017/18
 \end_layout
 
 \begin_layout Standard
@@ -451,7 +464,7 @@ Soluzione
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -1849,7 +1862,7 @@ main
 \end_inset
 
 .
- A in\SpecialChar \-
+ A in\SpecialChar softhyphen
 dirizzi più alti in valore, contigui al record di attivazione di 
 \begin_inset listings
 lstparams "language=C,basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
@@ -2031,7 +2044,7 @@ int main() {
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:Ispezionare-la-memoria"
+name "subsec:Ispezionare-la-memoria"
 
 \end_inset
 
@@ -2367,7 +2380,7 @@ name "fig:Soluzione-al-quesito"
 Soluzione al quesito 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Ispezionare-la-memoria"
+reference "subsec:Ispezionare-la-memoria"
 
 \end_inset
 
@@ -2709,7 +2722,7 @@ Si disegni lo stack dei record di attivazione nell'istante precedente al
  specificate al punto 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:Ispezionare-la-memoria"
+reference "subsec:Ispezionare-la-memoria"
 
 \end_inset
 
