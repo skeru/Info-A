@@ -168,11 +168,7 @@ Conversioni da e per basi
 \begin_inset Formula $2^{n}$
 \end_inset
 
-;
-\begin_inset Newline newline
-\end_inset
-
-Virgola fissa, virgola mobile
+; virgola fissa, virgola mobile
 \end_layout
 
 \begin_layout Author
@@ -223,12 +219,12 @@ Esercitazione 4
 \begin_inset Newline newline
 \end_inset
 
-10 Ottobre 2016
+04 Ottobre 2018
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-10 Ottobre 2017
+04 Ottobre 2018
 \end_layout
 
 \end_inset
@@ -300,7 +296,7 @@ Dividere ripetutamente per la base (2).
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -611,7 +607,7 @@ modulo
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -661,7 +657,7 @@ Dividere ripetutamente per la base
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -979,7 +975,7 @@ modulo
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1380,7 +1376,7 @@ bin
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1690,7 +1686,7 @@ Raggruppare i bit in blocchi da 3 partendo dal bit meno significativo (LSB).
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2340,7 +2336,7 @@ D5_{16}=11010101_{2}
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2724,7 +2720,7 @@ B
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3082,7 +3078,7 @@ Per semplicità è opportuno portare il numero binario in base 10 e poi converti
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3240,7 +3236,7 @@ C
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3418,7 +3414,7 @@ B
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3639,7 +3635,7 @@ CC_{16}+FF_{16}=204_{10}+255_{10}=459_{10}=1CB_{16}
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3712,7 +3708,7 @@ http://nonciclopedia.wikia.com/wiki/File:Virgola_impiccato.jpeg
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3774,7 +3770,7 @@ L'errore di approssimazione è fisso in valore assoluto.
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4100,7 +4096,7 @@ fraz
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4490,7 +4486,7 @@ Si procede con l'algoritmo a divisioni successive per la parte intera.
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4571,7 +4567,7 @@ La notazione scientifica per i numeri in binario è simile:
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -5303,7 +5299,7 @@ Esponente:
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -5353,7 +5349,7 @@ Esegui le seguenti operazioni in binario senza segno, virgola fissa, rispettando
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -5721,7 +5717,7 @@ Eseguiamo la somma
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -6085,7 +6081,7 @@ Eseguiamo la somma
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -6130,7 +6126,7 @@ Eseguire le seguenti operazioni in virgola mobile (float single precision
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -6517,7 +6513,7 @@ mantissa
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -6824,7 +6820,7 @@ Si portano tutte le mantisse al maggiore degli esponenti in gioco (6); si
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -7005,7 +7001,7 @@ mantissa
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
