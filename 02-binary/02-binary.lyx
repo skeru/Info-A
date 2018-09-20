@@ -215,12 +215,12 @@ Esercitazione 2
 \begin_inset Newline newline
 \end_inset
 
-05 Ottobre 2017
+28 Settembre 2018
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-05 Ottobre 2017
+28 Settembre 2018
 \end_layout
 
 \end_inset
@@ -288,7 +288,7 @@ Dividere ripetutamente per la base (2).
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -603,7 +603,7 @@ modulo
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -827,7 +827,7 @@ modulo
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1018,7 +1018,7 @@ Complemento a 2
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1242,7 +1242,7 @@ Cambiare il bit di segno, mantenendo uguale il modulo.
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1372,7 +1372,7 @@ Invertire tutti i bit.
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1687,7 +1687,7 @@ modulo
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1784,7 +1784,7 @@ Con la rappresentazione in complemento a due, il valore che in modulo e
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1901,7 +1901,7 @@ http://teaching.idallen.com/dat2343/10f/notes/040_overflow.txt
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1957,7 +1957,7 @@ Trova la rappresentazione in complemento a 2 di lunghezza fissa 8 bit dei
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -2394,7 +2394,7 @@ Estendiamo in segno fino a raggiungere 8 bit
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3095,7 +3095,7 @@ Invertire tutti i bit e poi sommare 1
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3903,7 +3903,7 @@ Invertire tutti i bit e poi sommare 1
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -3962,7 +3962,7 @@ Qual è il numero minimo di bit necessari a rappresentare i seguenti numeri
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4053,7 +4053,7 @@ Infatti con 8 bit possiamo rappresentare numeri da
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4144,7 +4144,7 @@ Infatti con 6 bit possiamo rappresentare numeri da
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4234,7 +4234,7 @@ Infatti con 10 bit possiamo rappresentare numeri da
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4331,7 +4331,7 @@ Servono quindi 9 bit per rappresentare il modulo di
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4405,7 +4405,7 @@ Si eseguano le seguenti operazioni in binario su 6 bit e si dica in quali
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -4819,7 +4819,7 @@ Si esegua la seguente operazione in binario
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -5135,7 +5135,7 @@ Si esegua la seguente operazione in binario
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -5532,7 +5532,7 @@ NO underflow
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -5950,7 +5950,7 @@ SÌ underflow
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -6364,7 +6364,7 @@ NO underflow
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
