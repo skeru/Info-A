@@ -1868,6 +1868,11 @@ void quadratoMagico(int mat[][MAX_DIM], int n){
 
 \begin_layout LyX-Code
 
+  /* inizializza quadrato a 0 */
+\end_layout
+
+\begin_layout LyX-Code
+
 	for (i = 0; i < n; i++)
 \end_layout
 
@@ -1887,12 +1892,22 @@ void quadratoMagico(int mat[][MAX_DIM], int n){
 
 \begin_layout LyX-Code
 
+  /* posizione iniziale: ultima riga al centro */
+\end_layout
+
+\begin_layout LyX-Code
+
 	i = n - 1;
 \end_layout
 
 \begin_layout LyX-Code
 
 	j = n / 2;
+\end_layout
+
+\begin_layout LyX-Code
+
+  /* k rappresenta i numeri da inserire [1; n^2] */
 \end_layout
 
 \begin_layout LyX-Code
