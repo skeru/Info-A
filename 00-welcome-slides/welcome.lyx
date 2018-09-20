@@ -164,7 +164,7 @@ Welcome slides
 \end_layout
 
 \begin_layout Author
-Stefano Cherubin
+Lord Stefano Cherubin
 \begin_inset Newline newline
 \end_inset
 
@@ -211,12 +211,12 @@ Esercitazione
 \begin_inset Newline newline
 \end_inset
 
-05 Ottobre 2017
+28 Settembre 2018
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-05 Ottobre 2017
+28 Settembre 2018
 \end_layout
 
 \end_inset
@@ -289,7 +289,7 @@ sede Milano Leonardo, edificio 21, 1° piano, HEAP lab
 \end_layout
 
 \begin_layout Itemize
-tel interno 9683
+tel interno 9625
 \end_layout
 
 \begin_layout Itemize
@@ -376,6 +376,17 @@ NO
  non mi occuperò io dei laboratori
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Fate le domande giuste alle persone giuste
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset VSpace vfill
@@ -386,7 +397,7 @@ NO
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -406,6 +417,14 @@ About you
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+Quanti di voi sanno usare un computer?
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
 \begin_layout Itemize
 Quanti di voi sanno già programmare?
 \end_layout
@@ -428,7 +447,7 @@ Quanti di voi hanno intenzione di superare l'esame?
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -497,12 +516,12 @@ dalle 10:30 alle 13:15
 \series bold
 Risoluzione guidata
 \series default
- di alcuni esercizi
+ di alcuni esercizi selezionati da me
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-come poi dovrete allenarvi a casa
+come poi dovrete allenarvi a casa da soli
 \end_layout
 
 \end_deeper
@@ -538,14 +557,18 @@ metodo
 
 \begin_deeper
 \begin_layout Itemize
-non di elencarvi i problemi e le possibili soluzioni che possono presentarvisi
- all'esame
+non esiste un elenco dei problemi e delle possibili soluzioni
+\end_layout
+
+\begin_layout Itemize
+all'esame c'è chi prova a copiare...
+ ma non serve
 \end_layout
 
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -602,16 +625,20 @@ Gli obiettivi fondamentali che dovrete raggiungere sono
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 capacità di programmare
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
 conoscenza e capacità di rispettare lo standard in uso
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -619,6 +646,108 @@ conoscenza e capacità di rispettare lo standard in uso
 
 \begin_layout Section
 Strumenti
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Materiale didattico
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Le 
+\series bold
+slide e i documenti
+\series default
+ usati in aula a lezione ed esercitazione
+\end_layout
+
+\begin_layout Itemize
+Verranno caricati su BeeP 
+\series bold
+di volta in volta
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Sono pensati per 
+\series bold
+consultazione elettronica
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tanto in aula il cellulare lo usate comunque, 
+\begin_inset Newline newline
+\end_inset
+
+almeno lo usate per qualcosa di utile
+\end_layout
+
+\begin_layout Itemize
+Stampate solo quello che vi serve davvero
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Non sono 
+\series bold
+né necessari né sufficienti
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Non sostituiscono un manuale di programmazione, 
+\begin_inset Newline newline
+\end_inset
+
+sono solo un aiuto aggiuntivo
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Potete (teoricamente) passare l'esame anche senza mai leggerli
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Non imparerete a programmare solo con questo materiale
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+È un buon punto di partenza, il resto sta a voi.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
@@ -639,50 +768,85 @@ Munitevi di
 Pazienza
 \end_layout
 
-\begin_layout Itemize
-Manuale C
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
+Manuale C 
+\begin_inset space \hfill{}
+\end_inset
+
+
+\emph on
 standard C99
 \end_layout
 
-\end_deeper
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 Carta e penna
+\begin_inset space \hfill{}
+\end_inset
+
+
+\emph on
+l'esame sarà con carta e penna
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-perché l'esame sarà con carta e penna
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 Personal Computer
+\begin_inset space \hfill{}
+\end_inset
+
+
+\emph on
+dovete 
+\series bold
+PROVARE IL CODICE 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-perché dovete PROVARE IL CODICE che scrivete
+\begin_layout Standard
+\align right
+
+\emph on
+perché se non provate a eseguire codice che scrivete non imparerete mai
 \end_layout
 
-\begin_layout Itemize
-perché se non provate a eseguire codice non imparerete mai
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
+\align center
+
+\emph on
 fatelo per davvero
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+\align center
 questo gattino vi convincerà
 \end_layout
 
-\end_deeper
-\end_deeper
 \begin_layout Standard
 \align center
 \begin_inset Graphics
@@ -697,7 +861,7 @@ questo gattino vi convincerà
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -761,7 +925,7 @@ non mi interessa
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -817,7 +981,7 @@ vim
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -848,7 +1012,7 @@ clang
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -900,7 +1064,7 @@ blocco note
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -921,6 +1085,10 @@ IDE e Compilatori
 
 \begin_deeper
 \begin_layout Itemize
+CodeBlocks
+\end_layout
+
+\begin_layout Itemize
 DevC++
 \end_layout
 
@@ -928,14 +1096,10 @@ DevC++
 Microsoft Visual Studio
 \end_layout
 
-\begin_layout Itemize
-CodeBlocks
-\end_layout
-
 \end_deeper
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -969,7 +1133,7 @@ RTFM
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1015,7 +1179,7 @@ Quando hai esaurito tutte le risorse sopra elencate, allora puoi mandarmi
 
 \end_deeper
 \begin_layout Standard
-\begin_inset Separator parbreak
+\begin_inset Separator plain
 \end_inset
 
 
