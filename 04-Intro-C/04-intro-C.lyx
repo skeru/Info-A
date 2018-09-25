@@ -128,9 +128,7 @@ status open
 \series bold
 Informatica A
 \series default
-] Esercitazione #
-\series bold
-3
+] Esercitazione #4
 \end_layout
 
 \begin_layout Standard
@@ -177,7 +175,145 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Numeri non decrescenti
+Ripasso: printf
+\end_layout
+
+\begin_layout Standard
+Istruzione per 
+\series bold
+stampare
+\series default
+ su 
+\emph on
+standard output
+\emph default
+ una stringa secondo una dato 
+\series bold
+f
+\series default
+ormato.
+ 
+\end_layout
+
+\begin_layout Standard
+print format string 
+\begin_inset Formula $\implies$
+\end_inset
+
+printf
+\end_layout
+
+\begin_layout Standard
+Questa istruzione è una funzione
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+più avanti nel corso spiegheremo meglio come scrivere una fuzione
+\end_layout
+
+\end_inset
+
+ che vuole un parametro obbligatorio (la format string).
+\end_layout
+
+\begin_layout Standard
+Esempi:
+\end_layout
+
+\begin_layout LyX-Code
+printf("Ciao");
+\end_layout
+
+\begin_layout Standard
+Stampa 
+\begin_inset Quotes fld
+\end_inset
+
+Ciao
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout LyX-Code
+printf("Ciao
+\backslash
+n");
+\end_layout
+
+\begin_layout Standard
+Stampa 
+\begin_inset Quotes fld
+\end_inset
+
+Ciao
+\begin_inset Quotes frd
+\end_inset
+
+ e va a capo.
+\end_layout
+
+\begin_layout LyX-Code
+printf("%d", num);
+\end_layout
+
+\begin_layout Standard
+Stampa la variabile 
+\emph on
+num
+\emph default
+ come un numero intero.
+\end_layout
+
+\begin_layout LyX-Code
+printf("%f", num);
+\end_layout
+
+\begin_layout Standard
+Stampa la variabile num come un numero in notazione scientifica.
+\end_layout
+
+\begin_layout LyX-Code
+printf("%d %c", 'A', 'A');
+\end_layout
+
+\begin_layout Standard
+Stampa 65 A.
+\end_layout
+
+\begin_layout LyX-Code
+int day = 4;
+\end_layout
+
+\begin_layout LyX-Code
+printf("Ciao oggi e' il %d del mese di ottobre.
+\backslash
+n", day);
+\end_layout
+
+\begin_layout Standard
+Stampa 
+\begin_inset Quotes fld
+\end_inset
+
+Ciao oggi e' il 04 del mese di ottobre.
+\begin_inset Quotes frd
+\end_inset
+
+ e va a capo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Esempio di esercizio: Numeri non decrescenti
 \end_layout
 
 \begin_layout Quotation
