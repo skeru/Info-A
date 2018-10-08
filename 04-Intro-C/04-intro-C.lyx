@@ -113,7 +113,7 @@ status open
 \end_layout
 
 \begin_layout Date
-04/10/2018
+11/10/2018
 \end_layout
 
 \begin_layout Standard
@@ -214,7 +214,15 @@ più avanti nel corso spiegheremo meglio come scrivere una fuzione
 
 \end_inset
 
- che vuole un parametro obbligatorio (la format string).
+ che vuole un parametro obbligatorio (la format string) e accetta un elenco
+ di variabili da stampare, secondo il formato imposto dalla format string.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -237,6 +245,13 @@ Ciao
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout LyX-Code
 printf("Ciao
 \backslash
@@ -255,6 +270,13 @@ Ciao
  e va a capo.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout LyX-Code
 printf("%d", num);
 \end_layout
@@ -267,12 +289,26 @@ num
  come un numero intero.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout LyX-Code
-printf("%f", num);
+printf("%g", num);
 \end_layout
 
 \begin_layout Standard
 Stampa la variabile num come un numero in notazione scientifica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -283,8 +319,15 @@ printf("%d %c", 'A', 'A');
 Stampa 65 A.
 \end_layout
 
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
 \begin_layout LyX-Code
-int day = 4;
+int day = 11;
 \end_layout
 
 \begin_layout LyX-Code
@@ -298,11 +341,97 @@ Stampa
 \begin_inset Quotes fld
 \end_inset
 
-Ciao oggi e' il 04 del mese di ottobre.
+Ciao oggi e' il 11 del mese di ottobre.
 \begin_inset Quotes frd
 \end_inset
 
  e va a capo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Format string
+\end_layout
+
+\begin_layout Standard
+La format string accetta diversi 
+\emph on
+placeholder
+\emph default
+ per variabili.
+ Si consiglia di fare riferimento alla documentazione del manuale per una
+ lista esaustiva
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://linux.die.net/man/3/printf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Di seguito un riassunto dei più usati.
+\end_layout
+
+\begin_layout Description
+%c char single character
+\end_layout
+
+\begin_layout Description
+%d int signed integer
+\end_layout
+
+\begin_layout Description
+%u int unsigned decimal
+\end_layout
+
+\begin_layout Description
+%o int unsigned octal value
+\end_layout
+
+\begin_layout Description
+%x int unsigned hex value
+\end_layout
+
+\begin_layout Description
+%e
+\begin_inset space ~
+\end_inset
+
+(%E) float or double exponential format
+\end_layout
+
+\begin_layout Description
+%f float or double signed decimal (fixed point format)
+\end_layout
+
+\begin_layout Description
+%g
+\begin_inset space ~
+\end_inset
+
+(%G) float or double use %f or %e, depending on the value
+\end_layout
+
+\begin_layout Description
+%s string as sequence of characters
 \end_layout
 
 \begin_layout Standard
