@@ -1,0 +1,6 @@
+2018-09-18 Cominciamo a creare la cartella, poi con calma verranno anche i documenti...
+2018-09-28 Upload (00) welcome slides, (01) Boolean Algebra, (02) Codifiche binarie, (03) Numeri reali, codifiche ottale, esadecimale
+2018-10-08 Upload (04) introduzione al C, (05) programmazione in C.
+2018-10-17 Upload (06) vector.
+2018-10-23 Upload (07) stringhe e struct.
+
