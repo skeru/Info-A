@@ -3,4 +3,5 @@
 2018-10-08 Upload (04) introduzione al C, (05) programmazione in C.
 2018-10-17 Upload (06) vector.
 2018-10-23 Upload (07) stringhe e struct.
-
+2018-11-07 Update (07) aggiunti crediti per testo esercizio 2.
+2018-11-07 Upload (08) matrix.
