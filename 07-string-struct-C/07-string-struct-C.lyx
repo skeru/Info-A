@@ -415,6 +415,12 @@ n");
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Una-storia-scalda-ossa"
+
+\end_inset
+
 Una storia scalda-ossa
 \end_layout
 
@@ -1458,6 +1464,21 @@ nIl prodotto %s sara' ormai da buttare!", frigo[i].nome);
 
 \begin_layout Section*
 Licenza e crediti
+\end_layout
+
+\begin_layout Standard
+Il testo dell'esercizio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Una-storia-scalda-ossa"
+
+\end_inset
+
+ è liberamente ispirato al testo della celebre canzone 
+\emph on
+Dance of Death
+\emph default
+ (Iron Maiden) i cui autori sono Janick Gers / Stephen Percy Harris.
 \end_layout
 
 \begin_layout Subsection*
