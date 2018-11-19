@@ -113,7 +113,7 @@ status open
 \end_layout
 
 \begin_layout Date
-03/11/2017
+16/11/2018
 \end_layout
 
 \begin_layout Standard
@@ -141,7 +141,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2017/18
+ 2018/19
 \end_layout
 
 \begin_layout Standard
@@ -214,7 +214,7 @@ int sandra(int *sonno) {
 
 \begin_layout LyX-Code
 
-	*sonno = 0
+	*sonno = 0;
 \end_layout
 
 \begin_layout LyX-Code
