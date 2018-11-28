@@ -104,7 +104,7 @@ status open
 
 
 \begin_inset Graphics
-	filename square_framed.pdf
+	filename ../13-files-C/square_framed.pdf
 	width 3.5cm
 
 \end_inset
@@ -113,7 +113,7 @@ status open
 \end_layout
 
 \begin_layout Date
-17/11/2017
+29/11/2017
 \end_layout
 
 \begin_layout Standard
@@ -128,7 +128,7 @@ status open
 \series bold
 Informatica A
 \series default
-] Esercitazione #13
+] Esercitazione #11
 \end_layout
 
 \begin_layout Standard
@@ -141,7 +141,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2017/18
+ 2018/19
 \end_layout
 
 \begin_layout Standard
@@ -3230,6 +3230,13 @@ void sort(t_lista res[], int nListe) {
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
