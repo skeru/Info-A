@@ -113,7 +113,7 @@ status open
 \end_layout
 
 \begin_layout Date
-21/12/2017
+29/11/2018
 \end_layout
 
 \begin_layout Standard
@@ -141,7 +141,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2017/18
+ 2018/19
 \end_layout
 
 \begin_layout Standard
@@ -298,15 +298,16 @@ Alcuni giorni dopo aver consegnato il lavoro del punto precedente, sentite
  il vostro superiore di cui sopra che parla al telefono del nuovo sistema
  di controllo degli accessi e di come si potrebbe estendere a tutte le sedi
  dell'azienda il sistema sperimentato con successo nella sede principale.
- Sapete già che vi toccherà rimettere mano al programma per portarlo su
- scala aziendale.
- Prevedendo questa richiesta, nel tentativo di non perdere la festa di compleann
-o del vostro migliore amico che avete in programma per la serata, avete
- 40 minuti di tempo per modificare il programma del punto precedente per:
-\begin_inset Separator latexpar
-\end_inset
+\end_layout
 
-
+\begin_layout Quotation
+Sapete già che vi toccherà rimettere mano al programma per portarlo su scala
+ aziendale.
+ Prevedete questa richiesta, e prevedete anche che il vostro superiore vi
+ domanderà di svolgere questo lavoro entro domani mattina.
+ Nel tentativo di non perdere la festa di compleanno del vostro migliore
+ amico che avete in programma per questa serata, avete 40 minuti di tempo
+ per modificare il programma del punto precedente in modo da:
 \end_layout
 
 \begin_deeper
@@ -349,8 +350,11 @@ A seguito delle analisi che avete fornito, diversi dipendenti della vostra
  I sindacati si rivolgono a voi per confrontare le ore di lavoro effettive
  dei dipendenti raggiunti da provvedimenti con quelle dei loro superiori
  che hanno deciso di avviare la procedura.
- Sapete che le prime 3 cifre del codice identificativo identificano il grado
- del dipendente e che i responsabili di grado più alto hanno codice che
+\end_layout
+
+\begin_layout Standard
+Sapete che le prime 3 cifre del codice identificativo rappresentano il grado
+ del dipendente, e che i responsabili di grado più alto hanno codice che
  inizia con 
 \begin_inset listings
 lstparams "basicstyle={\ttfamily},breaklines=true,showstringspaces=false,tabsize=2"
@@ -365,7 +369,10 @@ xfA
 \end_inset
 
 .
- Si calcoli il numero di ore effettivamente lavorate da tutti i dipendenti
+\end_layout
+
+\begin_layout Standard
+Si calcoli il numero di ore effettivamente lavorate da tutti i dipendenti
  di quel grado, se ne calcoli la media e si visualizzi a schermo inoltre
  il codice identificativo del dipendente tra questi che ha lavorato di meno.
 \end_layout
