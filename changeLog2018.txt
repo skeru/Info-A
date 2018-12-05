@@ -5,3 +5,10 @@
 2018-10-23 Upload (07) stringhe e struct.
 2018-11-07 Update (07) aggiunti crediti per testo esercizio 2.
 2018-11-07 Upload (08) matrix.
+2018-11-16 Upload (09) pointers.
+2018-11-19 Update (09) pointers (fix missing ;).
+2018-11-19 Upload (10) Funzioni e matrici.
+2018-11-29 Upload (11) Files, (16) Tic Tac Toe, (17) Orario Dipendenti
+2018-12-05 Update (11) Files (fix date)
+2018-12-05 Upload (12) Recursion, (13) Scope & Record attivazione
+
