@@ -169,16 +169,12 @@ Lord Stefano Cherubin
 \end_inset
 
 
-\begin_inset ERT
+\begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-
-\backslash
-href{mailto:nevertrust.pdflinks@mailinator.com}{
-\backslash
-nolinkurl{<nome>.<cognome>@polimi.it}}
+home.deib.polimi.it/cherubin/
 \end_layout
 
 \end_inset
@@ -211,12 +207,12 @@ Esercitazione
 \begin_inset Newline newline
 \end_inset
 
-28 Settembre 2018
+26 Settembre 2019
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-28 Settembre 2018
+26 Settembre 2019
 \end_layout
 
 \end_inset
@@ -275,7 +271,7 @@ Stefano Cherubin
 \end_layout
 
 \begin_layout Itemize
-PhD student
+Post-Doc Researcher
 \end_layout
 
 \begin_layout Itemize
@@ -702,21 +698,45 @@ almeno lo usate per qualcosa di utile
 Stampate solo quello che vi serve davvero
 \end_layout
 
+\end_deeper
+\end_deeper
 \begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset Separator plain
 \end_inset
 
 
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Materiale didattico: DISCLAIMER
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+Le 
+\series bold
+slide e i documenti
+\series default
+ usati in aula a lezione ed esercitazione
+\end_layout
+
+\begin_layout Standard
+\align center
 Non sono 
 \series bold
 né necessari né sufficienti
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
 Non sostituiscono un manuale di programmazione, 
 \begin_inset Newline newline
@@ -742,7 +762,10 @@ Non imparerete a programmare solo con questo materiale
 
 \end_deeper
 \end_deeper
-\end_deeper
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -768,6 +791,7 @@ Munitevi di
 Pazienza
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 \begin_inset VSpace defskip
 \end_inset
@@ -859,6 +883,7 @@ questo gattino vi convincerà
 
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1174,7 +1199,7 @@ Cerca i termini tecnici (in inglese) sul manuale e riparti dal punto 1
 
 \begin_layout Standard
 Quando hai esaurito tutte le risorse sopra elencate, allora puoi mandarmi
- una email
+ una e-mail
 \end_layout
 
 \end_deeper
