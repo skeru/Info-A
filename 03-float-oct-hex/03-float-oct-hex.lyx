@@ -219,12 +219,12 @@ Esercitazione 3
 \begin_inset Newline newline
 \end_inset
 
-28 Settembre 2018
+26 Settembre 2019
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-28 Settembre 2018
+26 Settembre 2019
 \end_layout
 
 \end_inset
@@ -3661,6 +3661,8 @@ Virgola: not this one
 \begin_deeper
 \begin_layout Standard
 \align center
+
+\size small
 \begin_inset Float figure
 wide false
 sideways false
@@ -3668,6 +3670,8 @@ status open
 
 \begin_layout Plain Layout
 \align center
+
+\size small
 \begin_inset Graphics
 	filename img/Virgola.jpeg
 	lyxscale 20
@@ -3679,10 +3683,14 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+
+\size small
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Virgola 
+Virgola
+\size tiny
+ 
 \begin_inset Flex URL
 status open
 
@@ -3704,6 +3712,12 @@ http://nonciclopedia.wikia.com/wiki/File:Virgola_impiccato.jpeg
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Studi scientifici dimostrano che se avete capito questa battuta siete vecchi.
 \end_layout
 
 \end_deeper
