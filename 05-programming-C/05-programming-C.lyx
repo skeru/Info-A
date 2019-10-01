@@ -113,7 +113,7 @@ status open
 \end_layout
 
 \begin_layout Date
-12/10/2018
+04/10/2019
 \end_layout
 
 \begin_layout Standard
@@ -143,7 +143,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2018/19
+ 2019/20
 \end_layout
 
 \begin_layout Standard
@@ -167,6 +167,2195 @@ LatexCommand tableofcontents
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ripasso: printf
+\end_layout
+
+\begin_layout Standard
+Istruzione per 
+\series bold
+stampare
+\series default
+ su 
+\emph on
+standard output
+\emph default
+ una stringa secondo una dato 
+\series bold
+f
+\series default
+ormato.
+ 
+\end_layout
+
+\begin_layout Standard
+print format string 
+\begin_inset Formula $\implies$
+\end_inset
+
+printf
+\end_layout
+
+\begin_layout Standard
+Questa istruzione è una funzione
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+più avanti nel corso spiegheremo meglio cos'è e come si scrive una fuzione.
+\end_layout
+
+\begin_layout Plain Layout
+Per il momento possiamo definire 
+\emph on
+funzione 
+\emph default
+l'incapsulamento di un aben definita procedura.
+\end_layout
+
+\begin_layout Plain Layout
+Questa procedura è invocabile tramite una istruzione di 
+\emph on
+chiamata a funzione
+\emph default
+, la quale riceve zero o più parametri in input e restituisce al più un
+ valore in output.
+\end_layout
+
+\end_inset
+
+ che riceve un parametro obbligatorio (la format string) e accetta un elenco
+ di variabili da stampare, secondo il formato imposto dalla format string.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esempi:
+\end_layout
+
+\begin_layout LyX-Code
+printf("Ciao");
+\end_layout
+
+\begin_layout Standard
+Stampa 
+\begin_inset Quotes fld
+\end_inset
+
+Ciao
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+printf("Ciao
+\backslash
+n");
+\end_layout
+
+\begin_layout Standard
+Stampa 
+\begin_inset Quotes fld
+\end_inset
+
+Ciao
+\begin_inset Quotes frd
+\end_inset
+
+ e va a capo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+printf("%d", num);
+\end_layout
+
+\begin_layout Standard
+Stampa la variabile 
+\emph on
+num
+\emph default
+ come un numero intero.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+printf("%g", num);
+\end_layout
+
+\begin_layout Standard
+Stampa la variabile num come un numero in notazione scientifica.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+printf("%d %c", 'A', 'A');
+\end_layout
+
+\begin_layout Standard
+Stampa 65 A.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+int day = 11;
+\end_layout
+
+\begin_layout LyX-Code
+printf("Ciao oggi e' il %d del mese di ottobre.
+\backslash
+n", day);
+\end_layout
+
+\begin_layout Standard
+Stampa 
+\begin_inset Quotes fld
+\end_inset
+
+Ciao oggi e' il 11 del mese di ottobre.
+\begin_inset Quotes frd
+\end_inset
+
+ e va a capo.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Format string
+\end_layout
+
+\begin_layout Standard
+La format string accetta diversi 
+\emph on
+placeholder
+\emph default
+ per variabili.
+ Si consiglia di fare riferimento alla documentazione del manuale per una
+ lista esaustiva
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://linux.die.net/man/3/printf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Di seguito un riassunto dei più usati.
+\end_layout
+
+\begin_layout Description
+%c char single character
+\end_layout
+
+\begin_layout Description
+%d int signed integer
+\end_layout
+
+\begin_layout Description
+%u int unsigned decimal
+\end_layout
+
+\begin_layout Description
+%o int unsigned octal value
+\end_layout
+
+\begin_layout Description
+%x int unsigned hex value
+\end_layout
+
+\begin_layout Description
+%e
+\begin_inset space ~
+\end_inset
+
+(%E) float or double exponential format
+\end_layout
+
+\begin_layout Description
+%f float or double signed decimal (fixed point format)
+\end_layout
+
+\begin_layout Description
+%g
+\begin_inset space ~
+\end_inset
+
+(%G) float or double use %f or %e, depending on the value
+\end_layout
+
+\begin_layout Description
+%s string as sequence of characters
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Esempio di esercizio: Numeri non decrescenti
+\end_layout
+
+\begin_layout Quotation
+Buongiorno ragazzi, benvenuti all'esame di Informatica A.
+ Scrivete un programma in linguaggio C che risolva il seguente problema.
+ Letti tre numeri interi 
+\begin_inset Formula $a$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+, 
+\emph on
+
+\begin_inset Formula $c$
+\end_inset
+
+
+\emph default
+ dallo standard input, stampare a terminale la sequenza dei tre numeri in
+ ordine non decrescente.
+ 
+\end_layout
+
+\begin_layout Standard
+Esempio: 
+\begin_inset Formula $a=10$
+\end_inset
+
+, 
+\begin_inset Formula $b=7$
+\end_inset
+
+, 
+\begin_inset Formula $c=9$
+\end_inset
+
+ deve dare in uscita 
+\begin_inset Formula $7$
+\end_inset
+
+ 
+\begin_inset Formula $9$
+\end_inset
+
+ 
+\begin_inset Formula $10$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio al problema
+\end_layout
+
+\begin_layout Standard
+Quando si parla di programmazione, la formulazione di un problema contiene
+ quasi sempre
+\end_layout
+
+\begin_layout Itemize
+vincoli
+\end_layout
+
+\begin_layout Itemize
+descrizione della logica
+\end_layout
+
+\begin_layout Itemize
+consigli su come trovare più facilmente una soluzione al problema
+\end_layout
+
+\begin_layout Itemize
+elementi inutili o fuorvianti
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+in sede di esame questi elementi tenderanno ad essere minimizzati.
+ Al di fuori, costituiscono una parte decisamente non trascurabile.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+casi di test o esempi di output atteso
+\end_layout
+
+\begin_layout Standard
+Sta al programmatore riconoscere questi elementi e gestirli al meglio delle
+ sue possibilità.
+\end_layout
+
+\begin_layout Subsubsection
+Analisi del testo dell'esercizio
+\end_layout
+
+\begin_layout Description
+Buongiorno
+\begin_inset space ~
+\end_inset
+
+ragazzi elemento totalmente fuorviante.
+ Oggi dovrete concentrarvi e produrre cose sensate, non ci sarà spazio per
+ il divertimento.
+\end_layout
+
+\begin_layout Description
+benvenuti
+\begin_inset space ~
+\end_inset
+
+all'esame elemento inutile.
+ Si tratta solo di convenevoli.
+\end_layout
+
+\begin_layout Description
+di
+\begin_inset space ~
+\end_inset
+
+informatica
+\begin_inset space ~
+\end_inset
+
+A consiglio.
+ Se una volta ricevuto in mano il foglio dell'esame vi siete scordati di
+ cosa si sta parlando, probabilmente dovrete ricordarvi delle lezioni di
+ Informatica A.
+\end_layout
+
+\begin_layout Description
+Scrivete
+\begin_inset space ~
+\end_inset
+
+un
+\begin_inset space ~
+\end_inset
+
+programma vincolo.
+ L'esercizio è un test di produzione e verrete valutati sulla capacità di
+ 
+\bar under
+scrivere
+\bar default
+ un programma.
+\end_layout
+
+\begin_layout Description
+in
+\begin_inset space ~
+\end_inset
+
+linguaggio
+\begin_inset space ~
+\end_inset
+
+C vincolo.
+ In questo esercizio dovrete rispettare lo standard previsto dal linguaggio
+ C.
+ La capacità di attenersi a questo stanrdard sarà oggetto di valutazione.
+\end_layout
+
+\begin_layout Description
+che
+\begin_inset space ~
+\end_inset
+
+risolva
+\begin_inset space ~
+\end_inset
+
+il
+\begin_inset space ~
+\end_inset
+
+seguente
+\begin_inset space ~
+\end_inset
+
+problema elemento inutile.
+ Dovrebbe essere sottinteso.
+\end_layout
+
+\begin_layout Description
+Letti
+\begin_inset space ~
+\end_inset
+
+tre
+\begin_inset space ~
+\end_inset
+
+numeri descrizione della logica.
+ Dovete fare questo.
+\end_layout
+
+\begin_layout Description
+interi vincolo.
+ Dovrete lavorare con numeri interi.
+ Lasciate perdere numeri con virgola fissa, mobile e altre cose buffe.
+\end_layout
+
+\begin_layout Description
+a,
+\begin_inset space ~
+\end_inset
+
+b,
+\begin_inset space ~
+\end_inset
+
+c consiglio.
+ Nello specifico caso, questo non è un brutto modo di chiamare i dati su
+ cui lavorate.
+\end_layout
+
+\begin_layout Description
+dallo
+\begin_inset space ~
+\end_inset
+
+standard
+\begin_inset space ~
+\end_inset
+
+input vincolo.
+ I dati dovranno essere acquisiti dallo standard input.
+\end_layout
+
+\begin_layout Description
+stampare
+\begin_inset space ~
+\end_inset
+
+[...]
+\begin_inset space ~
+\end_inset
+
+la
+\begin_inset space ~
+\end_inset
+
+sequenza
+\begin_inset space ~
+\end_inset
+
+dei
+\begin_inset space ~
+\end_inset
+
+tre
+\begin_inset space ~
+\end_inset
+
+numeri descrizione della logica.
+\end_layout
+
+\begin_layout Description
+a
+\begin_inset space ~
+\end_inset
+
+terminale vincolo.
+ L'output deve essere emesso sul terminale, quindi standard output.
+\end_layout
+
+\begin_layout Description
+in
+\begin_inset space ~
+\end_inset
+
+ordine
+\begin_inset space ~
+\end_inset
+
+non
+\begin_inset space ~
+\end_inset
+
+decrescente vincolo.
+ La parte di logica che non è descritta nel testo dovrà essere studiata
+ per soddisfare questo vincolo.
+ L'impostazione di tale logica è lasciata alla libera interpretazione del
+ programmatore.
+\end_layout
+
+\begin_layout Description
+Esempio
+\begin_inset space ~
+\end_inset
+
+[...] Si tratta di un esempio.
+ Al termine della produzione del programma, si consiglia di usare questi
+ dati per eseguire una simulazione di esecuzione del programma e verifcare
+ che l'output fornito in simulazione coincida con l'output atteso.
+ Se il vostro programma funziona con l'esempio fornito, si consiglia di
+ inventarsi altri esempi che rispettino le regole e provare anche con essi.
+ Il programma che avete scritto non deve funzionare solo con gli esempi
+ forniti.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Iniziare la stesura
+\end_layout
+
+\begin_layout Standard
+Partendo dai vincoli e dalla logica, si possono identificare alcuni elementi
+ ricorrenti che possono essere tradotti immediatamente in codice.
+\end_layout
+
+\begin_layout Subsubsection
+Scrivere un programma in linguaggio C
+\end_layout
+
+\begin_layout LyX-Code
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+   return 0;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsubsection
+tre numeri interi
+\end_layout
+
+\begin_layout LyX-Code
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+   int a, b, c;
+\end_layout
+
+\begin_layout LyX-Code
+   return 0;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsubsection
+Letti tre numeri interi dallo standard input
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h>  /* necessaria se voglio utilizzare
+\end_layout
+
+\begin_layout LyX-Code
+                      standard input o standard output */
+\end_layout
+
+\begin_layout LyX-Code
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+   int a, b, c;
+\end_layout
+
+\begin_layout LyX-Code
+   printf("
+\backslash
+n Inserisci il numero a: ");
+\end_layout
+
+\begin_layout LyX-Code
+   scanf("%d",&a);
+\end_layout
+
+\begin_layout LyX-Code
+   printf("
+\backslash
+n Inserisci il numero b: ");
+\end_layout
+
+\begin_layout LyX-Code
+   scanf("%d",&b);
+\end_layout
+
+\begin_layout LyX-Code
+   printf("
+\backslash
+n Inserisci il numero c: ");
+\end_layout
+
+\begin_layout LyX-Code
+   scanf("%d",&c);
+\end_layout
+
+\begin_layout LyX-Code
+   return 0;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Subsubsection
+Stampare a terminale la sequenza dei numeri
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> 
+\end_layout
+
+\begin_layout LyX-Code
+int main() {
+\end_layout
+
+\begin_layout LyX-Code
+   int a, b, c;
+\end_layout
+
+\begin_layout LyX-Code
+   printf("
+\backslash
+n Inserisci il numero a: ");
+\end_layout
+
+\begin_layout LyX-Code
+   scanf("%d",&a);
+\end_layout
+
+\begin_layout LyX-Code
+   printf("
+\backslash
+n Inserisci il numero b: ");
+\end_layout
+
+\begin_layout LyX-Code
+   scanf("%d",&b);
+\end_layout
+
+\begin_layout LyX-Code
+   printf("
+\backslash
+n Inserisci il numero c: ");
+\end_layout
+
+\begin_layout LyX-Code
+   scanf("%d",&c);
+\end_layout
+
+\begin_layout LyX-Code
+   printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",a,b,c);
+\end_layout
+
+\begin_layout LyX-Code
+   return 0;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione 1 - analisi per casi
+\end_layout
+
+\begin_layout Standard
+Un possibile approccio al problema è quello di valutare tutti i possibili
+ ordinamenti dei numeri interi in input e, in base ad opportuni controlli,
+ eseguire l'unica tra le istruzioni di output che utilizza l'ordinamento
+ corretto.
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* inclusione della libreria standard I/O */
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) {
+\end_layout
+
+\begin_layout LyX-Code
+  int a,b,c;       /* dichiarazione delle variabili      */
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+  /* legge tre interi a,b,c dallo standard input         */
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+n Inserisci il numero a: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&a);
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+n Inserisci il numero b: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&b);
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+n Inserisci il numero c: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&c);
+\end_layout
+
+\begin_layout LyX-Code
+          
+\end_layout
+
+\begin_layout LyX-Code
+  if (a < b) {
+\end_layout
+
+\begin_layout LyX-Code
+    if (b < c) {
+\end_layout
+
+\begin_layout LyX-Code
+      printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",a,b,c);
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+    else {
+\end_layout
+
+\begin_layout LyX-Code
+       if (a < c) {
+\end_layout
+
+\begin_layout LyX-Code
+         printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",a,c,b);
+\end_layout
+
+\begin_layout LyX-Code
+      }
+\end_layout
+
+\begin_layout LyX-Code
+      else {
+\end_layout
+
+\begin_layout LyX-Code
+         printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",c,a,b);
+\end_layout
+
+\begin_layout LyX-Code
+      }
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+  }
+\end_layout
+
+\begin_layout LyX-Code
+   else {
+\end_layout
+
+\begin_layout LyX-Code
+    if (c < b) {
+\end_layout
+
+\begin_layout LyX-Code
+       printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",c,b,a);
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+    else {
+\end_layout
+
+\begin_layout LyX-Code
+       if (a < c) {
+\end_layout
+
+\begin_layout LyX-Code
+         printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",b,a,c);
+\end_layout
+
+\begin_layout LyX-Code
+      }
+\end_layout
+
+\begin_layout LyX-Code
+      else {
+\end_layout
+
+\begin_layout LyX-Code
+         printf("
+\backslash
+n L'ordine voluto e': %d, %d, %d",b,c,a);
+\end_layout
+
+\begin_layout LyX-Code
+      }
+\end_layout
+
+\begin_layout LyX-Code
+    }
+\end_layout
+
+\begin_layout LyX-Code
+   }
+\end_layout
+
+\begin_layout LyX-Code
+  return 0;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione 2 - ordinamento dell'input
+\end_layout
+
+\begin_layout Standard
+Un secondo approccio alla risoluzione del problema prevede di fissare un
+ solo output ed eseguire delle istruzioni utili a rendere i dati acquisiti
+ coerenti nel loro ordinamento con quanto richiesto in output.
+ 
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* inclusione della libreria standard I/O */
+\end_layout
+
+\begin_layout LyX-Code
+  int main( ) {
+\end_layout
+
+\begin_layout LyX-Code
+  int a,b,c,t; /*   dichiarazione delle variabili       */
+\end_layout
+
+\begin_layout LyX-Code
+  /* legge tre interi a,b,c dallo standard input        */
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+nInserisci il numero a: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&a);
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+nInserisci il numero b: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&b);
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+nInserisci il numero c: ");
+\end_layout
+
+\begin_layout LyX-Code
+  scanf("%d",&c);
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+  /* ordinamento dei valori delle variabili a,b     */
+\end_layout
+
+\begin_layout LyX-Code
+  if (a > b) {
+\end_layout
+
+\begin_layout LyX-Code
+     /* Scambio dei valori delle due variabili a,b  */
+\end_layout
+
+\begin_layout LyX-Code
+     t = a;
+\end_layout
+
+\begin_layout LyX-Code
+     a = b;
+\end_layout
+
+\begin_layout LyX-Code
+     b = t;
+\end_layout
+
+\begin_layout LyX-Code
+  }
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+  /* ordinamento dei valori delle variabili a,c     */
+\end_layout
+
+\begin_layout LyX-Code
+  if (a > c) {
+\end_layout
+
+\begin_layout LyX-Code
+     /* Scambio dei valori delle due variabili a,c  */
+\end_layout
+
+\begin_layout LyX-Code
+     t = a;
+\end_layout
+
+\begin_layout LyX-Code
+     a = c;
+\end_layout
+
+\begin_layout LyX-Code
+     c = t;
+\end_layout
+
+\begin_layout LyX-Code
+  }
+\end_layout
+
+\begin_layout LyX-Code
+  /* la variabile a contiene ora sicuramente il     */
+\end_layout
+
+\begin_layout LyX-Code
+  /* valore più piccolo tra quelli inseriti.
+        */
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+  /* ordinamento dei valori delle variabili b,c     */
+\end_layout
+
+\begin_layout LyX-Code
+  if (b > c) {
+\end_layout
+
+\begin_layout LyX-Code
+     /* Scambio dei valori delle due variabili b,c  */
+\end_layout
+
+\begin_layout LyX-Code
+     t = b;
+\end_layout
+
+\begin_layout LyX-Code
+     b = c;
+\end_layout
+
+\begin_layout LyX-Code
+     c = t;
+\end_layout
+
+\begin_layout LyX-Code
+  }
+\end_layout
+
+\begin_layout LyX-Code
+  printf("
+\backslash
+nL'ordine voluto e': %d, %d, %d",a,b,c);
+\end_layout
+
+\begin_layout LyX-Code
+  return 0;
+\end_layout
+
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Implementare il quadrato tramite somme successive
+\end_layout
+
+\begin_layout Quotation
+Si scriva un programma in linguaggio C che letto un numero intero positivo
+ dallo standard input, visualizzi a terminale il quadrato del numero stesso
+ facendo uso soltanto di operazioni di somma.
+ 
+\end_layout
+
+\begin_layout Quotation
+Si osservi che il quadrato di ogni numero intero positivo 
+\begin_inset Formula $N$
+\end_inset
+
+ può essere costruito sommando tra loro i primi 
+\begin_inset Formula $N$
+\end_inset
+
+ numeri dispari.
+ 
+\end_layout
+
+\begin_layout Quotation
+Esempio: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+N & = & 5\\
+N^{2} & = & 1+3+5+7+9=25
+\end{eqnarray*}
+
+\end_inset
+
+ 
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Premessa
+\end_layout
+
+\begin_layout Standard
+L'idea di soluzione è quella di scandire i primi 
+\begin_inset Formula $N$
+\end_inset
+
+ numeri dispari esprimendoli nella forma 
+\begin_inset Formula $\left(i+i+1\right)$
+\end_inset
+
+ al variare dell'intero 
+\begin_inset Formula $i\in\left[0;N-1\right]$
+\end_inset
+
+ e accumulare la loro somma man mano che si procede nella loro scansione
+ in un'altra variabile.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+N^{2} & = & \sum_{i=0}^{N-1}\left(2\cdot i+1\right)\\
+ & = & \sum_{i=0}^{N-1}\left(i+i+1\right)\\
+ & = & \left(2\text{·}0+1\right)+\ldots+\left(2\text{·}i+1\right)+\ldots+\left(2\text{·}\left(N-1\right)+1\right)
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+quindi si utilizzeranno almeno 3 variabili: 
+\end_layout
+
+\begin_layout Description
+N numero in input
+\end_layout
+
+\begin_layout Description
+i contatore di iterazioni
+\end_layout
+
+\begin_layout Description
+S accumulatore
+\end_layout
+
+\begin_layout Subsubsection
+Pseudocodice (stesura informale dell'algoritmo)
+\end_layout
+
+\begin_layout Enumerate
+Inizio dell'algoritmo
+\end_layout
+
+\begin_layout Enumerate
+Leggi un numero intero positivo dallo standard input.
+\end_layout
+
+\begin_layout Enumerate
+Inizializza un contatore 
+\begin_inset Formula $i$
+\end_inset
+
+ a 0
+\end_layout
+
+\begin_layout Enumerate
+Inizializza un accumulatore 
+\begin_inset Formula $S$
+\end_inset
+
+ a 0
+\end_layout
+
+\begin_layout Enumerate
+Finché il valore del contatore è minore del numero letto 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Somma all'accumulatore il doppio del valore del contatore incrementato di
+ 1
+\end_layout
+
+\begin_layout Enumerate
+Incrementa il contatore
+\end_layout
+
+\begin_layout Enumerate
+Torna al punto 5.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Stampa a terminale il valore dell' accumulatore
+\end_layout
+
+\begin_layout Enumerate
+Fine dell' algoritmo
+\end_layout
+
+\begin_layout Subsubsection
+Blindare l'input
+\end_layout
+
+\begin_layout Standard
+Quando viene richiesto che un numero in input rispetti determinate caratteristic
+he (in questo caso che sia positivo) è possibile scrivere il programma in
+ modo che non accetti dati non conformi alle caratteristiche richieste e
+ continui a chiedere all'utente di fornire dei dati fino a quando l'utente
+ non inserisce dati corretti.
+\end_layout
+
+\begin_layout Standard
+Questo è possibile farlo grazie a un ciclo do-while con controllo sul dato
+ immesso.
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo N: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (N <= 0);
+\end_layout
+
+\begin_layout Paragraph
+Variante con messaggio di errore
+\end_layout
+
+\begin_layout Standard
+A volte può capitare che debbano essere inseriti più dati dello stesso tipo
+ e il messaggio che invita l'utente a inserire i dati può non variare.
+ In queste situazioni può essere utile segnalare quando si verifica un errore
+ e non è stato accettato il dato.
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo N: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N);
+\end_layout
+
+\begin_layout LyX-Code
+if (N <= 0) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf ("
+\backslash
+nErrore: il numero inserito non e' positivo.");
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (N <= 0);
+\end_layout
+
+\begin_layout Paragraph
+Variante con ciclo while
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo N: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N);
+\end_layout
+
+\begin_layout LyX-Code
+while (N <= 0) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf ("
+\backslash
+nErrore: il numero inserito non e' positivo.");
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo N: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* inclusione della libreria standard  I/O */
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/*        dichiarazione delle variabili                   */
+\end_layout
+
+\begin_layout LyX-Code
+int i; /* contatore                                       */
+\end_layout
+
+\begin_layout LyX-Code
+int N; /* variabile di cui si vuole calcolare il quadrato */
+\end_layout
+
+\begin_layout LyX-Code
+int S; /* accumulatore per il risultato del calcolo       */
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+       /* ciclo di controllo che garantisce N > 0         */
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo N: ");
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&N); /* legge N dallo standard input       */
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+/* Finché il numero inserito non è positivo ripetere
+\end_layout
+
+\begin_layout LyX-Code
+   l'immissione dati.
+                                     */
+\end_layout
+
+\begin_layout LyX-Code
+} while (N <= 0 );
+\end_layout
+
+\begin_layout LyX-Code
+/* Il numero inserito è positivo                          */
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+S = 0; /* inizializzazione della variabile di accumulo    */ 
+\end_layout
+
+\begin_layout LyX-Code
+/* ciclo di scansione dei primi N numeri dispari          */ 
+\end_layout
+
+\begin_layout LyX-Code
+i = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+while(i < N) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/* Finché il contatore è minore del numero letto
+\end_layout
+
+\begin_layout LyX-Code
+   aggiorna il contenuto della variabile accumulatore  */
+\end_layout
+
+\begin_layout LyX-Code
+S = S + (i+i+1); 
+\end_layout
+
+\begin_layout LyX-Code
+i = i + 1; /* incrementa il contatore                  */ 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n Il quadrato del numero inserito e': %d 
+\backslash
+n",S);
+\end_layout
+
+\begin_layout LyX-Code
+return 0;
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Numeri triangolari
+\end_layout
+
+\begin_layout Quotation
+Si definisce Triangolare un numero costituito dalla somma dei primi 
+\begin_inset Formula $N$
+\end_inset
+
+ numeri interi positivi per un certo 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Quotation
+Esempio: per 
+\begin_inset Formula $Q=10$
+\end_inset
+
+ si ha 
+\begin_inset Formula $Q=1+2+3+4$
+\end_inset
+
+, da cui 
+\begin_inset Formula $N=4$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Quotation
+Scrivere un programma C che stabilisca se un numero intero positivo 
+\begin_inset Formula $Q$
+\end_inset
+
+, letto dallo standard input, è un numero triangolare o meno, utilizzando
+ soltanto operazioni tra numeri interi.
+ In caso affermativo stampare a video il numero inserito e il massimo tra
+ gli addendi che lo compongono.
+ 
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+Pseudocodice (stesura informale dell'algoritmo)
+\end_layout
+
+\begin_layout Standard
+Idea di soluzione: se 
+\begin_inset Formula $Q–1–2–3–\ldots–i–\ldots–N=0$
+\end_inset
+
+ per un certo 
+\begin_inset Formula $N$
+\end_inset
+
+ allora 
+\begin_inset Formula $Q$
+\end_inset
+
+ è Triangolare.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Leggi il numero positivo 
+\begin_inset Formula $Q$
+\end_inset
+
+ dallo standard input 
+\end_layout
+
+\begin_layout Enumerate
+Inizializza un contatore 
+\begin_inset Formula $i$
+\end_inset
+
+ a zero; 
+\end_layout
+
+\begin_layout Enumerate
+Memorizza in una variabile 
+\begin_inset Formula $S$
+\end_inset
+
+ il valore della variabile in ingresso.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Finché il numero 
+\begin_inset Formula $S$
+\end_inset
+
+ è maggiore di zero
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Incrementa di 1 il valore del contatore 
+\end_layout
+
+\begin_layout Enumerate
+Sottrai a 
+\begin_inset Formula $S$
+\end_inset
+
+ il valore del contatore 
+\begin_inset Formula $i$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Torna a 4.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Se il valore residuo di 
+\begin_inset Formula $S$
+\end_inset
+
+ è zero allora
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Il numero è triangolare 
+\end_layout
+
+\begin_layout Enumerate
+Il valore del massimo degli addendi è uguale al contatore 
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+La variabile 
+\begin_inset Formula $Q$
+\end_inset
+
+ contiene il valore della variabile in ingresso 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Altrimenti il numero NON è triangolare.
+\end_layout
+
+\begin_layout Subsubsection
+Distruggere l'input
+\end_layout
+
+\begin_layout Standard
+È buona norma, in generale, non modificare le variabili contenenti i dati
+ in ingresso perché può accadere che sia necessario accedere a tali valori
+ in diversi punti del programma.
+\end_layout
+
+\begin_layout Standard
+Nel caso appena mostrato senza l'ausilio di un'altra variabile (
+\begin_inset Formula $S$
+\end_inset
+
+) non sarebbe possibile, al termine della computazione, stampare a video
+ il valore del numero inserito, così come richiesto dalla traccia del problema.
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h>/* inclusione della libreria standard input        */
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) 
+\end_layout
+
+\begin_layout LyX-Code
+{                 /* dichiarazione delle variabili                   */
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int i;        /* variabile contatore                             */
+\end_layout
+
+\begin_layout LyX-Code
+int Q;        /* variabile per il numero letto da tastiera       */
+\end_layout
+
+\begin_layout LyX-Code
+int S;        /* variabile accumulatore                          */ 
+\end_layout
+
+\begin_layout LyX-Code
+/* ciclo di controllo per l'immissione dati che garantisce Q > 0 */ 
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Inserisci un numero positivo Q: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d",&Q); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (Q <= 0); 
+\end_layout
+
+\begin_layout LyX-Code
+S = Q;        /* copia del valore del dato in ingresso           */
+\end_layout
+
+\begin_layout LyX-Code
+i = 0;        /* inizializzazione del contatore                  */
+\end_layout
+
+\begin_layout LyX-Code
+while (S > 0) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+i = i + 1; 
+\end_layout
+
+\begin_layout LyX-Code
+S = S - i; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout LyX-Code
+/* all’uscita dal ciclo il valore assunto dalla variabile S 
+\end_layout
+
+\begin_layout LyX-Code
+   permette di procedere in base a due alternative               */
+\end_layout
+
+\begin_layout LyX-Code
+if (S == 0) {
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+/* il valore del contatore i contiene qui il valore del massimo 
+\end_layout
+
+\begin_layout LyX-Code
+   degli addendi che compongono il numero triangolare inserito*/ 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+n %d = alla somma dei primi %d numeri positivi!", Q, i);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} else {
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+n Il numero %d non e' un numero triangolare! 
+\backslash
+n", Q);
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} 
+\end_layout
+
+\begin_layout LyX-Code
+return 0; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conversione in binario
+\end_layout
+
+\begin_layout Quotation
+Dato un numero intero positivo 
+\begin_inset Formula $Q$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+Scrivere la sua rappresentazione in binario naturale, applicando il tradizionale
+ algoritmo per divisioni successive 
+\end_layout
+
+\begin_layout Quotation
+(per convenzione, in questo esercizio l'output si intende corretto se letto
+ da destra a sinistra); 
+\end_layout
+
+\begin_layout Itemize
+Indicare anche il minimo numero di bit utilizzato.
+\end_layout
+
+\begin_layout Standard
+Esempio: 
+\end_layout
+
+\begin_layout Description
+Input 
+\begin_inset Formula $19_{10}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Description
+Output 
+\begin_inset Formula $\underleftarrow{11001_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Approccio alla soluzione
+\end_layout
+
+\begin_layout Subsubsection
+LSB e MSB
+\end_layout
+
+\begin_layout Description
+LSB 
+\series bold
+L
+\series default
+ess 
+\series bold
+S
+\series default
+ignificant 
+\series bold
+B
+\series default
+it.
+ Nelle rappresentazioni binarie è il bit con il peso minore.
+ Nel sistema di numerazione posizionali è solitamente il la cifra più a
+ destra di tutte (perché solitamente i numeri vengono letti da sinistra
+ a destra).
+ In questo esercizio ci viene chiesto di considerare corretto il risultato
+ se letto da destra a sinistra.
+ Il LSB sarà quindi il bit più a sinistra.
+\end_layout
+
+\begin_layout Description
+MSB 
+\series bold
+M
+\series default
+ost 
+\series bold
+S
+\series default
+ignificant 
+\series bold
+B
+\series default
+it.
+ Cifra di valore maggiore nella rappresentazione di un numero binario.
+ In questo esercizio sarà la cifra più a destra.
+\end_layout
+
+\begin_layout Subsubsection
+Indicazioni per gestire un ciclo
+\end_layout
+
+\begin_layout Standard
+Per non sbagliare a impostare un ciclo, ecco alcune domande a cui è necessario
+ dare risposta prima di scrivere codice
+\end_layout
+
+\begin_layout Enumerate
+Da quali valori si deve partire?
+\end_layout
+
+\begin_layout Enumerate
+Qual è la logica di ogni passo?
+\end_layout
+
+\begin_layout Enumerate
+Come si aggiornano le variabili?
+\end_layout
+
+\begin_layout Enumerate
+Quando si deve uscire dal ciclo?
+\end_layout
+
+\begin_layout Standard
+Nello specifico caso di questo esercizio, ecco le risposte
+\end_layout
+
+\begin_layout Enumerate
+Inizializzazioni:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+contatore = 0
+\end_layout
+
+\begin_layout Enumerate
+variabile da dividere = numero in input
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Logica: divido il numero per la base (2) e scrivo il resto
+\end_layout
+
+\begin_layout Enumerate
+aggiornamento variabili:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+il contatore aumenta di 1
+\end_layout
+
+\begin_layout Enumerate
+il numero viene diviso per due (approssimato all'intero inferiore)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Uscita dal ciclo: quando il numero raggiunge il valore 0
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Soluzione C
+\end_layout
+
+\begin_layout LyX-Code
+#include <stdio.h> /* inclusione della libreria standard I/O */ 
+\end_layout
+
+\begin_layout LyX-Code
+int main( ) {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+int n; /* contatore */ 
+\end_layout
+
+\begin_layout LyX-Code
+int Q; /* variabile per il numero letto da tastiera */ 
+\end_layout
+
+\begin_layout LyX-Code
+/*ciclo di controllo per l'immissione dati che garantisce Q >= 0 */ 
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("
+\backslash
+nInserisci un numero positivo o nullo Q: "); 
+\end_layout
+
+\begin_layout LyX-Code
+scanf("%d", &Q); 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (Q < 0); 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+nIn binario: "); 
+\end_layout
+
+\begin_layout LyX-Code
+n = 0; 
+\end_layout
+
+\begin_layout LyX-Code
+do {
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+printf("%d", (Q % 2)); 
+\end_layout
+
+\begin_layout LyX-Code
+Q = Q / 2; 
+\end_layout
+
+\begin_layout LyX-Code
+n = n + 1; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+} while (Q != 0); 
+\end_layout
+
+\begin_layout LyX-Code
+printf("
+\backslash
+nNumero di bit n = %d", n); 
+\end_layout
+
+\begin_layout LyX-Code
+return 0; 
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+}
 \end_layout
 
 \begin_layout Standard
@@ -1168,7 +3357,7 @@ nInserisci il carattere alfabetico y: ");
 
 \begin_layout LyX-Code
 
-	/* ordina i due caratteri x, y in ordine crescente */
+	/* ordina i caratteri x, y in ordine crescente */
 \end_layout
 
 \begin_layout LyX-Code
@@ -1514,7 +3703,7 @@ nNuova terna: ");
 
 	printf("
 \backslash
-nLe terne di numeri cercati sono %d", cont);
+nHo trovato %d terne", cont);
 \end_layout
 
 \begin_layout Plain Layout
