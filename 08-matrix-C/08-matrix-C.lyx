@@ -2543,7 +2543,7 @@ status open
 
 \begin_layout Quotation
 
-typedef struct Intv { unsigned int r, c; } Casella; 
+typedef struct Intv { int r, c; } Casella; 
 \end_layout
 
 \begin_layout Quotation
@@ -2616,7 +2616,7 @@ contasalti(...)
 dicoppia(...)
 \family default
  che controlla se un tappeto è adatto all’esibizione di coppia: una seconda
- pulce inizia a saltare dalla casella (DIM­1, DIM­1) contemporaneamente
+ pulce inizia a saltare dalla casella (DIM-­1, DIM­-1) contemporaneamente
  alla prima pulce, ed esse continuano a saltare e atterrare in perfetta
  sincronia fino a uscire assieme dal tappeto, senza mai "scontrarsi", cioè
  atterrare contemporaneamente sulla stessa casella
@@ -3334,7 +3334,7 @@ int dicoppia(TappetoElastico te) {
 
 \begin_layout Plain Layout
 
-	int jmpOff1, jmpOff2, r1 = 0, c1 = 0, r9 = DIM­1, c9 = DIM­1;
+	int jmpOff1, jmpOff2, r1 = 0, c1 = 0, r9 = DIM-­1, c9 = DIM-­1;
 \end_layout
 
 \begin_layout Plain Layout
