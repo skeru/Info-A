@@ -117,7 +117,7 @@ status open
 \end_layout
 
 \begin_layout Date
-06/12/2018
+29/11/2019
 \end_layout
 
 \begin_layout Standard
@@ -145,7 +145,7 @@ Informatica A
 \begin_layout Right Address
 corso per Ing.
  Gestionale a.a.
- 2018/19
+ 2019/20
 \end_layout
 
 \begin_layout Standard
@@ -819,7 +819,12 @@ The Shadow
 \end_layout
 
 \begin_layout Quotation
-Sia dato il seguente programma.
+Sia dato il seguente programma che simula una battaglia di un gruppo di
+ giocatori contro l'apocalisse causata dall'entità oscura 
+\emph on
+Venom
+\emph default
+.
 \end_layout
 
 \begin_layout Quotation
@@ -938,7 +943,27 @@ int main() {
 
 \begin_layout LyX-Code
 
-	Player warrior, drunkCitizen, mage, bard, orc;
+	Player warrior;
+\end_layout
+
+\begin_layout LyX-Code
+
+	Player drunkCitizen;
+\end_layout
+
+\begin_layout LyX-Code
+
+	Player mage;
+\end_layout
+
+\begin_layout LyX-Code
+
+	Player bard;
+\end_layout
+
+\begin_layout LyX-Code
+
+	Palyer orc;
 \end_layout
 
 \begin_layout LyX-Code
@@ -1184,6 +1209,19 @@ int main() {
 \begin_layout LyX-Code
 
 	}
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+	/* End of the fight */
+\end_layout
+
+\begin_layout LyX-Code
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -1577,7 +1615,8 @@ TheShadow
 \end_inset
 
  per un turno.
- 
+ A tal proposito, avete provato a spiegargli qualche argomento di programmazione
+ C?
 \end_layout
 
 \begin_layout Standard
