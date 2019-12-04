@@ -1297,7 +1297,7 @@ double myExp(double M, int N) {
 
 \begin_layout LyX-Code
 
-		long t = myExp(M, N / 2); 
+		double t = myExp(M, N / 2); 
 \end_layout
 
 \begin_layout LyX-Code

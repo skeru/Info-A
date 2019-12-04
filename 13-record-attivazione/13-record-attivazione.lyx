@@ -963,7 +963,7 @@ int main() {
 
 \begin_layout LyX-Code
 
-	Palyer orc;
+	Player orc;
 \end_layout
 
 \begin_layout LyX-Code
